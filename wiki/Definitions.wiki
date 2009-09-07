@@ -1,0 +1,2 @@
+ * Class Roster - everyone enrolled in the class regardless of what section
+ * Room Roster  - a subset of the students in the class who are assigned to a specific instance of a room
