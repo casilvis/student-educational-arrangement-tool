@@ -80,13 +80,25 @@ Multiple filling algirothms are employed in order to make a best attempt at fill
  # Front to back
  # Every other seat
  # Prioritized students first (left handed and vision impairment first)
+ # Manual placement of students
+====3.2.3.3.4 Functional requirement 4====
+Seating assignments must be saved so they can be recalled later.
 
 ==3.2.4 System Feature 4==
+Generation of seating assignment reports
 ===3.2.4.1 Introduction / Purpose of Feature===
+Provide a printable version of seating assignments for professor and students.
 ===3.2.4.2 Stimulus / Response sequence===
+A seating chart must have been successfully generated placing all students in seats.
 ===3.2.4.3 Associated functional requirements===
 ====3.2.4.3.1 Functional requirement 1====
+Graphical Representation
+ # Provides a visual approximation of where students will be located in the classroom.
+ # Places all students name in a grid that matches the classroom layout
 ====3.2.4.3.2 Functional requirement 2====
+Textual Representation
+ # Provides a text based list of seating assignments
+ # Report broken down by section then alphabetized by first then last name
 
 ==3.2.5 System Feature 5==
 ===3.2.5.1 Introduction / Purpose of Feature===
@@ -103,10 +115,14 @@ Multiple filling algirothms are employed in order to make a best attempt at fill
 ====3.2.6.3.2 Functional requirement 2====
 
 =3.3 Performance requirements=
-
+ * Seating assignments must be calculated in under 5 minutes.
 
 =3.4 Design constraints=
+ * Classroom template files must be stand alone for each different classroom configuration.
+ * Class file must be a single file which can easily opened and closed.
 
 =3.5 Software system attributes=
+ * Standalone C# windows application
 
 =3.6 Other requirements=
+ * Software must be able to be used by a non-technical user.
