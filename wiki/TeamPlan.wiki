@@ -1,0 +1,15 @@
+#summary How the work is divided between different members
+
+=Phase 1=
+ * Design of database schema and classroom model tool
+
+=Phase 2=
+ * Implementation of database interactions.
+ * Implementation of Graphical User Interface
+ * Placement of students in the class roster into classes
+
+=Phase 3=
+ * Implementation of placement algorithms
+
+=Phase 4=
+ * Generation of printable reports
