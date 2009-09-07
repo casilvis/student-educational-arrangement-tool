@@ -8,8 +8,8 @@
 
 =Project Plan=
 ==Phase 1==
- * Design of database schema (Nick and Jared)
- * Class design (Justin and Brian)
+ * Design of Database Schema (Nick and Jared)
+ * Object Oriented Class Design (Justin and Brian)
 
 ==Phase 2==
  * Implementation of database interactions. (All)
@@ -18,6 +18,7 @@
 
 ==Phase 3==
  * Implementation of placement algorithms (Separate)
+ * Each member will be responsible for implementing a different placement algorithm.
 
 ==Phase 4==
  * Generation of printable reports (All)
@@ -26,3 +27,4 @@
  * Project will be organized using Google Code
  * All source code will be stored in subversion repository
  * Everything, including documentation, will be stored on Google Code so no individual member will have anything vital to the continuation of the project.
+ * If someone doesn't complete a task, the reponsibility will be reassigned based on priority.
