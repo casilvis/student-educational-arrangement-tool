@@ -1,22 +1,23 @@
 #summary How the work is divided between different members
 
 =Areas of Responsibility=
- * Jared:
- * Justin: 
- * Nick:
- * Brian: 
+ * Jared: Coder
+ * Justin: Coder
+ * Nick: Coder
+ * Brian: Coder
 
 =Project Plan=
 ==Phase 1==
- * Design of database schema and classroom model tool
+ * Design of database schema (Nick and Jared)
+ * Class design (Justin and Brion)
 
 ==Phase 2==
- * Implementation of database interactions.
- * Implementation of Graphical User Interface
- * Placement of students in the class roster into classes
+ * Implementation of database interactions. (All)
+ * Implementation of Graphical User Interface (Brian and Justin)
+ * Implementation of classes (All)
 
 ==Phase 3==
- * Implementation of placement algorithms
+ * Implementation of placement algorithms (Separate)
 
 ==Phase 4==
- * Generation of printable reports
+ * Generation of printable reports (All)
