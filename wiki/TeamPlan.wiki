@@ -1,10 +1,10 @@
 #summary How the work is divided between different members
 
 =Areas of Responsibility=
- * Jared: Coder
- * Justin: Coder
- * Nick: Coder
- * Brian: Coder
+ * [JournalJared Jared]: Coder
+ * [JournalJustin Justin]: Coder
+ * [JournalNick Nick]: Coder
+ * [JournalBrian Brian]: Coder
 
 =Project Plan=
 ==Phase / Milestone 1==
