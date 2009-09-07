@@ -21,3 +21,7 @@
 
 ==Phase 4==
  * Generation of printable reports (All)
+
+=Management=
+ * Project will be organized using Google Code
+ * All source code will be stored in subversion repository
