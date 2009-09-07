@@ -7,20 +7,20 @@
  * Brian: Coder
 
 =Project Plan=
-==Phase 1==
+==Phase / Milestone 1==
  * Design of Database Schema (Nick and Jared)
  * Object Oriented Class Design (Justin and Brian)
 
-==Phase 2==
+==Phase / Milestone 2==
  * Implementation of database interactions. (All)
  * Implementation of Graphical User Interface (Brian and Justin)
  * Implementation of classes (All)
 
-==Phase 3==
+==Phase / Milestone 3==
  * Implementation of placement algorithms (Separate)
  * Each member will be responsible for implementing a different placement algorithm.
 
-==Phase 4==
+==Phase / Milestone 4==
  * Generation of printable reports (All)
 
 =Management=
