@@ -25,3 +25,4 @@
 =Management=
  * Project will be organized using Google Code
  * All source code will be stored in subversion repository
+ * Everything, including documentation, will be stored on Google Code so no individual member will have anything vital to the continuation of the project.
