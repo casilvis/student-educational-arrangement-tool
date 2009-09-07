@@ -19,7 +19,7 @@
 =3.2 System features=
 
 ==3.2.1 System Feature 1==
-Ability to represent a model of the classroom 
+The ability to represent a model of the classroom 
 ===3.2.1.1 Introduction / Purpose of Feature===
 The classroom model needs to be able to place individual students in seats located inside of real classrooms.  The model needs to approximate seating locations in the classroom.
 ===3.2.1.2 Stimulus / Response sequence===
@@ -37,23 +37,57 @@ A basic knowledge of classroom layout is needed.
  * Seat can be flagged as not being an actual seat (aisle ways and missing seats)
 ====3.2.1.3.6 Functional requirement 6====
  * The actual seat number specified in the classroom
-====3.2.1.3.7 Functional requirement 7====
 
-==3.2.2 System Feature 1==
+
+==3.2.2 System Feature 2==
+A class roster representing students enrolled in the class
 ===3.2.2.1 Introduction / Purpose of Feature===
+Represent students who will be placed in a classroom as specified by enrollment.
 ===3.2.2.2 Stimulus / Response sequence===
+ * Class roster with students enrolled in the class.
 ===3.2.2.3 Associated functional requirements===
 ====3.2.2.3.1 Functional requirement 1====
+ * Data stored needs to be student last name, student first name, student id, handedness flag, vision impairment flag, and section number
 ====3.2.2.3.2 Functional requirement 2====
+ * Student list needs to be sortable by student last name then first name
+====3.2.2.3.3 Functional requirement 3====
+ * Student list needs to be group by section then stored by last name then first name
+====3.2.2.3.4 Functional requirement 4====
+ * Student roster can be imported from a CSV file.  This includes the students first name, last name, student ID, and section number.
+====3.2.2.3.5 Functional requirement 5====
+ * Student handedness and vision is settable through the user interface
+====3.2.2.3.6 Functional requirement 6====
+ * Students can be added, edited, and removed from the class roster through the user interface
+ * Multiple students can be removed from the class roster at the same time.
 
-
-==3.2.3 System Feature 1==
+==3.2.3 System Feature 3==
 ===3.2.3.1 Introduction / Purpose of Feature===
 ===3.2.3.2 Stimulus / Response sequence===
 ===3.2.3.3 Associated functional requirements===
 ====3.2.3.3.1 Functional requirement 1====
 ====3.2.3.3.2 Functional requirement 2====
 
+
+==3.2.4 System Feature 4==
+===3.2.4.1 Introduction / Purpose of Feature===
+===3.2.4.2 Stimulus / Response sequence===
+===3.2.4.3 Associated functional requirements===
+====3.2.4.3.1 Functional requirement 1====
+====3.2.4.3.2 Functional requirement 2====
+
+==3.2.5 System Feature 5==
+===3.2.5.1 Introduction / Purpose of Feature===
+===3.2.5.2 Stimulus / Response sequence===
+===3.2.5.3 Associated functional requirements===
+====3.2.5.3.1 Functional requirement 1====
+====3.2.5.3.2 Functional requirement 2====
+
+==3.2.6 System Feature 6==
+===3.2.6.1 Introduction / Purpose of Feature===
+===3.2.6.2 Stimulus / Response sequence===
+===3.2.6.3 Associated functional requirements===
+====3.2.6.3.1 Functional requirement 1====
+====3.2.6.3.2 Functional requirement 2====
 
 =3.3 Performance requirements=
 
