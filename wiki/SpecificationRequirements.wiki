@@ -1,0 +1,33 @@
+#Spedifications for SEAT
+
+
+=External interface requirements=
+==User interfaces==
+==Hardware interfaces==
+==Software interfaces==
+==Communications interfaces==
+
+=System features=
+
+==System Feature 1==
+===Introduction / Purpose of Feature===
+===Stimulus / Response sequence===
+===Associated functional requirements===
+====Functional requirement 1====
+====Functional requirement 2====
+
+==System Feature 2==
+===Introduction / Purpose of Feature===
+===Stimulus / Response sequence===
+===Associated functional requirements===
+====Functional requirement 1====
+====Functional requirement 2====
+
+=Performance requirements=
+
+
+=Design constraints=
+
+=Software system attributes=
+
+=Other requirements=
