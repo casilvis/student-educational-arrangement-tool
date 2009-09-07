@@ -61,12 +61,25 @@ Represent students who will be placed in a classroom as specified by enrollment.
  * Multiple students can be removed from the class roster at the same time.
 
 ==3.2.3 System Feature 3==
+Assigning students in roster to seats in specified classroom
 ===3.2.3.1 Introduction / Purpose of Feature===
+Make a best attempt at fulfilling all student and classroom requirements while assigning a specific seat to everyone on the roster.
 ===3.2.3.2 Stimulus / Response sequence===
+ * A complete room roster
+ * A valid classroom model
+ * The number of available seats must be greater than or equal to the number of students.
 ===3.2.3.3 Associated functional requirements===
 ====3.2.3.3.1 Functional requirement 1====
+Algorithm must attempt to meet student requirements
+ # Left handed students should be placed in left handed desks
+ # Students with vision impairment should be placed towards the front of the classroom
 ====3.2.3.3.2 Functional requirement 2====
-
+Students should be able to be placed in multiple rooms for different days or meetings times for the same class.
+====3.2.3.3.3 Functional requirement 3====
+Multiple filling algirothms are employed in order to make a best attempt at filling the classroom
+ # Front to back
+ # Every other seat
+ # Prioritized students first (left handed and vision impairment first)
 
 ==3.2.4 System Feature 4==
 ===3.2.4.1 Introduction / Purpose of Feature===
