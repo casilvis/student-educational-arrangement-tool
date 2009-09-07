@@ -9,7 +9,7 @@
 =Project Plan=
 ==Phase 1==
  * Design of database schema (Nick and Jared)
- * Class design (Justin and Brion)
+ * Class design (Justin and Brian)
 
 ==Phase 2==
  * Implementation of database interactions. (All)
