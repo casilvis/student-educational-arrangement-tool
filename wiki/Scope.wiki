@@ -1,0 +1,10 @@
+#summary The scope of the project
+
+= Introduction =
+
+This documents the scope of the project.
+
+
+= Details =
+
+Still needs to be documented.
