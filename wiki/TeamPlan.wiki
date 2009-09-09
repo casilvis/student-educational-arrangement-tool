@@ -28,3 +28,6 @@
  * All source code will be stored in subversion repository
  * Everything, including documentation, will be stored on Google Code so no individual member will have anything vital to the continuation of the project.
  * If someone doesn't complete a task, the reponsibility will be reassigned based on priority.
+
+=Metrics=
+ * Metrics will be based off of the built in issue tracking software in Google Code.
