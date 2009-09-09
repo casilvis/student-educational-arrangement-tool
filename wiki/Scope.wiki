@@ -11,7 +11,7 @@ SRS outlines.
 = Details =
 
 The software requirements are as follows. 
-1. Don't use bad code just to avoid work.
-2. Document the code to allow the other programmers to understand functions.
-3. Make sure all code makes it to code.google.com.
-4. Do not destroy a major part to implement a feature.
+ # Don't use bad code just to avoid work.
+ # Document the code to allow the other programmers to understand functions.
+ # Make sure all code makes it to code.google.com.
+ # Do not destroy a major part to implement a feature.
