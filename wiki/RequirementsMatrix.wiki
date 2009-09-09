@@ -1,0 +1,9 @@
+#summary Dependencies between the various parts of the project
+
+
+
+|| || Classroom Model || Student Roster || Assignment Algorithm || Report Generation ||
+|| Classroom Model || || || || ||
+|| Student Roster || || || || ||
+|| Assignment Algorithm || || || || ||
+|| Report Generation || || || || ||
