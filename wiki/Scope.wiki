@@ -4,7 +4,14 @@
 
 This documents the scope of the project.
 
+This is a recommended practice for writing software requirements specifications. It describes the
+content and qualities of a good software requirements specification (SRS) and presents several sample
+SRS outlines.
 
 = Details =
 
-Still needs to be documented.
+The software requirements are as follows. 
+1. Don't use bad code just to avoid work.
+2. Document the code to allow the other programmers to understand functions.
+3. Make sure all code makes it to code.google.com.
+4. Do not destroy a major part to implement a feature.
