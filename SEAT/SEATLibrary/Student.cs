@@ -12,6 +12,7 @@ namespace SEATLibrary
         String firstName;
         String lastName;
         String section;
+        Boolean isEnrolled;
 
     }
 }
