@@ -1,0 +1,8 @@
+﻿<Window x:Class="SEAT.frmGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="frmGrid" Height="300" Width="300">
+    <Grid>
+        <Label Height="28" Name="lblTest" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">Label</Label>
+    </Grid>
+</Window>

@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+
 
 namespace SEAT
 {
@@ -22,6 +24,19 @@ namespace SEAT
         public Window1()
         {
             InitializeComponent();
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            string row = Regex.Replace(txtRows.Text, @"[\D]", "");
+            string column = Regex.Replace(txtColumns.Text, @"[\D]", "");
+            txtRows.Text = row;
+            txtColumns.Text = column;
+            if (column.Length > 0 && row.Length > 0)
+            {
+                frmGrid Grid = new frmGrid(Convert.ToInt32(row), Convert.ToInt32(column));
+                Grid.Show();
+            }
         }
     }
 }
