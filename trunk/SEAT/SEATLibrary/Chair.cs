@@ -7,6 +7,10 @@ namespace SEATLibrary
 {
     class Chair
     {
+        //Primary ID
+        //Room ID
+        //Chair X
+        //Chair Y
         Boolean leftHanded; //True for left handed people
         int fbPosition; // 1 = front; 2 = middle; 3 = back
         int lrOosition; // 1 = left;  2 = right;  3 = back
