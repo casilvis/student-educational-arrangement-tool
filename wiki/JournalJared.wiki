@@ -1,4 +1,9 @@
 #summary Jared's Journal
 
+=Journal=
+
+9/11/09 - Designed first draft of the database schema.
+
+
 = Effort Required =
 Hours: 52
