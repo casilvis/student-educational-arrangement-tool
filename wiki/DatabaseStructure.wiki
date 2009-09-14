@@ -1,7 +1,7 @@
 #summary The database structure for the file that contains all of the information for SEAT
 
 
-=Table: Chairs=
+*Table: Chairs*
 
 || *Column Name* || *Data Type* || ||
 || id || int ||Primary ||
@@ -15,7 +15,7 @@
 || mustBeEmpty || boolean || ||
 || seatNumber || string|| ||
 	
-=Table: Rooms=
+*Table: Rooms*
 
 || *Column Name* || *Data Type* || ||
 || id || int || Primary ||
@@ -25,12 +25,12 @@
 || description || string || ||
 	
 	
-=Table: RoomType=
+*Table: RoomType*
 
 || id || int || Primary ||
 || roomTypeName || string || ||
 
-=Table: Students=
+*Table: Students*
 
 || id || int || Primary ||
 || firstName || string || ||
@@ -41,14 +41,14 @@
 || isEnrolled || boolean || ||
 	
 	
-=Table: SeatAssignments=
+*Table: SeatAssignments*
 
 || id || int || Primary ||
 || Student || int || FK->Student.id ||
 || Chair || int || FK->Chair.id ||
 	
 	
-=Table: RoomAssignments=
+*Table: RoomAssignments*
 
 || id || int || Primary ||
 || Room || int || FK->Room.id ||
