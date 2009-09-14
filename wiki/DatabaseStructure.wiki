@@ -1,8 +1,7 @@
 #summary The database structure for the file that contains all of the information for SEAT
 
 
-*Table: Chairs*
-
+=Table: Chairs=
 || *Column Name* || *Data Type* || ||
 || id || int ||Primary ||
 || Room || int || FK->Rooms.id ||
@@ -14,24 +13,20 @@
 || nonChair || boolean || ||
 || mustBeEmpty || boolean || ||
 || seatNumber || string|| ||
-	
-*Table: Rooms*
 
+=Table: Rooms=
 || *Column Name* || *Data Type* || ||
 || id || int || Primary ||
 || RoomType || int || FK->RoomType.id ||
 || roomName || string || ||
 || location || string || ||
 || description || string || ||
-	
-	
-*Table: RoomType*
 
+=Table: RoomType=
 || id || int || Primary ||
 || roomTypeName || string || ||
 
-*Table: Students*
-
+=Table: Students=
 || id || int || Primary ||
 || firstName || string || ||
 || lastName || string || ||
@@ -39,17 +34,13 @@
 || leftHanded || boolean || ||
 || visionEnpairment || boolean || ||
 || isEnrolled || boolean || ||
-	
-	
-*Table: SeatAssignments*
 
+=Table: SeatAssignments=
 || id || int || Primary ||
 || Student || int || FK->Student.id ||
 || Chair || int || FK->Chair.id ||
-	
-	
-*Table: RoomAssignments*
 
+=Table: RoomAssignments=
 || id || int || Primary ||
 || Room || int || FK->Room.id ||
 || Student || int || FK->Student.id ||
