@@ -7,12 +7,13 @@ namespace SEATLibrary
 {
     public class Student
     {
-        Boolean leftHanded;
-        Boolean visionEnpairment;
-        String firstName;
-        String lastName;
-        String section;
-        Boolean isEnrolled;
+        private int primaryId;
+        private String firstName;
+        private String lastName;
+        private String section;
+        private Boolean leftHanded;
+        private Boolean visionEnpairment;
+        private Boolean isEnrolled;
 
     }
 }

@@ -46,6 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chair.cs" />
+    <Compile Include="Room.cs" />
+    <Compile Include="RoomAssignments.cs" />
+    <Compile Include="RoomType.cs" />
+    <Compile Include="SeatAssignments.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
