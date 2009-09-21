@@ -12,5 +12,6 @@
         <RadioButton Name="rbtnRight" GroupName="grpLRM" Margin="0,50,69,61" FontSize="8" HorizontalAlignment="Right" Width="45">Right</RadioButton>
         <RadioButton Height="16" Margin="64,17,116,0" Name="rbtnRighthanded" VerticalAlignment="Top" IsChecked="True" GroupName="grpHand" FontSize="8">Right Handed</RadioButton>
         <RadioButton Height="11" Margin="0,17,0,0" Name="rbtnLeftHanded" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64" GroupName="grpHand" FontSize="8">Left Handed</RadioButton>
+        <Rectangle Height="100" Margin="120,0,-72,-75" Name="rectangle1" Stroke="Black" VerticalAlignment="Bottom" />
     </Grid>
 </UserControl>

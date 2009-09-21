@@ -4,5 +4,6 @@
     Title="frmGrid" Height="300" Width="300">
     <Grid>
         <Label Height="28" Name="lblTest" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">Label</Label>
+        <StackPanel Margin="18,77,4,85" Name="spnlChart" />
     </Grid>
 </Window>
