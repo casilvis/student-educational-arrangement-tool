@@ -32,16 +32,26 @@ namespace SEAT
             int column = columns;
             string answer = row + " by " + column;
             lblTest.Content = answer;
+            ContainerVisual newPage = new ContainerVisual();
             Seat[,] stArray = new Seat[row,column];
+            
             Width = column * 180;
             Height = row * 70;
+            Canvas myParentCanvas = new Canvas();
+            myParentCanvas.Width = Width;
+            myParentCanvas.Height = Height;
             for (int i=0; i < row; i++)
             {
                 for (int j=0; j < column; j++)
                 {
-                         
+                    stArray[i,j]=new Seat
+                    //labels.Content = answer;
+                    myParentCanvas.Children.Add(stArray[i,j]);
+                       
                 }
             }
+            this.Content = myParentCanvas;
+            this.Show();
         }
     }
 }
