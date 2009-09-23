@@ -2,6 +2,7 @@
 
 =Journal=
 
+9/23/09 - Began simple design/implementation of several objects (chair, student, room)
 9/11/09 - Designed first draft of the database schema.
 
 
