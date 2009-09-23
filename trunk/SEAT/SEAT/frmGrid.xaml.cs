@@ -44,7 +44,7 @@ namespace SEAT
             {
                 for (int j=0; j < column; j++)
                 {
-                    stArray[i,j]=new Seat
+                    stArray[i, j] = new Seat();
                     //labels.Content = answer;
                     myParentCanvas.Children.Add(stArray[i,j]);
                        

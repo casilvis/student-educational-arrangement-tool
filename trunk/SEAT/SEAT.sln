@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEATLibrary", "SEATLibrary\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEATDatabase", "SEATDatabase\SEATDatabase.csproj", "{6F5F3A38-DF28-4693-B607-151FAE905915}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingApplication", "TestingApplication\TestingApplication.csproj", "{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -29,6 +31,10 @@ Global
 		{6F5F3A38-DF28-4693-B607-151FAE905915}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F5F3A38-DF28-4693-B607-151FAE905915}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F5F3A38-DF28-4693-B607-151FAE905915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
