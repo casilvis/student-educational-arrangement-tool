@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A782713D-A65E-4153-BFE3-F763AEB93ADD}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SEATLibrary</RootNamespace>
-    <AssemblyName>SEATLibrary</AssemblyName>
+    <RootNamespace>TestingApplication</RootNamespace>
+    <AssemblyName>TestingApplication</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,14 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chair.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="RoomAssignments.cs" />
-    <Compile Include="RoomType.cs" />
-    <Compile Include="SeatAssignments.cs" />
-    <Compile Include="SeatManager.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SEATLibrary\SEATLibrary.csproj">
+      <Project>{A782713D-A65E-4153-BFE3-F763AEB93ADD}</Project>
+      <Name>SEATLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
