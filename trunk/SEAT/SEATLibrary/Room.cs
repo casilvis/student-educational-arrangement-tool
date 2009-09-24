@@ -93,6 +93,23 @@ namespace SEATLibrary
             }
         }
 
+
+        //Methods
+        public bool isRoomEmpty()
+        {
+            for (int i = 0; i < this.width; i++)
+            {
+                for (int j = 0; j < this.height; j++)
+                {
+                    if (!chairs[i, j].isEmpty())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         public override string ToString()
         {
             String result = "";

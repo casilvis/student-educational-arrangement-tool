@@ -20,11 +20,9 @@ namespace SEATLibrary
         {
             students = new List<Student>();
             rooms = new List<Room>();
-
-            rooms.Add(new Room());
-
-            
         }
+
+
 
 
     }
