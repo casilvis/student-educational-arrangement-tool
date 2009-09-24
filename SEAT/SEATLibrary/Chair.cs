@@ -66,6 +66,18 @@ namespace SEATLibrary
 
 
         // METHODS
+
+        public Boolean isEmpty()
+        {
+            if (theStudent == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public override string ToString()
         {
             String str = "";
