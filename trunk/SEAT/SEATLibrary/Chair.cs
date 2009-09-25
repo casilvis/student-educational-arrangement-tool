@@ -8,10 +8,6 @@ namespace SEATLibrary
     public class Chair
     {
         // ATTRIBUTES
-        //private int primaryID;
-        //private Room room;
-        //private int posX;
-        //private int posY;
         private Boolean leftHanded; //True for left handed people
         private int fbPosition; // 1 = front; 2 = middle; 3 = back
         private int lrPosition; // 1 = left;  2 = right;  3 = back
@@ -28,7 +24,7 @@ namespace SEATLibrary
             get { return leftHanded; }
             set { leftHanded = value; }
         }
-        public Boolean NonCHair
+        public Boolean NonChair
         {
             get { return nonChair; }
             set { nonChair = value; }
@@ -50,7 +46,6 @@ namespace SEATLibrary
         }
 
 
-
         // CONSTRUCTORS
         public Chair()
         {
@@ -66,7 +61,6 @@ namespace SEATLibrary
 
 
         // METHODS
-
         public Boolean isEmpty()
         {
             if (theStudent == null)

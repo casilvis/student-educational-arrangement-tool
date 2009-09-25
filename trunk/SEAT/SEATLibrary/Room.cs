@@ -7,8 +7,7 @@ namespace SEATLibrary
 {
     public class Room
     {
-        //private int primaryId;
-        //private RoomType roomType;
+        // Attributes
         private String roomName;
         private String location;
         private String description;
@@ -18,6 +17,7 @@ namespace SEATLibrary
         private int width;
         private int height;
 
+        // Properties
         public String RoomName
         {
             get { return roomName; }
@@ -52,7 +52,7 @@ namespace SEATLibrary
             get { return roomStudents; }
         }
 
-
+        // Constructors
         public Room()
         {
             this.width = 4;
@@ -60,6 +60,26 @@ namespace SEATLibrary
 
             this.roomName = "Unknown";
             this.location = "Unknown";
+            this.description = "Unknown";
+            roomStudents = new List<Student>();
+            chairs = new Chair[this.width, this.height];
+
+            for (int i = 0; i < this.width; i++)
+            {
+                for (int j = 0; j < this.height; j++)
+                {
+                    chairs[i, j] = new Chair();
+                }
+            }
+        }
+
+        public Room(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+
+            this.roomName = "Unknown";
+            this.location = "Unkonwn";
             this.description = "Unknown";
             roomStudents = new List<Student>();
             chairs = new Chair[this.width, this.height];
