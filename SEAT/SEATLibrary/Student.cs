@@ -7,7 +7,7 @@ namespace SEATLibrary
 {
     public class Student
     {
-        //private int primaryId;
+        // Attributes
         private String firstName;
         private String lastName;
         private String section;
@@ -15,6 +15,7 @@ namespace SEATLibrary
         private Boolean visionEnpairment;
         private Boolean isEnrolled;
 
+        // Properties
         public String FirstName
         {
             get { return firstName; }
@@ -46,14 +47,31 @@ namespace SEATLibrary
             set { isEnrolled = value; }
         }
 
+        // Constructor
         public Student()
         {
-            firstName = "";
-            lastName = "";
-            section = "";
+            firstName = "Default";
+            lastName = "Default";
+            section = "Default";
             leftHanded = false;
             visionEnpairment = false;
             isEnrolled = false;
+        }
+
+        public Student(String firstName, String lastName, String section, Boolean leftHanded, Boolean visionEnpairment)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.section = section;
+            this.leftHanded = leftHanded;
+            this.visionEnpairment = visionEnpairment;
+            isEnrolled = true;
+        }
+
+        // Methods
+        public override string ToString()
+        {
+            return lastName + ", " + firstName;
         }
     }
 }

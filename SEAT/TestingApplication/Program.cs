@@ -10,10 +10,21 @@ namespace TestingApplication
     {
         static void Main(string[] args)
         {
-            //This is just a scratch program where various parts of the program are tested
-            //No really functional code is here, just some tests of other classes
-
+            // Make an instance of the seat manager, this is what we are going to use
             SeatManager sm = new SeatManager();
+            // Make an instance of the Command Line interface so we can do some testing on our class
+            CLInterface cli = new CLInterface();
+
+            sm.addNewRoom(10, 10);
+
+
+            /*
+            Student s = cli.getNewStudent();
+            sm.addStudentToRoster(s);
+
+            cli.displayStudentRoster(sm.StudentList);
+
+            */
 
             Console.ReadLine();
         }
