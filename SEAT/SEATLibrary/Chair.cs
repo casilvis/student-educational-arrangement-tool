@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SEATLibrary
 {
-    class Chair
+    public class Chair
     {
         // ATTRIBUTES
         //private int primaryID;
@@ -61,7 +61,7 @@ namespace SEATLibrary
             mustBeEmpty = false;
             seatNumber = "Unknown";
 
-            student = null;
+            theStudent = null;
         }
 
 

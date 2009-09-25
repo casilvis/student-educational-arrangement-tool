@@ -15,7 +15,6 @@ namespace TestingApplication
 
             SeatManager sm = new SeatManager();
 
-            Console.WriteLine(sm.RoomList[0].ToString());
             Console.ReadLine();
         }
     }
