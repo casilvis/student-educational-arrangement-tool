@@ -34,23 +34,29 @@ namespace SEAT
             lblTest.Content = answer;
             ContainerVisual newPage = new ContainerVisual();
             Seat[,] stArray = new Seat[row,column];
-            
+            int x=0;
+            int y=0;
             Width = column * 180;
             Height = row * 70;
-            Canvas myParentCanvas = new Canvas();
-            myParentCanvas.Width = Width;
-            myParentCanvas.Height = Height;
+            griddy.VerticalAlignment = VerticalAlignment.Top;
             for (int i=0; i < row; i++)
             {
                 for (int j=0; j < column; j++)
                 {
                     stArray[i, j] = new Seat();
+                    
+                    x = (x + 180) % (180*column);
+                    y = (y + 70) % (70*row);
                     //labels.Content = answer;
-                    myParentCanvas.Children.Add(stArray[i,j]);
-                       
+                 //   griddy.
+                    //left, top,0,0
+                    stArray[i,j].Margin = new Thickness(x,y,0,0);
+                    griddy.Children.Add(stArray[i, j]);
                 }
             }
-            this.Content = myParentCanvas;
+            
+            this.Content = griddy;
+            
             this.Show();
         }
     }
