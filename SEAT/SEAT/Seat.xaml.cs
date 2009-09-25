@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SEATLibrary;
 
 namespace SEAT
 {
@@ -19,14 +20,20 @@ namespace SEAT
     /// </summary>
     public partial class Seat : UserControl
     {
-        public Seat()
+        public Seat(Chair chair)
         {
+
             InitializeComponent();
-            Height = 70;
-            Width = 180;
+
+            
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
 
         }
