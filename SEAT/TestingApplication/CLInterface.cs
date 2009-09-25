@@ -11,7 +11,7 @@ namespace TestingApplication
 
         public CLInterface()
         {
-
+            // Nothing needs to be set up for this function to work.
         }
 
         public Student getNewStudent()
@@ -40,6 +40,12 @@ namespace TestingApplication
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void waitForUserEnter()
+        {
+            Console.Write("\nPress enter to continue...");
+            Console.ReadLine();
         }
 
         private String promptForString(String prompt)
