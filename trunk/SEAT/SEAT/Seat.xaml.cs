@@ -20,6 +20,11 @@ namespace SEAT
     /// </summary>
     public partial class Seat : UserControl
     {
+        public Seat()
+        {
+            InitializeComponent();
+        }
+
         public Seat(Chair chair)
         {
 
