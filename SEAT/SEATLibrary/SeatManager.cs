@@ -42,6 +42,11 @@ namespace SEATLibrary
             return r;
         }
 
+        public void addNewRoom(Room room)
+        {
+            rooms.Add(room);
+        }
+
         public Boolean addStudentToRoom(int student, int room)
         {
             return false;

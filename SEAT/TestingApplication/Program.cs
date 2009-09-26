@@ -8,12 +8,14 @@ namespace TestingApplication
 {
     class Program
     {
+        // Make an instance of the Command Line interface so we can do some testing on our class
+        private static CLInterface cli = new CLInterface();
+
         static void Main(string[] args)
         {
             // Make an instance of the seat manager, this is what we are going to use
             SeatManager sm = new SeatManager();
-            // Make an instance of the Command Line interface so we can do some testing on our class
-            CLInterface cli = new CLInterface();
+            
 
             String prompt = "";
             while (!prompt.Equals("exit"))
@@ -33,22 +35,44 @@ namespace TestingApplication
 
                 if (prompt.Equals("1"))
                 {
-                    Console.WriteLine("Displaying list of all of the rooms");
+                    Console.WriteLine("Displaying list of all of the rooms\n");
+                    if (sm.RoomList.Count > 0)
+                    {
+                        int selection = cli.selectRoomList(sm.RoomList);
+                        if (selection >= 0)
+                        {
+                            Program.updateRoom(sm.RoomList[selection]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Selection...");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No rooms available...");
+                    }
                     cli.waitForUserEnter();
                 }
                 else if (prompt.Equals("2"))
                 {
-                    Console.WriteLine("Displaying list of all of the students");
+                    Console.WriteLine("Displaying list of all of the students\n");
+                    cli.displayStudentRoster(sm.StudentList);
                     cli.waitForUserEnter();
                 }
                 else if (prompt.Equals("3"))
                 {
-                    Console.WriteLine("Adding a student to the roster");
+                    Console.WriteLine("Adding a student to the roster\n");
+                    Console.WriteLine("Enter the following information for the student:");
+                    Student s = cli.getNewStudent();
+                    sm.addStudentToRoster(s);
                     cli.waitForUserEnter();
                 }
                 else if (prompt.Equals("4"))
                 {
                     Console.WriteLine("Adding a room");
+                    Room r = cli.getNewRoom();
+                    sm.addNewRoom(r);
                     cli.waitForUserEnter();
                 }
                 else if (prompt.Equals("exit"))
@@ -57,12 +81,40 @@ namespace TestingApplication
                 }
                 else
                 {
-                    Console.WriteLine("Invalid option, press enter to return to main menu.");
-                    Console.ReadLine();
+                    Console.WriteLine("Invalid option...");
+                    cli.waitForUserEnter();
                 }
 
             }
 
+        }
+
+        public static void updateRoom(Room room)
+        {
+            String prompt = "";
+            while (!prompt.Equals("back"))
+            {
+                Console.Clear();
+                cli.displayRoom(room);
+                Console.WriteLine("Choose: update, back");
+                Console.Write(" > ");
+                prompt = Console.ReadLine();
+
+                if (prompt.Equals("update"))
+                {
+                    cli.updateRoomSeat(room);
+                }
+                else if (prompt.Equals("back"))
+                {
+
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input...");
+                    cli.waitForUserEnter();
+                }
+
+            }
         }
     }
 }
