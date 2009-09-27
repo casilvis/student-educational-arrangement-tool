@@ -74,16 +74,22 @@ namespace SEATLibrary
         }
         public override string ToString()
         {
-            String str = "";
-            if (leftHanded)
+            if (nonChair)
             {
-                str += "L";
+                return ".";
+            }
+            else if (mustBeEmpty)
+            {
+                return "x";
+            }
+            else if (leftHanded)
+            {
+                return "L";
             }
             else
             {
-                str += "R";
+                return "R";
             }
-            return str;
         }
     }
 }

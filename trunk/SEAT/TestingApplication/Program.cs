@@ -41,7 +41,7 @@ namespace TestingApplication
                         int selection = cli.selectRoomList(sm.RoomList);
                         if (selection >= 0)
                         {
-                            Program.updateRoom(sm.RoomList[selection]);
+                            cli.updateRoom(sm.RoomList[selection]);
                         }
                         else
                         {
@@ -89,32 +89,6 @@ namespace TestingApplication
 
         }
 
-        public static void updateRoom(Room room)
-        {
-            String prompt = "";
-            while (!prompt.Equals("back"))
-            {
-                Console.Clear();
-                cli.displayRoom(room);
-                Console.WriteLine("Choose: update, back");
-                Console.Write(" > ");
-                prompt = Console.ReadLine();
-
-                if (prompt.Equals("update"))
-                {
-                    cli.updateRoomSeat(room);
-                }
-                else if (prompt.Equals("back"))
-                {
-
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input...");
-                    cli.waitForUserEnter();
-                }
-
-            }
-        }
+        
     }
 }

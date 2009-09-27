@@ -11,7 +11,8 @@ namespace TestingApplication
 
         public CLInterface()
         {
-            // Nothing needs to be set up for this function to work.
+            // Nothing needs to be set up for this class to work
+            // The methods could all be static, but that isn't necessary for this test class now.
         }
 
         public Student getNewStudent()
@@ -84,6 +85,35 @@ namespace TestingApplication
             }
         }
 
+
+        public void updateRoom(Room room)
+        {
+            String prompt = "";
+            while (!prompt.Equals("back"))
+            {
+                Console.Clear();
+                displayRoom(room);
+                Console.WriteLine("Choose: update, back");
+                Console.Write(" > ");
+                prompt = Console.ReadLine();
+
+                if (prompt.Equals("update"))
+                {
+                    updateRoomSeat(room);
+                }
+                else if (prompt.Equals("back"))
+                {
+
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input...");
+                    waitForUserEnter();
+                }
+
+            }
+        }
+
         public void updateRoomSeat(Room room)
         {
             // Have the user select one of the seats in the room
@@ -93,12 +123,12 @@ namespace TestingApplication
             int x = 0, y = 0;
             while (x < 1 || x > room.Width)
             {
-                x = this.promptForInt("Width");
+                x = this.promptForInt("Column");
             }
             x--;
             while (y < 1 || x > room.Height)
             {
-                y = this.promptForInt("Height");
+                y = this.promptForInt("Row");
             }
             y--;
             Chair c = room.Chairs[x, y];
@@ -108,11 +138,59 @@ namespace TestingApplication
             while (input != 0)
             {
                 Console.Clear();
-                Console.Write("Enter 0 to not update any values.");
+                Console.WriteLine("Updating Char at position (" + (x + 1) + ", " + (y + 1) + ")\n");
+                Console.WriteLine("0) Finish Editing Chair");
                 Console.WriteLine("1) Left Handed: " + c.LeftHanded);
                 Console.WriteLine("2) Non Chair: " + c.NonChair);
                 Console.WriteLine("3) Must Be Empty: " + c.MustBeEmpty);
                 Console.WriteLine("4) Seat Number: " + c.SeatNumber);
+
+                input = promptForInt("Selection");
+
+                if (input == 0)
+                {
+                    // No action
+                }
+                else if (input == 1)
+                {
+                    // Flip the LeftHanded flag
+                    if (c.LeftHanded == true)
+                    {
+                        c.LeftHanded = false;
+                    }
+                    else
+                    {
+                        c.LeftHanded = true;
+                    }
+                }
+                else if (input == 2)
+                {
+                    // Flip the NonChair flag
+                    if (c.NonChair == true)
+                    {
+                        c.NonChair = false;
+                    }
+                    else
+                    {
+                        c.NonChair = true;
+                    }
+                }
+                else if (input == 3)
+                {
+                    // Flip the MustBeEmpty flag
+                    if (c.MustBeEmpty == true)
+                    {
+                        c.MustBeEmpty = false;
+                    }
+                    else
+                    {
+                        c.MustBeEmpty = true;
+                    }
+                }
+                else if (input == 4)
+                {
+                    c.SeatNumber = promptForString("New Chair Name: ");
+                }
             }
 
             waitForUserEnter();
@@ -131,7 +209,7 @@ namespace TestingApplication
                 Console.Write((i + 1) + "\t");
                 for (int j = 0; j < r.Width; j++)
                 {
-                    Console.Write(r.Chairs[i, j].ToString() + "\t");
+                    Console.Write(r.Chairs[j, i].ToString() + "\t");
                 }
                 Console.WriteLine();
             }
