@@ -24,6 +24,14 @@ namespace SEATLibrary
             get { return leftHanded; }
             set { leftHanded = value; }
         }
+        public int FbPosition
+        {
+            get { return fbPosition; }
+        }
+        public int LrPosition
+        {
+            get { return lrPosition; }
+        }
         public Boolean NonChair
         {
             get { return nonChair; }
@@ -34,7 +42,7 @@ namespace SEATLibrary
             get { return mustBeEmpty; }
             set { mustBeEmpty = value; }
         }
-        public String SeatNumber
+        public String SeatName
         {
             get { return seatNumber; }
             set { seatNumber = value; }
@@ -55,8 +63,18 @@ namespace SEATLibrary
             nonChair = false;
             mustBeEmpty = false;
             seatNumber = "Unknown";
-
             theStudent = null;
+        }
+        public Chair(Boolean leftHanded, int fbPosition, int lrPosition, Boolean nonChair, Boolean mustBeEmpty,
+            String seatNumber, Student theStudent)
+        {
+            this.leftHanded = leftHanded;
+            this.fbPosition = fbPosition;
+            this.lrPosition = lrPosition;
+            this.nonChair = nonChair;
+            this.mustBeEmpty = mustBeEmpty;
+            this.seatNumber = seatNumber;
+            this.theStudent = theStudent;
         }
 
 

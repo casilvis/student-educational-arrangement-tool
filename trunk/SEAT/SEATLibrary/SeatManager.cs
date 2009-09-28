@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace SEATLibrary
 {
@@ -28,6 +29,82 @@ namespace SEATLibrary
             rooms = new List<Room>();
         }
 
+        public SeatManager(String file)
+        {
+            students = new List<Student>();
+            rooms = new List<Room>();
+
+            XmlReader r = new XmlTextReader(file);
+            while (r.Read())
+            {
+                if (r.NodeType == XmlNodeType.Element)
+                {
+                    // Read in all of the students
+                    if (r.Name.ToString() == "Students")
+                    {
+                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Students"))
+                        {
+                            r.Read();
+                            // Add all of the students to the array
+                            if (r.Name == "Student")
+                            {
+                                Student s = new Student(new Guid(r.GetAttribute("Uid")), r.GetAttribute("First"),
+                                    r.GetAttribute("Last"), r.GetAttribute("Sid"),
+                                    r.GetAttribute("Section"), Boolean.Parse(r.GetAttribute("LeftHanded")),
+                                    Boolean.Parse(r.GetAttribute("VisionImpairment")));
+                                students.Add(s);
+                            }
+                            
+                        }
+                    }
+                    // Read in all of the rooms
+                    else if (r.Name.ToString() == "Rooms")
+                    {
+                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Rooms"))
+                        {
+                            r.Read();
+                            //Read in a room and all of its attributes
+                            if (r.NodeType == XmlNodeType.Element && r.Name == "Room")
+                            {
+                                Room room = new Room(r.GetAttribute("Name"), r.GetAttribute("Location"),
+                                    r.GetAttribute("Description"), Int32.Parse(r.GetAttribute("Width")),
+                                    Int32.Parse(r.GetAttribute("Height")));
+                                rooms.Add(room);
+                                //Get all of the information about a room
+                                while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Room"))
+                                {
+                                    r.Read();
+                                    //Read in all of the chairs
+                                    if (r.NodeType == XmlNodeType.Element && r.Name == "Chairs")
+                                    {
+                                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Chairs"))
+                                        {
+                                            r.Read();
+                                            if (r.NodeType == XmlNodeType.Element && r.Name == "Chair")
+                                            {
+                                                int x = Int32.Parse(r.GetAttribute("PosX"));
+                                                int y = Int32.Parse(r.GetAttribute("PosY"));
+                                                Student s = lookupStudent(r.GetAttribute("SUID"));
+                                                room.Chairs[x, y] = new Chair(Boolean.Parse(r.GetAttribute("LeftHanded")),
+                                                    Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")),
+                                                    Boolean.Parse(r.GetAttribute("NonChair")), Boolean.Parse(r.GetAttribute("MustBeEmpty")),
+                                                    r.GetAttribute("Name"), s);
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                            //Read in all of the chairs
+
+                            //Read in all of the RoomStudents
+
+                        }
+                    }
+                }
+            }
+        }
+
 
         // Methods
         public void addStudentToRoster(Student student)
@@ -52,6 +129,96 @@ namespace SEATLibrary
             return false;
         }
 
+        private Student lookupStudent(String id)
+        {
+            return lookupStudent(new Guid(id));
+        }
+
+        private Student lookupStudent(Guid id)
+        {
+            for (int i = 0; i < students.Count; i++)
+            {
+                if (students[i].Uid == id)
+                {
+                    return students[i];
+                }
+            }
+            return null;
+        }
+
+        
+
+        public void saveXml(String file)
+        {
+            XmlWriter w = new XmlTextWriter(file, null);
+            w.WriteStartDocument();
+            w.WriteStartElement("SEAT"); // START SEAT
+            w.WriteStartElement("Students"); // START STUDENTS
+            for (int i = 0; i < students.Count; i++)
+            {
+                w.WriteStartElement("Student"); // START STUDENT
+                w.WriteAttributeString("Uid", students[i].Uid.ToString());
+                w.WriteAttributeString("First", students[i].FirstName);
+                w.WriteAttributeString("Last", students[i].LastName);
+                w.WriteAttributeString("Section", students[i].Section);
+                w.WriteAttributeString("Sid", students[i].Sid);
+                w.WriteAttributeString("LeftHanded", students[i].LeftHanded.ToString());
+                w.WriteAttributeString("VisionImpairment", students[i].VisionImpairment.ToString());
+                w.WriteEndElement(); // END STUDENT
+            }
+            w.WriteEndElement(); // END STUDENTS
+            w.WriteStartElement("Rooms"); // START ROOMS
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                w.WriteStartElement("Room"); // START ROOM
+                w.WriteAttributeString("Name", rooms[i].RoomName);
+                w.WriteAttributeString("Location", rooms[i].Location);
+                w.WriteAttributeString("Description", rooms[i].Description);
+                w.WriteAttributeString("Width", rooms[i].Width.ToString());
+                w.WriteAttributeString("Height", rooms[i].Height.ToString());
+                w.WriteStartElement("Chairs"); // START CHAIRS
+                for (int j = 0; j < rooms[i].Width; j++)
+                {
+                    for (int k = 0; k < rooms[i].Height; k++)
+                    {
+                        Chair c = rooms[i].Chairs[j,k];
+                        w.WriteStartElement("Chair"); // START CHAIR
+                        w.WriteAttributeString("PosX", j.ToString());
+                        w.WriteAttributeString("PosY", k.ToString());
+                        w.WriteAttributeString("LeftHanded", c.LeftHanded.ToString());
+                        w.WriteAttributeString("FbPosition", c.FbPosition.ToString());
+                        w.WriteAttributeString("LrPosition", c.LrPosition.ToString());
+                        w.WriteAttributeString("NonChair", c.NonChair.ToString());
+                        w.WriteAttributeString("MustBeEmpty", c.MustBeEmpty.ToString());
+                        w.WriteAttributeString("Name", c.SeatName);
+                        if (c.TheStudent == null)
+                        {
+                            w.WriteAttributeString("SUID", new Guid().ToString());
+                        }
+                        else
+                        {
+                            w.WriteAttributeString("SUID", c.TheStudent.Uid.ToString());
+                        }
+                        w.WriteEndElement();//END CHAIR
+                    }
+                }
+                w.WriteEndElement(); // END CHAIRS
+                w.WriteStartElement("RoomStudents"); // START ROOMSTUDENTS
+                for (int j = 0; j < rooms[i].RoomStudents.Count; j++)
+                {
+                    w.WriteStartElement("RoomStudent"); // START ROOMSTUDENT
+                    w.WriteAttributeString("SUID", rooms[i].RoomStudents[j].Uid.ToString());
+                    w.WriteEndElement(); // END ROOMSTUDENT
+                }
+                w.WriteEndElement(); // END ROOMSTUDENTS
+
+                w.WriteEndElement(); // END ROOM
+            }
+            w.WriteEndElement(); // END ROOMS
+            w.WriteEndElement(); // END SEAT
+            w.WriteEndDocument();
+            w.Close();
+        }
 
 
     }

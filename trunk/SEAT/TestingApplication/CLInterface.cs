@@ -18,8 +18,8 @@ namespace TestingApplication
         public Student getNewStudent()
         {
             return new Student(promptForString("First Name"), promptForString("Last Name"),
-                promptForString("Section"), promptForBoolean("Left Handed"), 
-                promptForBoolean("Vision Enpairment"));
+                promptForString("Student ID"), promptForString("Section"), 
+                promptForBoolean("Left Handed"), promptForBoolean("Vision Enpairment"));
         }
 
         public Room getNewRoom()
@@ -143,7 +143,7 @@ namespace TestingApplication
                 Console.WriteLine("1) Left Handed: " + c.LeftHanded);
                 Console.WriteLine("2) Non Chair: " + c.NonChair);
                 Console.WriteLine("3) Must Be Empty: " + c.MustBeEmpty);
-                Console.WriteLine("4) Seat Number: " + c.SeatNumber);
+                Console.WriteLine("4) Seat Number: " + c.SeatName);
 
                 input = promptForInt("Selection");
 
@@ -189,7 +189,7 @@ namespace TestingApplication
                 }
                 else if (input == 4)
                 {
-                    c.SeatNumber = promptForString("New Chair Name: ");
+                    c.SeatName = promptForString("New Chair Name: ");
                 }
             }
 
