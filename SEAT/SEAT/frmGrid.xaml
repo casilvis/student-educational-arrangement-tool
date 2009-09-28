@@ -1,8 +1,8 @@
 ﻿<Window x:Class="SEAT.frmGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="frmGrid" Height="300" Width="300">
+    Title="frmGrid" Height="auto" Width="auto">
     <Grid Name="griddy" Width="Auto" Height="Auto">
-        <Label Height="28" Name="lblTest" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">Label</Label>
+        <Label Height="45" Name="lblTest" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45">Label</Label>
     </Grid>
 </Window>
