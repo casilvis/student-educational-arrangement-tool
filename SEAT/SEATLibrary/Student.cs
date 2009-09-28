@@ -8,14 +8,20 @@ namespace SEATLibrary
     public class Student
     {
         // Attributes
+        private Guid id;
         private String firstName;
         private String lastName;
+        private String sid;
         private String section;
         private Boolean leftHanded;
-        private Boolean visionEnpairment;
+        private Boolean visionImpairment;
         private Boolean isEnrolled;
 
         // Properties
+        public Guid Uid
+        {
+            get { return id; }
+        }
         public String FirstName
         {
             get { return firstName; }
@@ -31,15 +37,20 @@ namespace SEATLibrary
             get { return section; }
             set { section = value; }
         }
+        public String Sid
+        {
+            get { return sid; }
+            set { sid = value; }
+        }
         public Boolean LeftHanded
         {
             get { return leftHanded; }
             set { leftHanded = value; }
         }
-        public Boolean VisionEnpairment
+        public Boolean VisionImpairment
         {
-            get { return visionEnpairment; }
-            set { visionEnpairment = value; }
+            get { return visionImpairment; }
+            set { visionImpairment = value; }
         }
         public Boolean IsEnrolled
         {
@@ -48,30 +59,46 @@ namespace SEATLibrary
         }
 
         // Constructor
-        public Student()
+        internal Student()
         {
+            id = Guid.NewGuid();
             firstName = "Default";
             lastName = "Default";
+            sid = "Default";
             section = "Default";
             leftHanded = false;
-            visionEnpairment = false;
+            visionImpairment = false;
             isEnrolled = false;
         }
 
-        public Student(String firstName, String lastName, String section, Boolean leftHanded, Boolean visionEnpairment)
+        internal Student(Guid id,String firstName, String lastName, String sid, String section, Boolean leftHanded, Boolean visionEnpairment)
         {
+            this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
+            this.sid = sid;
             this.section = section;
             this.leftHanded = leftHanded;
-            this.visionEnpairment = visionEnpairment;
+            this.visionImpairment = visionEnpairment;
+            isEnrolled = true;
+        }
+
+        public Student(String firstName, String lastName, String sid, String section, Boolean leftHanded, Boolean visionEnpairment)
+        {
+            this.id = Guid.NewGuid();
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.sid = sid;
+            this.section = section;
+            this.leftHanded = leftHanded;
+            this.visionImpairment = visionEnpairment;
             isEnrolled = true;
         }
 
         // Methods
         public override string ToString()
         {
-            return lastName + ", " + firstName;
+            return lastName + ", " + firstName + " - " + id.ToString() ;
         }
     }
 }
