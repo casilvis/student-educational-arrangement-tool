@@ -2,7 +2,14 @@
 
 =Journal=
 
+9/28/09 - Experimented with saving data to XML.  Worked on Homework 2.
+
+9/27/09 - Minor enhancements to the TestProgram
+
+9/23/09 - Finished implementation of rudimentary SEATLibrary.  Began implementation of TestProgram which is a command line program that uses the SEATLibrary.
+
 9/23/09 - Began simple design/implementation of several objects (chair, student, room)
+
 9/11/09 - Designed first draft of the database schema.
 
 
