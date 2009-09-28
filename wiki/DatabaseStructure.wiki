@@ -32,7 +32,7 @@
 || lastName || string || ||
 || section || int || ||
 || leftHanded || boolean || ||
-|| visionEnpairment || boolean || ||
+|| visionImpairment|| boolean || ||
 || isEnrolled || boolean || ||
 
 =Table: SeatAssignments=
