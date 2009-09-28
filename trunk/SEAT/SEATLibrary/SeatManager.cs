@@ -31,9 +31,11 @@ namespace SEATLibrary
 
         public SeatManager(String file)
         {
+            // Initialize the variables
             students = new List<Student>();
             rooms = new List<Room>();
 
+            // Read in the XML document and load all of the data into memory
             XmlReader r = new XmlTextReader(file);
             while (r.Read())
             {
@@ -63,14 +65,16 @@ namespace SEATLibrary
                         while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Rooms"))
                         {
                             r.Read();
-                            //Read in a room and all of its attributes
+                            // Read in a single room
                             if (r.NodeType == XmlNodeType.Element && r.Name == "Room")
                             {
+                                //Read the room's attributes and make a new instance of a room
                                 Room room = new Room(r.GetAttribute("Name"), r.GetAttribute("Location"),
                                     r.GetAttribute("Description"), Int32.Parse(r.GetAttribute("Width")),
                                     Int32.Parse(r.GetAttribute("Height")));
+                                //Add the room to the list of the rooms
                                 rooms.Add(room);
-                                //Get all of the information about a room
+                                //Get all of the information contained in a room
                                 while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Room"))
                                 {
                                     r.Read();
@@ -80,11 +84,15 @@ namespace SEATLibrary
                                         while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Chairs"))
                                         {
                                             r.Read();
+                                            //Read in the information about a chair
                                             if (r.NodeType == XmlNodeType.Element && r.Name == "Chair")
                                             {
+                                                //Get the position of the chair in the room
                                                 int x = Int32.Parse(r.GetAttribute("PosX"));
                                                 int y = Int32.Parse(r.GetAttribute("PosY"));
+                                                //For the student, we are passing by reference so everything stays in sync
                                                 Student s = lookupStudent(r.GetAttribute("SUID"));
+                                                //Replace the chair from the default constructor with the information contained in the stored version of the chair
                                                 room.Chairs[x, y] = new Chair(Boolean.Parse(r.GetAttribute("LeftHanded")),
                                                     Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")),
                                                     Boolean.Parse(r.GetAttribute("NonChair")), Boolean.Parse(r.GetAttribute("MustBeEmpty")),
@@ -92,13 +100,29 @@ namespace SEATLibrary
                                             }
                                         }
                                     }
+                                    //Read in all of the RoomStudents
+                                    else if (r.NodeType == XmlNodeType.Element && r.Name == "RoomStudents")
+                                    {
+                                        while (!(r.NodeType == XmlNodeType.Element && r.Name == "RoomStudents"))
+                                        {
+                                            r.Read();
+                                            //Read in the information about a student
+                                            if (r.NodeType == XmlNodeType.Element && r.Name == "RoomStudent")
+                                            {
+                                                //The student's identifier
+                                                Student s = lookupStudent(r.GetAttribute("SUID"));
+                                                //If the ID is non-null then we can add this student to the list of room students
+                                                if (students != null)
+                                                {
+                                                    // For the student, we are passing by reference so everything stays in sync
+                                                    room.RoomStudents.Add(s);
+                                                }
+                                            }
+                                        }
+                                    }
 
                                 }
                             }
-                            //Read in all of the chairs
-
-                            //Read in all of the RoomStudents
-
                         }
                     }
                 }
