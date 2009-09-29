@@ -45,11 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignmentBestEffort.cs" />
+    <Compile Include="AssignmentClearRoom.cs" />
     <Compile Include="Chair.cs" />
+    <Compile Include="AssignmentVisitor.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="SeatManager.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
