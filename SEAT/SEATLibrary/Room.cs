@@ -115,6 +115,11 @@ namespace SEATLibrary
 
 
         //Methods
+        public void runPlacementAlgorithmx(AssignmentVisitor algorithm)
+        {
+            algorithm.placeStudents(this);
+        }
+
         public bool isRoomEmpty()
         {
             for (int i = 0; i < this.width; i++)

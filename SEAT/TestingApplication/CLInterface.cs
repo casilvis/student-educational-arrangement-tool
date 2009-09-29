@@ -204,12 +204,12 @@ namespace TestingApplication
                 Console.Write((i + 1) + "\t");
             }
             Console.WriteLine();
-            for (int i = 0; i < r.Height; i++)
+            for (int i = 0; i < r.Width; i++)
             {
                 Console.Write((i + 1) + "\t");
-                for (int j = 0; j < r.Width; j++)
+                for (int j = 0; j < r.Height; j++)
                 {
-                    Console.Write(r.Chairs[j, i].ToString() + "\t");
+                    Console.Write(r.Chairs[i, j].ToString() + "\t");
                 }
                 Console.WriteLine();
             }
