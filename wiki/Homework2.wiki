@@ -14,7 +14,7 @@ The primary goal in the design of SEAT is to produce code that is maintainable. 
 
 *c. Prepare a complete UML based Software Design, with the following diagrams:*
 
- * A Class diagram. ( Are the good classes in Task 1 in here? Explain.)
+ * *A Class diagram. ( Are the good classes in Task 1 in here? Explain.)*
 
 <table style="width:auto;"><tr><td><a href="http://picasaweb.google.com/lh/photo/n_Cdmo5HJKwLUDSKCANQaQ?feat=embedwebsite"><img src="http://lh4.ggpht.com/_l4Rv5VGKzLQ/SsIsFI0lFiI/AAAAAAAAAWg/Eqnp85NslOU/s400/ClassDiagram.png" /></a></td></tr><tr><td style="font-family:arial,sans-serif; font-size:11px; text-align:right">From <a href="http://picasaweb.google.com/jjhatf02/GoogleCode?feat=embedwebsite">GoogleCode Photo Gallery</a></td></tr></table>
 
@@ -22,21 +22,39 @@ The main classes used by the application are the student class, the chair class,
 
 The AssignmentVisitor is an implementation of the visitor design pattern that will implement an algorithm for placing students into seats in a room.  Currently, the only implementation of AssignmentVisitor is AssignmentBestEffort, but other algorithms may be constructed that have a different algorithm for placing students into the chairs of a classroom.  The AssignmentVisitor operates on the Room class and will modify the instance of the room that is passed to it.  Various algorithms may have errors that will cause them to not be executed properly.  This will need to be implemented so that the results of the running of the algorithm can be returned to the user.
 
-The object oriented structure of the GUI is not documented above.  This design will be based on the default patterns that are used when constructing a WPF application.  In part 4 of this document the GUI is documented and much of the class design work will directly reflect these GUI layouts.
+The object oriented structure of the GUI is not documented above.  This design will be based on the default patterns that are used when constructing a WPF application.  In part 4 of this document the GUI is documented and much of the class design work will directly reflect these GUI layouts.  The GUI will implement the view in the MVC architecture.  The responsibility of the controller will be divided between the SeatManager and the interface exposed by the GUI elements.
 
- * Use cases and corresponding Use Case diagrams
- * Sequence Diagrams
- * State Charts or Dynamic Diagrams
- * Collaboration Diagrams (optional)
- * Timing Diagrams (Optional)
- * Flow Charts for major complex methods (where needed)
+ * *Use cases and corresponding Use Case diagrams*
+
+The use cases for this design are implemented in the model and can stand alone without a GUI implementation.  This is made possible because of the loose coupling between the model and the view.  This application only has one user level so the use cases are the same no matter who is using SEAT.  Because this application is so simple, the various uses cases are almost identical to 
+
+
+ * *Sequence Diagrams*
+
+|| *Step* || *Description* ||
+|| 1 || Import student roster ||
+|| 2 || Update student information (handedness & vision impairment) ||
+|| 3 || Add Room (import template or create new NxM room) ||
+|| 4 || Customize room ||
+|| 5 || Add students to room ||
+|| 6 || Manually place students in seats (optional) ||
+|| 7 || Fill in seats using algorithm ||
+|| 8 || Print a report ||
+
+ * *State Charts or Dynamic Diagrams* 
+ * *Collaboration Diagrams (optional)*
+ * *Timing Diagrams (Optional)*
+ * *Flow Charts for major complex methods (where needed)*
 
 *d. Mark the portions of the diagram where the Voice of the Customer ( in requirements or otherwise) is addressed.*
 
+Our requirements require that our program accurately model a class roster and a classroom.   The VOC is mainly represented in how the room is implemented and how the placement algorithm will operate.
+
+The other component of the VOC is how the GUI will operate.  Thank to a MVC design pattern, these aspects of the program can be developed independent from each other.
 
 *e. Organize the Software Design Document to follow the IEEE standards and augment the same with the various UML diagrams, by reference or link. Are other libraries, packages used in your design? If you have referred, used other work on the internet that directly bears on your work, do note the same so that credit is given to existing open work. Note how your work will differ from theirs.*
 
-
+Our design and implementation is not based off of any other work.  Any library used in our design and implementation is part of the .NET framework.
 
 =Task 2:= 
 *Note how you intend to address Test Driven Design/Implementation/Development.*
