@@ -60,15 +60,19 @@ Our design and implementation is not based off of any other work.  Any library u
 *Note how you intend to address Test Driven Design/Implementation/Development.*
 
 *a. Which of the above diagrams are candidates for testing during the development? Are there aspects of design that will never be tested? Mark these as potentially for future work and agility.*
+
 Almost every portion of the class diagram is a candidate for testing during the development process.  The most important objects that need to be tested are obviously the most complex classes, such as the Student, the Room, and the Chair.  All types of different students need to be considered to be placed in a room, and in a chair.  This all requires passage through the SeatManager, so extensive testing must be done on this class.  The main feature of SEAT is going to be placing a list of students, so all possible combinations of student types need to be tested in order to ensure that the software's functionality is correct.
 
 *b. Create a list of major error categories for your project. (Recall these are not just the compiler errors. These are design errors, process mismatches, plan changes and mismatches, documentation faults, version changes, architectural glitches etc. Think of the various life cycle phases.) Track these errors and log these as these errors occur. Note their categories (types).*
+
 Our major error categories will most likely be Design Flaws, Functional Errors, and Plan Changes.  We will keep track of all major problems.
 
 *c. Address risk analysis for Use, Misuse and Abuse scenarios. Document the types of design/coding defects that could be great risks. Note in a table form the major types of risk handling you could implement.*
+
 One might consider the student's information to be a privacy problem for misuse, but other than that, this project should not have any serious risks.  Since the task that this software must complete is relatively simple and only arranges students around a grid in a room, it is hard to find ways to misuse this software.
 
 *d. Address future changes that stakeholders would seek For each stakeholder, list the possible use, misuse and abuses. What design measures do you have to address these risks?*
+
 Plan changes are part of every large software project, but ideas that would detract the software from its original purpose may not be considered, for example, a request to keep track of student's grades or homework assignments are not part of the main usage, so they would probably be rejected.  Any design change would need to be debated and discussed by all the team members before determining the correct method of implementing the new change.
 
 
