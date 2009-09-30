@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SEATLibrary
 {
-    abstract class AssignmentVisitor
+    public abstract class AssignmentVisitor
     {
         public abstract void placeStudents(Room room);
     }

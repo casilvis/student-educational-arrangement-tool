@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SEATLibrary
 {
-    class AssignmentBestEffort: AssignmentVisitor
+    public class AssignmentBestEffort: AssignmentVisitor
     {
         public override void placeStudents(Room room)
         {
