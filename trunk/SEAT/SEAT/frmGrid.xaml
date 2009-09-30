@@ -3,13 +3,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="frmGrid" Height="500" Width="900">
     <DockPanel Name="dkpanel" Height="auto" Width="auto">
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="675" Height="450">
+        <Grid Name="Options" Width="200" Height="auto" DockPanel.Dock="Right">
+            <Label Height="28" Name="lblTitle" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="12">Seat Properties</Label>
+            <Label Height="28" Margin="0,36,0,0" Name="lblNumber" VerticalAlignment="Top" HorizontalAlignment="Left" Width="62" FontSize="10">Number:</Label>
+            <TextBox Height="23" Margin="61,36,19,0" Name="txtnumber" VerticalAlignment="Top" FontSize="10" />
+            <RadioButton Height="16" Margin="8,77,0,0" Name="rbtnLeftH" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74" FontSize="10" GroupName="grpHand">Left Handed</RadioButton>
+            <RadioButton Height="16" Margin="80,77,40,0" Name="radioButton1" VerticalAlignment="Top" FontSize="10" GroupName="grpHand" IsChecked="True">Right Handed</RadioButton>
+            <RadioButton Height="16" Margin="8,109,0,0" Name="rbtnLeft" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45" FontSize="10" GroupName="grpLMR">Left</RadioButton>
+            <RadioButton Height="16" Margin="80,109,63,0" Name="rbtnMiddleLR" VerticalAlignment="Top" FontSize="10" GroupName="grpLMR" IsChecked="True">Middle</RadioButton>
+            <RadioButton Height="16" HorizontalAlignment="Right" Margin="0,109,0,0" Name="rbtnRight" VerticalAlignment="Top" Width="46" FontSize="10" GroupName="grpLMR">Right</RadioButton>
+            <RadioButton FontSize="10" Height="16" HorizontalAlignment="Left" Margin="8,143,0,0" Name="rbtnFront" VerticalAlignment="Top" Width="45" GroupName="grpFMB">Front</RadioButton>
+            <RadioButton FontSize="10" Height="16" Margin="80,143,63,0" Name="rbtnMiddleFB" VerticalAlignment="Top" GroupName="grpFMB" IsChecked="True">Middle</RadioButton>
+            <RadioButton FontSize="10" Height="16" HorizontalAlignment="Right" Margin="0,143,0,0" Name="rbtnBack" VerticalAlignment="Top" Width="46" GroupName="grpFMB">Back</RadioButton>
+            <CheckBox Height="16" Margin="8,178,72,0" Name="chkboxNotSeat" VerticalAlignment="Top">Not A Seat</CheckBox>
+            <CheckBox Margin="8,212,72,0" Name="chkboxEmpty" Height="16" VerticalAlignment="Top">Leave Empty</CheckBox>
+        </Grid>
+        <DockPanel DockPanel.Dock="top">
+        <Label DockPanel.Dock="Left" Name="lblnm">Name:</Label>
+        <TextBox DockPanel.Dock="Left" Width="125"  Name="txtnm"></TextBox>
+        <TextBox DockPanel.Dock="Right" Width="125" Name="txtloc"></TextBox>
+        <Label DockPanel.Dock="Right" Name="lblloc">Location:</Label>
+        <Label DockPanel.Dock="Left" HorizontalAlignment="Center" Name="lbldes">Description:</Label>
+        <TextBox DockPanel.Dock="Right" Name="txtdes"></TextBox>
+        </DockPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Top" Width="auto" Height="auto">
             <Grid Name="griddy" Width="auto" Height="auto">
             </Grid>
-        </ScrollViewer>
-        <Grid Name="Options" Width="140" Height="auto" DockPanel.Dock="Right" HorizontalAlignment="Right">
-            <Label Height="28" Name="lblTitle" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top">Seat Properties</Label>
-        </Grid>
-        
+        </ScrollViewer>       
     </DockPanel>
 </Window>
