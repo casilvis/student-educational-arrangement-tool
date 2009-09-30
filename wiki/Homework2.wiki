@@ -104,6 +104,20 @@ Plan changes are part of every large software project, but ideas that would detr
 =Task 3:=
 *Generate an Operational Profile of your design, for each of your major Use Cases. Recall that an Operational Profile prioritizes various portions of your design (by modules, classes, subsystems as appropriate). These priorities may be based on criticality, frequency of usage, and the effort needed to have a valid set.*
 
+The operational profile for our project attempts to prioritize testing efforts by ranking each use case based on how often it will be used by the user. As a whole, SEAT is an application that expects its users to follow a loose set of tasks in order to generate a class seating chart, so the odds of any one task occurring more than the others is somewhat low, except when the user decides to edit individual seats/students or other options, so these tasks have been assigned higher priority in terms of testing because of their increased likelihood of being used at any given time.
+
+The order and % associated with each task have been estimated based on their chance of happening in generating a given seating chart. These values will become more accurate as testing reveals more authenticate use case patterns.
+
+|| # || Task || % ||
+|| 1 || Seating Placement Algorithms || .35 ||
+|| 2 || Manually Selecting Student Seat Placement || .2 ||
+|| 3 || Customize Room Dimensions/Seat Locations || .15 ||
+|| 4 || Add/Update Student Information || .15 ||
+|| 5 || Import Student Information (Roster) || .1 ||
+|| 6 || Print Chart/Information || .05 ||
+
+It is also worth mentioning that the GUI itself is a major part of the project, but because of its nature it will be tested throughout the project.
+
 =Task 4:=
 *For each stakeholder, layout the GUI as appropriate. Discuss the layout  complexity/simplicity. Allocate review responsibilities as appropriate.*
 
