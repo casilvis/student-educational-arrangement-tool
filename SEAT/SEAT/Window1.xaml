@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Window1" Height="300" Width="300">
     <Grid>
+        <Label Name="lbltest"></Label>
         <TextBox Height="23" HorizontalAlignment="Left" Margin="10,92,0,0" Name="txtRows" VerticalAlignment="Top" Width="120" />
         <TextBox Height="23" HorizontalAlignment="Right" Margin="0,92,11,0" Name="txtColumns" VerticalAlignment="Top" Width="120" />
         <Button Height="23" Margin="92,0,111,86" Name="btnCreate" VerticalAlignment="Bottom" Click="btnCreate_Click">Create Grid</Button>
