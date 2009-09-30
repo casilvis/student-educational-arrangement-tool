@@ -1,5 +1,11 @@
 #summary More design documentation
 
+= Assignment of Tasks =
+|| *Task 1:* || Jared ||
+|| *Task 2:* || Nick ||
+|| *Task 3:* || Brian ||
+|| *Task 4:* || Justin ||
+
 =Task 1:=
 *a. Outline a High level appropriate Design or Software Architecture for your project. How do the requirements match with the chosen architecture?*
 
