@@ -48,9 +48,24 @@ The use cases for this design are implemented in the model and can stand alone w
 || 8 || Print a report ||
 
  * *State Charts or Dynamic Diagrams* 
+
+This project is not well suited to state diagrams.  The overall functionality of the application does not have distinct states that are moved between.  The best analogy to the states is as follows:
+
+_Student_: Add student, remove student (Students can not be removed from the roster, rather they are flagged as not being enrolled anymore.  A student can be added or removed from a room or an individual chair.  If a student is removed from a room, they should also be removed from a chair.
+
+_Room_: Add room, update room, remove room (It is possible to add, update, and delete a room.  The update process of the room is best suited to a state diagram as the updating of a room is done in two parts, first the room configuration and then students are placed in chairs.  However, the program does not place restriction on what order the user performs specific tasks other than keeping the internal model consistent.
+
  * *Collaboration Diagrams (optional)*
+
+Not applicable.
+
  * *Timing Diagrams (Optional)*
+
+Not applicable.
+
  * *Flow Charts for major complex methods (where needed)*
+
+See the above sequence diagram for the flow of the application.
 
 *d. Mark the portions of the diagram where the Voice of the Customer ( in requirements or otherwise) is addressed.*
 
@@ -73,9 +88,13 @@ Almost every portion of the class diagram is a candidate for testing during the 
 
 Our major error categories will most likely be Design Flaws, Functional Errors, and Plan Changes.  We will keep track of all major problems.
 
+Errors may include placing a student in a chair multiple times in the same room, not placing a student in a chair that was assigned to the room, not removing a student from a chair if they are removed from a room, and assigning a student to a chair that is not suited to their needs.
+
 *c. Address risk analysis for Use, Misuse and Abuse scenarios. Document the types of design/coding defects that could be great risks. Note in a table form the major types of risk handling you could implement.*
 
 One might consider the student's information to be a privacy problem for misuse, but other than that, this project should not have any serious risks.  Since the task that this software must complete is relatively simple and only arranges students around a grid in a room, it is hard to find ways to misuse this software.
+
+With regard to file saving and opening, it would be possible for a user to manually manipulate the save file which could result in an invalid state which could cause unexpected behavior in the application.  For example, the user could remove a chair or manually place a student in a chair without checking for consistency. This is not a major concern as we expect our users to not manually modify the file.
 
 *d. Address future changes that stakeholders would seek For each stakeholder, list the possible use, misuse and abuses. What design measures do you have to address these risks?*
 
@@ -93,24 +112,25 @@ Plan changes are part of every large software project, but ideas that would detr
 *Calculate Design metrics such as the McCabe’s Complexity, other Object Oriented Metrics, Cohesion metrics etc. based on your design diagrams. Note partial process metrics that will help the project development. Later, you will plot these at the end of the project.*
 
 McCabe's Cyclone Complexity
-N=5
-E=6
-P=1
-M=E-N+2P
-M=6-5+2*1
-M=3
+|| N=5 ||
+|| E=6 ||
+|| P=1 ||
+|| M=E-N+2P ||
+|| M=6-5+2*1 ||
+|| M=3 ||
+
 This says that the McCabe's Complexity is a 3. Because this is below 11 there is a lot better chance to not be fault-prone.
 
-Cohesion Metrics(this is an Object Oriented Metric)
-States that each class has one function. If this isn't true then it should probably become two classes. 
-SeatManager-holds the rooms and student
-Student-has all information on a single student
-Room- has all information on a room including chairs
-Chair- has all the chair properties
+Cohesion Metrics(this is an Object Oriented Metric) states that each class has one function. If this isn't true then it should probably become two classes. 
+|| SeatManager || holds the rooms and student || 
+|| Student || has all information on a single student ||
+|| Room || has all information on a room including chairs ||
+|| Chair || has all the chair properties ||
+
 Each of our classes have one function so they are cohesive classes.
 
 Partial Process Metrics
-1. Make the program easy to use
-2. Be able to import class rosters
-3. Be able to both save and load old files
-4. Be able to print out both a roster for a room and the room layout with students in seats
+ # Make the program easy to use
+ # Be able to import class rosters
+ # Be able to both save and load old files
+ # Be able to print out both a roster for a room and the room layout with students in seats
