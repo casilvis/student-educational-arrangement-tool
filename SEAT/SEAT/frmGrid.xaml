@@ -27,7 +27,7 @@
         <TextBox DockPanel.Dock="Right" Name="txtdes"></TextBox>
         </DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Top" Width="auto" Height="auto">
-            <Grid Name="griddy" Width="auto" Height="auto">
+            <Grid Name="griddy" HorizontalAlignment="Left" Width="auto" Height="auto">
             </Grid>
         </ScrollViewer>       
     </DockPanel>
