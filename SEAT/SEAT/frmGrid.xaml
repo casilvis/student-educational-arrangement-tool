@@ -26,9 +26,21 @@
         <Label DockPanel.Dock="Left" HorizontalAlignment="Center" Name="lbldes">Description:</Label>
         <TextBox DockPanel.Dock="Right" Name="txtdes"></TextBox>
         </DockPanel>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Top" Width="auto" Height="auto">
-            <Grid Name="griddy" HorizontalAlignment="Left" Width="auto" Height="auto">
+        <DockPanel DockPanel.Dock="Top" Name="dpnlgrid" Width="auto">
+            <Grid Name="grdtop" Width="auto" Height="auto" DockPanel.Dock="Top">
+                <ScrollViewer Name="svrtop" Width="auto" Height="auto" VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden">
+                    <Grid Name="grdtop2" Width="auto" Height="auto" HorizontalAlignment="Left">
+                    </Grid>
+                </ScrollViewer>
             </Grid>
-        </ScrollViewer>       
+            <ScrollViewer Name="svrleft" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Left" Width="auto" Height="auto" MaxWidth="45" VerticalScrollBarVisibility="Hidden">
+                <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left">
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
+                <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">
+                </Grid>
+            </ScrollViewer>            
+        </DockPanel>
     </DockPanel>
 </Window>
