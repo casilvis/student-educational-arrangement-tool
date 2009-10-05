@@ -27,9 +27,6 @@ namespace SEAT
             InitializeComponent();
             lbxRooms.ItemsSource = Window1.manager.RoomList;
             lbxRoster.ItemsSource = Window1.manager.StudentList;
-
-            Window1.manager.addStudentToRoster(new Student("Jared", "Hatfield", "11", "101-01", true, false));
-            
         }
 
         private void btnaddroom_Click(object sender, RoutedEventArgs e)
