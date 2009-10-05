@@ -25,8 +25,10 @@ namespace SEAT
         public Window1()
         {
             InitializeComponent();
-            lbxStudents.ItemsSource = Window1.manager.StudentList;
             lbxRooms.ItemsSource = Window1.manager.RoomList;
+            lbxRoster.ItemsSource = Window1.manager.StudentList;
+
+            Window1.manager.addStudentToRoster(new Student("Jared", "Hatfield", "11", "101-01", true, false));
             
         }
 
@@ -62,6 +64,8 @@ namespace SEAT
             {
                 // Open document
                 Window1.manager = new SeatManager(dlg.FileName);
+                lbxRooms.ItemsSource = Window1.manager.RoomList;
+                lbxRoster.ItemsSource = Window1.manager.StudentList;
             }
         }
 
