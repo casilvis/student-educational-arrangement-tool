@@ -37,6 +37,31 @@ namespace SEAT
             student.Show();
         }
 
+        private void FileMenuNew_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("New not implemented");
+        }
+
+        private void FileMenuOpen_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Open not implemented");
+        }
+
+        private void FileMenuSave_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save not implemented");
+        }
+
+        private void FileMenuSaveAs_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save as not implemented");
+        }
+
+        private void FileMenuExit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Exit not implemented");
+        }
+
         
     }
 }
