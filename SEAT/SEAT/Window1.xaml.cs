@@ -31,6 +31,12 @@ namespace SEAT
             classroom.Show();
         }
 
+        private void btnaddstudent_Click(object sender, RoutedEventArgs e)
+        {
+            StudentAdd student = new StudentAdd();
+            student.Show();
+        }
+
         
     }
 }
