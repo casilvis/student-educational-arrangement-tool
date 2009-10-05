@@ -60,13 +60,13 @@ namespace SEATLibrary
                         }
                     }
                     // Read in all of the rooms
-                    else if (r.Name.ToString() == "Rooms")
+                    else if (r.Name.ToString() == "Rooms" && r.NodeType == XmlNodeType.Element && !r.IsEmptyElement)
                     {
-                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Rooms"))
+                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name.ToString() == "Rooms"))
                         {
                             r.Read();
                             // Read in a single room
-                            if (r.NodeType == XmlNodeType.Element && r.Name == "Room")
+                            if (r.NodeType == XmlNodeType.Element && r.Name.ToString() == "Room")
                             {
                                 //Read the room's attributes and make a new instance of a room
                                 Room room = new Room(r.GetAttribute("Name"), r.GetAttribute("Location"),
