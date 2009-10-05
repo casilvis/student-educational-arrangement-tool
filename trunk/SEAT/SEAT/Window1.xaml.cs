@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SEATLibrary;
 
 
 namespace SEAT
@@ -20,9 +21,11 @@ namespace SEAT
     /// </summary>
     public partial class Window1 : Window
     {
+        public static SeatManager manager = new SeatManager();
         public Window1()
         {
             InitializeComponent();
+            
         }
 
         private void btnaddroom_Click(object sender, RoutedEventArgs e)

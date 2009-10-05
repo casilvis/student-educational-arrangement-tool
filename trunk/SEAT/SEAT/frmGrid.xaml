@@ -21,8 +21,10 @@
         </Grid>
         <DockPanel DockPanel.Dock="top">
         <Label DockPanel.Dock="Left" Name="lblnm">Name:</Label>
-        <TextBox DockPanel.Dock="Left" Width="125"  Name="txtnm"></TextBox>
-        <TextBox DockPanel.Dock="Right" Width="125" Name="txtloc"></TextBox>
+        <TextBox DockPanel.Dock="Left" Width="125"  Name="txtnm" Text="{Binding ElementName=myroom, 
+    Path=RoomName}"></TextBox>
+        <TextBox DockPanel.Dock="Right" Width="125" Name="txtloc" Text="{Binding ElementName=myroom, 
+    Path=Location}" TextChanged="txtloc_TextChanged"></TextBox>
         <Label DockPanel.Dock="Right" Name="lblloc">Location:</Label>
         <Label DockPanel.Dock="Left" HorizontalAlignment="Center" Name="lbldes">Description:</Label>
         <TextBox DockPanel.Dock="Right" Name="txtdes"></TextBox>

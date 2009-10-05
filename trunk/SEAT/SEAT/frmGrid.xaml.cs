@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SEATLibrary;
 
 namespace SEAT
 {
@@ -18,6 +19,7 @@ namespace SEAT
     /// </summary>
     public partial class frmGrid : Window
     {
+        private Room myroom;
         public Seat[,] stArray;
         public TextBox[] txtcol;
         public TextBox[] txtrow;
@@ -30,10 +32,16 @@ namespace SEAT
             int column = 0;
             Seat[,] stArray = new Seat[row, column];
         }
-        public frmGrid(int rows, int columns)
+        public frmGrid(Room inroom)
         {
-            int seatSize = 45;
             InitializeComponent();
+            myroom = inroom;
+            txtloc.Text = myroom.Location;
+            txtnm.Text = myroom.RoomName;
+            txtdes.Text = myroom.Description;
+            int rows = myroom.Height;
+            int columns = myroom.Width;
+            int seatSize = 45;
             row = rows;
             column = columns;
             string answer = row + " by " + column;
@@ -89,7 +97,7 @@ namespace SEAT
                     txtcol[j].Height = seatSize;
                     grdtop2.Children.Add(txtcol[j]);
 
-                    stArray[i, j] = new Seat();   
+                    stArray[i, j] = new Seat(myroom.Chairs[j, i]);//worry about it later 
                     stArray[i,j].Margin = new Thickness(seatSize*j,seatSize*i,0,0);
                     griddy.Children.Add(stArray[i,j]);
                 }
@@ -200,6 +208,11 @@ namespace SEAT
                 block.Text = "Unselect All";
             else
                 block.Text = "Select All";
+        }
+
+        private void txtloc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            myroom.Location = txtloc.Text;
         }
     }
 }

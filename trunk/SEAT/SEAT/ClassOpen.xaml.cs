@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using SEATLibrary;
 
 
 namespace SEAT
@@ -26,6 +27,7 @@ namespace SEAT
         }
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            
             if ((bool)rbtncreate.IsChecked)
             {
                 string row = Regex.Replace(txtRows.Text, @"[\D]", "");
@@ -34,7 +36,9 @@ namespace SEAT
                 txtColumns.Text = column;
                 if (column.Length > 0 && row.Length > 0)
                 {
-                    frmGrid Grid = new frmGrid(Convert.ToInt32(row), Convert.ToInt32(column));
+                    Room classroom = new Room(Convert.ToInt32(row), Convert.ToInt32(column));
+                    Window1.manager.addNewRoom(classroom);
+                    frmGrid Grid = new frmGrid(classroom);
                     Grid.Show();
                     this.Close();
                 }
