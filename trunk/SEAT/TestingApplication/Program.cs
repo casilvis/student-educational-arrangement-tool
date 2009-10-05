@@ -14,9 +14,12 @@ namespace TestingApplication
         static void Main(string[] args)
         {
             // Make an instance of the seat manager, this is what we are going to use
+            /*
             Console.Write("File to Open: ");
             String file = Console.ReadLine();
             SeatManager sm = new SeatManager(file);
+             */
+            SeatManager sm = new SeatManager();
             
 
             String prompt = "";
@@ -30,7 +33,8 @@ namespace TestingApplication
                 Console.WriteLine("2) List students");
                 Console.WriteLine("3) Add student");
                 Console.WriteLine("4) Add room");
-                Console.WriteLine("5) Save File");
+                Console.WriteLine("5) Add room from template");
+                Console.WriteLine("6) Save File");
                 Console.Write("\n > ");
                 prompt = Console.ReadLine();
 
@@ -79,6 +83,13 @@ namespace TestingApplication
                     cli.waitForUserEnter();
                 }
                 else if (prompt.Equals("5"))
+                {
+                    Console.Write("Location of Template: ");
+                    String file = Console.ReadLine();
+                    Room r = new Room(file);
+                    sm.addNewRoom(r);
+                }
+                else if (prompt.Equals("6"))
                 {
                     Console.Write("File Name: ");
                     String f = Console.ReadLine();

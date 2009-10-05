@@ -93,13 +93,19 @@ namespace TestingApplication
             {
                 Console.Clear();
                 displayRoom(room);
-                Console.WriteLine("Choose: update, back");
+                Console.WriteLine("Choose: update, savetemplate, back");
                 Console.Write(" > ");
                 prompt = Console.ReadLine();
 
                 if (prompt.Equals("update"))
                 {
                     updateRoomSeat(room);
+                }
+                else if(prompt.Equals("savetemplate")){
+                    Console.Write("Location to save Template: ");
+                    String file = Console.ReadLine();
+                    room.writeRoomTemplate(file);
+
                 }
                 else if (prompt.Equals("back"))
                 {
