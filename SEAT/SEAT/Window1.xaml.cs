@@ -25,6 +25,8 @@ namespace SEAT
         public Window1()
         {
             InitializeComponent();
+            lbxStudents.ItemsSource = Window1.manager.StudentList;
+            lbxRooms.ItemsSource = Window1.manager.RoomList;
             
         }
 
@@ -42,12 +44,25 @@ namespace SEAT
 
         private void FileMenuNew_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("New not implemented");
+            Window1.manager = new SeatManager();
         }
 
         private void FileMenuOpen_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Open not implemented");
+            // Configure open file dialog box
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".seat"; // Default file extension
+            dlg.Filter = "SEAT File (.seat)|*.seat"; // Filter files by extension
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                Window1.manager = new SeatManager(dlg.FileName);
+            }
         }
 
         private void FileMenuSave_Click(object sender, RoutedEventArgs e)
@@ -57,7 +72,20 @@ namespace SEAT
 
         private void FileMenuSaveAs_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Save as not implemented");
+            // Configure open file dialog box
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.DefaultExt = ".seat"; // Default file extension
+            dlg.Filter = "SEAT File (.seat)|*.seat"; // Filter files by extension
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                Window1.manager.saveXml(dlg.FileName);
+            }
         }
 
         private void FileMenuExit_Click(object sender, RoutedEventArgs e)
