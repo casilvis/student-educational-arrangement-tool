@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="45" Width="45" Loaded="UserControl_Loaded_1" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Left" Focusable="False" BorderBrush="Black" BorderThickness="1">
     <Grid Height="auto" Width="auto" VerticalAlignment="Top" HorizontalAlignment="Left">
-        <Label Name="lblName" FontSize="8" Margin="0,0,-41,-6.72">Name</Label>
-        <CheckBox Height="14" Margin="5,0,-41,-18" Name="chkSelected" VerticalAlignment="Bottom" FontSize="8" FlowDirection="LeftToRight" OverridesDefaultStyle="False" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">Select</CheckBox>
+        <Label Height="14" Width="auto" Name="lblName" FontSize="8" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0" Foreground="Black">Name</Label>
+        <CheckBox Height="14" Margin="5,0,-41,-18" Name="chkSelected" VerticalAlignment="Bottom" FontSize="8" Padding="0" FlowDirection="LeftToRight" OverridesDefaultStyle="False" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">Select</CheckBox>
     </Grid>
 </UserControl>

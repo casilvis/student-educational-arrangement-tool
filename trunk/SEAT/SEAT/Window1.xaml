@@ -3,12 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Window1" Height="300" Width="300">
     <Grid>
-        <Label Name="lbltest"></Label>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="10,92,0,0" Name="txtRows" VerticalAlignment="Top" Width="120" />
-        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,92,11,0" Name="txtColumns" VerticalAlignment="Top" Width="120" />
-        <Button Height="23" Margin="92,0,111,86" Name="btnCreate" VerticalAlignment="Bottom" Click="btnCreate_Click">Create Grid</Button>
-        <Label Height="28" HorizontalAlignment="Left" Margin="10,43,0,0" Name="lblRows" VerticalAlignment="Top" Width="120"># of Rows</Label>
-        <Label Height="28" HorizontalAlignment="Right" Margin="0,43,11,0" Name="lblColumns" VerticalAlignment="Top" Width="120"># of Columns</Label>
-        <TextBox Height="73" Margin="31,0,44,12" Name="txtWarning" VerticalAlignment="Bottom" IsEnabled="False" TextWrapping="Wrap" Background="Transparent" BorderBrush="Transparent" Foreground="Black" BorderThickness="0" Opacity="1">Any Values entered need to be whole numbers. All letters, decimal places, and random characters will be removed.</TextBox>
+        <Button Height="23" Margin="65,50,138,0" Name="btnaddroom" VerticalAlignment="Top" Click="btnaddroom_Click">Add Room</Button>
     </Grid>
 </Window>
