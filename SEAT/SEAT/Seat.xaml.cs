@@ -29,7 +29,8 @@ namespace SEAT
         {
 
             InitializeComponent();
-
+            if (chair.LeftHanded)
+                lblName.Foreground=Brushes.Green;
             
         }
 

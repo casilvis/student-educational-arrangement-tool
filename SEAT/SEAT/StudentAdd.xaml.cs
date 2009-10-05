@@ -9,28 +9,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 namespace SEAT
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for StudentAdd.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class StudentAdd : Window
     {
-        public Window1()
+        public StudentAdd()
         {
             InitializeComponent();
         }
 
-        private void btnaddroom_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            ClassOpen classroom = new ClassOpen();
-            classroom.Show();
+            
         }
-
-        
     }
 }

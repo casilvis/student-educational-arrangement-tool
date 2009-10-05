@@ -19,6 +19,8 @@ namespace SEAT
     public partial class frmGrid : Window
     {
         public Seat[,] stArray;
+        public TextBox[] txtcol;
+        public TextBox[] txtrow;
         public int row;
         public int column;
         public frmGrid()
@@ -38,48 +40,69 @@ namespace SEAT
       //      lblTest.Content = answer;
             ContainerVisual newPage = new ContainerVisual();
             stArray = new Seat[row,column];
+            txtcol = new TextBox[column];
+            txtrow = new TextBox[row];
+
             griddy.VerticalAlignment = VerticalAlignment.Top; 
             for (int i=0; i < row; i++)
             {           
                 Button button1 = new Button();
                 button1.FontSize = 10;
                 button1.Content = "Select";
-                button1.AddHandler(Button.ClickEvent, new RoutedEventHandler(columnbutton_click));
+                button1.AddHandler(Button.ClickEvent, new RoutedEventHandler(rowbutton_click));
                 button1.VerticalAlignment = VerticalAlignment.Top;
                 button1.HorizontalAlignment = HorizontalAlignment.Left;
                 button1.Width = seatSize;
                 button1.Height = seatSize;
                 button1.Tag = i;
-                button1.Margin = new Thickness(0, seatSize * i , 0, 0);
+                button1.Margin = new Thickness(seatSize, seatSize * i , 0, 0);
                 grdleft.Children.Add(button1);
+
+                txtrow[i] = new TextBox();
+                txtrow[i].FontSize = 10;
+                txtrow[i].VerticalAlignment = VerticalAlignment.Top;
+                txtrow[i].HorizontalAlignment = HorizontalAlignment.Left;
+                txtrow[i].Margin = new Thickness(0,seatSize * i, 0, 0);
+                txtrow[i].Width = seatSize;
+                txtrow[i].Height = seatSize;
+                grdleft.Children.Add(txtrow[i]);
                 for (int j=0; j < column; j++)
                 {
                     Button button2 = new Button();
                     button2.FontSize = 10;
                     button2.Content = "Select";
-                    button2.AddHandler(Button.ClickEvent, new RoutedEventHandler(rowbutton_click));
+                    button2.AddHandler(Button.ClickEvent, new RoutedEventHandler(columnbutton_click));
                     button2.VerticalAlignment = VerticalAlignment.Top;
                     button2.HorizontalAlignment = HorizontalAlignment.Left;
-                    button2.Margin = new Thickness(seatSize * j +seatSize, 0, 0, 0);
+                    button2.Margin = new Thickness(seatSize * j ,seatSize, 0, 0);
                     button2.Width = seatSize;
                     button2.Height = seatSize;
                     button2.Tag = j;  
                     grdtop2.Children.Add(button2);
+
+                    txtcol[j] = new TextBox();
+                    txtcol[j].FontSize = 10;
+                    txtcol[j].VerticalAlignment = VerticalAlignment.Top;
+                    txtcol[j].HorizontalAlignment = HorizontalAlignment.Left;
+                    txtcol[j].Margin = new Thickness(seatSize * j , 0, 0, 0);
+                    txtcol[j].Width = seatSize;
+                    txtcol[j].Height = seatSize;
+                    grdtop2.Children.Add(txtcol[j]);
 
                     stArray[i, j] = new Seat();   
                     stArray[i,j].Margin = new Thickness(seatSize*j,seatSize*i,0,0);
                     griddy.Children.Add(stArray[i,j]);
                 }
             }            
-            Label lblspace = new Label();
-            Label lblspace2 = new Label();
-            lblspace.Width = lblspace2.Width = 20;
-            lblspace.Height = lblspace2.Height = 20;
-            lblspace.Content = lblspace2.Content = "";
-            lblspace.Margin = new Thickness(0, seatSize * row, 0, 0);
-            grdleft.Children.Add(lblspace);
-            lblspace2.Margin = new Thickness(seatSize * column+seatSize,0, 0, 0);
-            grdtop2.Children.Add(lblspace2);
+            Label lblspace = new Label();//used as a pad for the scroll bar
+            Label lblspace2 = new Label();//
+            lblspace.Width = lblspace2.Width = 20;//
+            lblspace.Height = lblspace2.Height = 20;//
+            lblspace.Content = lblspace2.Content = "";//
+            lblspace.Margin = new Thickness(0, seatSize * row, 0, 0);//
+            grdleft.Children.Add(lblspace);//
+            lblspace2.Margin = new Thickness(seatSize * column+seatSize,0, 0, 0);//
+            grdtop2.Children.Add(lblspace2);//
             Button button3 = new Button();
             button3.FontSize = 10;
             TextBlock select = new TextBlock();
@@ -89,14 +112,25 @@ namespace SEAT
             button3.AddHandler(Button.ClickEvent, new RoutedEventHandler(allbutton_click));
             button3.VerticalAlignment = VerticalAlignment.Top;
             button3.HorizontalAlignment = HorizontalAlignment.Left;
-            button3.Margin = new Thickness(0, 0, 0, 0);
+            button3.Margin = new Thickness(45, 45, 0, 0);
             button3.Width = seatSize;
             button3.Height = seatSize;
             button3.Tag = column+" "+row;
             grdtop.Children.Add(button3);
+            TextBlock naming = new TextBlock();
+            naming.TextWrapping = TextWrapping.Wrap;
+            naming.Text = "Name entire column or row";
+            naming.VerticalAlignment = VerticalAlignment.Top;
+            naming.HorizontalAlignment = HorizontalAlignment.Left;
+            naming.Margin= new Thickness(0,0,0,0);
+            naming.Width = 90;
+            grdtop.Children.Add(naming);
+
             griddy.MaxHeight= seatSize*row+20;
             griddy.MaxWidth=seatSize*column+20;
             svrgrid.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(svrgrid_ScrollChanged));
+            svrtop.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(svrtop_ScrollChanged));
+            svrleft.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(svrleft_ScrollChanged));
             this.Show();
         }
         private void svrgrid_ScrollChanged(object sender, EventArgs e)
@@ -105,7 +139,15 @@ namespace SEAT
                 svrleft.ScrollToVerticalOffset(svrgrid.VerticalOffset);
             
         }
-        private void rowbutton_click(object sender, EventArgs e)
+        private void svrtop_ScrollChanged(object sender, EventArgs e)
+        {
+            svrgrid.ScrollToHorizontalOffset(svrtop.HorizontalOffset);
+        }
+        private void svrleft_ScrollChanged(object sender, EventArgs e)
+        {
+            svrgrid.ScrollToVerticalOffset(svrleft.VerticalOffset);
+        }
+        private void columnbutton_click(object sender, EventArgs e)
         {
             Button button1= (Button)sender;
             for (int i = 0; i < row; i++)
@@ -120,7 +162,7 @@ namespace SEAT
             else
                 button1.Content = "Select";
         }
-        private void columnbutton_click(object sender, EventArgs e)
+        private void rowbutton_click(object sender, EventArgs e)
         {
             Button button2 = (Button)sender;
             for (int j=0; j < column; j++)

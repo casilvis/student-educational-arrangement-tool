@@ -17,6 +17,7 @@
             <RadioButton FontSize="10" Height="16" HorizontalAlignment="Right" Margin="0,143,0,0" Name="rbtnBack" VerticalAlignment="Top" Width="46" GroupName="grpFMB">Back</RadioButton>
             <CheckBox Height="16" Margin="8,178,72,0" Name="chkboxNotSeat" VerticalAlignment="Top">Not A Seat</CheckBox>
             <CheckBox Margin="8,212,72,0" Name="chkboxEmpty" Height="16" VerticalAlignment="Top">Leave Empty</CheckBox>
+            <Button Height="23" Margin="61,0,19,195" Name="btnchange" VerticalAlignment="Bottom">Change Properties</Button>
         </Grid>
         <DockPanel DockPanel.Dock="top">
         <Label DockPanel.Dock="Left" Name="lblnm">Name:</Label>
@@ -28,12 +29,12 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" Name="dpnlgrid" Width="auto">
             <Grid Name="grdtop" Width="auto" Height="auto" DockPanel.Dock="Top">
-                <ScrollViewer Name="svrtop" Width="auto" Height="auto" VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden">
+                <ScrollViewer Margin="90,0,0,0" Name="svrtop" Width="auto" Height="auto" VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden">
                     <Grid Name="grdtop2" Width="auto" Height="auto" HorizontalAlignment="Left">
                     </Grid>
                 </ScrollViewer>
             </Grid>
-            <ScrollViewer Name="svrleft" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Left" Width="auto" Height="auto" MaxWidth="45" VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer Name="svrleft" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Left" Width="auto" Height="auto" MaxWidth="90" VerticalScrollBarVisibility="Hidden">
                 <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left">
                 </Grid>
             </ScrollViewer>
