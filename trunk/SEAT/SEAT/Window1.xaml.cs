@@ -32,7 +32,7 @@ namespace SEAT
         private void btnaddroom_Click(object sender, RoutedEventArgs e)
         {
             ClassOpen classroom = new ClassOpen();
-            classroom.Show();
+            classroom.ShowDialog();
         }
 
         private void btnaddstudent_Click(object sender, RoutedEventArgs e)
