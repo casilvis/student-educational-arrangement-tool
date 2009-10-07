@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using SEATLibrary;
@@ -28,7 +28,7 @@ namespace TestingApplication
                 promptForString("Room Description"), promptForInt("Room Width"), promptForInt("Room Height"));
         }
 
-        public void displayStudentRoster(List<Student> list)
+        public void displayStudentRoster(ObservableCollection<Student> list)
         {
             Console.WriteLine("Displaying Student Roster");
             if (list.Count == 0)
@@ -44,7 +44,7 @@ namespace TestingApplication
             }
         }
 
-        public void displayRoomList(List<Room> roomList)
+        public void displayRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)
@@ -60,7 +60,7 @@ namespace TestingApplication
             }
         }
 
-        public int selectRoomList(List<Room> roomList)
+        public int selectRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)

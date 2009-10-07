@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -9,15 +9,15 @@ namespace SEATLibrary
     public class SeatManager
     {
         // Attributes
-        private List<Student> students;
-        private List<Room> rooms;
+        private ObservableCollection<Student> students;
+        private ObservableCollection<Room> rooms;
 
         // Properties
-        public List<Room> RoomList
+        public ObservableCollection<Room> RoomList
         {
             get { return rooms; }
         }
-        public List<Student> StudentList
+        public ObservableCollection<Student> StudentList
         {
             get { return students; }
         }
@@ -25,16 +25,15 @@ namespace SEATLibrary
         // Constructors
         public SeatManager()
         {
-            students = new List<Student>();
-            rooms = new List<Room>();
+            students = new ObservableCollection<Student>();
+            rooms = new ObservableCollection<Room>();
         }
 
         public SeatManager(String file)
         {
             // Initialize the variables
-            students = new List<Student>();
-            rooms = new List<Room>();
-
+            students = new ObservableCollection<Student>();
+            rooms = new ObservableCollection<Room>();
             // Read in the XML document and load all of the data into memory
             XmlReader r = new XmlTextReader(file);
             while (r.Read())

@@ -23,6 +23,7 @@ namespace SEAT
         public StudentAdd()
         {
             InitializeComponent();
+            
 
         }
 
