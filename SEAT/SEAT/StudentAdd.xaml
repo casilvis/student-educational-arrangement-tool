@@ -6,7 +6,7 @@
         <Label Height="28" Name="label4" FontWeight="Black" HorizontalAlignment="Center">New Student</Label>
         <StackPanel Orientation="Horizontal">
             <Label Height="28" Name="label1" Width="120">Last name</Label>
-            <TextBox Height="23" Name="txtLName" Width="150"/>
+            <TextBox Height="23" Name="txtLName" Width="150" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Height="28" Name="label2"  Width="120">First name</Label>
@@ -17,12 +17,16 @@
             <TextBox Name="txtSID" Width="150" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <Label Name="label6" Width="120">Section</Label>
+            <TextBox Name="txtSection" Width="150" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
             <Label Height="28" Name="label5" Width="63">Handed</Label>
             <RadioButton Height="16" Name="rbtnRight" GroupName="grphanded" IsChecked="True">Right</RadioButton>
             <RadioButton Height="16"  Name="rbtnLeft" Width="46" GroupName="grphanded">Left</RadioButton>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <CheckBox Height="16" Name="checkBox1" FlowDirection="RightToLeft" Width="120">Vision Impared</CheckBox>
+            <CheckBox Height="16" Name="chkbxvision" FlowDirection="RightToLeft" Width="120">Vision Impared</CheckBox>
         </StackPanel>
         <Button Height="23" Name="btnAdd" Width="200" Click="btnAdd_Click">Add</Button>
     </StackPanel>
