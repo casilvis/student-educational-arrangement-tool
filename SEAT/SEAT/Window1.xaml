@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SEAT.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Window1" Height="700" Width="600">
+    Title="Window1" Height="600" Width="700">
         <DockPanel>
         <Menu Height="22" Name="menu1" VerticalAlignment="Top" DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -13,22 +13,29 @@
                 <MenuItem Header="_Exit" Name="FileMenuExit" Click="FileMenuExit_Click" />
             </MenuItem>
         </Menu>
-            <Grid DockPanel.Dock="Left" ShowGridLines="True" HorizontalAlignment="Center">           
-            <ListBox HorizontalAlignment="Left" Margin="17,68,0,128" Name="lbxRoster" Width="120" />     
-            <ListBox Margin="159,317,0,221" Name="lbxSection" HorizontalAlignment="Left" Width="120" />
-            <Label Height="28" HorizontalAlignment="Left" Margin="17,41,0,0" Name="label1" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" FontWeight="Black">Roster</Label>
-            <Label Height="27" HorizontalAlignment="Left" Margin="159,292,0,0" Name="label3" VerticalAlignment="Top" Width="120" FontWeight="Black" HorizontalContentAlignment="Center">Section</Label>
-            <Button Height="23" Margin="72,0,132,69" Name="btnaddstudent" VerticalAlignment="Bottom" Click="btnaddstudent_Click">Add Student</Button>
-            <Button Height="23" HorizontalAlignment="Right" Margin="0,0,16,135" Name="btnaddsection" VerticalAlignment="Bottom" Width="75">Add Section</Button>
+        <Grid DockPanel.Dock="Left" ShowGridLines="True" HorizontalAlignment="Center">
+            <DockPanel Width="150" Margin="10,40,0,40" HorizontalAlignment="Left" >
+                <Label Height="28" Width="120" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Roster</Label>
+                <Button Height="23" Name="btnaddstudent" DockPanel.Dock="Bottom" Click="btnaddstudent_Click">Add Student</Button>
+                <ListBox Name="lbxRoster" />
+            </DockPanel>
+            <DockPanel Width="150" Margin="170,340,0,40" HorizontalAlignment="Left">
+                <Label Height="27" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Section</Label>
+                <Button Height="23" Name="btnaddsection" DockPanel.Dock="Bottom">Add Section</Button>
+                <ListBox Name="lbxSection" />
+            </DockPanel>
         </Grid>
-            <Grid DockPanel.Dock="Right" ShowGridLines="False" HorizontalAlignment="Center">
-            <ListBox HorizontalAlignment="Right" Margin="0,146,21,94" Name="lbxStudents" Width="120" />
-            <Label Height="28" HorizontalAlignment="Right" Margin="0,41,158,0" Name="label2" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" FontWeight="Black">Rooms</Label>
-            <Label Height="28" Margin="0,118,21,0" Name="label4" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" FontWeight="Black" HorizontalContentAlignment="Center">Students in Room</Label>
-            <ListBox HorizontalAlignment="Right" Margin="0,68,158,128" Name="lbxRooms" Width="120" />
-            <Button Margin="0,0,203,94" Name="btnaddroom" Click="btnaddroom_Click" Height="23" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75">Add Room</Button>
+        <Grid DockPanel.Dock="Right" ShowGridLines="False" HorizontalAlignment="Right">
+            <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,170,40">
+                <Label Height="28" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Rooms</Label>
+                <Button Name="btnaddroom" Click="btnaddroom_Click" Height="23" DockPanel.Dock="Bottom">Add Room</Button>
+                <ListBox  Name="lbxRooms" />
+            </DockPanel>
+            <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,10,40">
+                <Label Height="28" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Students in Room</Label>
+                <ListBox  Name="lbxStudents" />
+            </DockPanel>
         </Grid>
-        <Rectangle DockPanel.Dock="Bottom" MaxWidth="1" Fill="Black">
-        </Rectangle>
+        <Rectangle DockPanel.Dock="Bottom" MaxWidth="1" Fill="Black"></Rectangle>
     </DockPanel>
 </Window>
