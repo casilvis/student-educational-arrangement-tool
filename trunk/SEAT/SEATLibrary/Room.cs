@@ -223,18 +223,10 @@ namespace SEATLibrary
             w.Close();
         }
 
+
         public override string ToString()
         {
-            String result = "";
-            for (int i = 0; i < this.width; i++)
-            {
-                for (int j = 0; j < this.height; j++)
-                {
-                    result += chairs[i, j].ToString() + "\t";
-                }
-                result += "\n";
-            }
-            return result;
+            return this.RoomName + " - " + this.Location;
         }
 
     }
