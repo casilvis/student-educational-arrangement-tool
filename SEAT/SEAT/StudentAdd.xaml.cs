@@ -23,7 +23,7 @@ namespace SEAT
         public StudentAdd()
         {
             InitializeComponent();
-            
+            txtLName.Focus();
 
         }
 

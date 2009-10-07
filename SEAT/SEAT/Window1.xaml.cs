@@ -38,7 +38,7 @@ namespace SEAT
         private void btnaddstudent_Click(object sender, RoutedEventArgs e)
         {
             StudentAdd student = new StudentAdd();
-            student.Show();
+            student.ShowDialog();
         }
 
         private void FileMenuNew_Click(object sender, RoutedEventArgs e)

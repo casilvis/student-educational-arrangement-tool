@@ -98,7 +98,7 @@ namespace SEATLibrary
         // Methods
         public override string ToString()
         {
-            return lastName + ", " + firstName + " - " + id.ToString() ;
+            return lastName + ", " + firstName;
         }
     }
 }
