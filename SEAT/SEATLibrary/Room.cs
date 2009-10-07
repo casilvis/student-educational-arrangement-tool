@@ -79,7 +79,7 @@ namespace SEATLibrary
             this.height = height;
 
             this.roomName = "Unknown";
-            this.location = "Unkonwn";
+            this.location = "Unknown";
             this.description = "Unknown";
             roomStudents = new ObservableCollection<Student>();
             chairs = new Chair[this.width, this.height];
