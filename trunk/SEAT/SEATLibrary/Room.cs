@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -12,8 +12,7 @@ namespace SEATLibrary
         private String roomName;
         private String location;
         private String description;
-
-        private List<Student> roomStudents;
+        private ObservableCollection<Student> roomStudents;
         private Chair[,] chairs;
         private int width;
         private int height;
@@ -48,7 +47,7 @@ namespace SEATLibrary
         {
             get { return height; }
         }
-        public List<Student> RoomStudents
+        public ObservableCollection<Student> RoomStudents
         {
             get { return roomStudents; }
         }
@@ -62,7 +61,7 @@ namespace SEATLibrary
             this.roomName = "Unknown";
             this.location = "Unknown";
             this.description = "Unknown";
-            roomStudents = new List<Student>();
+            roomStudents = new ObservableCollection<Student>();
             chairs = new Chair[this.width, this.height];
 
             for (int i = 0; i < this.width; i++)
@@ -82,7 +81,7 @@ namespace SEATLibrary
             this.roomName = "Unknown";
             this.location = "Unkonwn";
             this.description = "Unknown";
-            roomStudents = new List<Student>();
+            roomStudents = new ObservableCollection<Student>();
             chairs = new Chair[this.width, this.height];
 
             for (int i = 0; i < this.width; i++)
@@ -102,7 +101,7 @@ namespace SEATLibrary
             this.roomName = roomName;
             this.location = location;
             this.description = description;
-            roomStudents = new List<Student>();
+            roomStudents = new ObservableCollection<Student>();
             chairs = new Chair[this.width, this.height];
 
             for (int i = 0; i < this.width; i++)
@@ -116,7 +115,7 @@ namespace SEATLibrary
 
         public Room(string file)
         {
-            roomStudents = new List<Student>();
+            roomStudents = new ObservableCollection<Student>();
 
             // Read in the XML document and load all of the data into memory
             XmlReader r = new XmlTextReader(file);
