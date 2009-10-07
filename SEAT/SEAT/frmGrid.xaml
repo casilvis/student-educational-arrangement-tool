@@ -8,7 +8,7 @@
             <Label Height="28" Margin="0,36,0,0" Name="lblNumber" VerticalAlignment="Top" HorizontalAlignment="Left" Width="62" FontSize="10">Number:</Label>
             <TextBox Height="23" Margin="61,36,19,0" Name="txtnumber" VerticalAlignment="Top" FontSize="10" />
             <RadioButton Height="16" Margin="8,77,0,0" Name="rbtnLeftH" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74" FontSize="10" GroupName="grpHand">Left Handed</RadioButton>
-            <RadioButton Height="16" Margin="80,77,40,0" Name="radioButton1" VerticalAlignment="Top" FontSize="10" GroupName="grpHand" IsChecked="True">Right Handed</RadioButton>
+            <RadioButton Height="16" Margin="80,77,40,0" Name="rbtnRightH" VerticalAlignment="Top" FontSize="10" GroupName="grpHand" IsChecked="True">Right Handed</RadioButton>
             <RadioButton Height="16" Margin="8,109,0,0" Name="rbtnLeft" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45" FontSize="10" GroupName="grpLMR">Left</RadioButton>
             <RadioButton Height="16" Margin="80,109,63,0" Name="rbtnMiddleLR" VerticalAlignment="Top" FontSize="10" GroupName="grpLMR" IsChecked="True">Middle</RadioButton>
             <RadioButton Height="16" HorizontalAlignment="Right" Margin="0,109,0,0" Name="rbtnRight" VerticalAlignment="Top" Width="46" FontSize="10" GroupName="grpLMR">Right</RadioButton>
