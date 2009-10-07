@@ -129,14 +129,46 @@ namespace SEAT
             button3.Height = seatSize;
             button3.Tag = column+" "+row;
             grdtop.Children.Add(button3);
+
+            Button btnRbyC = new Button();
+            btnRbyC.Content = "R by C";
+            btnRbyC.FontSize = 10;
+            btnRbyC.VerticalAlignment = VerticalAlignment.Top;
+            btnRbyC.HorizontalAlignment = HorizontalAlignment.Left;
+            btnRbyC.AddHandler(Button.ClickEvent, new RoutedEventHandler(RowByColumn_click));
+            btnRbyC.Margin = new Thickness(0,0,0,0);
+            btnRbyC.Width = seatSize;
+            btnRbyC.Height = seatSize / 2;
+            grdtop.Children.Add(btnRbyC);
+
+            Button btnCbyR = new Button();
+            btnCbyR.Content = "C by R";
+            btnCbyR.FontSize = 10;
+            btnCbyR.VerticalAlignment = VerticalAlignment.Top;
+            btnCbyR.HorizontalAlignment = HorizontalAlignment.Left;
+            btnCbyR.AddHandler(Button.ClickEvent, new RoutedEventHandler(ColumnByRow_click));
+            btnCbyR.Margin = new Thickness(0, seatSize/2, 0, 0);
+            btnCbyR.Width = seatSize;
+            btnCbyR.Height = seatSize / 2;
+            grdtop.Children.Add(btnCbyR);
+
             TextBlock naming = new TextBlock();
             naming.TextWrapping = TextWrapping.Wrap;
-            naming.Text = "Name entire column or row";
+            naming.Text = "Name rows";
+            naming.Width = 45;
             naming.VerticalAlignment = VerticalAlignment.Top;
             naming.HorizontalAlignment = HorizontalAlignment.Left;
-            naming.Margin= new Thickness(0,0,0,0);
-            naming.Width = 90;
+            naming.Margin= new Thickness(0,seatSize,0,0);
             grdtop.Children.Add(naming);
+
+            TextBlock naming2 = new TextBlock();
+            naming2.TextWrapping = TextWrapping.Wrap;
+            naming2.Text = "Name columns";
+            naming2.Width = 45;
+            naming2.VerticalAlignment = VerticalAlignment.Top;
+            naming2.HorizontalAlignment = HorizontalAlignment.Left;
+            naming2.Margin = new Thickness(seatSize,0, 0, 0);
+            grdtop.Children.Add(naming2);
 
             griddy.MaxHeight= seatSize*row+20;
             griddy.MaxWidth=seatSize*column+20;
@@ -252,6 +284,19 @@ namespace SEAT
 
         private void btnchange_Click(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < seatsSelected.Count; i++)
+            {
+                seatsSelected.ElementAt(i).chair.LeftHanded = (bool)rbtnLeftH.IsChecked;
+                seatsSelected.ElementAt(i).chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
+                if ((bool)chkboxNotSeat.IsChecked)
+                {
+                    seatsSelected.ElementAt(i).chair.NonChair = (bool)chkboxNotSeat.IsChecked;
+                    seatsSelected.ElementAt(i).Background = Brushes.LightGray;
+                }
+                else
+                    seatsSelected.ElementAt(i).Background = Brushes.White;
+                //seatsSelected.ElementAt(i).chair.FbPosition = 
+            }
             MessageBox.Show(seatsSelected.Count.ToString());
         }
         private void chkSelected_Checked(object sender, RoutedEventArgs e)
@@ -263,6 +308,28 @@ namespace SEAT
         {
             Seat seat = (Seat)sender;
             seatsSelected.Remove(seat);
+        }
+        private void RowByColumn_click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    stArray[i, j].chair.SeatName = txtrow[i].Text + txtcol[j].Text;
+                    stArray[i,j].lblName.Content=txtrow[i].Text+txtcol[j].Text;
+                }
+            }
+        }
+        private void ColumnByRow_click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    stArray[i, j].chair.SeatName = txtcol[j].Text + txtrow[i].Text;
+                    stArray[i, j].lblName.Content = txtcol[j].Text + txtrow[i].Text;
+                }
+            }
         }
     }
 }

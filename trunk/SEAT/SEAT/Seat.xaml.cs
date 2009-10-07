@@ -20,19 +20,22 @@ namespace SEAT
     /// </summary>
     public partial class Seat : UserControl
     {
+        private Chair mychair;
         public Seat()
         {
+            mychair = new Chair();
             InitializeComponent();
         }
 
-        public Seat(Chair chair)
+        public Seat(Chair chare)
         {
-
+            mychair = chare;
             InitializeComponent();
             if (chair.LeftHanded)
                 lblName.Foreground=Brushes.Green;
             
         }
+        public Chair chair { get { return mychair; } }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
