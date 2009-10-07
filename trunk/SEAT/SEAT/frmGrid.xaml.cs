@@ -25,6 +25,7 @@ namespace SEAT
         public TextBox[] txtrow;
         public int row;
         public int column;
+        public List<Seat> seatsSelected;
         public frmGrid()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace SEAT
         public frmGrid(Room inroom)
         {
             InitializeComponent();
+            seatsSelected = new List<Seat>();
             myroom = inroom;
             txtloc.Text = myroom.Location;
             txtnm.Text = myroom.RoomName;
@@ -98,6 +100,8 @@ namespace SEAT
                     grdtop2.Children.Add(txtcol[j]);
 
                     stArray[i, j] = new Seat(myroom.Chairs[j, i]);//worry about it later 
+                    stArray[i, j].AddHandler( CheckBox.CheckedEvent, new RoutedEventHandler(chkSelected_Checked));
+                    stArray[i, j].AddHandler(CheckBox.UncheckedEvent, new RoutedEventHandler(chkSelected_Unchecked));
                     stArray[i,j].Margin = new Thickness(seatSize*j,seatSize*i,0,0);
                     griddy.Children.Add(stArray[i,j]);
                 }
@@ -161,9 +165,19 @@ namespace SEAT
             for (int i = 0; i < row; i++)
             {
                 if ((string)button1.Content == "Select")
-                    stArray[i, (int)button1.Tag].chkSelected.IsChecked = true;
+                {
+                    if (!(bool)stArray[i, (int)button1.Tag].chkSelected.IsChecked)
+                    {
+                        stArray[i, (int)button1.Tag].chkSelected.IsChecked = true;
+                    }
+                }
                 else
-                    stArray[i, (int)button1.Tag].chkSelected.IsChecked = false;
+                {
+                    if ((bool)stArray[i, (int)button1.Tag].chkSelected.IsChecked)
+                    {
+                        stArray[i, (int)button1.Tag].chkSelected.IsChecked = false;
+                    }
+                }
             }
             if ((string)button1.Content == "Select")
                 button1.Content = "Unselect";
@@ -176,9 +190,20 @@ namespace SEAT
             for (int j=0; j < column; j++)
             {
                 if ((string)button2.Content == "Select")
-                    stArray[(int)button2.Tag,j].chkSelected.IsChecked = true;
+                {
+                    if (!(bool)stArray[(int)button2.Tag, j].chkSelected.IsChecked)
+                    {
+                        stArray[(int)button2.Tag, j].chkSelected.IsChecked = true;
+                    }
+                }
                 else
-                    stArray[(int)button2.Tag,j].chkSelected.IsChecked = false;
+                {
+                    if ((bool)stArray[(int)button2.Tag, j].chkSelected.IsChecked)
+                    {
+                        stArray[(int)button2.Tag, j].chkSelected.IsChecked = false;
+                    }
+                }
+                        
             }
             if ((string)button2.Content == "Select")
                 button2.Content = "Unselect";
@@ -199,9 +224,19 @@ namespace SEAT
                 for (int j = 0; j < column; j++)
                 {
                     if (block.Text == "Select All")
-                        stArray[i, j].chkSelected.IsChecked = true;
+                    {
+                        if (!(bool)stArray[i, j].chkSelected.IsChecked)
+                        {
+                            stArray[i, j].chkSelected.IsChecked = true;
+                        }
+                    }
                     else
-                        stArray[i, j].chkSelected.IsChecked = false;
+                    {
+                        if ((bool)stArray[i, j].chkSelected.IsChecked)
+                        {
+                            stArray[i, j].chkSelected.IsChecked = false;
+                        }
+                    }
                 }
             }
             if (block.Text == "Select All")
@@ -213,6 +248,21 @@ namespace SEAT
         private void txtloc_TextChanged(object sender, TextChangedEventArgs e)
         {
             myroom.Location = txtloc.Text;
+        }
+
+        private void btnchange_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(seatsSelected.Count.ToString());
+        }
+        private void chkSelected_Checked(object sender, RoutedEventArgs e)
+        {
+            Seat seat = (Seat)sender;
+            seatsSelected.Add(seat);
+        }
+        private void chkSelected_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Seat seat = (Seat)sender;
+            seatsSelected.Remove(seat);
         }
     }
 }

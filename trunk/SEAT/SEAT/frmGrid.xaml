@@ -17,7 +17,7 @@
             <RadioButton FontSize="10" Height="16" HorizontalAlignment="Right" Margin="0,143,0,0" Name="rbtnBack" VerticalAlignment="Top" Width="46" GroupName="grpFMB">Back</RadioButton>
             <CheckBox Height="16" Margin="8,178,72,0" Name="chkboxNotSeat" VerticalAlignment="Top">Not A Seat</CheckBox>
             <CheckBox Margin="8,212,72,0" Name="chkboxEmpty" Height="16" VerticalAlignment="Top">Leave Empty</CheckBox>
-            <Button Height="23" Margin="61,0,19,195" Name="btnchange" VerticalAlignment="Bottom">Change Properties</Button>
+            <Button Height="23" Margin="61,0,19,195" Name="btnchange" VerticalAlignment="Bottom" Click="btnchange_Click">Change Properties</Button>
         </Grid>
         <DockPanel DockPanel.Dock="top">
         <Label DockPanel.Dock="Left" Name="lblnm">Name:</Label>
