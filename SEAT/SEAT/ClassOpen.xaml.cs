@@ -38,10 +38,30 @@ namespace SEAT
                 {
                     Room classroom = new Room(Convert.ToInt32(row), Convert.ToInt32(column));
                     Window1.manager.addNewRoom(classroom);
-                    frmGrid Grid = new frmGrid(classroom);
+                    frmGrid Grid = new frmGrid(classroom,true);
                     Grid.Show();
                     this.Close();
                 }
+            }
+        }
+
+        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            rbtnLoad.IsChecked = true;
+            // Configure open file dialog box
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".tplt"; // Default file extension
+            dlg.Filter = "Room File (.tplt)|*.tplt"; // Filter files by extension
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                txtPath.Text= dlg.FileName;
+                //Window1.manager.addNewRoom(dlg.FileName);
             }
         }
     }
