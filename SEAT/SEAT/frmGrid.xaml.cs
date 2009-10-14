@@ -300,13 +300,22 @@ namespace SEAT
             {
                 seatsSelected.ElementAt(i).chair.LeftHanded = (bool)rbtnLeftH.IsChecked;
                 seatsSelected.ElementAt(i).chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
-                if ((bool)chkboxNotSeat.IsChecked)
+                seatsSelected.ElementAt(i).chair.NonChair = (bool)chkboxNotSeat.IsChecked;
+                if ((bool)chkboxNotSeat.IsChecked || (bool)chkboxEmpty.IsChecked)
                 {
-                    seatsSelected.ElementAt(i).chair.NonChair = (bool)chkboxNotSeat.IsChecked;
-                    seatsSelected.ElementAt(i).Background = Brushes.LightGray;
+                    if ((bool)chkboxNotSeat.IsChecked)
+                    {
+                        seatsSelected.ElementAt(i).Background = Brushes.Gray;
+                    }
+                    else
+                    {
+                        seatsSelected.ElementAt(i).Background = Brushes.LightGray;
+                    }
                 }
                 else
+                {
                     seatsSelected.ElementAt(i).Background = Brushes.White;
+                }
                 //seatsSelected.ElementAt(i).chair.FbPosition = 
             }
             MessageBox.Show(seatsSelected.Count.ToString());
