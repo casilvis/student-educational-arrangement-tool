@@ -62,18 +62,18 @@ namespace SEATLibrary
             this.location = "Unknown";
             this.description = "Unknown";
             roomStudents = new ObservableCollection<Student>();
-            chairs = new Chair[this.width, this.height];
+            chairs = new Chair[this.height, this.width];
 
-            for (int i = 0; i < this.width; i++)
+            for (int i = 0; i < this.height; i++)
             {
-                for (int j = 0; j < this.height; j++)
+                for (int j = 0; j < this.width; j++)
                 {
                     chairs[i, j] = new Chair();
                 }
             }
         }
 
-        public Room(int width, int height)
+        public Room(int height, int width)
         {
             this.width = width;
             this.height = height;
@@ -82,18 +82,18 @@ namespace SEATLibrary
             this.location = "Unknown";
             this.description = "Unknown";
             roomStudents = new ObservableCollection<Student>();
-            chairs = new Chair[this.width, this.height];
+            chairs = new Chair[this.height, this.width];
 
-            for (int i = 0; i < this.width; i++)
+            for (int i = 0; i < this.height; i++)
             {
-                for (int j = 0; j < this.height; j++)
+                for (int j = 0; j < this.width; j++)
                 {
                     chairs[i, j] = new Chair();
                 }
             }
         }
 
-        public Room(String roomName, String location, String description, int width, int height)
+        public Room(String roomName, String location, String description, int height, int width)
         {
             this.width = width;
             this.height = height;
@@ -102,11 +102,11 @@ namespace SEATLibrary
             this.location = location;
             this.description = description;
             roomStudents = new ObservableCollection<Student>();
-            chairs = new Chair[this.width, this.height];
+            chairs = new Chair[this.height, this.width];
 
-            for (int i = 0; i < this.width; i++)
+            for (int i = 0; i < this.height; i++)
             {
-                for (int j = 0; j < this.height; j++)
+                for (int j = 0; j < this.width; j++)
                 {
                     chairs[i, j] = new Chair();
                 }
@@ -129,7 +129,7 @@ namespace SEATLibrary
                     roomName = r.GetAttribute("Name");
                     location = r.GetAttribute("Location");
                     description = r.GetAttribute("Description");
-                    chairs = new Chair[this.width, this.height];
+                    chairs = new Chair[this.height, this.width];
 
                     //Get all of the information contained in a room
                     while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Room"))
@@ -172,9 +172,9 @@ namespace SEATLibrary
 
         public bool isRoomEmpty()
         {
-            for (int i = 0; i < this.width; i++)
+            for (int i = 0; i < this.height; i++)
             {
-                for (int j = 0; j < this.height; j++)
+                for (int j = 0; j < this.width; j++)
                 {
                     if (!chairs[i, j].isEmpty())
                     {
@@ -198,9 +198,9 @@ namespace SEATLibrary
             w.WriteAttributeString("Width", Width.ToString());
             w.WriteAttributeString("Height", Height.ToString());
             w.WriteStartElement("Chairs"); // START CHAIRS
-            for (int j = 0; j < Width; j++)
+            for (int j = 0; j < Height; j++)
             {
-                for (int k = 0; k < Height; k++)
+                for (int k = 0; k < Width; k++)
                 {
                     Chair c = Chairs[j, k];
                     w.WriteStartElement("Chair"); // START CHAIR

@@ -40,7 +40,9 @@ namespace SEAT
             seatsSelected = new List<Seat>();
             int rows = myroom.Height;
             int columns = myroom.Width;
-            int seatSize = 45;           
+            //int seatSize = 45;
+            int Width = 45;
+            int Height = 60;
             txtloc.Text = myroom.Location;
             txtnm.Text = myroom.RoomName;
             txtdes.Text = myroom.Description;            
@@ -62,19 +64,19 @@ namespace SEAT
                     button1.AddHandler(Button.ClickEvent, new RoutedEventHandler(rowbutton_click));
                     button1.VerticalAlignment = VerticalAlignment.Top;
                     button1.HorizontalAlignment = HorizontalAlignment.Left;
-                    button1.Width = seatSize;
-                    button1.Height = seatSize;
+                    button1.Width = Width;
+                    button1.Height = Height;
                     button1.Tag = i;
-                    button1.Margin = new Thickness(seatSize, seatSize * i, 0, 0);
+                    button1.Margin = new Thickness(Width, Height * i, 0, 0);
                     grdleft.Children.Add(button1);
 
                     txtrow[i] = new TextBox();
                     txtrow[i].FontSize = 10;
                     txtrow[i].VerticalAlignment = VerticalAlignment.Top;
                     txtrow[i].HorizontalAlignment = HorizontalAlignment.Left;
-                    txtrow[i].Margin = new Thickness(0, seatSize * i, 0, 0);
-                    txtrow[i].Width = seatSize;
-                    txtrow[i].Height = seatSize;
+                    txtrow[i].Margin = new Thickness(0, Height * i, 0, 0);
+                    txtrow[i].Width = Width;
+                    txtrow[i].Height = Height;
                     grdleft.Children.Add(txtrow[i]);
                 }
                 for (int j=0; j < column; j++)
@@ -87,9 +89,9 @@ namespace SEAT
                         button2.AddHandler(Button.ClickEvent, new RoutedEventHandler(columnbutton_click));
                         button2.VerticalAlignment = VerticalAlignment.Top;
                         button2.HorizontalAlignment = HorizontalAlignment.Left;
-                        button2.Margin = new Thickness(seatSize * j, seatSize, 0, 0);
-                        button2.Width = seatSize;
-                        button2.Height = seatSize;
+                        button2.Margin = new Thickness(Width * j, Height, 0, 0);
+                        button2.Width = Width;
+                        button2.Height = Height;
                         button2.Tag = j;
                         grdtop2.Children.Add(button2);
 
@@ -97,15 +99,15 @@ namespace SEAT
                         txtcol[j].FontSize = 10;
                         txtcol[j].VerticalAlignment = VerticalAlignment.Top;
                         txtcol[j].HorizontalAlignment = HorizontalAlignment.Left;
-                        txtcol[j].Margin = new Thickness(seatSize * j, 0, 0, 0);
-                        txtcol[j].Width = seatSize;
-                        txtcol[j].Height = seatSize;
+                        txtcol[j].Margin = new Thickness(Width * j, 0, 0, 0);
+                        txtcol[j].Width = Width;
+                        txtcol[j].Height = Height;
                         grdtop2.Children.Add(txtcol[j]);
                     }
-                    stArray[i, j] = new Seat(myroom.Chairs[j, i]);//worry about it later 
+                    stArray[i, j] = new Seat(myroom.Chairs[i,j]);//worry about it later 
                     stArray[i, j].AddHandler( CheckBox.CheckedEvent, new RoutedEventHandler(chkSelected_Checked));
                     stArray[i, j].AddHandler(CheckBox.UncheckedEvent, new RoutedEventHandler(chkSelected_Unchecked));
-                    stArray[i,j].Margin = new Thickness(seatSize*j,seatSize*i,0,0);
+                    stArray[i,j].Margin = new Thickness(Width*j,Height*i,0,0);
                     griddy.Children.Add(stArray[i,j]);
                 }
             }
@@ -116,9 +118,9 @@ namespace SEAT
                 lblspace.Width = lblspace2.Width = 20;//
                 lblspace.Height = lblspace2.Height = 20;//
                 lblspace.Content = lblspace2.Content = "";//
-                lblspace.Margin = new Thickness(0, seatSize * row, 0, 0);//
+                lblspace.Margin = new Thickness(0, Height * row, 0, 0);//
                 grdleft.Children.Add(lblspace);//
-                lblspace2.Margin = new Thickness(seatSize * column + seatSize, 0, 0, 0);//
+                lblspace2.Margin = new Thickness(Width * column + Width, 0, 0, 0);//
                 grdtop2.Children.Add(lblspace2);//
                 Button button3 = new Button();
                 button3.FontSize = 10;
@@ -129,9 +131,9 @@ namespace SEAT
                 button3.AddHandler(Button.ClickEvent, new RoutedEventHandler(allbutton_click));
                 button3.VerticalAlignment = VerticalAlignment.Top;
                 button3.HorizontalAlignment = HorizontalAlignment.Left;
-                button3.Margin = new Thickness(45, 45, 0, 0);
-                button3.Width = seatSize;
-                button3.Height = seatSize;
+                button3.Margin = new Thickness(Width, Height, 0, 0);
+                button3.Width = Width;
+                button3.Height = Height;
                 button3.Tag = column + " " + row;
                 grdtop.Children.Add(button3);
 
@@ -142,8 +144,8 @@ namespace SEAT
                 btnRbyC.HorizontalAlignment = HorizontalAlignment.Left;
                 btnRbyC.AddHandler(Button.ClickEvent, new RoutedEventHandler(RowByColumn_click));
                 btnRbyC.Margin = new Thickness(0, 0, 0, 0);
-                btnRbyC.Width = seatSize;
-                btnRbyC.Height = seatSize / 2;
+                btnRbyC.Width = Width;
+                btnRbyC.Height = Height / 2;
                 grdtop.Children.Add(btnRbyC);
 
                 Button btnCbyR = new Button();
@@ -152,27 +154,27 @@ namespace SEAT
                 btnCbyR.VerticalAlignment = VerticalAlignment.Top;
                 btnCbyR.HorizontalAlignment = HorizontalAlignment.Left;
                 btnCbyR.AddHandler(Button.ClickEvent, new RoutedEventHandler(ColumnByRow_click));
-                btnCbyR.Margin = new Thickness(0, seatSize / 2, 0, 0);
-                btnCbyR.Width = seatSize;
-                btnCbyR.Height = seatSize / 2;
+                btnCbyR.Margin = new Thickness(0, Height / 2, 0, 0);
+                btnCbyR.Width = Width;
+                btnCbyR.Height = Height / 2;
                 grdtop.Children.Add(btnCbyR);
 
                 TextBlock naming = new TextBlock();
                 naming.TextWrapping = TextWrapping.Wrap;
                 naming.Text = "Name rows";
-                naming.Width = 45;
+                naming.Width = Width;
                 naming.VerticalAlignment = VerticalAlignment.Top;
                 naming.HorizontalAlignment = HorizontalAlignment.Left;
-                naming.Margin = new Thickness(0, seatSize, 0, 0);
+                naming.Margin = new Thickness(0, Height, 0, 0);
                 grdtop.Children.Add(naming);
 
                 TextBlock naming2 = new TextBlock();
                 naming2.TextWrapping = TextWrapping.Wrap;
                 naming2.Text = "Name columns";
-                naming2.Width = 45;
+                naming2.Width = Width;
                 naming2.VerticalAlignment = VerticalAlignment.Top;
                 naming2.HorizontalAlignment = HorizontalAlignment.Left;
-                naming2.Margin = new Thickness(seatSize, 0, 0, 0);
+                naming2.Margin = new Thickness(Width, 0, 0, 0);
                 grdtop.Children.Add(naming2);
 
                 svrgrid.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(svrgrid_ScrollChanged));
@@ -185,8 +187,8 @@ namespace SEAT
                 students.Width = 150;
                 grdleft.Children.Add(students);
             }
-            griddy.MaxHeight = seatSize * row + 20;
-            griddy.MaxWidth = seatSize * column + 20;
+            griddy.MaxHeight = Height * row + 20;
+            griddy.MaxWidth = Width * column + 20;
             this.Show();
         }
         private void svrgrid_ScrollChanged(object sender, EventArgs e)
@@ -301,6 +303,19 @@ namespace SEAT
                 seatsSelected.ElementAt(i).chair.LeftHanded = (bool)rbtnLeftH.IsChecked;
                 seatsSelected.ElementAt(i).chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
                 seatsSelected.ElementAt(i).chair.NonChair = (bool)chkboxNotSeat.IsChecked;
+                if((bool)rbtnBack.IsChecked)
+                   seatsSelected.ElementAt(i).chair.FbPosition = 2; 
+                else if((bool)rbtnFront.IsChecked)
+                    seatsSelected.ElementAt(i).chair.FbPosition = 0 ;
+                else 
+                    seatsSelected.ElementAt(i).chair.FbPosition = 1 ;
+                if((bool)rbtnLeft.IsChecked)
+                   seatsSelected.ElementAt(i).chair.LrPosition = 0; 
+                else if((bool)rbtnRight.IsChecked)
+                    seatsSelected.ElementAt(i).chair.LrPosition = 2 ;
+                else 
+                    seatsSelected.ElementAt(i).chair.LrPosition = 1 ;
+
                 if ((bool)chkboxNotSeat.IsChecked || (bool)chkboxEmpty.IsChecked)
                 {
                     if ((bool)chkboxNotSeat.IsChecked)
@@ -316,7 +331,15 @@ namespace SEAT
                 {
                     seatsSelected.ElementAt(i).Background = Brushes.White;
                 }
-                //seatsSelected.ElementAt(i).chair.FbPosition = 
+                seatsSelected.ElementAt(i).chkSelected.Margin = new Thickness(seatsSelected.ElementAt(i).chair.LrPosition * 15, seatsSelected.ElementAt(i).chair.FbPosition * 15,0, 0);
+              //  seatsSelected.ElementAt(i).chkSelected.SetValue(Grid.RowProperty,);
+                //seatsSelected.ElementAt(i).grdSelect.Children.Add(seatsSelected.ElementAt(i).chkSelected);
+
+                if (seatsSelected.ElementAt(i).chair.LeftHanded)
+                    seatsSelected.ElementAt(i).lblName.Foreground = Brushes.Red;
+                else
+                    seatsSelected.ElementAt(i).lblName.Foreground = Brushes.Black;
+        
             }
             MessageBox.Show(seatsSelected.Count.ToString());
         }
@@ -332,23 +355,67 @@ namespace SEAT
         }
         private void RowByColumn_click(object sender, RoutedEventArgs e)
         {
+            bool flag = false;
             for (int i = 0; i < row; i++)
             {
-                for (int j = 0; j < column; j++)
+                if (txtrow[i].Text == "")
                 {
-                    stArray[i, j].chair.SeatName = txtrow[i].Text + txtcol[j].Text;
-                    stArray[i,j].lblName.Content=txtrow[i].Text+txtcol[j].Text;
+                    MessageBox.Show("Atleast one of your Rows doesn't have a name.");
+                    flag = true;
+                    break;
+                }
+            }
+            for (int j = 0; j < column; j++)
+            {
+                if (txtcol[j].Text == "")
+                {
+                    MessageBox.Show("Atleast one of your Columns doesn't have a name.");
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                for (int i = 0; i < row; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        stArray[i, j].chair.SeatName = txtrow[i].Text + txtcol[j].Text;
+                        stArray[i, j].lblName.Content = txtrow[i].Text + txtcol[j].Text;
+                    }
                 }
             }
         }
         private void ColumnByRow_click(object sender, RoutedEventArgs e)
         {
+            bool flag = false;
             for (int i = 0; i < row; i++)
             {
-                for (int j = 0; j < column; j++)
+                if (txtrow[i].Text == "")
                 {
-                    stArray[i, j].chair.SeatName = txtcol[j].Text + txtrow[i].Text;
-                    stArray[i, j].lblName.Content = txtcol[j].Text + txtrow[i].Text;
+                    MessageBox.Show("Atleast one of your Rows doesn't have a name.");
+                    flag = true;
+                    break;
+                }
+            }
+            for (int j = 0; j < column; j++)
+            {
+                if (txtcol[j].Text == "")
+                {
+                    MessageBox.Show("Atleast one of your Columns doesn't have a name.");
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                for (int i = 0; i < row; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        stArray[i, j].chair.SeatName = txtcol[j].Text + txtrow[i].Text;
+                        stArray[i, j].lblName.Content = txtcol[j].Text + txtrow[i].Text;
+                    }
                 }
             }
         }
