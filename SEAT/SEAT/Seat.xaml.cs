@@ -32,7 +32,26 @@ namespace SEAT
             mychair = chare;
             InitializeComponent();
             if (chair.LeftHanded)
-                lblName.Foreground=Brushes.Green;
+                lblName.Foreground=Brushes.Red;
+            if (chair.NonChair || chair.MustBeEmpty)
+            {
+                if (chair.NonChair)
+                {
+                    this.Background = Brushes.Gray;
+                }
+                else
+                {
+                    this.Background = Brushes.LightGray;
+                }
+            }
+            else
+            {
+                this.Background = Brushes.White;
+            }
+            lblName.Content = chair.SeatName;
+
+           // if(chair.FbPosition)
+           // if(chair.LrPosition)
             
         }
         public Chair chair { get { return mychair; } }

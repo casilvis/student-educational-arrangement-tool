@@ -27,10 +27,12 @@ namespace SEATLibrary
         public int FbPosition
         {
             get { return fbPosition; }
+            set { fbPosition = value; }
         }
         public int LrPosition
         {
             get { return lrPosition; }
+            set { lrPosition = value;}
         }
         public Boolean NonChair
         {

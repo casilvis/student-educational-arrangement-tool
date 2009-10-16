@@ -25,7 +25,7 @@ namespace TestingApplication
         public Room getNewRoom()
         {
             return new Room(promptForString("Room Name"), promptForString("Room Location"),
-                promptForString("Room Description"), promptForInt("Room Width"), promptForInt("Room Height"));
+                promptForString("Room Description"), promptForInt("Room Height"), promptForInt("Room Width"));
         }
 
         public void displayStudentRoster(ObservableCollection<Student> list)
@@ -210,12 +210,12 @@ namespace TestingApplication
                 Console.Write((i + 1) + "\t");
             }
             Console.WriteLine();
-            for (int i = 0; i < r.Width; i++)
+            for (int i = 0; i < r.Height; i++)
             {
                 Console.Write((i + 1) + "\t");
-                for (int j = 0; j < r.Height; j++)
+                for (int j = 0; j < r.Width; j++)
                 {
-                    Console.Write(r.Chairs[i, j].ToString() + "\t");
+                    Console.Write(r.Chairs[i,j].ToString() + "\t");
                 }
                 Console.WriteLine();
             }

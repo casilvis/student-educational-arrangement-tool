@@ -38,9 +38,27 @@ namespace SEAT
                 {
                     Room classroom = new Room(Convert.ToInt32(row), Convert.ToInt32(column));
                     Window1.manager.addNewRoom(classroom);
-                    frmGrid Grid = new frmGrid(classroom,true);
+                    frmGrid Grid = new frmGrid(classroom, true);
                     Grid.Show();
                     this.Close();
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (txtPath.Text != "")
+                    {
+                        Room classroom = new Room(txtPath.Text);
+                        Window1.manager.addNewRoom(classroom);
+                        frmGrid Grid = new frmGrid(classroom, true);
+                        Grid.Show();
+                        this.Close();
+                    }
+                }
+                catch 
+                {
+                    MessageBox.Show("Invalid path");
                 }
             }
         }
