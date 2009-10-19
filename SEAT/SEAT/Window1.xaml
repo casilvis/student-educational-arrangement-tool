@@ -16,7 +16,11 @@
         <Grid DockPanel.Dock="Left" ShowGridLines="True" HorizontalAlignment="Center">
             <DockPanel Width="150" Margin="10,40,0,40" HorizontalAlignment="Left" >
                 <Label Height="28" Width="120" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Roster</Label>
-                <Button Height="23" Name="btnaddstudent" DockPanel.Dock="Bottom" Click="btnaddstudent_Click">Add Student</Button>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <Button Height="23" Width="75" Name="btnaddstudent"  Click="btnaddstudent_Click">Add</Button>
+                    <Button Height="23" Name="btneditstudent" Click="btneditstudent_Click">Edit</Button>
+                </DockPanel>
+                
                 <ListBox Name="lbxRoster" />
             </DockPanel>
             <DockPanel Width="150" Margin="170,340,0,40" HorizontalAlignment="Left">
