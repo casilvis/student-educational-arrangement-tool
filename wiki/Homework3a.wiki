@@ -1,0 +1,34 @@
+#summary Homework 3a for CECS 550
+
+= Homework 3a =
+
+HOMEWORK 3A DUE not later than Oct 28, 2009
+
+
+1. Define a Fishbone Diagram (Ishikawa diagram, Cause-Effect diagram) appropriate to your project. Mark on this diagram priorities for different use cases.
+Create operational profiles for software components or modules or subsystems. Also identify where normal use, misuse and abuse cases could arise and hence enable
+test case planning.
+
+
+2. Write out your test plans in terms of documented test suites, appropriate test data sets. Identify these plans for unit, integration and system tests. Mark the Most Important
+Tests.
+
+3. Create or revisit and revise (if created in Homework 2), a list of major error categories for your project. (Recall these are not just the compiler errors. These are design errors,
+process mismatches, plan changes and mismatches, documentation faults, version changes, architectural glitches etc. Think of the various life cycle phases.) Track these
+errors and log these as these errors occur. Note their categories (types). Also, note when these errors were removed. Note if the integrity of the specific test plan was adhered to or
+violated. Were major code changes made as a result of testing and if so, did these change the nature of your test plans? Specifically. for each defect:
+
+a. - A description of each defect(if not already given)
+
+b. - The location of the defect in terms of the class or method in which the defect occurred(if not already given)
+
+c. - An estimate of the time it took to fix the defect. Try to estimate within 5 or 10 minutes if you can. If not, mark the time estimate for the defect ‘unknown’.
+
+
+4. Calculate the McCabe complexity. From the Program graphs (object diagrams, dynamic models, functional models, CRC graphs etc. ), generate the minimal number of test cases
+for each use case. Identify these test cases as functional or structural, black box, white box etc. For white box testing identify the paths through the modules. Relate the number
+of these test cases to the design complexity. Document your testing plans and estimate the testing effort. Based on your Most Important Tests, declare a target coverage for the
+testing effort. Use McCabe Software or equivalent form open sources. 
+
+5. Calculate the total effort spent by October 28, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the
+project and the testing effort. Plot these by month and by individuals in the team.
