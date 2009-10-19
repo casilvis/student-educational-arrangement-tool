@@ -1,4 +1,4 @@
-#summary More design documentation
+#summary Homework 2 for CECS 550
 
 = Assignment of Tasks =
 || *Task 1:* || Jared ||
