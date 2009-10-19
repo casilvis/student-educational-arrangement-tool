@@ -291,6 +291,11 @@ namespace SEAT
                 block.Text = "Select All";
         }
 
+        private void txtnm_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            myroom.RoomName = txtnm.Text;
+        }
+
         private void txtloc_TextChanged(object sender, TextChangedEventArgs e)
         {
             myroom.Location = txtloc.Text;
@@ -300,22 +305,8 @@ namespace SEAT
         {
             for (int i = 0; i < seatsSelected.Count; i++)
             {
-                seatsSelected.ElementAt(i).chair.LeftHanded = (bool)rbtnLeftH.IsChecked;
                 seatsSelected.ElementAt(i).chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
                 seatsSelected.ElementAt(i).chair.NonChair = (bool)chkboxNotSeat.IsChecked;
-                if((bool)rbtnBack.IsChecked)
-                   seatsSelected.ElementAt(i).chair.FbPosition = 2; 
-                else if((bool)rbtnFront.IsChecked)
-                    seatsSelected.ElementAt(i).chair.FbPosition = 0 ;
-                else 
-                    seatsSelected.ElementAt(i).chair.FbPosition = 1 ;
-                if((bool)rbtnLeft.IsChecked)
-                   seatsSelected.ElementAt(i).chair.LrPosition = 0; 
-                else if((bool)rbtnRight.IsChecked)
-                    seatsSelected.ElementAt(i).chair.LrPosition = 2 ;
-                else 
-                    seatsSelected.ElementAt(i).chair.LrPosition = 1 ;
-
                 if ((bool)chkboxNotSeat.IsChecked || (bool)chkboxEmpty.IsChecked)
                 {
                     if ((bool)chkboxNotSeat.IsChecked)
@@ -331,27 +322,29 @@ namespace SEAT
                 {
                     seatsSelected.ElementAt(i).Background = Brushes.White;
                 }
-                seatsSelected.ElementAt(i).chkSelected.Margin = new Thickness(seatsSelected.ElementAt(i).chair.LrPosition * 15, seatsSelected.ElementAt(i).chair.FbPosition * 15,0, 0);
-              //  seatsSelected.ElementAt(i).chkSelected.SetValue(Grid.RowProperty,);
-                //seatsSelected.ElementAt(i).grdSelect.Children.Add(seatsSelected.ElementAt(i).chkSelected);
-
-                if (seatsSelected.ElementAt(i).chair.LeftHanded)
-                    seatsSelected.ElementAt(i).lblName.Foreground = Brushes.Red;
-                else
-                    seatsSelected.ElementAt(i).lblName.Foreground = Brushes.Black;
-        
+       //         seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
             }
-            MessageBox.Show(seatsSelected.Count.ToString());
+            //MessageBox.Show(seatsSelected.Count.ToString());
         }
         private void chkSelected_Checked(object sender, RoutedEventArgs e)
         {
             Seat seat = (Seat)sender;
             seatsSelected.Add(seat);
+            if(seatsSelected.Count > 1)
+            {
+                txtnumber.IsEnabled = false;
+                btnnumber.IsEnabled = false;
+            }
         }
         private void chkSelected_Unchecked(object sender, RoutedEventArgs e)
         {
             Seat seat = (Seat)sender;
             seatsSelected.Remove(seat);
+            if (seatsSelected.Count < 2)
+            {
+                txtnumber.IsEnabled = true;
+                btnnumber.IsEnabled = true;
+            }
         }
         private void RowByColumn_click(object sender, RoutedEventArgs e)
         {
@@ -418,6 +411,77 @@ namespace SEAT
                     }
                 }
             }
+        }
+        private void FileMenuSave_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.DefaultExt = ".tplt"; // Default file extension
+            dlg.Filter = "Room File (.tplt)|*.tplt"; // Filter files by extension
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                Window1.manager.saveXml(dlg.FileName);
+            }           
+        }
+
+        private void btnhanded_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < seatsSelected.Count; i++)
+            {
+                seatsSelected.ElementAt(i).chair.LeftHanded = (bool)rbtnLeftH.IsChecked;
+                if (seatsSelected.ElementAt(i).chair.LeftHanded)
+                    seatsSelected.ElementAt(i).lblName.Foreground = Brushes.Red;
+                else
+                    seatsSelected.ElementAt(i).lblName.Foreground = Brushes.Black;
+       //         seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
+            }
+        }
+
+        private void btnhoriz_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < seatsSelected.Count; i++)
+            {
+                if ((bool)rbtnLeft.IsChecked)
+                    seatsSelected.ElementAt(i).chair.LrPosition = 0;
+                else if ((bool)rbtnRight.IsChecked)
+                    seatsSelected.ElementAt(i).chair.LrPosition = 2;
+                else
+                    seatsSelected.ElementAt(i).chair.LrPosition = 1;
+                seatsSelected.ElementAt(i).chkSelected.Margin = new Thickness(seatsSelected.ElementAt(i).chair.LrPosition * 15, seatsSelected.ElementAt(i).chair.FbPosition * 15, 0, 0);
+      //          seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
+            }
+        }
+
+        private void btnvert_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < seatsSelected.Count; i++)
+            {
+                if ((bool)rbtnBack.IsChecked)
+                    seatsSelected.ElementAt(i).chair.FbPosition = 2;
+                else if ((bool)rbtnFront.IsChecked)
+                    seatsSelected.ElementAt(i).chair.FbPosition = 0;
+                else
+                    seatsSelected.ElementAt(i).chair.FbPosition = 1;
+                seatsSelected.ElementAt(i).chkSelected.Margin = new Thickness(seatsSelected.ElementAt(i).chair.LrPosition * 15, seatsSelected.ElementAt(i).chair.FbPosition * 15, 0, 0);
+       //         seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
+            }
+        }
+
+        private void btnnumber_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtnumber.Text.Length > 0)
+            {
+                seatsSelected.ElementAt(0).chair.SeatName = txtnumber.Text;
+                seatsSelected.ElementAt(0).lblName.Content = txtnumber.Text;
+                MessageBox.Show(seatsSelected.ElementAt(0).chair.SeatName);
+            }
+       //     seatsSelected.ElementAt(0).chkSelected.IsChecked = false;
+            
         }
     }
 }
