@@ -3,6 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="frmGrid" Height="500" Width="900">
     <DockPanel Name="dkpanel" Height="auto" Width="auto">
+        <Menu DockPanel.Dock="Top" Width="auto">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Save Template" Name="FileMenuSave" Click="FileMenuSave_Click" InputGestureText="Ctrl+S" />
+            </MenuItem>
+        </Menu>
         <Grid Name="Options" Width="200" Height="auto" DockPanel.Dock="Right">
             <StackPanel>
                 <Label Height="35" Name="lblTitle" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="12">Seat Properties</Label>
@@ -10,35 +15,37 @@
                     <Label Height="28" Name="lblNumber" DockPanel.Dock="Left" VerticalAlignment="Top" HorizontalAlignment="Left" Width="62" FontSize="10">Number:</Label>
                     <TextBox Height="23" Name="txtnumber" DockPanel.Dock="Right" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontSize="10" />
                 </DockPanel>
+                <Button Height="23" Name="btnnumber" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnnumber_Click">Change Number</Button>
                 <DockPanel Height="35">
-                    <RadioButton Height="16"  Name="rbtnLeftH" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74" FontSize="10" GroupName="grpHand">Left Handed</RadioButton>
-                    <RadioButton Height="16"  Name="rbtnRightH" VerticalAlignment="Top" FontSize="10" GroupName="grpHand" IsChecked="True">Right Handed</RadioButton>
+                    <RadioButton Height="16"  Name="rbtnLeftH" VerticalAlignment="Center" HorizontalAlignment="Left" Width="74" FontSize="10" GroupName="grpHand">Left Handed</RadioButton>
+                    <RadioButton Height="16"  Name="rbtnRightH" VerticalAlignment="Center" FontSize="10" GroupName="grpHand" IsChecked="True">Right Handed</RadioButton>
                 </DockPanel>
+                <Button Height="23" Name="btnhanded" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnhanded_Click">Change Handed</Button>
                 <DockPanel Height="35">
-                    <RadioButton Height="16"  Name="rbtnLeft" VerticalAlignment="Top" HorizontalAlignment="Left" Width="72" FontSize="10" GroupName="grpLMR">Left</RadioButton>
-                    <RadioButton Height="16"  Name="rbtnMiddleLR" VerticalAlignment="Top" FontSize="10" GroupName="grpLMR" Width="72" IsChecked="True">Middle</RadioButton>
-                    <RadioButton Height="16" HorizontalAlignment="Left"  Name="rbtnRight" VerticalAlignment="Top" Width="46" FontSize="10" GroupName="grpLMR">Right</RadioButton>
+                    <RadioButton Height="16"  Name="rbtnLeft" VerticalAlignment="Center" HorizontalAlignment="Left" Width="72" FontSize="10" GroupName="grpLMR">Left</RadioButton>
+                    <RadioButton Height="16"  Name="rbtnMiddleLR" VerticalAlignment="Center" FontSize="10" GroupName="grpLMR" Width="72" IsChecked="True">Middle</RadioButton>
+                    <RadioButton Height="16" HorizontalAlignment="Left"  Name="rbtnRight" VerticalAlignment="Center" Width="46" FontSize="10" GroupName="grpLMR">Right</RadioButton>
                 </DockPanel>
+                <Button Height="23" Name="btnhoriz" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnhoriz_Click">Change Horizontal Alignment</Button>
                 <DockPanel Height="35">
-                    <RadioButton FontSize="10" Height="16" HorizontalAlignment="Left"  Name="rbtnFront" VerticalAlignment="Top" Width="72" GroupName="grpFMB">Front</RadioButton>
-                    <RadioButton FontSize="10" Height="16"  Name="rbtnMiddleFB" VerticalAlignment="Top" GroupName="grpFMB" Width="72" IsChecked="True">Middle</RadioButton>
-                    <RadioButton FontSize="10" Height="16" HorizontalAlignment="Left"  Name="rbtnBack" VerticalAlignment="Top" Width="46" GroupName="grpFMB">Back</RadioButton>
+                    <RadioButton FontSize="10" Height="16" HorizontalAlignment="Left"  Name="rbtnFront" VerticalAlignment="Center" Width="72" GroupName="grpFMB">Front</RadioButton>
+                    <RadioButton FontSize="10" Height="16"  Name="rbtnMiddleFB" VerticalAlignment="Center" GroupName="grpFMB" Width="72" IsChecked="True">Middle</RadioButton>
+                    <RadioButton FontSize="10" Height="16" HorizontalAlignment="Left"  Name="rbtnBack" VerticalAlignment="Center" Width="46" GroupName="grpFMB">Back</RadioButton>
                 </DockPanel>
-                <CheckBox Height="35"  Name="chkboxNotSeat" VerticalAlignment="Top">Not A Seat</CheckBox>
-                <CheckBox  Name="chkboxEmpty" Height="35" VerticalAlignment="Top">Leave Empty</CheckBox>
-                <Button Height="23" Name="btnchange" HorizontalAlignment="Stretch" VerticalAlignment="top" Click="btnchange_Click">Change Properties</Button>
+                <Button Height="23" Name="btnvert" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnvert_Click">Change Vertical Alignment</Button>
+                <CheckBox Height="35"  Name="chkboxNotSeat" VerticalAlignment="Center">Not A Seat</CheckBox>
+                <CheckBox  Name="chkboxEmpty" Height="35" VerticalAlignment="Center">Leave Empty</CheckBox>
+                <Button Height="23" Name="btnchange" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnchange_Click">Change Seat and Empty</Button>
             </StackPanel>
         </Grid>
-        <DockPanel DockPanel.Dock="top">
-        <Label DockPanel.Dock="Left" Name="lblnm">Name:</Label>
-        <TextBox DockPanel.Dock="Left" Width="125"  Name="txtnm" Text="{Binding ElementName=myroom, 
-    Path=RoomName}"></TextBox>
-        <TextBox DockPanel.Dock="Right" Width="125" Name="txtloc" Text="{Binding ElementName=myroom, 
-    Path=Location}" TextChanged="txtloc_TextChanged"></TextBox>
-        <Label DockPanel.Dock="Right" Name="lblloc">Location:</Label>
-        <Label DockPanel.Dock="Left" HorizontalAlignment="Center" Name="lbldes">Description:</Label>
-        <TextBox DockPanel.Dock="Right" Name="txtdes"></TextBox>
-        </DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="top">
+            <Label Name="lblnm">Name:</Label>
+            <TextBox Width="125"  Name="txtnm" TextChanged="txtnm_TextChanged"></TextBox>
+            <Label Name="lblloc">Location:</Label>
+            <TextBox Width="125" Name="txtloc" TextChanged="txtloc_TextChanged"></TextBox>           
+            <Label Name="lbldes">Description:</Label>
+            <TextBox Width="250" Name="txtdes"></TextBox>
+        </StackPanel>
         <DockPanel DockPanel.Dock="Top" Name="dpnlgrid" Width="auto">
             <Grid Name="grdtop" Width="auto" Height="auto" DockPanel.Dock="Top">
                 <ScrollViewer Margin="90,0,0,0" Name="svrtop" Width="auto" Height="auto" VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden">
