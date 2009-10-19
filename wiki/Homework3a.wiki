@@ -9,6 +9,7 @@ HOMEWORK 3A DUE not later than Oct 28, 2009
 Create operational profiles for software components or modules or subsystems. Also identify where normal use, misuse and abuse cases could arise and hence enable
 test case planning.*
 
+<img src="http://img.photobucket.com/albums/v252/Ziptnf/fishbone.jpg"></img>
 
 
 *2. Write out your test plans in terms of documented test suites, appropriate test data sets. Identify these plans for unit, integration and system tests. Mark the Most Important
@@ -40,4 +41,3 @@ testing effort. Use McCabe Software or equivalent form open sources.*
 
 *5. Calculate the total effort spent by October 28, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the
 project and the testing effort. Plot these by month and by individuals in the team.*
-
