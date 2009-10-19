@@ -35,12 +35,6 @@ namespace SEAT
             classroom.ShowDialog();
         }
 
-        private void btnaddstudent_Click(object sender, RoutedEventArgs e)
-        {
-            StudentAdd student = new StudentAdd();
-            student.ShowDialog();
-        }
-
         private void FileMenuNew_Click(object sender, RoutedEventArgs e)
         {
             Window1.manager = new SeatManager();
@@ -92,6 +86,21 @@ namespace SEAT
         private void FileMenuExit_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Exit not implemented");
+        }
+
+        private void btnaddstudent_Click(object sender, RoutedEventArgs e)
+        {
+            StudentAdd student = new StudentAdd();
+            student.ShowDialog();
+        }
+
+        private void btneditstudent_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxRoster.SelectedValue != null)
+            {
+                StudentAdd student = new StudentAdd(lbxRoster.SelectedValue as Student);
+                student.ShowDialog();
+            }
         }
 
         
