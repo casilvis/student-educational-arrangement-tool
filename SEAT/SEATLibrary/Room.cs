@@ -3,10 +3,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.ComponentModel;
 
-namespace SEATLibrary
+namespace SEATLibrary 
 {
-    public class Room
+    public class Room : INotifyPropertyChanged
     {
         // Attributes
         private String roomName;
@@ -17,21 +18,55 @@ namespace SEATLibrary
         private int width;
         private int height;
 
+
+        // Events
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String info)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
+
+
         // Properties
         public String RoomName
         {
             get { return roomName; }
-            set { roomName = value; }
+            set
+            {
+                if (value != this.roomName)
+                {
+                    roomName = value;
+                    NotifyPropertyChanged("RoomName");
+                }
+            }
         }
         public String Location
         {
             get { return location; }
-            set { location = value; }
+            set
+            {
+                if (value != this.location)
+                {
+                    location = value;
+                    NotifyPropertyChanged("Location");
+                }
+            }
         }
         public String Description
         {
             get { return description; }
-            set { description = value; }
+            set
+            {
+                if (value != this.description)
+                {
+                    description = value;
+                    NotifyPropertyChanged("Description");
+                }
+            }
         }
 
         public Chair[,] Chairs

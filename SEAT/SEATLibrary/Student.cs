@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 namespace SEATLibrary
 {
-    public class Student
+    public class Student : INotifyPropertyChanged
     {
         // Attributes
         private Guid id;
@@ -17,6 +18,19 @@ namespace SEATLibrary
         private Boolean visionImpairment;
         private Boolean isEnrolled;
 
+
+        // Events
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String info)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
+
+
         // Properties
         public Guid Uid
         {
@@ -25,37 +39,87 @@ namespace SEATLibrary
         public String FirstName
         {
             get { return firstName; }
-            set { firstName = value; }
+            set
+            {
+                if (value != this.firstName)
+                {
+                    firstName = value;
+                    NotifyPropertyChanged("FirstName");
+                }
+            }
         }
         public String LastName
         {
             get { return lastName; }
-            set { lastName = value; }
+            set
+            {
+                if (value != this.lastName)
+                {
+                    lastName = value;
+                    NotifyPropertyChanged("LastName");
+                }
+            }
         }
         public String Section
         {
             get { return section; }
-            set { section = value; }
+            set
+            {
+                if (value != this.section)
+                {
+                    section = value;
+                    NotifyPropertyChanged("Section");
+                }
+            }
         }
         public String Sid
         {
             get { return sid; }
-            set { sid = value; }
+            set
+            {
+                if (value != this.sid)
+                {
+                    sid = value;
+                    NotifyPropertyChanged("Sid");
+                }
+            }
         }
         public Boolean LeftHanded
         {
             get { return leftHanded; }
-            set { leftHanded = value; }
+            set
+            {
+                if (value != this.leftHanded)
+                {
+                    leftHanded = value;
+                    NotifyPropertyChanged("LeftHanded");
+                }
+            }
         }
         public Boolean VisionImpairment
         {
             get { return visionImpairment; }
-            set { visionImpairment = value; }
+            set
+            {
+                if (value != this.visionImpairment)
+                {
+                    visionImpairment = value;
+                    NotifyPropertyChanged("VisionImpairment");
+                }
+            }
         }
         public Boolean IsEnrolled
         {
             get { return isEnrolled; }
-            set { isEnrolled = value; }
+            set
+            {
+                if (value != this.isEnrolled)
+                {
+                    isEnrolled = value;
+                    NotifyPropertyChanged("IsEnrolled");
+                }
+
+            }
         }
 
         // Constructor
