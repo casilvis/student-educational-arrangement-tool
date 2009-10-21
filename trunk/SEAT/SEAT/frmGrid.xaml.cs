@@ -45,7 +45,9 @@ namespace SEAT
             int Height = 60;
             txtloc.Text = myroom.Location;
             txtnm.Text = myroom.RoomName;
-            txtdes.Text = myroom.Description;            
+            txtdes.Text = myroom.Description;
+            this.Title = myroom.RoomName + " - " + myroom.Location + ": " + myroom.Description;
+
             row = rows;
             column = columns;
             ContainerVisual newPage = new ContainerVisual();
@@ -189,7 +191,6 @@ namespace SEAT
             }
             griddy.MaxHeight = Height * row + 20;
             griddy.MaxWidth = Width * column + 20;
-            this.Show();
         }
         private void svrgrid_ScrollChanged(object sender, EventArgs e)
         {
@@ -294,11 +295,18 @@ namespace SEAT
         private void txtnm_TextChanged(object sender, TextChangedEventArgs e)
         {
             myroom.RoomName = txtnm.Text;
+            this.Title = myroom.RoomName + " - " + myroom.Location + ": "+myroom.Description;
         }
 
         private void txtloc_TextChanged(object sender, TextChangedEventArgs e)
         {
             myroom.Location = txtloc.Text;
+            this.Title = myroom.RoomName + " - " + myroom.Location + ": " + myroom.Description;
+        }
+        private void txtdes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            myroom.Description = txtdes.Text; 
+            this.Title = myroom.RoomName + " - " + myroom.Location + ": " + myroom.Description;
         }
 
         private void btnchange_Click(object sender, RoutedEventArgs e)
@@ -482,6 +490,10 @@ namespace SEAT
             }
        //     seatsSelected.ElementAt(0).chkSelected.IsChecked = false;
             
+        }
+        private void btndone_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

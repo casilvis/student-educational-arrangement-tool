@@ -25,6 +25,13 @@ namespace SEAT
         {
             InitializeComponent();
         }
+        public ClassOpen(Room room)
+        {
+            InitializeComponent();
+            frmGrid Grid = new frmGrid(room, true);
+            Grid.ShowDialog();
+            this.Close();
+        }
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             

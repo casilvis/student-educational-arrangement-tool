@@ -102,7 +102,13 @@ namespace SEAT
                 student.ShowDialog();
             }
         }
-
-        
+        private void btneditroom_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxRooms.SelectedValue != null)
+            {
+                frmGrid Grid = new frmGrid(lbxRooms.SelectedValue as Room, true);
+                Grid.ShowDialog();
+            }
+        }
     }
 }

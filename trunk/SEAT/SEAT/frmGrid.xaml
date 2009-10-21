@@ -9,7 +9,9 @@
             </MenuItem>
         </Menu>
         <Grid Name="Options" Width="200" Height="auto" DockPanel.Dock="Right">
-            <StackPanel>
+            <DockPanel>
+                <Button DockPanel.Dock="Bottom" Height="23" Name="btndone" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btndone_Click">Done</Button>
+            <StackPanel DockPanel.Dock="Top">
                 <Label Height="35" Name="lblTitle" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="12">Seat Properties</Label>
                 <DockPanel Height="35">
                     <Label Height="28" Name="lblNumber" DockPanel.Dock="Left" VerticalAlignment="Top" HorizontalAlignment="Left" Width="62" FontSize="10">Number:</Label>
@@ -37,6 +39,7 @@
                 <CheckBox  Name="chkboxEmpty" Height="35" VerticalAlignment="Center">Leave Empty</CheckBox>
                 <Button Height="23" Name="btnchange" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="btnchange_Click">Change Seat and Empty</Button>
             </StackPanel>
+            </DockPanel>
         </Grid>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="top">
             <Label Name="lblnm">Name:</Label>
@@ -44,7 +47,7 @@
             <Label Name="lblloc">Location:</Label>
             <TextBox Width="125" Name="txtloc" TextChanged="txtloc_TextChanged"></TextBox>           
             <Label Name="lbldes">Description:</Label>
-            <TextBox Width="250" Name="txtdes"></TextBox>
+            <TextBox Width="250" Name="txtdes" TextChanged="txtdes_TextChanged"></TextBox>
         </StackPanel>
         <DockPanel DockPanel.Dock="Top" Name="dpnlgrid" Width="auto">
             <Grid Name="grdtop" Width="auto" Height="auto" DockPanel.Dock="Top">
