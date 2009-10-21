@@ -36,7 +36,13 @@
                     <Button Height="23" Width="75" Name="btnaddstudent"  Click="btnaddstudent_Click">Add</Button>
                     <Button Height="23" Name="btneditstudent" Click="btneditstudent_Click">Edit</Button>
                 </DockPanel>
-                <ListBox Name="lbxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" />
+                <ListBox Name="lbxRoster" ItemTemplate="{StaticResource itemTemplateRoster}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="btneditstudent_Click" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
             </DockPanel>
             <DockPanel Width="150" Margin="170,340,0,40" HorizontalAlignment="Left">
                 <Label Height="27" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Section</Label>
@@ -47,8 +53,17 @@
         <Grid DockPanel.Dock="Right" ShowGridLines="False" HorizontalAlignment="Right">
             <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,170,40">
                 <Label Height="28" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Rooms</Label>
-                <Button Name="btnaddroom" Click="btnaddroom_Click" Height="23" DockPanel.Dock="Bottom">Add Room</Button>
-                <ListBox  Name="lbxRooms" ItemTemplate="{StaticResource itemTemplateRooms}" />
+                <DockPanel DockPanel.Dock="Bottom">
+                    <Button Height="23" Width="75" Name="btnaddroom"  Click="btnaddroom_Click">Add</Button>
+                    <Button Height="23" Name="btneditroom" Click="btneditroom_Click">Edit</Button>
+                </DockPanel>
+                <ListBox  Name="lbxRooms" ItemTemplate="{StaticResource itemTemplateRooms}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="btneditroom_Click" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
             </DockPanel>
             <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,10,40">
                 <Label Height="28" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Students in Room</Label>
