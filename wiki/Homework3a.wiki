@@ -17,20 +17,30 @@ Tests.*
 
 
 
-*3. Create or revisit and revise (if created in Homework 2), a list of major error categories for your project. (Recall these are not just the compiler errors. These are design errors, process mismatches, plan changes and mismatches, documentation faults, version changes, architectural glitches etc. Think of the various life cycle phases.) Track these errors and log these as these errors occur. Note their categories (types). Also, note when these errors were removed. Note if the integrity of the specific test plan was adhered to or violated. Were major code changes made as a result of testing and if so, did these change the nature of your test plans? Specifically. for each defect:*
+*3. Create or revisit and revise (if created in Homework 2), a list of major error categories for your project. (Recall these are not just the compiler errors. These are design errors, process mismatches, plan changes and mismatches, documentation faults, version changes, architectural glitches etc. Think of the various life cycle phases.) Track these errors and log these as these errors occur. Note their categories (types). Also, note when these errors were removed. Note if the integrity of the specific test plan was adhered to or violated. Were major code changes made as a result of testing and if so, did these change the nature of your test plans? Specifically. for each defect:*<br>
+*a. - A description of each defect(if not already given)*<br>
+*b. - The location of the defect in terms of the class or method in which the defect occurred(if not already given)*<br>
+*c. - An estimate of the time it took to fix the defect. Try to estimate within 5 or 10 minutes if you can. If not, mark the time estimate for the defect ‘unknown’.*<br>
 
-*a. - A description of each defect(if not already given)*
+a)room rows and columns switched<br>
+b)room<br>
+c)20-30 min
 
+a)binding from one class to another<br>
+b)seatmanager and window1<br>
+c)1-3hrs
 
+a)null pointers to students<br>
+b)seatmanager students<br>
+c)20 min
 
-*b. - The location of the defect in terms of the class or method in which the defect occurred(if not already given)*
+a)having seat and chair interact<br>
+b)seat and chair<br>
+c)20min
 
-
-
-*c. - An estimate of the time it took to fix the defect. Try to estimate within 5 or 10 minutes if you can. If not, mark the time estimate for the defect ‘unknown’.*
-
-
-
+a)listboxes noticing change<br>
+b)seatmanager and window1<br>
+c)1-3hrs
 
 *4. Calculate the McCabe complexity. From the Program graphs (object diagrams, dynamic models, functional models, CRC graphs etc. ), generate the minimal number of test cases
 for each use case. Identify these test cases as functional or structural, black box, white box etc. For white box testing identify the paths through the modules. Relate the number
