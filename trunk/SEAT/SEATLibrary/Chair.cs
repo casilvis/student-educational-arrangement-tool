@@ -8,18 +8,18 @@ namespace SEATLibrary
     public class Chair
     {
         // ATTRIBUTES
-        private Boolean leftHanded; //True for left handed people
+        private bool leftHanded; //True for left handed people
         private int fbPosition; // 0 = front; 1 = middle; 2 = back
         private int lrPosition; // 0 = left;  1 = right;  2 = back
-        private Boolean nonChair; //True if this actually isn't a chair
-        private Boolean mustBeEmpty; //True if this chair can't have anyone in it
-        private String seatNumber; //The humber assigned to the seat
+        private bool nonChair; //True if this actually isn't a chair
+        private bool mustBeEmpty; //True if this chair can't have anyone in it
+        private string seatNumber; //The humber assigned to the seat
 
         private Student theStudent;
 
 
         // PROPERTIES
-        public Boolean LeftHanded
+        public bool LeftHanded
         {
             get { return leftHanded; }
             set { leftHanded = value; }
@@ -34,17 +34,17 @@ namespace SEATLibrary
             get { return lrPosition; }
             set { lrPosition = value;}
         }
-        public Boolean NonChair
+        public bool NonChair
         {
             get { return nonChair; }
             set { nonChair = value; }
         }
-        public Boolean MustBeEmpty
+        public bool MustBeEmpty
         {
             get { return mustBeEmpty; }
             set { mustBeEmpty = value; }
         }
-        public String SeatName
+        public string SeatName
         {
             get { return seatNumber; }
             set { seatNumber = value; }
@@ -67,8 +67,8 @@ namespace SEATLibrary
             seatNumber = "Unknown";
             theStudent = null;
         }
-        public Chair(Boolean leftHanded, int fbPosition, int lrPosition, Boolean nonChair, Boolean mustBeEmpty,
-            String seatNumber, Student theStudent)
+        public Chair(bool leftHanded, int fbPosition, int lrPosition, bool nonChair, bool mustBeEmpty,
+            string seatNumber, Student theStudent)
         {
             this.leftHanded = leftHanded;
             this.fbPosition = fbPosition;
@@ -81,7 +81,7 @@ namespace SEATLibrary
 
 
         // METHODS
-        public Boolean isEmpty()
+        public bool isEmpty()
         {
             if (theStudent == null)
             {

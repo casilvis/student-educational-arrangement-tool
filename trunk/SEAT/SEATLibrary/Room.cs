@@ -10,9 +10,9 @@ namespace SEATLibrary
     public class Room : INotifyPropertyChanged
     {
         // Attributes
-        private String roomName;
-        private String location;
-        private String description;
+        private string roomName;
+        private string location;
+        private string description;
         private ObservableCollection<Student> roomStudents;
         private Chair[,] chairs;
         private int width;
@@ -22,7 +22,7 @@ namespace SEATLibrary
         // Events
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged(String info)
+        private void NotifyPropertyChanged(string info)
         {
             if (PropertyChanged != null)
             {
@@ -32,7 +32,7 @@ namespace SEATLibrary
 
 
         // Properties
-        public String RoomName
+        public string RoomName
         {
             get { return roomName; }
             set
@@ -44,7 +44,7 @@ namespace SEATLibrary
                 }
             }
         }
-        public String Location
+        public string Location
         {
             get { return location; }
             set
@@ -56,7 +56,7 @@ namespace SEATLibrary
                 }
             }
         }
-        public String Description
+        public string Description
         {
             get { return description; }
             set
@@ -128,7 +128,7 @@ namespace SEATLibrary
             }
         }
 
-        public Room(String roomName, String location, String description, int height, int width)
+        public Room(string roomName, string location, string description, int height, int width)
         {
             this.width = width;
             this.height = height;
@@ -185,9 +185,9 @@ namespace SEATLibrary
                                     //For the student, we assume the chair is blank.
                                     Student s = null;
                                     //Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                    Chairs[x, y] = new Chair(Boolean.Parse(r.GetAttribute("LeftHanded")),
+                                    Chairs[x, y] = new Chair(bool.Parse(r.GetAttribute("LeftHanded")),
                                         Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")),
-                                        Boolean.Parse(r.GetAttribute("NonChair")), Boolean.Parse(r.GetAttribute("MustBeEmpty")),
+                                        bool.Parse(r.GetAttribute("NonChair")), bool.Parse(r.GetAttribute("MustBeEmpty")),
                                         r.GetAttribute("Name"), s);
                                 }
                             }
@@ -220,7 +220,7 @@ namespace SEATLibrary
             return true;
         }
 
-        public void writeRoomTemplate(String file)
+        public void writeRoomTemplate(string file)
         {
             XmlWriter w = new XmlTextWriter(file, null);
             w.WriteStartDocument();
