@@ -29,7 +29,7 @@ namespace SEATLibrary
             rooms = new ObservableCollection<Room>();
         }
 
-        public SeatManager(String file)
+        public SeatManager(string file)
         {
             // Initialize the variables
             students = new ObservableCollection<Student>();
@@ -51,8 +51,8 @@ namespace SEATLibrary
                             {
                                 Student s = new Student(new Guid(r.GetAttribute("Uid")), r.GetAttribute("First"),
                                     r.GetAttribute("Last"), r.GetAttribute("Sid"),
-                                    r.GetAttribute("Section"), Boolean.Parse(r.GetAttribute("LeftHanded")),
-                                    Boolean.Parse(r.GetAttribute("VisionImpairment")));
+                                    r.GetAttribute("Section"), bool.Parse(r.GetAttribute("LeftHanded")),
+                                    bool.Parse(r.GetAttribute("VisionImpairment")));
                                 students.Add(s);
                             }
                             
@@ -92,9 +92,9 @@ namespace SEATLibrary
                                                 //For the student, we are passing by reference so everything stays in sync
                                                 Student s = lookupStudent(r.GetAttribute("SUID"));
                                                 //Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                                room.Chairs[x, y] = new Chair(Boolean.Parse(r.GetAttribute("LeftHanded")),
+                                                room.Chairs[x, y] = new Chair(bool.Parse(r.GetAttribute("LeftHanded")),
                                                     Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")),
-                                                    Boolean.Parse(r.GetAttribute("NonChair")), Boolean.Parse(r.GetAttribute("MustBeEmpty")),
+                                                    bool.Parse(r.GetAttribute("NonChair")), bool.Parse(r.GetAttribute("MustBeEmpty")),
                                                     r.GetAttribute("Name"), s);
                                             }
                                         }
@@ -147,12 +147,12 @@ namespace SEATLibrary
             rooms.Add(room);
         }
 
-        public Boolean addStudentToRoom(int student, int room)
+        public bool addStudentToRoom(int student, int room)
         {
             return false;
         }
 
-        private Student lookupStudent(String id)
+        private Student lookupStudent(string id)
         {
             return lookupStudent(new Guid(id));
         }
@@ -171,7 +171,7 @@ namespace SEATLibrary
 
         
 
-        public void saveXml(String file)
+        public void saveXml(string file)
         {
             XmlWriter w = new XmlTextWriter(file, null);
             w.WriteStartDocument();
