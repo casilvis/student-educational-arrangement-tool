@@ -22,25 +22,29 @@ Tests.*
 *b. - The location of the defect in terms of the class or method in which the defect occurred(if not already given)*<br>
 *c. - An estimate of the time it took to fix the defect. Try to estimate within 5 or 10 minutes if you can. If not, mark the time estimate for the defect ‘unknown’.*<br>
 
-a)room rows and columns switched<br>
-b)room<br>
-c)20-30 min
+*a)* room rows and columns switched<br>
+*b)* room<br>
+*c)* 20-30 min
 
-a)binding from one class to another<br>
-b)seatmanager and window1<br>
-c)1-3hrs
+*a)* binding from one class to another<br>
+*b)* seatmanager and window1<br>
+*c)* 1-3hrs
 
-a)null pointers to students<br>
-b)seatmanager students<br>
-c)20 min
+*a)* null pointers to students<br>
+*b)* seatmanager students<br>
+*c)* 20 min
 
-a)having seat and chair interact<br>
-b)seat and chair<br>
-c)20min
+*a)* having seat and chair interact<br>
+*b)* seat and chair<br>
+*c)* 20min
 
-a)listboxes noticing change<br>
-b)seatmanager and window1<br>
-c)1-3hrs
+*a)* listboxes noticing change<br>
+*b)* seatmanager and window1<br>
+*c)* 1-3hrs
+
+*a)* corrected style of the code using StyleCop<br>
+*b)* SEATLibrary1<br>
+*c)* 1 hour
 
 *4. Calculate the McCabe complexity. From the Program graphs (object diagrams, dynamic models, functional models, CRC graphs etc. ), generate the minimal number of test cases
 for each use case. Identify these test cases as functional or structural, black box, white box etc. For white box testing identify the paths through the modules. Relate the number
