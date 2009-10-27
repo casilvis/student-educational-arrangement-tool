@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SEATLibrary
+﻿namespace SEATLibrary
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class AssignmentBestEffort: AssignmentVisitor
     {
         public override void placeStudents(Room room)

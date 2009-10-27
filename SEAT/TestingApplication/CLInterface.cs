@@ -1,34 +1,41 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using SEATLibrary;
-
-namespace TestingApplication
+﻿namespace TestingApplication
 {
-    class CLInterface
-    {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Text;
+    using SEATLibrary;
 
+    internal class CLInterface
+    {
         public CLInterface()
         {
             // Nothing needs to be set up for this class to work
             // The methods could all be static, but that isn't necessary for this test class now.
         }
 
-        public Student getNewStudent()
+        public Student GetNewStudent()
         {
-            return new Student(promptForString("First Name"), promptForString("Last Name"),
-                promptForString("Student ID"), promptForString("Section"), 
-                promptForBoolean("Left Handed"), promptForBoolean("Vision Enpairment"));
+            return new Student(
+                this.PromptForstring("First Name"),
+                this.PromptForstring("Last Name"),
+                this.PromptForstring("Student ID"),
+                this.PromptForstring("Section"),
+                this.PromptForbool("Left Handed"),
+                this.PromptForbool("Vision Enpairment"));
         }
 
-        public Room getNewRoom()
+        public Room GetNewRoom()
         {
-            return new Room(promptForString("Room Name"), promptForString("Room Location"),
-                promptForString("Room Description"), promptForInt("Room Height"), promptForInt("Room Width"));
+            return new Room(
+                this.PromptForstring("Room Name"),
+                this.PromptForstring("Room Location"),
+                this.PromptForstring("Room Description"),
+                this.PromptForInt("Room Height"),
+                this.PromptForInt("Room Width"));
         }
 
-        public void displayStudentRoster(ObservableCollection<Student> list)
+        public void DisplayStudentRoster(ObservableCollection<Student> list)
         {
             Console.WriteLine("Displaying Student Roster");
             if (list.Count == 0)
@@ -39,12 +46,12 @@ namespace TestingApplication
             {
                 for (int i = 0; i < list.Count; i++)
                 {
-                    Console.WriteLine(list[i].ToString());
+                    Console.WriteLine(list[i].Tostring());
                 }
             }
         }
 
-        public void displayRoomList(ObservableCollection<Room> roomList)
+        public void DisplayRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)
@@ -60,7 +67,7 @@ namespace TestingApplication
             }
         }
 
-        public int selectRoomList(ObservableCollection<Room> roomList)
+        public int SelectRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)
@@ -75,67 +82,69 @@ namespace TestingApplication
                 {
                     Console.WriteLine((i + 1) + ") " + roomList[i].RoomName);
                 }
-                int n = promptForInt("Selection");
+
+                int n = this.PromptForInt("Selection");
                 n--;
                 if (n > roomList.Count || n < 0)
                 {
                     return -1;
                 }
+
                 return n;
             }
         }
 
-
-        public void updateRoom(Room room)
+        public void UpdateRoom(Room room)
         {
-            String prompt = "";
+            string prompt = string.Empty;
             while (!prompt.Equals("back"))
             {
                 Console.Clear();
-                displayRoom(room);
+                this.DisplayRoom(room);
                 Console.WriteLine("Choose: update, savetemplate, back");
                 Console.Write(" > ");
                 prompt = Console.ReadLine();
 
                 if (prompt.Equals("update"))
                 {
-                    updateRoomSeat(room);
+                    this.UpdateRoomSeat(room);
                 }
-                else if(prompt.Equals("savetemplate")){
+                else if (prompt.Equals("savetemplate"))
+                {
                     Console.Write("Location to save Template: ");
-                    String file = Console.ReadLine();
-                    room.writeRoomTemplate(file);
-
+                    string file = Console.ReadLine();
+                    room.WriteRoomTemplate(file);
                 }
                 else if (prompt.Equals("back"))
                 {
-
+                    // Nothing needs to be done here
                 }
                 else
                 {
                     Console.WriteLine("Invalid input...");
-                    waitForUserEnter();
+                    this.WaitForUserEnter();
                 }
-
             }
         }
 
-        public void updateRoomSeat(Room room)
+        public void UpdateRoomSeat(Room room)
         {
             // Have the user select one of the seats in the room
             Console.Clear();
-            this.displayRoom(room);
+            this.DisplayRoom(room);
             Console.WriteLine();
             int x = 0, y = 0;
             while (x < 1 || x > room.Width)
             {
-                x = this.promptForInt("Column");
+                x = this.PromptForInt("Column");
             }
+
             x--;
             while (y < 1 || x > room.Height)
             {
-                y = this.promptForInt("Row");
+                y = this.PromptForInt("Row");
             }
+
             y--;
             Chair c = room.Chairs[x, y];
 
@@ -151,7 +160,7 @@ namespace TestingApplication
                 Console.WriteLine("3) Must Be Empty: " + c.MustBeEmpty);
                 Console.WriteLine("4) Seat Number: " + c.SeatName);
 
-                input = promptForInt("Selection");
+                input = this.PromptForInt("Selection");
 
                 if (input == 0)
                 {
@@ -195,54 +204,56 @@ namespace TestingApplication
                 }
                 else if (input == 4)
                 {
-                    c.SeatName = promptForString("New Chair Name: ");
+                    c.SeatName = this.PromptForstring("New Chair Name: ");
                 }
             }
 
-            waitForUserEnter();
+            this.WaitForUserEnter();
         }
 
-        public void displayRoom(Room r)
+        public void DisplayRoom(Room r)
         {
             Console.Write("\t");
             for (int i = 0; i < r.Width; i++)
             {
                 Console.Write((i + 1) + "\t");
             }
+
             Console.WriteLine();
             for (int i = 0; i < r.Height; i++)
             {
                 Console.Write((i + 1) + "\t");
                 for (int j = 0; j < r.Width; j++)
                 {
-                    Console.Write(r.Chairs[i,j].ToString() + "\t");
+                    Console.Write(r.Chairs[i, j].Tostring() + "\t");
                 }
+
                 Console.WriteLine();
             }
         }
 
-        public void waitForUserEnter()
+        public void WaitForUserEnter()
         {
             Console.Write("\nPress enter to continue...");
             Console.ReadLine();
         }
 
-        private String promptForString(String prompt)
+        private string PromptForstring(string prompt)
         {
             Console.Write(prompt + ": ");
-            String response = Console.ReadLine();
+            string response = Console.ReadLine();
             return response;
         }
 
-        private int promptForInt(String prompt)
+        private int PromptForInt(string prompt)
         {
-            String response = promptForString(prompt);
+            string response = this.PromptForstring(prompt);
             return Int32.Parse(response);
         }
 
-        private Boolean promptForBoolean(String prompt)
+        private bool PromptForbool(string prompt)
         {
-            String response = promptForString(prompt);
+            string response = this.PromptForstring(prompt);
             if (response.Equals("Yes") || response.Equals("yes") || response.Equals("YES"))
             {
                 return true;
@@ -259,7 +270,7 @@ namespace TestingApplication
             {
                 return true;
             }
-            if (response.Equals("No") || response.Equals("no") || response.Equals("NO"))
+            else if (response.Equals("No") || response.Equals("no") || response.Equals("NO"))
             {
                 return true;
             }
@@ -279,7 +290,6 @@ namespace TestingApplication
             {
                 return false;
             }
-
         }
     }
 }

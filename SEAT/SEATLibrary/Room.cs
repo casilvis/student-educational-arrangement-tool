@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.ComponentModel;
-
-namespace SEATLibrary 
+﻿namespace SEATLibrary 
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Text;
+    using System.Xml;
+    
     public class Room : INotifyPropertyChanged
     {
         // Attributes
@@ -18,75 +18,6 @@ namespace SEATLibrary
         private int width;
         private int height;
 
-
-        // Events
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string info)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-            }
-        }
-
-
-        // Properties
-        public string RoomName
-        {
-            get { return roomName; }
-            set
-            {
-                if (value != this.roomName)
-                {
-                    roomName = value;
-                    NotifyPropertyChanged("RoomName");
-                }
-            }
-        }
-        public string Location
-        {
-            get { return location; }
-            set
-            {
-                if (value != this.location)
-                {
-                    location = value;
-                    NotifyPropertyChanged("Location");
-                }
-            }
-        }
-        public string Description
-        {
-            get { return description; }
-            set
-            {
-                if (value != this.description)
-                {
-                    description = value;
-                    NotifyPropertyChanged("Description");
-                }
-            }
-        }
-
-        public Chair[,] Chairs
-        {
-            get { return chairs; }
-        }
-
-        public int Width
-        {
-            get { return width; }
-        }
-        public int Height
-        {
-            get { return height; }
-        }
-        public ObservableCollection<Student> RoomStudents
-        {
-            get { return roomStudents; }
-        }
-
         // Constructors
         public Room()
         {
@@ -96,14 +27,14 @@ namespace SEATLibrary
             this.roomName = "Unknown";
             this.location = "Unknown";
             this.description = "Unknown";
-            roomStudents = new ObservableCollection<Student>();
-            chairs = new Chair[this.height, this.width];
+            this.roomStudents = new ObservableCollection<Student>();
+            this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
             {
                 for (int j = 0; j < this.width; j++)
                 {
-                    chairs[i, j] = new Chair();
+                    this.chairs[i, j] = new Chair();
                 }
             }
         }
@@ -116,14 +47,14 @@ namespace SEATLibrary
             this.roomName = "Unknown";
             this.location = "Unknown";
             this.description = "Unknown";
-            roomStudents = new ObservableCollection<Student>();
-            chairs = new Chair[this.height, this.width];
+            this.roomStudents = new ObservableCollection<Student>();
+            this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
             {
                 for (int j = 0; j < this.width; j++)
                 {
-                    chairs[i, j] = new Chair();
+                    this.chairs[i, j] = new Chair();
                 }
             }
         }
@@ -136,21 +67,21 @@ namespace SEATLibrary
             this.roomName = roomName;
             this.location = location;
             this.description = description;
-            roomStudents = new ObservableCollection<Student>();
-            chairs = new Chair[this.height, this.width];
+            this.roomStudents = new ObservableCollection<Student>();
+            this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
             {
                 for (int j = 0; j < this.width; j++)
                 {
-                    chairs[i, j] = new Chair();
+                    this.chairs[i, j] = new Chair();
                 }
             }
         }
 
         public Room(string file)
         {
-            roomStudents = new ObservableCollection<Student>();
+            this.roomStudents = new ObservableCollection<Student>();
 
             // Read in the XML document and load all of the data into memory
             XmlReader r = new XmlTextReader(file);
@@ -158,37 +89,38 @@ namespace SEATLibrary
             {
                 if (r.NodeType == XmlNodeType.Element && r.Name == "Room")
                 {
-                    //Read the room's attributes and make a new instance of a room
-                    width = Int32.Parse(r.GetAttribute("Width"));
-                    height = Int32.Parse(r.GetAttribute("Height"));
-                    roomName = r.GetAttribute("Name");
-                    location = r.GetAttribute("Location");
-                    description = r.GetAttribute("Description");
-                    chairs = new Chair[this.height, this.width];
+                    // Read the room's attributes and make a new instance of a room
+                    this.width = Int32.Parse(r.GetAttribute("Width"));
+                    this.height = Int32.Parse(r.GetAttribute("Height"));
+                    this.roomName = r.GetAttribute("Name");
+                    this.location = r.GetAttribute("Location");
+                    this.description = r.GetAttribute("Description");
+                    this.chairs = new Chair[this.height, this.width];
 
-                    //Get all of the information contained in a room
+                    // Get all of the information contained in a room
                     while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Room"))
                     {
                         r.Read();
-                        //Read in all of the chairs
+
+                        // Read in all of the chairs
                         if (r.NodeType == XmlNodeType.Element && r.Name == "Chairs")
                         {
                             while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Chairs"))
                             {
                                 r.Read();
-                                //Read in the information about a chair
+
+                                // Read in the information about a chair
                                 if (r.NodeType == XmlNodeType.Element && r.Name == "Chair")
                                 {
-                                    //Get the position of the chair in the room
+                                    // Get the position of the chair in the room
                                     int x = Int32.Parse(r.GetAttribute("PosX"));
                                     int y = Int32.Parse(r.GetAttribute("PosY"));
-                                    //For the student, we assume the chair is blank.
+
+                                    // For the student, we assume the chair is blank.
                                     Student s = null;
-                                    //Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                    Chairs[x, y] = new Chair(bool.Parse(r.GetAttribute("LeftHanded")),
-                                        Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")),
-                                        bool.Parse(r.GetAttribute("NonChair")), bool.Parse(r.GetAttribute("MustBeEmpty")),
-                                        r.GetAttribute("Name"), s);
+
+                                    // Replace the chair from the default constructor with the information contained in the stored version of the chair
+                                    this.Chairs[x, y] = new Chair(bool.Parse(r.GetAttribute("LeftHanded")), Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")), bool.Parse(r.GetAttribute("NonChair")), bool.Parse(r.GetAttribute("MustBeEmpty")), r.GetAttribute("Name"), s);
                                 }
                             }
                         }
@@ -197,47 +129,121 @@ namespace SEATLibrary
             }
         }
 
+        // Events
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        // Properties
+        public string RoomName
+        {
+            get
+            {
+                return this.roomName;
+            }
 
-        //Methods
-        public void runPlacementAlgorithmx(AssignmentVisitor algorithm)
+            set
+            {
+                if (value != this.roomName)
+                {
+                    this.roomName = value;
+                    this.NotifyPropertyChanged("RoomName");
+                }
+            }
+        }
+
+        public string Location
+        {
+            get
+            {
+                return this.location;
+            }
+
+            set
+            {
+                if (value != this.location)
+                {
+                    this.location = value;
+                    this.NotifyPropertyChanged("Location");
+                }
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return this.description;
+            }
+
+            set
+            {
+                if (value != this.description)
+                {
+                    this.description = value;
+                    this.NotifyPropertyChanged("Description");
+                }
+            }
+        }
+
+        public Chair[,] Chairs
+        {
+            get { return this.chairs; }
+        }
+
+        public int Width
+        {
+            get { return this.width; }
+        }
+
+        public int Height
+        {
+            get { return this.height; }
+        }
+
+        public ObservableCollection<Student> RoomStudents
+        {
+            get { return this.roomStudents; }
+        }
+
+        // Methods
+        public void RunPlacementAlgorithmx(AssignmentVisitor algorithm)
         {
             algorithm.placeStudents(this);
         }
 
-        public bool isRoomEmpty()
+        public bool IsRoomEmpty()
         {
             for (int i = 0; i < this.height; i++)
             {
                 for (int j = 0; j < this.width; j++)
                 {
-                    if (!chairs[i, j].isEmpty())
+                    if (!this.chairs[i, j].IsEmpty())
                     {
                         return false;
                     }
                 }
             }
+
             return true;
         }
 
-        public void writeRoomTemplate(string file)
+        public void WriteRoomTemplate(string file)
         {
             XmlWriter w = new XmlTextWriter(file, null);
             w.WriteStartDocument();
             w.WriteStartElement("SEATTEMPLATE"); // START SEATTEMPLATE
 
             w.WriteStartElement("Room"); // START ROOM
-            w.WriteAttributeString("Name", RoomName);
-            w.WriteAttributeString("Location", Location);
-            w.WriteAttributeString("Description", Description);
-            w.WriteAttributeString("Width", Width.ToString());
-            w.WriteAttributeString("Height", Height.ToString());
+            w.WriteAttributeString("Name", this.RoomName);
+            w.WriteAttributeString("Location", this.Location);
+            w.WriteAttributeString("Description", this.Description);
+            w.WriteAttributeString("Width", this.Width.ToString());
+            w.WriteAttributeString("Height", this.Height.ToString());
             w.WriteStartElement("Chairs"); // START CHAIRS
-            for (int j = 0; j < Height; j++)
+            for (int j = 0; j < this.Height; j++)
             {
-                for (int k = 0; k < Width; k++)
+                for (int k = 0; k < this.Width; k++)
                 {
-                    Chair c = Chairs[j, k];
+                    Chair c = this.Chairs[j, k];
                     w.WriteStartElement("Chair"); // START CHAIR
                     w.WriteAttributeString("PosX", j.ToString());
                     w.WriteAttributeString("PosY", k.ToString());
@@ -248,9 +254,10 @@ namespace SEATLibrary
                     w.WriteAttributeString("MustBeEmpty", c.MustBeEmpty.ToString());
                     w.WriteAttributeString("Name", c.SeatName);
                     w.WriteAttributeString("SUID", new Guid().ToString());
-                    w.WriteEndElement();//END CHAIR
+                    w.WriteEndElement(); // END CHAIR
                 }
             }
+
             w.WriteEndElement(); // END CHAIRS
             w.WriteEndElement(); // END ROOM
             w.WriteEndElement(); // END SEATTEMPLATE
@@ -258,11 +265,18 @@ namespace SEATLibrary
             w.Close();
         }
 
-
         public override string ToString()
         {
             return this.RoomName + " - " + this.Location;
         }
 
+        private void NotifyPropertyChanged(string info)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
     }
 }
+

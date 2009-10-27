@@ -61,7 +61,7 @@ namespace SEAT
                 {
                     student = new Student(txtFName.Text, txtLName.Text, txtSID.Text,
                         txtSection.Text, (bool)rbtnLeft.IsChecked, (bool)chkbxvision.IsChecked);
-                    Window1.manager.addStudentToRoster(student);
+                    Window1.manager.AddStudentToRoster(student);
                 }
                 else
                 {

@@ -1,17 +1,16 @@
-﻿using System;
-//using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SEATLibrary;
-
-namespace TestingApplication
+﻿namespace TestingApplication
 {
-    class Program
+    using System;
+    using System.Linq;
+    using System.Text;
+    using SEATLibrary;
+
+    public class Program
     {
         // Make an instance of the Command Line interface so we can do some testing on our class
         private static CLInterface cli = new CLInterface();
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // Make an instance of the seat manager, this is what we are going to use
             /*
@@ -20,9 +19,8 @@ namespace TestingApplication
             SeatManager sm = new SeatManager(file);
              */
             SeatManager sm = new SeatManager();
-            
 
-            String prompt = "";
+            string prompt = string.Empty;
             while (!prompt.Equals("exit"))
             {
                 Console.Clear();
@@ -45,10 +43,10 @@ namespace TestingApplication
                     Console.WriteLine("Displaying list of all of the rooms\n");
                     if (sm.RoomList.Count > 0)
                     {
-                        int selection = cli.selectRoomList(sm.RoomList);
+                        int selection = cli.SelectRoomList(sm.RoomList);
                         if (selection >= 0)
                         {
-                            cli.updateRoom(sm.RoomList[selection]);
+                            cli.UpdateRoom(sm.RoomList[selection]);
                         }
                         else
                         {
@@ -59,41 +57,42 @@ namespace TestingApplication
                     {
                         Console.WriteLine("No rooms available...");
                     }
-                    cli.waitForUserEnter();
+
+                    cli.WaitForUserEnter();
                 }
                 else if (prompt.Equals("2"))
                 {
                     Console.WriteLine("Displaying list of all of the students\n");
-                    cli.displayStudentRoster(sm.StudentList);
-                    cli.waitForUserEnter();
+                    cli.DisplayStudentRoster(sm.StudentList);
+                    cli.WaitForUserEnter();
                 }
                 else if (prompt.Equals("3"))
                 {
                     Console.WriteLine("Adding a student to the roster\n");
                     Console.WriteLine("Enter the following information for the student:");
-                    Student s = cli.getNewStudent();
-                    sm.addStudentToRoster(s);
-                    cli.waitForUserEnter();
+                    Student s = cli.GetNewStudent();
+                    sm.AddStudentToRoster(s);
+                    cli.WaitForUserEnter();
                 }
                 else if (prompt.Equals("4"))
                 {
                     Console.WriteLine("Adding a room");
-                    Room r = cli.getNewRoom();
-                    sm.addNewRoom(r);
-                    cli.waitForUserEnter();
+                    Room r = cli.GetNewRoom();
+                    sm.AddNewRoom(r);
+                    cli.WaitForUserEnter();
                 }
                 else if (prompt.Equals("5"))
                 {
                     Console.Write("Location of Template: ");
-                    String file = Console.ReadLine();
+                    string file = Console.ReadLine();
                     Room r = new Room(file);
-                    sm.addNewRoom(r);
+                    sm.AddNewRoom(r);
                 }
                 else if (prompt.Equals("6"))
                 {
                     Console.Write("File Name: ");
-                    String f = Console.ReadLine();
-                    sm.saveXml(f);
+                    string f = Console.ReadLine();
+                    sm.SaveXml(f);
                 }
                 else if (prompt.Equals("exit"))
                 {
@@ -102,13 +101,9 @@ namespace TestingApplication
                 else
                 {
                     Console.WriteLine("Invalid option...");
-                    cli.waitForUserEnter();
+                    cli.WaitForUserEnter();
                 }
-
             }
-
         }
-
-        
     }
 }
