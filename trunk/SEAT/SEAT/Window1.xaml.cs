@@ -79,7 +79,7 @@ namespace SEAT
             if (result == true)
             {
                 // Open document
-                Window1.manager.saveXml(dlg.FileName);
+                Window1.manager.SaveXml(dlg.FileName);
             }
         }
 
