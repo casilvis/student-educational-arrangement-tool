@@ -5,9 +5,9 @@
     using System.Linq;
     using System.Text;
 
-    public class AssignmentClearRoom: AssignmentVisitor
+    public class AssignmentClearRoom : AssignmentVisitor
     {
-        public override void placeStudents(Room room)
+        public override void PlaceStudents(Room room)
         {
             for (int i = 0; i < room.Width; i++)
             {
