@@ -118,9 +118,11 @@
 
                                     // For the student, we assume the chair is blank.
                                     Student s = null;
-
-                                    // Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                    this.Chairs[x, y] = new Chair(bool.Parse(r.GetAttribute("LeftHanded")), Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")), bool.Parse(r.GetAttribute("NonChair")), bool.Parse(r.GetAttribute("MustBeEmpty")), r.GetAttribute("Name"), s);
+                                    //Replace the chair from the default constructor with the information contained in the stored version of the chair
+                                    Chairs[y,x] = new Chair(Boolean.Parse(r.GetAttribute("LeftHanded")),
+                                        Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")),
+                                        Boolean.Parse(r.GetAttribute("NonChair")), Boolean.Parse(r.GetAttribute("MustBeEmpty")),
+                                        r.GetAttribute("Name"), s);
                                 }
                             }
                         }

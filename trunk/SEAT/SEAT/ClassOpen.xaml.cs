@@ -24,13 +24,7 @@ namespace SEAT
         public ClassOpen()
         {
             InitializeComponent();
-        }
-        public ClassOpen(Room room)
-        {
-            InitializeComponent();
-            frmGrid Grid = new frmGrid(room, true);
-            Grid.ShowDialog();
-            this.Close();
+            this.Title = "Room creator";
         }
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
@@ -63,9 +57,9 @@ namespace SEAT
                         this.Close();
                     }
                 }
-                catch 
+                catch (Exception a)
                 {
-                    MessageBox.Show("Invalid path");
+                    MessageBox.Show("Invalid path"/*+a*/);
                 }
             }
         }
@@ -84,9 +78,7 @@ namespace SEAT
             // Process open file dialog box results
             if (result == true)
             {
-                // Open document
                 txtPath.Text= dlg.FileName;
-                //Window1.manager.AddNewRoom(dlg.FileName);
             }
         }
     }

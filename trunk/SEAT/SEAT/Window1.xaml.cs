@@ -25,6 +25,7 @@ namespace SEAT
         public Window1()
         {
             InitializeComponent();
+            this.Title = "SEAT Manager";
             lbxRooms.ItemsSource = Window1.manager.RoomList;
             lbxRoster.ItemsSource = Window1.manager.StudentList;
         }
@@ -108,6 +109,13 @@ namespace SEAT
             {
                 frmGrid Grid = new frmGrid(lbxRooms.SelectedValue as Room, true);
                 Grid.ShowDialog();
+            }
+        }
+        private void deletestudent(object sender, RoutedEventArgs e)
+        {
+          //  if (e.Key == System.Windows.Input.Key.Delete)
+            {
+        //        manager. create a remove student and remove room function
             }
         }
     }
