@@ -433,7 +433,7 @@ namespace SEAT
             if (result == true)
             {
                 // Open document
-                Window1.manager.SaveXml(dlg.FileName);
+                Window1.SManager.SaveXml(dlg.FileName);
             }           
         }
 
