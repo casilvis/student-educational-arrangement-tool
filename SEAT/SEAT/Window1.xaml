@@ -36,7 +36,7 @@
                     <Button Height="23" Width="75" Name="btnaddstudent"  Click="btnaddstudent_Click">Add</Button>
                     <Button Height="23" Name="btneditstudent" Click="btneditstudent_Click">Edit</Button>
                 </DockPanel>
-                <ListBox Name="lbxRoster" ItemTemplate="{StaticResource itemTemplateRoster}">
+                <ListBox Name="lbxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" KeyDown="deletestudent">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <EventSetter Event="MouseDoubleClick" Handler="btneditstudent_Click" />

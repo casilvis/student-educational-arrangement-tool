@@ -49,9 +49,8 @@ namespace SEAT
                 this.Background = Brushes.White;
             }
             lblName.Content = chair.SeatName;
+            chkSelected.Margin = new Thickness(chair.LrPosition * 15, chair.FbPosition * 15, 0, 0);
 
-           // if(chair.FbPosition)
-           // if(chair.LrPosition)
             
         }
         public Chair chair { get { return mychair; } }
