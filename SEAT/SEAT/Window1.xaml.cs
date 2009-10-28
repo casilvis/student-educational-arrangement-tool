@@ -1,27 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SEATLibrary;
-
-
-namespace SEAT
+﻿namespace SEAT
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    using SEATLibrary;
+
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class Window1 : Window
     {
-        public static SeatManager manager = new SeatManager();
+        private static SeatManager manager = new SeatManager();
+
         public Window1()
         {
             InitializeComponent();
@@ -30,7 +30,12 @@ namespace SEAT
             lbxRoster.ItemsSource = Window1.manager.StudentList;
         }
 
-        private void btnaddroom_Click(object sender, RoutedEventArgs e)
+        public static SeatManager SManager
+        {
+            get { return Window1.manager; }
+        }
+
+        private void ButtonAddRoom_Click(object sender, RoutedEventArgs e)
         {
             ClassOpen classroom = new ClassOpen();
             classroom.ShowDialog();
@@ -89,13 +94,13 @@ namespace SEAT
             MessageBox.Show("Exit not implemented");
         }
 
-        private void btnaddstudent_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddStudent_Click(object sender, RoutedEventArgs e)
         {
             StudentAdd student = new StudentAdd();
             student.ShowDialog();
         }
 
-        private void btneditstudent_Click(object sender, RoutedEventArgs e)
+        private void ButtonEditStudent_Click(object sender, RoutedEventArgs e)
         {
             if (lbxRoster.SelectedValue != null)
             {
@@ -103,20 +108,25 @@ namespace SEAT
                 student.ShowDialog();
             }
         }
-        private void btneditroom_Click(object sender, RoutedEventArgs e)
+
+        private void ButtonEditRoom_Click(object sender, RoutedEventArgs e)
         {
             if (lbxRooms.SelectedValue != null)
             {
-                frmGrid Grid = new frmGrid(lbxRooms.SelectedValue as Room, true);
-                Grid.ShowDialog();
+                frmGrid grid = new frmGrid(lbxRooms.SelectedValue as Room, true);
+                grid.ShowDialog();
             }
         }
-        private void deletestudent(object sender, RoutedEventArgs e)
+
+        private void DeleteStudent(object sender, RoutedEventArgs e)
         {
-          //  if (e.Key == System.Windows.Input.Key.Delete)
+            // NOT IMPLEMENTED YET
+            /*
+            if (e.Key == System.Windows.Input.Key.Delete)
             {
-        //        manager. create a remove student and remove room function
+                manager. create a remove student and remove room function
             }
+             */
         }
     }
 }

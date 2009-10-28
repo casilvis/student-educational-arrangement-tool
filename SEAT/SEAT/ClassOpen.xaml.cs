@@ -38,7 +38,7 @@ namespace SEAT
                 if (column.Length > 0 && row.Length > 0)
                 {
                     Room classroom = new Room(Convert.ToInt32(row), Convert.ToInt32(column));
-                    Window1.manager.AddNewRoom(classroom);
+                    Window1.SManager.AddNewRoom(classroom);
                     frmGrid Grid = new frmGrid(classroom, true);
                     Grid.Show();
                     this.Close();
@@ -51,7 +51,7 @@ namespace SEAT
                     if (txtPath.Text != "")
                     {
                         Room classroom = new Room(txtPath.Text);
-                        Window1.manager.AddNewRoom(classroom);
+                        Window1.SManager.AddNewRoom(classroom);
                         frmGrid Grid = new frmGrid(classroom, true);
                         Grid.Show();
                         this.Close();
@@ -59,7 +59,7 @@ namespace SEAT
                 }
                 catch (Exception a)
                 {
-                    MessageBox.Show("Invalid path"/*+a*/);
+                    MessageBox.Show("Invalid path " + a.ToString());
                 }
             }
         }
