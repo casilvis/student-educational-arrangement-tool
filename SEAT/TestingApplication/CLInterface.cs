@@ -46,7 +46,7 @@
             {
                 for (int i = 0; i < list.Count; i++)
                 {
-                    Console.WriteLine(list[i].Tostring());
+                    Console.WriteLine(list[i].ToString());
                 }
             }
         }
@@ -225,7 +225,7 @@
                 Console.Write((i + 1) + "\t");
                 for (int j = 0; j < r.Width; j++)
                 {
-                    Console.Write(r.Chairs[i, j].Tostring() + "\t");
+                    Console.Write(r.Chairs[i, j].ToString() + "\t");
                 }
 
                 Console.WriteLine();
