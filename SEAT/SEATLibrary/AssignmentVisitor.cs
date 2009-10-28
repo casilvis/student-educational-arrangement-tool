@@ -7,6 +7,6 @@
 
     public abstract class AssignmentVisitor
     {
-        public abstract void placeStudents(Room room);
+        public abstract void PlaceStudents(Room room);
     }
 }

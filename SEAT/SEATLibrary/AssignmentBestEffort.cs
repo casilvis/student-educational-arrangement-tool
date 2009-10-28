@@ -5,9 +5,9 @@
     using System.Linq;
     using System.Text;
 
-    public class AssignmentBestEffort: AssignmentVisitor
+    public class AssignmentBestEffort : AssignmentVisitor
     {
-        public override void placeStudents(Room room)
+        public override void PlaceStudents(Room room)
         {
             throw new NotImplementedException();
         }

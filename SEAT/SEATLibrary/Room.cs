@@ -209,7 +209,7 @@
         // Methods
         public void RunPlacementAlgorithmx(AssignmentVisitor algorithm)
         {
-            algorithm.placeStudents(this);
+            algorithm.PlaceStudents(this);
         }
 
         public bool IsRoomEmpty()
