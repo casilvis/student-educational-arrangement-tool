@@ -59,6 +59,67 @@ testing effort. Use McCabe Software or equivalent form open sources.*
 The total McCabe/Cyclomatic Complexity for our GUI part of the project is 223, for the library created is 154, and for the command line version is 74.refer to [http://student-educational-arrangement-tool.googlecode.com/files/SoftwareMetrics.xls Full Printout From Visual Studio] or look at this image to better understand.
 [http://student-educational-arrangement-tool.googlecode.com/files/SoftwareMetrics.JPG]
 <br>
+The ones with # are what would be White-Box testing<br>
+The ones with \ are what would be Black-Box testing<br>
+The ones with % are what would be Functional testing<br>
+The ones with ^ are what would be Structural testing<br>
+
+Import student Roster:<br>
+	* ^%User imports Roster
+	* #User gives a bad file path
+	* \User gives a bad file format/corrupt file
+
+Update student information:<br>
+	* #User updates info and clicks submit
+	* %\User updates and exits
+	* ^User doesn't update
+
+Add room:<br>
+	* ^User exits before room is created
+	* %User creates room 
+	* %User loads room 
+	* #User loads with bad file path
+	* \User loads with bad file format/currupt file
+	
+Customize room:<br>
+	* ^User clicks done
+	* ^User exits
+	* %User edits then exits
+	* %User edits then clicks done
+	* %\User edits then saves then exits
+	* #User edits then saves then clicks done
+
+Add students to room:<br>
+	* %User adds new student to room
+	* \User adds same student to room
+	* #User adds more students than seats to room
+
+Manually place students in seats:<br>
+	* %User selects new seat and new student
+	* ^User selects used seat and new student
+	* ^User selects new seat and used student
+	* #\User selects used seat and used student
+
+Fill in seats using algorithm:<br>
+	* %Clicks button
+	* %#\Chooses type of fill then clicks button
+
+Print a report:<br>
+	%#\Clicks button
+
+The white-box testing paths:<br>
+	* #User gives a bad file path			not implemented yet
+	* #User updates info and clicks submit		StudentAdd,SeatManager,Window1
+	* #User loads with bad file path			btnBrowse_Click,error
+	* #User edits then saves then clicks done		frmGrid,Seatmanager,Room,Window1
+	* #User adds more students than seats to room	not implemented yet
+	* #\User selects used seat and used student	not implemented yet
+	* %#\Chooses type of fill then clicks button	not implemented yet
+	* %#\Clicks button				not implemented yet
+<br>
+The black-box tests and the white-box tests should cover most of our code. Because of this we should be able to get a significant amount of our errors out before we are done. This should cover about 80-90% of our code.
+
+<br>
 <hr />
 == Question 5 ==
 *5. Calculate the total effort spent by October 28, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the
