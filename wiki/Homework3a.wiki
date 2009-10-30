@@ -4,19 +4,21 @@
 
 HOMEWORK 3A DUE not later than Oct 28, 2009
 
-
+== Question 1 ==
 *1. Define a Fishbone Diagram (Ishikawa diagram, Cause-Effect diagram) appropriate to your project. Mark on this diagram priorities for different use cases.
 Create operational profiles for software components or modules or subsystems. Also identify where normal use, misuse and abuse cases could arise and hence enable
 test case planning.*
 
 <img src="http://img.photobucket.com/albums/v252/Ziptnf/fishbone.jpg"></img>
 
-
+<hr />
+== Question 2 ==
 *2. Write out your test plans in terms of documented test suites, appropriate test data sets. Identify these plans for unit, integration and system tests. Mark the Most Important
 Tests.*
 
 
-
+<hr />
+== Question 3 ==
 *3. Create or revisit and revise (if created in Homework 2), a list of major error categories for your project. (Recall these are not just the compiler errors. These are design errors, process mismatches, plan changes and mismatches, documentation faults, version changes, architectural glitches etc. Think of the various life cycle phases.) Track these errors and log these as these errors occur. Note their categories (types). Also, note when these errors were removed. Note if the integrity of the specific test plan was adhered to or violated. Were major code changes made as a result of testing and if so, did these change the nature of your test plans? Specifically. for each defect:*<br>
 *a. - A description of each defect(if not already given)*<br>
 *b. - The location of the defect in terms of the class or method in which the defect occurred(if not already given)*<br>
@@ -46,6 +48,9 @@ Tests.*
 *b)* SEATLibrary1<br>
 *c)* 1 hour
 
+
+<hr />
+== Question 4 ==
 *4. Calculate the McCabe complexity. From the Program graphs (object diagrams, dynamic models, functional models, CRC graphs etc. ), generate the minimal number of test cases
 for each use case. Identify these test cases as functional or structural, black box, white box etc. For white box testing identify the paths through the modules. Relate the number
 of these test cases to the design complexity. Document your testing plans and estimate the testing effort. Based on your Most Important Tests, declare a target coverage for the
@@ -54,15 +59,25 @@ testing effort. Use McCabe Software or equivalent form open sources.*
 The total McCabe/Cyclomatic Complexity for our GUI part of the project is 223, for the library created is 154, and for the command line version is 74.refer to [http://student-educational-arrangement-tool.googlecode.com/files/SoftwareMetrics.xls Full Printout From Visual Studio] or look at this image to better understand.
 [http://student-educational-arrangement-tool.googlecode.com/files/SoftwareMetrics.JPG]
 <br>
-
-
+<hr />
+== Question 5 ==
 *5. Calculate the total effort spent by October 28, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the
 project and the testing effort. Plot these by month and by individuals in the team.*
-<br>*by month:* <br>
-September=12hr //add your month totals to these<br>
-October=15.5hr//add your month totals to these<br>
-*by Person:*<br>
-Justin=27.5hr<br>
-Jared =<br>
-Brian =<br>
-Nick  =<br>
+
+=== Total Effort by Month for Entire Group: ===
+
+ * September=12hr (Justin) + 9hr (Jared) = 21hr (total)
+ * October=15.5hr (Justin) + 4.5 (Jared) = 20hr (total)
+
+http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x150&chf=bg,s,ffffff&cht=p&chd=t:51.21,48.78&chl=September|October&chco=0000ff,ff0000&nonsense=something.png
+
+=== Total Effort by Person: ===
+ * Justin= 27.5hr
+ * Jared = 13.5hr
+ * Brian =
+ * Nick  =
+
+http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|1:|0.00|13.75|27.50&cht=bvs&chd=t:100.00,0.00,49.09,0.00&chco=ff0000&chbh=50&nonsense=something.png
+
+=== Object Oriented Software Metrics ==
+// This part still needs to be finished
