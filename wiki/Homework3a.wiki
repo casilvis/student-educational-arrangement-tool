@@ -141,4 +141,8 @@ http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x1
 http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|1:|0.00|13.75|27.50&cht=bvs&chd=t:100.00,0.00,49.09,0.00&chco=ff0000&chbh=50&nonsense=something.png
 
 === Object Oriented Software Metrics ==
-// This part still needs to be finished
+http://chart.apis.google.com/chart?chtt=SEAT:+Lines+of+Code&chts=000000,12&chs=400x150&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|App|ClassOpen|frmGrid|Seat|StudentAdd|Window1|1:|0.00|162.50|325.00&cht=bvs&chd=t:1.23,15.69,100.00,8.92,16.30,22.76&chco=0000ff&chbh=50&nonsense=something.png
+
+http://chart.apis.google.com/chart?chtt=SEATLibrary:+Lines+of+Code&chts=000000,12&chs=400x150&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Chair|Room|SeatManager|Student|1:|0.00|59.00|118.00&cht=bvs&chd=t:35.59,100.00,96.61,60.16&chco=ff0000&chbh=50&nonsense=something.png
+
+http://chart.apis.google.com/chart?chtt=TestingApplication:+Lines+of+Code&chts=000000,12&chs=400x150&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|CLInterface|Program|1:|0.00|65.00|130.00&cht=bvs&chd=t:100.00,47.69&chco=00ff00&chbh=50&nonsense=something.png
