@@ -55,11 +55,19 @@ testing effort. Use McCabe Software or equivalent form open sources.*
 
 *5. Calculate the total effort spent by October 28, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the
 project and the testing effort. Plot these by month and by individuals in the team.*
-<br>*by month:* <br>
-September=12hr //add your month totals to these<br>
-October=15.5hr//add your month totals to these<br>
-*by Person:*<br>
-Justin=27.5hr<br>
-Jared =<br>
-Brian =<br>
-Nick  =<br>
+by month: 
+
+Total Effort by Month for Entire Group:
+
+*September=12hr (Justin) + 9hr (Jared) = 21hr (total)
+*October=15.5hr (Justin) + 4.5 (Jared) = 20hr (total)
+
+<img src="http://chart.apis.google.com/chart?chtt=Effort+by+Month&amp;chts=000000,12&amp;chs=300x150&amp;chf=bg,s,ffffff&amp;cht=p&amp;chd=t:51.21,48.78&amp;chl=September|October&amp;chco=0000ff,ff0000" alt="Google Chart"/>
+
+Total Effort by Person:
+*Justin= 27.5hr
+*Jared = 13.5hr
+*Brian =
+*Nick  =
+
+<img src="http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&amp;chts=000000,12&amp;chs=300x200&amp;chf=bg,s,ffffff|c,s,ffffff&amp;chxt=x,y&amp;chxl=0:|Justin|Brian|Jared|Nick|1:|0.00|13.75|27.50&amp;cht=bvs&amp;chd=t:100.00,0.00,49.09,0.00&amp;chco=ff0000&amp;chbh=50" alt="Google Chart"/>
