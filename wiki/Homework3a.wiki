@@ -135,8 +135,8 @@ http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x1
 === Total Effort by Person: ===
  * Justin= 27.5hr
  * Jared = 13.5hr
- * Brian =
- * Nick  =
+ * Brian = 
+ * Nick  = 4 hrs
 
 http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|1:|0.00|13.75|27.50&cht=bvs&chd=t:100.00,0.00,49.09,0.00&chco=ff0000&chbh=50&nonsense=something.png
 
