@@ -138,7 +138,7 @@ http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x1
  * Brian = 
  * Nick  = 4 hrs
 
-http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|1:|4.00|13.75|27.50&cht=bvs&chd=t:100.00,0.00,49.09,15.00&chco=ff0000&chbh=50&nonsense=something.png
+http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|1:|0.00|13.75|27.50&cht=bvs&chd=t:100.00,0.00,49.09,15.00&chco=ff0000&chbh=50&nonsense=something.png
 
 === Object Oriented Software Metrics ==
 http://chart.apis.google.com/chart?chtt=SEAT:+Lines+of+Code&chts=000000,12&chs=400x150&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|App|ClassOpen|frmGrid|Seat|StudentAdd|Window1|1:|0.00|162.50|325.00&cht=bvs&chd=t:1.23,15.69,100.00,8.92,16.30,22.76&chco=0000ff&chbh=50&nonsense=something.png
