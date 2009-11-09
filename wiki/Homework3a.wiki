@@ -16,6 +16,21 @@ test case planning.*
 *2. Write out your test plans in terms of documented test suites, appropriate test data sets. Identify these plans for unit, integration and system tests. Mark the Most Important
 Tests.*
 
+The test plan for SEAT consists of unit testing for each component.  The software architecture implements MVC which separates the underlying logic from the user interface.  In parallel to a graphical user interface, a command line application is being developed which is designed to do the unit testing.  The command line interface does not expose all of the functionality of the program, but is able to perform all of the main functions.
+
+The integration testing is primarily the communication between the underlying library and the graphical user interface.  Much of the logic of the program is implemented in the GUI to produce the proper interfaces for the user and execute the correct actions.
+
+The most important task will be performing all of the various actions that can be taken from the application.  These include
+ * Adding a student
+ * Updating a student
+ * Importing a student roster
+ * Adding a room
+ * Updating room
+ * Saving a room as a template
+ * Creating a room from a template
+ * Editing a chair in a room
+ * Adding a student to a room roster
+ * Adding a student to a specific chair in a room
 
 <hr />
 == Question 3 ==
