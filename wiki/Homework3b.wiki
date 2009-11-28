@@ -20,7 +20,26 @@ HOMEWORK 3B DUE Nov 30, 2009
 
 *9. Calculate the total effort spent by Nov 30, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the project and the testing effort. Plot these by month and by individuals in the team. Add up the size of all test-stubs and drivers. Express it as a percentage of the total delivered code. What was the size of the maximum code When did it occur?*
 
+=== Total Effort by Month for Entire Group: ===
 
+ * September = 12hr (Justin) + 9hr (Jared) = 21hr (total)
+ * October = 15.5hr (Justin) + 4.5 (Jared) = 20hr (total)
+ * November = (TODO: This number needs to be updated)
+
+http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x150&chf=bg,s,ffffff&cht=p&chd=t:51.21,48.78,0.00&chl=September|October|November&chco=0000ff,ff0000&nonsense=something.png
+
+(TODO: Update Pie Chart)
+
+=== Total Effort by Person: ===
+
+ * Justin= 27.5hr (TODO: Add November hours)
+ * Jared = 13.5hr (TODO: Add November hours)
+ * Brian = (TODO: Add November hours)
+ * Nick  = 4 hrs(TODO: Add November hours)
+
+http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|1:|0.00|13.75|27.50&cht=bvs&chd=t:100.00,0.00,49.09,15.00&chco=ff0000&chbh=50&nonsense=something.png
+
+(TODO: Update Bar Graph)
 
 
 *10. Discuss effort estimation at different milestones in the project. Analyze and discover the relations between the metrics of different phases of the software. Identify the configuration items needed in your project.. Tabulate the number of revisions, versions or changes you made. Check your logs and document how the timeline of changes actually occurred. Explain how the target test coverage was met adequately or not. What were the software engineering reasons?*
@@ -29,5 +48,3 @@ HOMEWORK 3B DUE Nov 30, 2009
 
 
 *11. Identify critical stages in the process and discuss the process management issues in your project. Do you have unfinished work that can be easily taken over by another team? Is your documentation supportive of this task? What maintenance, security and upgrading measures are in the finished product? What is the estimate of potential maintenance work as you conclude your project and hand it over to the next team or phase? How would you characterize the reliability of your product?*
-
-
