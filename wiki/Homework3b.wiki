@@ -24,21 +24,21 @@ HOMEWORK 3B DUE Nov 30, 2009
 === Total Effort by Month for Entire Group: ===
 
  * September = 12hr (Justin) + 9hr (Jared) = 21hr (total)
- * October = 15.5hr (Justin) + 4.5 (Jared) = 20hr (total)
- * November = (TODO: This number needs to be updated)
+ * October = 15.5hr (Justin) + 4.5 (Jared) + 4hr (Nick) = 24hr (total)
+ * November = 1hr (Jared) (TODO: This number needs to be updated)
 
-http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x150&chf=bg,s,ffffff&cht=p&chd=t:51.21,48.78,0.00&chl=September|October|November&chco=0000ff,ff0000&nonsense=something.png
+http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x150&chf=bg,s,ffffff&cht=p&chd=t:21,24,1&chl=September|October|November&chco=0000ff,ff0000&nonsense=something.png
 
 (TODO: Update Pie Chart)
 
 === Total Effort by Person: ===
 
  * Justin= 27.5hr (TODO: Add November hours)
- * Jared = 13.5hr (TODO: Add November hours)
+ * Jared = 14.5hr
  * Brian = (TODO: Add November hours)
  * Nick  = 4 hrs(TODO: Add November hours)
 
-http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|1:|0.00|13.75|27.50&cht=bvs&chd=t:100.00,0.00,49.09,15.00&chco=ff0000&chbh=50&nonsense=something.png
+http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|&cht=bvs&chd=t:27.5,14.5,0.0,4.0&chco=ff0000&chbh=50&nonsense=something.png
 
 (TODO: Update Bar Graph)
 
