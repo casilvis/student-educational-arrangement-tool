@@ -59,4 +59,14 @@ The testing still needs to cover the placement of the students.  With this aspec
 
 *11. Identify critical stages in the process and discuss the process management issues in your project. Do you have unfinished work that can be easily taken over by another team? Is your documentation supportive of this task? What maintenance, security and upgrading measures are in the finished product? What is the estimate of potential maintenance work as you conclude your project and hand it over to the next team or phase? How would you characterize the reliability of your product?*
 
-(TODO: Answer Question 11)
+Critical stages:<br>
+When we got the database end working for students.<br>
+When we got the command line version of the room generator working. <br>
+When we got the GUI part of the room generator working.  <br>
+^When the students can be added to classrooms.  <br>
+^When the students are actually placed in seats.  <br>
+^When we can print out room rosters and desk places. <br>
+ <br>
+^=not yet reached  <br>
+ <br>
+We haven't been able to get students into rooms yet which hinders us from being able to print out stuff. This could be taken over but we are hoping to atleast complete the students in seats and students in classrooms thing before we present. The documentation is helpful, but will need some work to allow for the concepts to be passed along. We do have the requirements written out pretty nicely though so unless these change, it shouldn't be hard to do. The maintenance once it is done should be more likely just upgrading. Security doesn't exist so if people want the class information to be safer, there could be some encryption put into the save and load files. Upgrading will simply just be adding extra features or trying to make the program run faster than it does now. Potential maintenance work as stated is more  likely upgrading as the system calls for it. Given this, it means that it should be close to nothing. The reliability of the program in command mode is very bad. This was created mostly for testing, so there aren't try catch statements which means it is very likely to crash. Since we are actually working on the GUI this is ok. The GUI is much better and more stable from what we can see. It seems to do what we expected from the system, so unless we have missed parts, the code written executes well. If you save when things are created, then there should be no problem restoring the files. So the reliability of the GUI is good, but the command line is bad.
