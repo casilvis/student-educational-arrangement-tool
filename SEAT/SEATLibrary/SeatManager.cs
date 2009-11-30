@@ -11,12 +11,14 @@
         // Attributes 
         private ObservableCollection<Student> students;
         private ObservableCollection<Room> rooms;
+        private string file;
 
         // Constructors
         public SeatManager()
         {
             this.students = new ObservableCollection<Student>();
             this.rooms = new ObservableCollection<Room>();
+            file = null;
         }
 
         public SeatManager(string file)
@@ -24,6 +26,7 @@
             // Initialize the variables
             this.students = new ObservableCollection<Student>();
             this.rooms = new ObservableCollection<Room>();
+            this.file = file;
 
             // Read in the XML document and load all of the data into memory
             XmlReader r = new XmlTextReader(file);
@@ -173,8 +176,22 @@
             return false;
         }
 
+        public bool SaveXml()
+        {
+            if (file != null)
+            {
+                SaveXml(file);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void SaveXml(string file)
         {
+            this.file = file;
             XmlWriter w = new XmlTextWriter(file, null);
             w.WriteStartDocument();
             w.WriteStartElement("SEAT"); // START SEAT

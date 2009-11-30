@@ -28,6 +28,13 @@
                 <Separator></Separator>
                 <MenuItem Header="_Exit" Name="FileMenuExit" Click="FileMenuExit_Click" />
             </MenuItem>
+            <MenuItem Header="_Students">
+                <MenuItem Header="_Import Roster" Click="ImportRoster_Click"/>
+                <MenuItem Header="_View Roster"/>
+            </MenuItem>
+            <MenuItem Header="_Reports">
+                <MenuItem Header="_Print Seating Chart"/>
+            </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" Click="DisplayAboutWindow"/>
             </MenuItem>
