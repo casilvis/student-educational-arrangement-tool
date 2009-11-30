@@ -18,12 +18,12 @@
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
-        <DockPanel>
+    <DockPanel>
         <Menu Height="22" Name="menu1" VerticalAlignment="Top" DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New" Name="FileMenuNew" Click="FileMenuNew_Click" InputGestureText="Ctrl+N" />
-                <MenuItem Header="_Open..." Name="FileMenuOpen" Click="FileMenuOpen_Click" InputGestureText="Ctrl+O" />
-                <MenuItem Header="_Save" Name="FileMenuSave" Click="FileMenuSave_Click" InputGestureText="Ctrl+S" />
+                <MenuItem Header="_New" Name="FileMenuNew" Command="ApplicationCommands.New" InputGestureText="Ctrl+N" />
+                <MenuItem Header="_Open..." Name="FileMenuOpen" Command="ApplicationCommands.Open" InputGestureText="Ctrl+O" />
+                <MenuItem Header="_Save" Name="FileMenuSave" Command="ApplicationCommands.Save" InputGestureText="Ctrl+S" />
                 <MenuItem Header="_Save As..." Name="FileMenuSaveAs" Click="FileMenuSaveAs_Click" />
                 <Separator></Separator>
                 <MenuItem Header="_Exit" Name="FileMenuExit" Click="FileMenuExit_Click" />
