@@ -2,6 +2,8 @@
 
 =Journal=
 
+11/29/09 - Investigated design options for placement algorithms (1 hour)
+
 10/27/09 - Corrected the style of the SEATLibrary using StyleCop so that the code will be more maintainable. (1.5 hours)
 
 10/19/09 - Implemented INotifyPropertyChanged event for objects that are used in the GUI.  Added necessary XAML to access these properties in the interface.  The GUI now properly reflects the underlying model. (1 hour)
