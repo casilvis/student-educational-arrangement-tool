@@ -6,7 +6,23 @@ HOMEWORK 3B DUE Nov 30, 2009
 
 *6. Plot these tracking metrics using EXCEL or other spread sheet programs as appropriate. Plot errors discovered by date. This will give you a graph to compute the error rate. Also, plot the rate of removal of errors. Calculate the mean and variance of the delays in defect removal. Explain extreme cases as part of the data-mining task.*
 
-(TODO: Answer Question 6 - Justin and Jared)
+Sep 30th Incorrect scope for classes prevented project from compilign-critical<br>
+Oct 05th error infinate loop in code fixed that day-critical<br>
+Oct 07th fixed design flaw where collections were incorrectly used in place of ObservableCollections-serious<br>
+Oct 16th rows and columns were switched-fixed the day it was found-serious<br>
+Oct 19th GUI ListBoxes now properly updated (INotifyPropertyChanged)-serious<br>
+Oct 26th StyleCop warnings fixed that day-'silly'<br>
+Oct 27th syntax error fixed that day-'silly'<br>
+Oct 28th error fixed that day-serious<br>
+mean time to failure = MTTF=24x(30+31+30)/Ec(t)=364hours=15days 4hours<br>
+Ec(t) = Ed(t), Er(t) = ET - Ec(t)<br>
+Ec(t)=errors corrected<br>
+Ed(t) errors detected at time t in project<br>
+Er(t)=errors left<br>
+Mean and Variance are: (1+1+1+1+1+1+1+1)/8=1 day and (1x1+1x1+1x1+1x1+1x1+1x1+1x1+1x1)/8=1 day<br>
+
+ 
+(TODO: Finish Question 6 - Justin and Jared)
 
 
 *7. From your testing data, mark on the Fishbone diagram, the actual statistics you followed to determine faults/failures. For the Function Points of your projects, determine the corresponding errors. From your log books determine the effort spent in development for each function point. Did you predict this testing effort in February? Did you use any (formal) model to predicted effort? Which one and how? The Fishbone diagram helps in the datamining of the Software faults data. What other software engineering knowledge discoveries can you note?*
