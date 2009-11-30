@@ -28,6 +28,24 @@
             this.Title = "SEAT Manager";
             lbxRooms.ItemsSource = Window1.manager.RoomList;
             lbxRoster.ItemsSource = Window1.manager.StudentList;
+
+            // Creating a KeyBinding between the Open command and Ctrl-O
+            KeyBinding openCmdKeyBinding = new KeyBinding(ApplicationCommands.Open, Key.O, ModifierKeys.Control);
+            this.InputBindings.Add(openCmdKeyBinding);
+            CommandBinding openCmdBinding = new CommandBinding(ApplicationCommands.Open, OpenCmdExecuted);
+            this.CommandBindings.Add(openCmdBinding);
+
+            // Creating a KeyBinding between the Save command and Ctrl-S
+            KeyBinding saveCmdKeyBinding = new KeyBinding(ApplicationCommands.Save, Key.S, ModifierKeys.Control);
+            this.InputBindings.Add(saveCmdKeyBinding);
+            CommandBinding saveCmdBinding = new CommandBinding(ApplicationCommands.Save, SaveCmdExecuted);
+            this.CommandBindings.Add(saveCmdBinding);
+
+            // Creating a KeyBinding between the New command and Ctrl-N
+            KeyBinding newCmdKeyBinding = new KeyBinding(ApplicationCommands.New, Key.N, ModifierKeys.Control);
+            this.InputBindings.Add(saveCmdKeyBinding);
+            CommandBinding newCmdBinding = new CommandBinding(ApplicationCommands.New, NewCmdExecuted);
+            this.CommandBindings.Add(newCmdBinding);
         }
 
         public static SeatManager SManager
@@ -41,12 +59,15 @@
             classroom.ShowDialog();
         }
 
-        private void FileMenuNew_Click(object sender, RoutedEventArgs e)
+        private void NewCmdExecuted(object sender, RoutedEventArgs e)
         {
+            // ADD SOME CODE HERE TO MAKE SURE YOU DON'T DELETE UNSAVED DATA!
             Window1.manager = new SeatManager();
+
+            // ALL OF THE LIST BOXES NEED TO BE BOUND PROPERLY AGAIN!
         }
 
-        private void FileMenuOpen_Click(object sender, RoutedEventArgs e)
+        private void OpenCmdExecuted(object target, ExecutedRoutedEventArgs e)
         {
             // Configure open file dialog box
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -66,7 +87,7 @@
             }
         }
 
-        private void FileMenuSave_Click(object sender, RoutedEventArgs e)
+        private void SaveCmdExecuted(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Save not implemented");
         }
