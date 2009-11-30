@@ -32,7 +32,7 @@ Mean and Variance are: (1+1+1+1+1+1+1+1)/8=1 day and (1x1+1x1+1x1+1x1+1x1+1x1+1x
 
 *8. Design and note all test-stub drivers for test instrumentation. Write the extent to which you have test coverage. What types of coverage do you have for the object oriented part of your design? Give an overall measure based on these measurements for the quality of testing. Discuss which tool you used, such as JUNIT, or NUNIT or some other Testing tool.*
 
-(TODO: Answer Question 8 - Brian)
+Test coverage has been growing side by side with the implemented features list. Our final two milestones, the seating algorithms and the printable report, have yet to be completed, and have yet to be tested. Unfortunately these are both very significant parts of our project, the both of them together covering a large portion of our features list. They are too large to write stub code for, but the rest of the program is fully testable without them. We would peg the quality of the testing to be at about %85, which will jump up when all of the planned features are implemented. There is a analytics tool in Visual Studio we use to get a report on our code.
 
 
 *9. Calculate the total effort spent by Nov 30, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the project and the testing effort. Plot these by month and by individuals in the team. Add up the size of all test-stubs and drivers. Express it as a percentage of the total delivered code. What was the size of the maximum code When did it occur?*
@@ -40,8 +40,8 @@ Mean and Variance are: (1+1+1+1+1+1+1+1)/8=1 day and (1x1+1x1+1x1+1x1+1x1+1x1+1x
 === Total Effort by Month for Entire Group: ===
 
  * September = 12hr (Justin) + 9hr (Jared) = 21hr (total)
- * October = 15.5hr (Justin) + 4.5 (Jared) + 4hr (Nick) = 24hr (total)
- * November = 1hr (Jared) (TODO: This number needs to be updated)
+ * October = 15.5hr (Justin) + 4.5 (Jared) + 4hr (Nick) + 3hr (Brian) = 27hr (total)
+ * November = 1hr (Jared) + 2hr (Nick) (TODO: This number needs to be updated)
 
 http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x150&chf=bg,s,ffffff&cht=p&chd=t:21,24,1&chl=September|October|November&chco=0000ff,ff0000&nonsense=something.png
 
@@ -51,8 +51,8 @@ http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x1
 
  * Justin= 27.5hr (TODO: Add November hours)
  * Jared = 14.5hr
- * Brian = (TODO: Add November hours)
- * Nick  = 4 hrs(TODO: Add November hours)
+ * Brian = 3hr
+ * Nick  = 6hr
 
 http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Brian|Jared|Nick|&cht=bvs&chd=t:27.5,14.5,0.0,4.0&chco=ff0000&chbh=50&nonsense=something.png
 
