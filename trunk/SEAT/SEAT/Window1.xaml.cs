@@ -71,7 +71,10 @@
             // ADD SOME CODE HERE TO MAKE SURE YOU DON'T DELETE UNSAVED DATA!
             Window1.manager = new SeatManager();
 
-            // ALL OF THE LIST BOXES NEED TO BE BOUND PROPERLY AGAIN!
+            // Bind all of the GUI elements
+            lbxRooms.ItemsSource = Window1.manager.RoomList;
+            lbxRoster.ItemsSource = Window1.manager.StudentList;
+            
         }
 
         private void OpenCmdExecuted(object target, ExecutedRoutedEventArgs e)
@@ -89,6 +92,8 @@
             {
                 // Open document
                 Window1.manager = new SeatManager(dlg.FileName);
+                
+                // Bind all of the GUI elements
                 lbxRooms.ItemsSource = Window1.manager.RoomList;
                 lbxRoster.ItemsSource = Window1.manager.StudentList;
             }
@@ -96,12 +101,16 @@
 
         private void SaveCmdExecuted(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Save not implemented");
+            // If we can save the file where it already was we will, otherwise prompt to save the file
+            if (!Window1.manager.SaveXml())
+            {
+                FileMenuSaveAs_Click(sender, e);
+            }
         }
 
         private void FileMenuSaveAs_Click(object sender, RoutedEventArgs e)
         {
-            // Configure open file dialog box
+            // Configure save file dialog box
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.DefaultExt = ".seat"; // Default file extension
             dlg.Filter = "SEAT File (.seat)|*.seat"; // Filter files by extension
@@ -155,6 +164,15 @@
                 manager. create a remove student and remove room function
             }
              */
+        }
+
+        private void ImportRoster_Click(object sender, RoutedEventArgs e)
+        {
+            RosterImporter ri = new RosterImporter();
+            if (ri.IsOpened)
+            {
+                ri.ShowDialog();
+            }
         }
     }
 }

@@ -53,6 +53,7 @@
     <Compile Include="Chair.cs" />
     <Compile Include="AssignmentVisitor.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="RosterFile.cs" />
     <Compile Include="SeatManager.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
