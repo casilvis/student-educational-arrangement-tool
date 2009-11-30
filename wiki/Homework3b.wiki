@@ -27,7 +27,9 @@ Mean and Variance are: (1+1+1+1+1+1+1+1)/8=1 day and (1x1+1x1+1x1+1x1+1x1+1x1+1x
 
 *7. From your testing data, mark on the Fishbone diagram, the actual statistics you followed to determine faults/failures. For the Function Points of your projects, determine the corresponding errors. From your log books determine the effort spent in development for each function point. Did you predict this testing effort in February? Did you use any (formal) model to predicted effort? Which one and how? The Fishbone diagram helps in the datamining of the Software faults data. What other software engineering knowledge discoveries can you note?*
 
-(TODO: Answer Question 7 - Nick)
+<img src="http://img.photobucket.com/albums/v252/Ziptnf/fishbone2.jpg"></img>
+
+In each fault, we predicted the effort that would be used for each bug to be about 1 hour a piece.  We used Use Case Analysis to predict our effort and concluded that fixing each bug should not be that difficult.
 
 
 *8. Design and note all test-stub drivers for test instrumentation. Write the extent to which you have test coverage. What types of coverage do you have for the object oriented part of your design? Give an overall measure based on these measurements for the quality of testing. Discuss which tool you used, such as JUNIT, or NUNIT or some other Testing tool.*
