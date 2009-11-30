@@ -6,17 +6,17 @@ HOMEWORK 3B DUE Nov 30, 2009
 
 *6. Plot these tracking metrics using EXCEL or other spread sheet programs as appropriate. Plot errors discovered by date. This will give you a graph to compute the error rate. Also, plot the rate of removal of errors. Calculate the mean and variance of the delays in defect removal. Explain extreme cases as part of the data-mining task.*
 
-(TODO: Answer Question 6)
+(TODO: Answer Question 6 - Justin and Jared)
 
 
 *7. From your testing data, mark on the Fishbone diagram, the actual statistics you followed to determine faults/failures. For the Function Points of your projects, determine the corresponding errors. From your log books determine the effort spent in development for each function point. Did you predict this testing effort in February? Did you use any (formal) model to predicted effort? Which one and how? The Fishbone diagram helps in the datamining of the Software faults data. What other software engineering knowledge discoveries can you note?*
 
-(TODO: Answer Question 7)
+(TODO: Answer Question 7 - Nick)
 
 
 *8. Design and note all test-stub drivers for test instrumentation. Write the extent to which you have test coverage. What types of coverage do you have for the object oriented part of your design? Give an overall measure based on these measurements for the quality of testing. Discuss which tool you used, such as JUNIT, or NUNIT or some other Testing tool.*
 
-(TODO: Answer Question 8)
+(TODO: Answer Question 8 - Brian)
 
 
 *9. Calculate the total effort spent by Nov 30, 2009 from your log books. Use appropriate Object Oriented Software Metrics. Relate your effort to the time spent on the project and the testing effort. Plot these by month and by individuals in the team. Add up the size of all test-stubs and drivers. Express it as a percentage of the total delivered code. What was the size of the maximum code When did it occur?*
