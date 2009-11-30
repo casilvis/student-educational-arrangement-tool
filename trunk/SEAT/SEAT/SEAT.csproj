@@ -63,6 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AboutSEAT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClassOpen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +97,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutSEAT.xaml.cs">
+      <DependentUpon>AboutSEAT.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClassOpen.xaml.cs">
       <DependentUpon>ClassOpen.xaml</DependentUpon>
     </Compile>

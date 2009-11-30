@@ -59,6 +59,13 @@
             classroom.ShowDialog();
         }
 
+        private void DisplayAboutWindow(object sender, RoutedEventArgs e)
+        {
+            AboutSEAT popupWindow = new AboutSEAT();
+            popupWindow.Owner = this;
+            popupWindow.ShowDialog();
+        }
+
         private void NewCmdExecuted(object sender, RoutedEventArgs e)
         {
             // ADD SOME CODE HERE TO MAKE SURE YOU DON'T DELETE UNSAVED DATA!

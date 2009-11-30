@@ -28,6 +28,9 @@
                 <Separator></Separator>
                 <MenuItem Header="_Exit" Name="FileMenuExit" Click="FileMenuExit_Click" />
             </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="DisplayAboutWindow"/>
+            </MenuItem>
         </Menu>
         <Grid DockPanel.Dock="Left" ShowGridLines="True" HorizontalAlignment="Center">
             <DockPanel Width="150" Margin="10,40,0,40" HorizontalAlignment="Left" >
