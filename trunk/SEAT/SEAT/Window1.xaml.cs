@@ -1,7 +1,7 @@
 ﻿namespace SEAT
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections;
     using System.Linq;
     using System.Text;
     using System.Windows;
@@ -173,6 +173,44 @@
             {
                 ri.ShowDialog();
             }
+        }
+
+        private void buttonAddStudentsToRoom_Click(object sender, RoutedEventArgs e)
+        {
+            if ((Room)lbxRooms.SelectedItem == null)
+            {
+                MessageBox.Show("No room selected");
+            }
+            else
+            {
+                Room room = (Room)lbxRooms.SelectedItem;
+                IList list = lbxRoster.SelectedItems;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Student s = (Student)list[i];
+                    room.AddStudent(s);
+                }
+            }
+
+        }
+
+        private void buttonAddSectionToRoom_Click(object sender, RoutedEventArgs e)
+        {
+            // NOT IMPLEMENTED YET
+        }
+
+        private void lbxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Room room = (Room)lbxRooms.SelectedItem;
+            if (room != null)
+            {
+                lbxStudents.ItemsSource = room.RoomStudents;
+            }
+            else
+            {
+                lbxStudents.ItemsSource = null;
+            }
+
         }
     }
 }

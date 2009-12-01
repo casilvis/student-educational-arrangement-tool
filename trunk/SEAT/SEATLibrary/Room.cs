@@ -207,6 +207,14 @@
         }
 
         // Methods
+        public void AddStudent(Student student)
+        {
+            if (!roomStudents.Contains(student))
+            {
+                roomStudents.Add(student);
+            }
+        }
+
         public void RunPlacementAlgorithmx(AssignmentVisitor algorithm)
         {
             algorithm.PlaceStudents(this);
