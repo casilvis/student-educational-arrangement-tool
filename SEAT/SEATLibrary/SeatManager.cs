@@ -18,7 +18,7 @@
         {
             this.students = new ObservableCollection<Student>();
             this.rooms = new ObservableCollection<Room>();
-            file = null;
+            this.file = null;
         }
 
         public SeatManager(string file)
@@ -37,9 +37,10 @@
                     // Read in all of the students
                     if (r.Name.ToString() == "Students")
                     {
-                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Students"))
+                        bool test1 = true;
+                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Students") && test1)
                         {
-                            r.Read();
+                            test1 = r.Read();
 
                             // Add all of the students to the array
                             if (r.Name == "Student")
@@ -59,9 +60,10 @@
                     else if (r.Name.ToString() == "Rooms" && r.NodeType == XmlNodeType.Element && !r.IsEmptyElement)
                     {
                         // Read in all of the rooms
-                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name.ToString() == "Rooms"))
+                        bool test2 = true;
+                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name.ToString() == "Rooms") && test2)
                         {
-                            r.Read();
+                            test2 = r.Read();
 
                             // Read in a single room
                             if (r.NodeType == XmlNodeType.Element && r.Name.ToString() == "Room")
@@ -76,18 +78,20 @@
 
                                 // Add the room to the list of the rooms
                                 this.rooms.Add(room);
-
+                                
                                 // Get all of the information contained in a room
-                                while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Room"))
+                                bool test3 = true;
+                                while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Room") && test3)
                                 {
-                                    r.Read();
+                                    test3 = r.Read();
 
                                     // Read in all of the chairs
                                     if (r.NodeType == XmlNodeType.Element && r.Name == "Chairs")
                                     {
-                                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Chairs"))
+                                        bool test4 = true;
+                                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Chairs") && test4)
                                         {
-                                            r.Read();
+                                            test4 = r.Read();
 
                                             // Read in the information about a chair
                                             if (r.NodeType == XmlNodeType.Element && r.Name == "Chair")
@@ -114,9 +118,10 @@
                                     else if (r.NodeType == XmlNodeType.Element && r.Name == "RoomStudents")
                                     {
                                         // Read in all of the RoomStudents
-                                        while (!(r.NodeType == XmlNodeType.Element && r.Name == "RoomStudents"))
+                                        bool test5 = true;
+                                        while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "RoomStudents") && test5)
                                         {
-                                            r.Read();
+                                            test5 = r.Read();
 
                                             // Read in the information about a student
                                             if (r.NodeType == XmlNodeType.Element && r.Name == "RoomStudent")
@@ -178,9 +183,9 @@
 
         public bool SaveXml()
         {
-            if (file != null)
+            if (this.file != null)
             {
-                SaveXml(file);
+                this.SaveXml(this.file);
                 return true;
             }
             else
