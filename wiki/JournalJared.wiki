@@ -2,6 +2,8 @@
 
 =Journal=
 
+11/30/09 - Added an about box to the main application; Configured the installer; implemented the ctrl+o/s/n shortcut keys; began implementation of the csv parser to import student rosters (3 hours)
+
 11/29/09 - Investigated design options for placement algorithms (1 hour)
 
 10/27/09 - Corrected the style of the SEATLibrary using StyleCop so that the code will be more maintainable. (1.5 hours)
