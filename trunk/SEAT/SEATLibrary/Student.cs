@@ -1,4 +1,7 @@
-﻿namespace SEATLibrary
+﻿// <copyright file="Student.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
+namespace SEATLibrary
 {
     using System;
     using System.Collections.Generic;
@@ -6,19 +9,64 @@
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class Student : INotifyPropertyChanged
     {
         // Attributes
+
+        /// <summary>
+        /// 
+        /// </summary>
         private Guid id;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string firstName;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string lastName;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string sid;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string section;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private bool leftHanded;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private bool visionImpairment;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private bool isEnrolled;
 
         // Constructor
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="sid"></param>
+        /// <param name="section"></param>
+        /// <param name="leftHanded"></param>
+        /// <param name="visionEnpairment"></param>
         public Student(string firstName, string lastName, string sid, string section, bool leftHanded, bool visionEnpairment)
         {
             this.id = Guid.NewGuid();
@@ -31,6 +79,9 @@
             this.isEnrolled = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         internal Student()
         {
             this.id = Guid.NewGuid();
@@ -43,6 +94,16 @@
             this.isEnrolled = false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="sid"></param>
+        /// <param name="section"></param>
+        /// <param name="leftHanded"></param>
+        /// <param name="visionEnpairment"></param>
         internal Student(Guid id, string firstName, string lastName, string sid, string section, bool leftHanded, bool visionEnpairment)
         {
             this.id = id;
@@ -56,14 +117,25 @@
         }
 
         // Events
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Guid Uid
         {
             get { return this.id; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string FirstName
         {
             get
@@ -81,6 +153,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string LastName
         {
             get
@@ -98,6 +173,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Section
         {
             get
@@ -115,6 +193,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Sid
         {
             get
@@ -132,6 +213,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool LeftHanded
         {
             get
@@ -149,6 +233,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool VisionImpairment
         {
             get
@@ -166,6 +253,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsEnrolled
         {
             get
@@ -184,11 +274,20 @@
         }
 
         // Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return this.lastName + ", " + this.firstName;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
         private void NotifyPropertyChanged(string info)
         {
             if (this.PropertyChanged != null)

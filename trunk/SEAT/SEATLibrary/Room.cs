@@ -1,4 +1,7 @@
-﻿namespace SEATLibrary 
+﻿// <copyright file="Room.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
+namespace SEATLibrary 
 {
     using System;
     using System.Collections.ObjectModel;
@@ -7,18 +10,53 @@
     using System.Text;
     using System.Xml;
     
+    /// <summary>
+    /// A model representing a rectangular room consiting of chair and a list of students.
+    /// </summary>
     public class Room : INotifyPropertyChanged
     {
         // Attributes
+
+        /// <summary>
+        ///  The name of this room.
+        /// </summary>
         private string roomName;
+
+        /// <summary>
+        /// The location of this room.
+        /// </summary>
         private string location;
+
+        /// <summary>
+        /// The description of this room.
+        /// </summary>
         private string description;
+
+        /// <summary>
+        /// The list of student who should be sitting in this room.
+        /// </summary>
         private ObservableCollection<Student> roomStudents;
+
+        /// <summary>
+        /// The array of chairs that are in this room.
+        /// </summary>
         private Chair[,] chairs;
+
+        /// <summary>
+        /// The width of this room.
+        /// </summary>
         private int width;
+
+        /// <summary>
+        /// The height of this room.
+        /// </summary>
         private int height;
 
         // Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the Room class.
+        /// </summary>
         public Room()
         {
             this.width = 4;
@@ -39,6 +77,11 @@
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Room class.
+        /// </summary>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
         public Room(int height, int width)
         {
             this.width = width;
@@ -59,6 +102,14 @@
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Room class.
+        /// </summary>
+        /// <param name="roomName"></param>
+        /// <param name="location"></param>
+        /// <param name="description"></param>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
         public Room(string roomName, string location, string description, int height, int width)
         {
             this.width = width;
@@ -79,6 +130,10 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
         public Room(string file)
         {
             this.roomStudents = new ObservableCollection<Student>();
@@ -137,9 +192,17 @@
         }
 
         // Events
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string RoomName
         {
             get
@@ -157,6 +220,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Location
         {
             get
@@ -174,6 +240,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Description
         {
             get
@@ -191,27 +260,44 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Chair[,] Chairs
         {
             get { return this.chairs; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int Width
         {
             get { return this.width; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int Height
         {
             get { return this.height; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ObservableCollection<Student> RoomStudents
         {
             get { return this.roomStudents; }
         }
 
         // Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="student"></param>
         public void AddStudent(Student student)
         {
             if (!this.roomStudents.Contains(student))
@@ -220,11 +306,19 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="algorithm"></param>
         public void RunPlacementAlgorithmx(AssignmentVisitor algorithm)
         {
             algorithm.PlaceStudents(this);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool IsRoomEmpty()
         {
             for (int i = 0; i < this.height; i++)
@@ -241,6 +335,10 @@
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
         public void WriteRoomTemplate(string file)
         {
             XmlWriter w = new XmlTextWriter(file, null);
@@ -280,11 +378,19 @@
             w.Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return this.RoomName + " - " + this.Location;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
         private void NotifyPropertyChanged(string info)
         {
             if (this.PropertyChanged != null)

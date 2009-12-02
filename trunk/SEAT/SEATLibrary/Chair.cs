@@ -1,38 +1,86 @@
-﻿namespace SEATLibrary
+﻿// <copyright file="Chair.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
+namespace SEATLibrary
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// A representation of a char that is placed inside of a Room.
+    /// </summary>
     public class Chair
     {
         // ATTRIBUTES
-        private bool leftHanded; // True for left handed people
-        private int fbPosition; // 0 = front; 1 = middle; 2 = back
-        private int lrPosition; // 0 = left;  1 = right;  2 = back
-        private bool nonChair; // True if this actually isn't a chair
-        private bool mustBeEmpty; // True if this chair can't have anyone in it
-        private string seatNumber; // The humber assigned to the seat
+
+        /// <summary>
+        /// Handedness, true for left handed people.
+        /// </summary>
+        private bool leftHanded;
+
+        /// <summary>
+        /// 0 = front; 1 = middle; 2 = back.
+        /// </summary>
+        private int frontBackPosition;
+
+        /// <summary>
+        /// 0 = left;  1 = right;  2 = back.
+        /// </summary>
+        private int leftRightPosition;
+
+        /// <summary>
+        /// True if this actually isn't a chair.
+        /// </summary>
+        private bool nonChair;
+
+        /// <summary>
+        /// True if this chair can't have anyone in it.
+        /// </summary>
+        private bool mustBeEmpty;
+
+        /// <summary>
+        /// The humber assigned to the seat.
+        /// </summary>
+        private string seatNumber;
+
+        /// <summary>
+        /// The student who is sitting in the chair.
+        /// </summary>
         private Student theStudent;
 
         // CONSTRUCTORS
+
+        /// <summary>
+        /// Initializes a new instance of the Chair class.
+        /// </summary>
         public Chair()
         {
             this.leftHanded = false;
-            this.fbPosition = 1;
-            this.lrPosition = 1;
+            this.frontBackPosition = 1;
+            this.leftRightPosition = 1;
             this.nonChair = false;
             this.mustBeEmpty = false;
             this.seatNumber = "Unknown";
             this.theStudent = null;
         }
 
-        public Chair(bool leftHanded, int fbPosition, int lrPosition, bool nonChair, bool mustBeEmpty, string seatNumber, Student theStudent)
+        /// <summary>
+        /// Initializes a new instance of the Chair class using given parameters.
+        /// </summary>
+        /// <param name="leftHanded">True if the chair is left handed.</param>
+        /// <param name="frontBackPosition">0, 1, or 2 depending on the front to back position in room.</param>
+        /// <param name="leftRightPosition">0, 1, or 2 depending on the left to right position in room.</param>
+        /// <param name="nonChair">True if the chair is not a chair, it can be an aisle or simplly not exist.</param>
+        /// <param name="mustBeEmpty">True if a student is not allowed to be placed in this chair.</param>
+        /// <param name="seatNumber">The given string representation for the chair.</param>
+        /// <param name="theStudent">The student who is sitting in this chair, null for an empty chair.</param>
+        public Chair(bool leftHanded, int frontBackPosition, int leftRightPosition, bool nonChair, bool mustBeEmpty, string seatNumber, Student theStudent)
         {
             this.leftHanded = leftHanded;
-            this.fbPosition = fbPosition;
-            this.lrPosition = lrPosition;
+            this.frontBackPosition = frontBackPosition;
+            this.leftRightPosition = leftRightPosition;
             this.nonChair = nonChair;
             this.mustBeEmpty = mustBeEmpty;
             this.seatNumber = seatNumber;
@@ -40,42 +88,71 @@
         }
 
         // PROPERTIES
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the chair chair is lefthanded.
+        /// </summary>
+        /// <value>True if the chair is left handed.</value>
         public bool LeftHanded
         {
             get { return this.leftHanded; }
             set { this.leftHanded = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the front to back position of the chair.
+        /// </summary>
+        /// <value>0, 1, or 2 depending on front to back positioning of the chair.</value>
         public int FbPosition
         {
-            get { return this.fbPosition; }
-            set { this.fbPosition = value; }
+            get { return this.frontBackPosition; }
+            set { this.frontBackPosition = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the left to right position of the chair.
+        /// </summary>
+        /// <value>0, 1, or 2 depending on the left to right positioning of the chair.</value>
         public int LrPosition
         {
-            get { return this.lrPosition; }
-            set { this.lrPosition = value; }
+            get { return this.leftRightPosition; }
+            set { this.leftRightPosition = value; }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the chair is actually a chair.
+        /// </summary>
+        /// <value>True if the chair is not a chair, could be an aisle or simply not exist.</value>
         public bool NonChair
         {
             get { return this.nonChair; }
             set { this.nonChair = value; }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this chair must be empty.
+        /// </summary>
+        /// <value>True if a student is not allowed to be placed in this chair.</value>
         public bool MustBeEmpty
         {
             get { return this.mustBeEmpty; }
             set { this.mustBeEmpty = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the name of this chair.
+        /// </summary>
+        /// <value>String representation of the chairs position in the room.</value>
         public string SeatName
         {
             get { return this.seatNumber; }
             set { this.seatNumber = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the student who is sitting in this chair.
+        /// </summary>
+        /// <value>The student who is currently sitting in the chair, null for an empty chair.</value>
         public Student TheStudent
         {
             get { return this.theStudent; }
@@ -83,6 +160,11 @@
         }
 
         // METHODS
+
+        /// <summary>
+        /// True is there is not student sitting in this chair.
+        /// </summary>
+        /// <returns>True if the seat is empty.</returns>
         public bool IsEmpty()
         {
             if (this.theStudent == null)
@@ -95,6 +177,10 @@
             }
         }
 
+        /// <summary>
+        /// Returns a string representation of this chair.
+        /// </summary>
+        /// <returns>String representation of this chair.</returns>
         public override string ToString()
         {
             if (this.nonChair)
