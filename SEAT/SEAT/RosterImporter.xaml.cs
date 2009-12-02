@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using SEATLibrary;
-
-namespace SEAT
+﻿namespace SEAT
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    using SEATLibrary;
+
     /// <summary>
     /// Interaction logic for RosterImporter.xaml
     /// </summary>
     public partial class RosterImporter : Window
     {
         private RosterFile rosterFile;
-        private Boolean isOpened;
+        private bool isOpened;
 
         public RosterImporter()
         {
@@ -40,7 +40,7 @@ namespace SEAT
                 // Open document
                 this.rosterFile = new RosterFile(dlg.FileName);
                 this.isOpened = true;
-                fillGrid();
+                FillGrid();
             }
             else
             {
@@ -49,11 +49,12 @@ namespace SEAT
             }
         }
 
-        public Boolean IsOpened{
-            get{return this.isOpened;}
+        public bool IsOpened
+        {
+            get { return this.isOpened; }
         }
 
-        private void fillGrid()
+        private void FillGrid()
         {
             // Add all of the necessary columns
             for (int i = 0; i < this.rosterFile.NumColumns; i++)
@@ -87,8 +88,6 @@ namespace SEAT
                     myGrid.Children.Add(cell);
                 }
             }
-
-
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace SEATLibrary
+﻿// <copyright file="SeatManager.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
+namespace SEATLibrary
 {
     using System;
     using System.Collections.ObjectModel;
@@ -6,14 +9,33 @@
     using System.Text;
     using System.Xml;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class SeatManager
     {
         // Attributes 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private ObservableCollection<Student> students;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private ObservableCollection<Room> rooms;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string file;
 
         // Constructors
+
+        /// <summary>
+        /// 
+        /// </summary>
         public SeatManager()
         {
             this.students = new ObservableCollection<Student>();
@@ -21,6 +43,10 @@
             this.file = null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
         public SeatManager(string file)
         {
             // Initialize the variables
@@ -147,22 +173,40 @@
         }
 
         // Properties 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ObservableCollection<Room> RoomList
         {
             get { return this.rooms; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ObservableCollection<Student> StudentList
         {
             get { return this.students; }
         }
 
         // Methods 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="student"></param>
         public void AddStudentToRoster(Student student)
         {
             this.students.Add(student);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
         public Room AddNewRoom(int width, int height)
         {
             Room r = new Room(width, height);
@@ -170,17 +214,31 @@
             return r;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="room"></param>
         public void AddNewRoom(Room room)
         {
             this.rooms.Add(room);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="student"></param>
+        /// <param name="room"></param>
+        /// <returns></returns>
         public bool AddStudentToRoom(int student, int room)
         {
             // THIS IS NOT IMPLEMENTED
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool SaveXml()
         {
             if (this.file != null)
@@ -194,6 +252,10 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
         public void SaveXml(string file)
         {
             this.file = file;
@@ -271,11 +333,21 @@
             w.Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private Student LookupStudent(string id)
         {
             return this.LookupStudent(new Guid(id));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private Student LookupStudent(Guid id)
         {
             for (int i = 0; i < this.students.Count; i++)
