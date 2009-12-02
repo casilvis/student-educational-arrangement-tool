@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.ObjectModel;
-    using System.Linq;
     using System.IO;
+    using System.Linq;
     using System.Text;
 
     public class RosterFile
@@ -46,12 +46,13 @@
                 int num = 0;
                 for (int i = 0; i < this.parsedData.Count; i++)
                 {
-                    int n = parsedData[i].Length;
+                    int n = this.parsedData[i].Length;
                     if (n > num)
                     {
                         num = n;
                     }
                 }
+
                 return num;
             }
         }

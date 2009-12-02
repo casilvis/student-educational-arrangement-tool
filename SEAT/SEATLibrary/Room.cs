@@ -118,11 +118,16 @@
 
                                     // For the student, we assume the chair is blank.
                                     Student s = null;
-                                    //Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                    Chairs[y,x] = new Chair(Boolean.Parse(r.GetAttribute("LeftHanded")),
-                                        Int32.Parse(r.GetAttribute("FbPosition")), Int32.Parse(r.GetAttribute("LrPosition")),
-                                        Boolean.Parse(r.GetAttribute("NonChair")), Boolean.Parse(r.GetAttribute("MustBeEmpty")),
-                                        r.GetAttribute("Name"), s);
+
+                                    // Replace the chair from the default constructor with the information contained in the stored version of the chair
+                                    this.Chairs[y, x] = new Chair(
+                                        Boolean.Parse(r.GetAttribute("LeftHanded")),
+                                        Int32.Parse(r.GetAttribute("FbPosition")), 
+                                        Int32.Parse(r.GetAttribute("LrPosition")),
+                                        Boolean.Parse(r.GetAttribute("NonChair")), 
+                                        Boolean.Parse(r.GetAttribute("MustBeEmpty")),
+                                        r.GetAttribute("Name"), 
+                                        s);
                                 }
                             }
                         }
@@ -209,9 +214,9 @@
         // Methods
         public void AddStudent(Student student)
         {
-            if (!roomStudents.Contains(student))
+            if (!this.roomStudents.Contains(student))
             {
-                roomStudents.Add(student);
+                this.roomStudents.Add(student);
             }
         }
 
