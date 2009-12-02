@@ -27,12 +27,28 @@ namespace SEAT
             InitializeComponent();
         }
 
-        public Seat(Chair chare)
+        public Seat(Chair chare,bool editable)
         {
             mychair = chare;
             InitializeComponent();
+            if (editable)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    int x = (i % 3) * 14;
+                    int y = (i / 3) * 14;
+                    Rectangle rect01 = new Rectangle();
+                    rect01.Width = 15;
+                    rect01.Height = 15;
+                    rect01.Stroke = Brushes.Gray;
+                    rect01.HorizontalAlignment = HorizontalAlignment.Left;
+                    rect01.VerticalAlignment = VerticalAlignment.Top;
+                    rect01.Margin = new Thickness(x, y, 0, 0);
+                    grdSelect.Children.Add(rect01);
+                }
+            }
             if (chair.LeftHanded)
-                lblName.Foreground=Brushes.Red;
+                lblName.Foreground = Brushes.Red;
             if (chair.NonChair || chair.MustBeEmpty)
             {
                 if (chair.NonChair)
@@ -48,8 +64,14 @@ namespace SEAT
             {
                 this.Background = Brushes.White;
             }
-            lblName.Content = chair.SeatName;
             chkSelected.Margin = new Thickness(chair.LrPosition * 15, chair.FbPosition * 15, 0, 0);
+            if(!editable)
+            {
+                chkSelected.Visibility=Visibility.Hidden;
+                this.AddHandler(UserControl.MouseDoubleClickEvent, new RoutedEventHandler(Seat_click));
+            }
+            lblName.Content = chair.SeatName;
+            
 
             
         }
@@ -63,6 +85,10 @@ namespace SEAT
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void Seat_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hey");
         }
     }
 }

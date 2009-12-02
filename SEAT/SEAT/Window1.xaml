@@ -81,6 +81,7 @@
             </DockPanel>
             <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,10,40">
                 <Label Height="28" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Students in Room</Label>
+                <Button Name="btnPlace" Height="23" DockPanel.Dock="bottom" Click="btnPlace_Click">Place Students</Button>
                 <ListBox  Name="lbxStudents" ItemTemplate="{StaticResource itemTemplateRoster}" />
             </DockPanel>
         </Grid>

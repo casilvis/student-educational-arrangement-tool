@@ -12,17 +12,7 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Height="14" Width="auto" Name="lblName" FontSize="8" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0" Foreground="Black">Name</Label>
         <Grid Grid.Row="1" Name="grdSelect" Height="44" Width="44" VerticalAlignment="Top" HorizontalAlignment="left">
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="14,0,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="28,0,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,14,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,28,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="14,0,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="14,14,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="14,28,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="28,14,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <Rectangle VerticalAlignment="Top" HorizontalAlignment="Left" Margin="28,28,0,0"  Width="15" Height="15" Stroke="Gray"></Rectangle>
-                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="15,15,0,0" Width="auto" Name="chkSelected" FontSize="8" Padding="0" FlowDirection="LeftToRight" OverridesDefaultStyle="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></CheckBox>
+                                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="15,15,0,0" Width="auto" Name="chkSelected" FontSize="8" Padding="0" FlowDirection="LeftToRight" OverridesDefaultStyle="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></CheckBox>
         </Grid>
     </Grid>
 </UserControl>
