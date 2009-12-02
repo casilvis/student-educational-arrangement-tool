@@ -22,8 +22,7 @@ Er(t)=errors left<br>
 Mean and Variance are: (1+1+1+1+1+1+1+1)/8=1 day and (1x1+1x1+1x1+1x1+1x1+1x1+1x1+1x1)/8=1 day<br>
 
  
-(TODO: Finish Question 6 - Justin and Jared)
-
+[http://student-educational-arrangement-tool.googlecode.com/files/Errors.xlsx]
 
 *7. From your testing data, mark on the Fishbone diagram, the actual statistics you followed to determine faults/failures. For the Function Points of your projects, determine the corresponding errors. From your log books determine the effort spent in development for each function point. Did you predict this testing effort in February? Did you use any (formal) model to predicted effort? Which one and how? The Fishbone diagram helps in the datamining of the Software faults data. What other software engineering knowledge discoveries can you note?*
 
@@ -43,7 +42,7 @@ Test coverage has been growing side by side with the implemented features list. 
 
  * September = 12hr (Justin) + 9hr (Jared) = 21hr (total)
  * October = 15.5hr (Justin) + 4.5 (Jared) + 4hr (Nick) + 3hr (Brian) = 27hr (total)
- * November = 1hr (Jared) + 2hr (Nick) + 2hr (Justin) (TODO: This number needs to be updated)
+ * November = 1hr (Jared) + 2hr (Nick) + 2hr (Justin) =5hr (total)
 
 http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x150&chf=bg,s,ffffff&cht=p&chd=t:21,27,5&chl=September|October|November&chco=0000ff,ff0000&nonsense=something.png
 
