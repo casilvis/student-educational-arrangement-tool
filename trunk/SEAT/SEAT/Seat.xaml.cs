@@ -21,6 +21,7 @@ namespace SEAT
     public partial class Seat : UserControl
     {
         private Chair mychair;
+        public TextBlock txtblname = new TextBlock();
         public Seat()
         {
             mychair = new Chair();
@@ -29,6 +30,8 @@ namespace SEAT
 
         public Seat(Chair chare,bool editable)
         {
+            txtblname.TextWrapping = TextWrapping.Wrap;
+            txtblname.FontSize = 8;
             mychair = chare;
             InitializeComponent();
             if (editable)
@@ -69,6 +72,7 @@ namespace SEAT
             {
                 chkSelected.Visibility=Visibility.Hidden;
                 this.AddHandler(UserControl.MouseDoubleClickEvent, new RoutedEventHandler(Seat_click));
+                grdSelect.Children.Add(txtblname);
             }
             lblName.Content = chair.SeatName;
             

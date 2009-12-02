@@ -156,8 +156,16 @@
         }
         private void btnPlace_Click(object sender, RoutedEventArgs e)
         {
-            frmGrid grid = new frmGrid(lbxRooms.SelectedValue as Room, false);
-            grid.ShowDialog();
+            if(lbxRooms.SelectedValue!=null)
+            {
+                frmGrid grid = new frmGrid(lbxRooms.SelectedValue as Room, false);
+                grid.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a Room");
+                
+            }
         }
         private void DeleteStudent(object sender, RoutedEventArgs e)
         {
