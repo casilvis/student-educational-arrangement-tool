@@ -25,6 +25,7 @@ namespace SEAT
         public TextBox[] txtrow;
         public int row;
         public int column;
+        ListBox students = new ListBox();
         public List<Seat> seatsSelected;
         public frmGrid()
         {
@@ -40,6 +41,7 @@ namespace SEAT
             int rows = myroom.Height;
             int columns = myroom.Width;
             //int seatSize = 45;
+            seatsSelected = new List<Seat>();
             int Width = 45;
             int Height = 60;
             txtloc.Text = myroom.Location;
@@ -109,6 +111,7 @@ namespace SEAT
                         grdtop2.Children.Add(txtcol[j]);
                     }
                     stArray[i, j] = new Seat(myroom.Chairs[i,j],editable);
+                    stArray[i, j].AddHandler(UserControl.MouseLeftButtonUpEvent, new RoutedEventHandler(Student_Drop));
                     stArray[i, j].AddHandler( CheckBox.CheckedEvent, new RoutedEventHandler(chkSelected_Checked));
                     stArray[i, j].AddHandler(CheckBox.UncheckedEvent, new RoutedEventHandler(chkSelected_Unchecked));
                     stArray[i,j].Margin = new Thickness(Width*j,Height*i,0,0);
@@ -187,7 +190,6 @@ namespace SEAT
             }
             else
             {
-                ListBox students = new ListBox();
                 students.Width = 150;
                 students.ItemsSource = myroom.RoomStudents;
                 grdleft.Children.Add(students);
@@ -500,5 +502,17 @@ namespace SEAT
         {
             this.Close();
         }
+        private void Student_Drop(object sender, RoutedEventArgs e)
+        {
+            if (students.SelectedItem != null)
+            {
+                Student stud = (Student)students.SelectedItem;
+                Seat seat = (Seat)sender;
+                seat.chair.TheStudent = stud;
+                seat.txtblname.Text = seat.chair.TheStudent.FirstName + " " + seat.chair.TheStudent.LastName;
+            }
+        }
+
+
     }
 }
