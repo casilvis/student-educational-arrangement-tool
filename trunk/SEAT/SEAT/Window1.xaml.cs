@@ -154,7 +154,11 @@
                 grid.ShowDialog();
             }
         }
-
+        private void btnPlace_Click(object sender, RoutedEventArgs e)
+        {
+            frmGrid grid = new frmGrid(lbxRooms.SelectedValue as Room, false);
+            grid.ShowDialog();
+        }
         private void DeleteStudent(object sender, RoutedEventArgs e)
         {
             // NOT IMPLEMENTED YET

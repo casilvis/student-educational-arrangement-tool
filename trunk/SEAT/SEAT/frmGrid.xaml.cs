@@ -37,7 +37,6 @@ namespace SEAT
         {
             InitializeComponent();
             myroom = inroom;
-            seatsSelected = new List<Seat>();
             int rows = myroom.Height;
             int columns = myroom.Width;
             //int seatSize = 45;
@@ -47,7 +46,10 @@ namespace SEAT
             txtnm.Text = myroom.RoomName;
             txtdes.Text = myroom.Description;
             this.Title = myroom.RoomName + " - " + myroom.Location + ": " + myroom.Description;
-
+            if (!editable)
+            {
+                Options.Width=0;
+            }
             row = rows;
             column = columns;
             ContainerVisual newPage = new ContainerVisual();
@@ -106,7 +108,7 @@ namespace SEAT
                         txtcol[j].Height = Height;
                         grdtop2.Children.Add(txtcol[j]);
                     }
-                    stArray[i, j] = new Seat(myroom.Chairs[i,j]);//worry about it later 
+                    stArray[i, j] = new Seat(myroom.Chairs[i,j],editable);
                     stArray[i, j].AddHandler( CheckBox.CheckedEvent, new RoutedEventHandler(chkSelected_Checked));
                     stArray[i, j].AddHandler(CheckBox.UncheckedEvent, new RoutedEventHandler(chkSelected_Unchecked));
                     stArray[i,j].Margin = new Thickness(Width*j,Height*i,0,0);
@@ -187,7 +189,10 @@ namespace SEAT
             {
                 ListBox students = new ListBox();
                 students.Width = 150;
+                students.ItemsSource = myroom.RoomStudents;
                 grdleft.Children.Add(students);
+               // students
+                
             }
             griddy.MaxHeight = Height * row + 20;
             griddy.MaxWidth = Width * column + 20;
