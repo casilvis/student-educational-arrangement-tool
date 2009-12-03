@@ -80,8 +80,8 @@ namespace SEATLibrary
         /// <summary>
         /// Initializes a new instance of the Room class.
         /// </summary>
-        /// <param name="height"></param>
-        /// <param name="width"></param>
+        /// <param name="height">The width of the room.</param>
+        /// <param name="width">The height of the room.</param>
         public Room(int height, int width)
         {
             this.width = width;
@@ -105,11 +105,11 @@ namespace SEATLibrary
         /// <summary>
         /// Initializes a new instance of the Room class.
         /// </summary>
-        /// <param name="roomName"></param>
-        /// <param name="location"></param>
-        /// <param name="description"></param>
-        /// <param name="height"></param>
-        /// <param name="width"></param>
+        /// <param name="roomName">The name of the room.</param>
+        /// <param name="location">The location of the room.</param>
+        /// <param name="description">The description of the room.</param>
+        /// <param name="height">The height of the room.</param>
+        /// <param name="width">The width of the room.</param>
         public Room(string roomName, string location, string description, int height, int width)
         {
             this.width = width;
@@ -131,9 +131,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Room class.
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="file">The location to a room template to initialize the room.</param>
         public Room(string file)
         {
             this.roomStudents = new ObservableCollection<Student>();
@@ -194,15 +194,16 @@ namespace SEATLibrary
         // Events
 
         /// <summary>
-        /// 
+        /// Property changed event.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Properties
 
         /// <summary>
-        /// 
+        /// Gets or sets the name of the room.
         /// </summary>
+        /// <value>The name of the room.</value>
         public string RoomName
         {
             get
@@ -221,8 +222,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the location of the room.
         /// </summary>
+        /// <value>The location of the room.</value>
         public string Location
         {
             get
@@ -241,8 +243,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the description of the room.
         /// </summary>
+        /// <value>The description of the room.</value>
         public string Description
         {
             get
@@ -261,32 +264,36 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets the array of chairs or a gven chair in the room.
         /// </summary>
+        /// <value>The array of chairs.</value>
         public Chair[,] Chairs
         {
             get { return this.chairs; }
         }
 
         /// <summary>
-        /// 
+        /// Gets the width of the room.
         /// </summary>
+        /// <value>The width of the room.</value>
         public int Width
         {
             get { return this.width; }
         }
 
         /// <summary>
-        /// 
+        /// Gets the height of the room.
         /// </summary>
+        /// <value>The height of the room.</value>
         public int Height
         {
             get { return this.height; }
         }
 
         /// <summary>
-        /// 
+        /// Gets the list of room students.
         /// </summary>
+        /// <value>Collection of room students.</value>
         public ObservableCollection<Student> RoomStudents
         {
             get { return this.roomStudents; }
@@ -295,9 +302,9 @@ namespace SEATLibrary
         // Methods
 
         /// <summary>
-        /// 
+        /// Adds a student to the room.
         /// </summary>
-        /// <param name="student"></param>
+        /// <param name="student">The student to be added.</param>
         public void AddStudent(Student student)
         {
             if (!this.roomStudents.Contains(student))
@@ -307,18 +314,19 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Run the specified placement algorithm.
+        /// Uses visitor design pattern.
         /// </summary>
-        /// <param name="algorithm"></param>
+        /// <param name="algorithm">The specific algorithm to use for placement.</param>
         public void RunPlacementAlgorithmx(AssignmentVisitor algorithm)
         {
             algorithm.PlaceStudents(this);
         }
 
         /// <summary>
-        /// 
+        /// Determines if the room is empty (all of the chairs have no students in them).
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True if the room has no students in the chairs.</returns>
         public bool IsRoomEmpty()
         {
             for (int i = 0; i < this.height; i++)
@@ -336,9 +344,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Writes the current state of the room to a file so that it can be used as a template.
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="file">The location to save the file.</param>
         public void WriteRoomTemplate(string file)
         {
             XmlWriter w = new XmlTextWriter(file, null);
@@ -379,18 +387,18 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Pvodies a string representation of the room.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string representation of the room.</returns>
         public override string ToString()
         {
             return this.RoomName + " - " + this.Location;
         }
 
         /// <summary>
-        /// 
+        /// Signals that a property of this object has changed.
         /// </summary>
-        /// <param name="info"></param>
+        /// <param name="info">The property that is being affected.</param>
         private void NotifyPropertyChanged(string info)
         {
             if (this.PropertyChanged != null)

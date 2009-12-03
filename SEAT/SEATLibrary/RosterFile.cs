@@ -10,19 +10,19 @@ namespace SEATLibrary
     using System.Text;
 
     /// <summary>
-    /// 
+    /// Reads in a class roster file to be parsed and added to the list of students.
     /// </summary>
     public class RosterFile
     {
         /// <summary>
-        /// 
+        /// The list of string tokens parsed from the file.
         /// </summary>
         private ObservableCollection<string[]> parsedData;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the RosterFile class for a specified file.
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="file">Path of file to read.</param>
         public RosterFile(string file)
         {
             this.parsedData = new ObservableCollection<string[]>();
@@ -48,16 +48,18 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets a specific record as parsed from the file.
         /// </summary>
+        /// <value>Parsed data from the file.</value>
         public ObservableCollection<string[]> ParsedData
         {
             get { return this.parsedData; }
         }
 
         /// <summary>
-        /// 
+        /// Gets the maximum number of columns for all of the records.
         /// </summary>
+        /// <value>Number of columns.</value>
         public int NumColumns
         {
             get
@@ -77,8 +79,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets the number of records.
         /// </summary>
+        /// <value>The number of records.</value>
         public int Count
         {
             get { return this.parsedData.Count; }
