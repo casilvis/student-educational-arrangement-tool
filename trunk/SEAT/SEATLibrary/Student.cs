@@ -10,64 +10,64 @@ namespace SEATLibrary
     using System.Text;
 
     /// <summary>
-    /// 
+    /// A representation of a student.
     /// </summary>
     public class Student : INotifyPropertyChanged
     {
         // Attributes
 
         /// <summary>
-        /// 
+        /// Unique id for each student.
         /// </summary>
         private Guid id;
 
         /// <summary>
-        /// 
+        /// First name of the student.
         /// </summary>
         private string firstName;
 
         /// <summary>
-        /// 
+        /// Last name of the student.
         /// </summary>
         private string lastName;
 
         /// <summary>
-        /// 
+        /// Student Identifier.
         /// </summary>
         private string sid;
 
         /// <summary>
-        /// 
+        /// Section number.
         /// </summary>
         private string section;
 
         /// <summary>
-        /// 
+        /// Handedness of the student.
         /// </summary>
         private bool leftHanded;
 
         /// <summary>
-        /// 
+        /// Visionimpairment status.
         /// </summary>
         private bool visionImpairment;
 
         /// <summary>
-        /// 
+        /// Is the student enrolled in the class still.
         /// </summary>
         private bool isEnrolled;
 
         // Constructor
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Student class.
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="sid"></param>
-        /// <param name="section"></param>
-        /// <param name="leftHanded"></param>
-        /// <param name="visionEnpairment"></param>
-        public Student(string firstName, string lastName, string sid, string section, bool leftHanded, bool visionEnpairment)
+        /// <param name="firstName">First Name.</param>
+        /// <param name="lastName">Last Name.</param>
+        /// <param name="sid">Student Identifier.</param>
+        /// <param name="section">Section Number.</param>
+        /// <param name="leftHanded">Left Handedness.</param>
+        /// <param name="visionImpairment">Vision Impairment.</param>
+        public Student(string firstName, string lastName, string sid, string section, bool leftHanded, bool visionImpairment)
         {
             this.id = Guid.NewGuid();
             this.firstName = firstName;
@@ -75,12 +75,12 @@ namespace SEATLibrary
             this.sid = sid;
             this.section = section;
             this.leftHanded = leftHanded;
-            this.visionImpairment = visionEnpairment;
+            this.visionImpairment = visionImpairment;
             this.isEnrolled = true;
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Student class.
         /// </summary>
         internal Student()
         {
@@ -95,16 +95,16 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Student class.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="sid"></param>
-        /// <param name="section"></param>
-        /// <param name="leftHanded"></param>
-        /// <param name="visionEnpairment"></param>
-        internal Student(Guid id, string firstName, string lastName, string sid, string section, bool leftHanded, bool visionEnpairment)
+        /// <param name="id">The student's Guid.</param>
+        /// <param name="firstName">The student's First Name.</param>
+        /// <param name="lastName">The student's Last Name.</param>
+        /// <param name="sid">The Student's Identifier.</param>
+        /// <param name="section">The student'sSection Number.</param>
+        /// <param name="leftHanded">The student's Handedness status.</param>
+        /// <param name="visionImpairment">The student's Vision Impairment status.</param>
+        internal Student(Guid id, string firstName, string lastName, string sid, string section, bool leftHanded, bool visionImpairment)
         {
             this.id = id;
             this.firstName = firstName;
@@ -112,30 +112,32 @@ namespace SEATLibrary
             this.sid = sid;
             this.section = section;
             this.leftHanded = leftHanded;
-            this.visionImpairment = visionEnpairment;
+            this.visionImpairment = visionImpairment;
             this.isEnrolled = true;
         }
 
         // Events
 
         /// <summary>
-        /// 
+        /// Event for updating properties.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Properties
 
         /// <summary>
-        /// 
+        /// Gets the Guid for the student.
         /// </summary>
+        /// <value>The unique Guid.</value>
         public Guid Uid
         {
             get { return this.id; }
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the first name of the student.
         /// </summary>
+        /// <value>First Name.</value>
         public string FirstName
         {
             get
@@ -154,8 +156,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the last name of the student.
         /// </summary>
+        /// <value>Last Name.</value>
         public string LastName
         {
             get
@@ -174,8 +177,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the section of the student.
         /// </summary>
+        /// <value>Student section.</value>
         public string Section
         {
             get
@@ -194,8 +198,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the student's identifier.
         /// </summary>
+        /// <value>Student Identifier.</value>
         public string Sid
         {
             get
@@ -214,8 +219,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether the student is left handed.
         /// </summary>
+        /// <value>Left handedness.</value>
         public bool LeftHanded
         {
             get
@@ -234,8 +240,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether the students vision impaired.
         /// </summary>
+        /// <value>Vision Impairment.</value>
         public bool VisionImpairment
         {
             get
@@ -254,8 +261,9 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether the student is enrolled.
         /// </summary>
+        /// <value>Is the student enrolled.</value>
         public bool IsEnrolled
         {
             get
@@ -276,18 +284,18 @@ namespace SEATLibrary
         // Methods
 
         /// <summary>
-        /// 
+        /// Provides a string representation of the student.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>String representation of a student.</returns>
         public override string ToString()
         {
             return this.lastName + ", " + this.firstName;
         }
 
         /// <summary>
-        /// 
+        /// Signals that a property of this object has changed.
         /// </summary>
-        /// <param name="info"></param>
+        /// <param name="info">The property that is being affected.</param>
         private void NotifyPropertyChanged(string info)
         {
             if (this.PropertyChanged != null)
