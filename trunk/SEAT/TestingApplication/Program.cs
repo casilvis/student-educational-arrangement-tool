@@ -8,11 +8,22 @@ namespace TestingApplication
     using System.Text;
     using SEATLibrary;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class Program
     {
         // Make an instance of the Command Line interface so we can do some testing on our class
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private static CLInterface cli = new CLInterface();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             // Make an instance of the seat manager, this is what we are going to use

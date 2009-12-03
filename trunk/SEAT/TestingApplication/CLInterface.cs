@@ -9,14 +9,24 @@ namespace TestingApplication
     using System.Text;
     using SEATLibrary;
 
+    /// <summary>
+    /// 
+    /// </summary>
     internal class CLInterface
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public CLInterface()
         {
             // Nothing needs to be set up for this class to work
             // The methods could all be static, but that isn't necessary for this test class now.
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Student GetNewStudent()
         {
             return new Student(
@@ -28,6 +38,10 @@ namespace TestingApplication
                 this.PromptForbool("Vision Enpairment"));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Room GetNewRoom()
         {
             return new Room(
@@ -38,6 +52,10 @@ namespace TestingApplication
                 this.PromptForInt("Room Width"));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
         public void DisplayStudentRoster(ObservableCollection<Student> list)
         {
             Console.WriteLine("Displaying Student Roster");
@@ -54,6 +72,10 @@ namespace TestingApplication
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roomList"></param>
         public void DisplayRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
@@ -70,6 +92,11 @@ namespace TestingApplication
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roomList"></param>
+        /// <returns></returns>
         public int SelectRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
@@ -97,6 +124,10 @@ namespace TestingApplication
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="room"></param>
         public void UpdateRoom(Room room)
         {
             string prompt = string.Empty;
@@ -130,6 +161,10 @@ namespace TestingApplication
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="room"></param>
         public void UpdateRoomSeat(Room room)
         {
             // Have the user select one of the seats in the room
@@ -214,6 +249,10 @@ namespace TestingApplication
             this.WaitForUserEnter();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r"></param>
         public void DisplayRoom(Room r)
         {
             Console.Write("\t");
@@ -234,13 +273,21 @@ namespace TestingApplication
                 Console.WriteLine();
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void WaitForUserEnter()
         {
             Console.Write("\nPress enter to continue...");
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         private string PromptForstring(string prompt)
         {
             Console.Write(prompt + ": ");
@@ -248,12 +295,22 @@ namespace TestingApplication
             return response;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         private int PromptForInt(string prompt)
         {
             string response = this.PromptForstring(prompt);
             return Int32.Parse(response);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         private bool PromptForbool(string prompt)
         {
             string response = this.PromptForstring(prompt);
