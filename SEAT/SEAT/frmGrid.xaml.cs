@@ -23,20 +23,20 @@ namespace SEAT
     public partial class frmGrid : Window
     {
         private Room myroom;
-        public Seat[,] stArray;
-        public TextBox[] txtcol;
-        public TextBox[] txtrow;
-        public int row;
-        public int column;
-        ListBox students = new ListBox();
-        public List<Seat> seatsSelected;
+        private Seat[,] seatArray;
+        private TextBox[] txtcol;
+        private TextBox[] txtrow;
+        private int row;
+        private int column;
+        private ListBox students = new ListBox();
+        private List<Seat> seatsSelected;
 
         public frmGrid()
         {
             InitializeComponent();
             int row = 0;
             int column = 0;
-            Seat[,] stArray = new Seat[row, column];
+            this.seatArray = new Seat[row, column];
         }
 
         public frmGrid(Room inroom, bool editable)
@@ -48,11 +48,11 @@ namespace SEAT
             
             // int seatSize = 45;
             this.seatsSelected = new List<Seat>();
-            int Width = 45;
-            int Height = 60;
+            int width = 45;
+            int height = 60;
             txtloc.Text = this.myroom.Location;
-            txtnm.Text = myroom.RoomName;
-            txtdes.Text = myroom.Description;
+            txtnm.Text = this.myroom.RoomName;
+            txtdes.Text = this.myroom.Description;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
             if (!editable)
             {
@@ -62,7 +62,7 @@ namespace SEAT
             // row = rows;
             // column = columns;
             ContainerVisual newPage = new ContainerVisual();
-            this.stArray = new Seat[this.row, this.column];
+            this.seatArray = new Seat[this.row, this.column];
             this.txtcol = new TextBox[this.column];
             this.txtrow = new TextBox[this.row];
 
@@ -74,22 +74,22 @@ namespace SEAT
                     Button button1 = new Button();
                     button1.FontSize = 10;
                     button1.Content = "Select";
-                    button1.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.rowbutton_click));
+                    button1.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.ButtonRow_Click));
                     button1.VerticalAlignment = VerticalAlignment.Top;
                     button1.HorizontalAlignment = HorizontalAlignment.Left;
-                    button1.Width = Width;
-                    button1.Height = Height;
+                    button1.Width = width;
+                    button1.Height = height;
                     button1.Tag = i;
-                    button1.Margin = new Thickness(Width, Height * i, 0, 0);
+                    button1.Margin = new Thickness(width, height * i, 0, 0);
                     grdleft.Children.Add(button1);
 
                     this.txtrow[i] = new TextBox();
                     this.txtrow[i].FontSize = 10;
                     this.txtrow[i].VerticalAlignment = VerticalAlignment.Top;
                     this.txtrow[i].HorizontalAlignment = HorizontalAlignment.Left;
-                    this.txtrow[i].Margin = new Thickness(0, Height * i, 0, 0);
-                    this.txtrow[i].Width = Width;
-                    this.txtrow[i].Height = Height;
+                    this.txtrow[i].Margin = new Thickness(0, height * i, 0, 0);
+                    this.txtrow[i].Width = width;
+                    this.txtrow[i].Height = height;
                     grdleft.Children.Add(this.txtrow[i]);
                 }
 
@@ -100,12 +100,12 @@ namespace SEAT
                         Button button2 = new Button();
                         button2.FontSize = 10;
                         button2.Content = "Select";
-                        button2.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.columnbutton_click));
+                        button2.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.ButtonColumn_Click));
                         button2.VerticalAlignment = VerticalAlignment.Top;
                         button2.HorizontalAlignment = HorizontalAlignment.Left;
-                        button2.Margin = new Thickness(Width * j, Height, 0, 0);
-                        button2.Width = Width;
-                        button2.Height = Height;
+                        button2.Margin = new Thickness(width * j, height, 0, 0);
+                        button2.Width = width;
+                        button2.Height = height;
                         button2.Tag = j;
                         grdtop2.Children.Add(button2);
 
@@ -113,18 +113,18 @@ namespace SEAT
                         this.txtcol[j].FontSize = 10;
                         this.txtcol[j].VerticalAlignment = VerticalAlignment.Top;
                         this.txtcol[j].HorizontalAlignment = HorizontalAlignment.Left;
-                        this.txtcol[j].Margin = new Thickness(Width * j, 0, 0, 0);
-                        this.txtcol[j].Width = Width;
-                        this.txtcol[j].Height = Height;
+                        this.txtcol[j].Margin = new Thickness(width * j, 0, 0, 0);
+                        this.txtcol[j].Width = width;
+                        this.txtcol[j].Height = height;
                         grdtop2.Children.Add(this.txtcol[j]);
                     }
 
-                    this.stArray[i, j] = new Seat(this.myroom.Chairs[i, j], editable);
-                    this.stArray[i, j].AddHandler(UserControl.MouseLeftButtonUpEvent, new RoutedEventHandler(this.Student_Drop));
-                    this.stArray[i, j].AddHandler(CheckBox.CheckedEvent, new RoutedEventHandler(this.chkSelected_Checked));
-                    this.stArray[i, j].AddHandler(CheckBox.UncheckedEvent, new RoutedEventHandler(this.chkSelected_Unchecked));
-                    this.stArray[i, j].Margin = new Thickness(Width * j, Height * i, 0, 0);
-                    griddy.Children.Add(this.stArray[i, j]);
+                    this.seatArray[i, j] = new Seat(this.myroom.Chairs[i, j], editable);
+                    this.seatArray[i, j].AddHandler(UserControl.MouseLeftButtonUpEvent, new RoutedEventHandler(this.Student_Drop));
+                    this.seatArray[i, j].AddHandler(CheckBox.CheckedEvent, new RoutedEventHandler(this.CheckBoxSelected_Checked));
+                    this.seatArray[i, j].AddHandler(CheckBox.UncheckedEvent, new RoutedEventHandler(this.CheckBoxSelected_Unchecked));
+                    this.seatArray[i, j].Margin = new Thickness(width * j, height * i, 0, 0);
+                    griddy.Children.Add(this.seatArray[i, j]);
                 }
             }
 
@@ -135,9 +135,9 @@ namespace SEAT
                 lblspace.Width = lblspace2.Width = 20;
                 lblspace.Height = lblspace2.Height = 20;
                 lblspace.Content = lblspace2.Content = string.Empty;
-                lblspace.Margin = new Thickness(0, Height * this.row, 0, 0);
+                lblspace.Margin = new Thickness(0, height * this.row, 0, 0);
                 grdleft.Children.Add(lblspace);
-                lblspace2.Margin = new Thickness((Width * this.column) + Width, 0, 0, 0);
+                lblspace2.Margin = new Thickness((width * this.column) + width, 0, 0, 0);
                 grdtop2.Children.Add(lblspace2);
                 Button button3 = new Button();
                 button3.FontSize = 10;
@@ -145,12 +145,12 @@ namespace SEAT
                 select.Text = "Select All";
                 select.TextWrapping = TextWrapping.Wrap;
                 button3.Content = select;
-                button3.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.allbutton_click));
+                button3.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.ButtonAll_Click));
                 button3.VerticalAlignment = VerticalAlignment.Top;
                 button3.HorizontalAlignment = HorizontalAlignment.Left;
-                button3.Margin = new Thickness(Width, Height, 0, 0);
-                button3.Width = Width;
-                button3.Height = Height;
+                button3.Margin = new Thickness(width, height, 0, 0);
+                button3.Width = width;
+                button3.Height = height;
                 button3.Tag = this.column + " " + this.row;
                 grdtop.Children.Add(button3);
 
@@ -161,8 +161,8 @@ namespace SEAT
                 btnRbyC.HorizontalAlignment = HorizontalAlignment.Left;
                 btnRbyC.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.RowByColumn_click));
                 btnRbyC.Margin = new Thickness(0, 0, 0, 0);
-                btnRbyC.Width = Width;
-                btnRbyC.Height = Height / 2;
+                btnRbyC.Width = width;
+                btnRbyC.Height = height / 2;
                 grdtop.Children.Add(btnRbyC);
 
                 Button btnCbyR = new Button();
@@ -171,32 +171,32 @@ namespace SEAT
                 btnCbyR.VerticalAlignment = VerticalAlignment.Top;
                 btnCbyR.HorizontalAlignment = HorizontalAlignment.Left;
                 btnCbyR.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.ColumnByRow_click));
-                btnCbyR.Margin = new Thickness(0, Height / 2, 0, 0);
-                btnCbyR.Width = Width;
-                btnCbyR.Height = Height / 2;
+                btnCbyR.Margin = new Thickness(0, height / 2, 0, 0);
+                btnCbyR.Width = width;
+                btnCbyR.Height = height / 2;
                 grdtop.Children.Add(btnCbyR);
 
                 TextBlock naming = new TextBlock();
                 naming.TextWrapping = TextWrapping.Wrap;
                 naming.Text = "Name rows";
-                naming.Width = Width;
+                naming.Width = width;
                 naming.VerticalAlignment = VerticalAlignment.Top;
                 naming.HorizontalAlignment = HorizontalAlignment.Left;
-                naming.Margin = new Thickness(0, Height, 0, 0);
+                naming.Margin = new Thickness(0, height, 0, 0);
                 grdtop.Children.Add(naming);
 
                 TextBlock naming2 = new TextBlock();
                 naming2.TextWrapping = TextWrapping.Wrap;
                 naming2.Text = "Name columns";
-                naming2.Width = Width;
+                naming2.Width = width;
                 naming2.VerticalAlignment = VerticalAlignment.Top;
                 naming2.HorizontalAlignment = HorizontalAlignment.Left;
-                naming2.Margin = new Thickness(Width, 0, 0, 0);
+                naming2.Margin = new Thickness(width, 0, 0, 0);
                 grdtop.Children.Add(naming2);
 
-                svrgrid.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.svrgrid_ScrollChanged));
-                svrtop.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.svrtop_ScrollChanged));
-                svrleft.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.svrleft_ScrollChanged));
+                svrgrid.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.ScrollGrid_ScrollChanged));
+                svrtop.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.ScrollTop_ScrollChanged));
+                svrleft.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.ScrollLeft_ScrollChanged));
             }
             else
             {
@@ -207,43 +207,43 @@ namespace SEAT
                 // students
             }
 
-            griddy.MaxHeight = (Height * this.row) + 20;
-            griddy.MaxWidth = (Width * this.column) + 20;
+            griddy.MaxHeight = (height * this.row) + 20;
+            griddy.MaxWidth = (width * this.column) + 20;
         }
 
-        private void svrgrid_ScrollChanged(object sender, EventArgs e)
+        private void ScrollGrid_ScrollChanged(object sender, EventArgs e)
         {
             svrtop.ScrollToHorizontalOffset(svrgrid.HorizontalOffset);
             svrleft.ScrollToVerticalOffset(svrgrid.VerticalOffset);
         }
 
-        private void svrtop_ScrollChanged(object sender, EventArgs e)
+        private void ScrollTop_ScrollChanged(object sender, EventArgs e)
         {
             svrgrid.ScrollToHorizontalOffset(svrtop.HorizontalOffset);
         }
 
-        private void svrleft_ScrollChanged(object sender, EventArgs e)
+        private void ScrollLeft_ScrollChanged(object sender, EventArgs e)
         {
             svrgrid.ScrollToVerticalOffset(svrleft.VerticalOffset);
         }
 
-        private void columnbutton_click(object sender, EventArgs e)
+        private void ButtonColumn_Click(object sender, EventArgs e)
         {
             Button button1 = (Button)sender;
             for (int i = 0; i < this.row; i++)
             {
                 if ((string)button1.Content == "Select")
                 {
-                    if (!(bool)this.stArray[i, (int)button1.Tag].chkSelected.IsChecked)
+                    if (!(bool)this.seatArray[i, (int)button1.Tag].chkSelected.IsChecked)
                     {
-                        this.stArray[i, (int)button1.Tag].chkSelected.IsChecked = true;
+                        this.seatArray[i, (int)button1.Tag].chkSelected.IsChecked = true;
                     }
                 }
                 else
                 {
-                    if ((bool)this.stArray[i, (int)button1.Tag].chkSelected.IsChecked)
+                    if ((bool)this.seatArray[i, (int)button1.Tag].chkSelected.IsChecked)
                     {
-                        this.stArray[i, (int)button1.Tag].chkSelected.IsChecked = false;
+                        this.seatArray[i, (int)button1.Tag].chkSelected.IsChecked = false;
                     }
                 }
             }
@@ -258,23 +258,23 @@ namespace SEAT
             }
         }
 
-        private void rowbutton_click(object sender, EventArgs e)
+        private void ButtonRow_Click(object sender, EventArgs e)
         {
             Button button2 = (Button)sender;
             for (int j = 0; j < this.column; j++)
             {
                 if ((string)button2.Content == "Select")
                 {
-                    if (!(bool)this.stArray[(int)button2.Tag, j].chkSelected.IsChecked)
+                    if (!(bool)this.seatArray[(int)button2.Tag, j].chkSelected.IsChecked)
                     {
-                        this.stArray[(int)button2.Tag, j].chkSelected.IsChecked = true;
+                        this.seatArray[(int)button2.Tag, j].chkSelected.IsChecked = true;
                     }
                 }
                 else
                 {
-                    if ((bool)this.stArray[(int)button2.Tag, j].chkSelected.IsChecked)
+                    if ((bool)this.seatArray[(int)button2.Tag, j].chkSelected.IsChecked)
                     {
-                        this.stArray[(int)button2.Tag, j].chkSelected.IsChecked = false;
+                        this.seatArray[(int)button2.Tag, j].chkSelected.IsChecked = false;
                     }
                 }
             }
@@ -289,7 +289,7 @@ namespace SEAT
             }
         }
 
-        private void allbutton_click(object sender, EventArgs e)
+        private void ButtonAll_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             TextBlock block = (TextBlock)button.Content;
@@ -304,16 +304,16 @@ namespace SEAT
                 {
                     if (block.Text == "Select All")
                     {
-                        if (!(bool)this.stArray[i, j].chkSelected.IsChecked)
+                        if (!(bool)this.seatArray[i, j].chkSelected.IsChecked)
                         {
-                            this.stArray[i, j].chkSelected.IsChecked = true;
+                            this.seatArray[i, j].chkSelected.IsChecked = true;
                         }
                     }
                     else
                     {
-                        if ((bool)this.stArray[i, j].chkSelected.IsChecked)
+                        if ((bool)this.seatArray[i, j].chkSelected.IsChecked)
                         {
-                            this.stArray[i, j].chkSelected.IsChecked = false;
+                            this.seatArray[i, j].chkSelected.IsChecked = false;
                         }
                     }
                 }
@@ -329,25 +329,25 @@ namespace SEAT
             }
         }
 
-        private void txtnm_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxName_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.myroom.RoomName = txtnm.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
-        private void txtloc_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxLocation_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.myroom.Location = txtloc.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
-        private void txtdes_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxDescription_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.myroom.Description = txtdes.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
-        private void btnchange_Click(object sender, RoutedEventArgs e)
+        private void ButtonChange_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
@@ -375,7 +375,7 @@ namespace SEAT
             // MessageBox.Show(seatsSelected.Count.ToString());
         }
 
-        private void chkSelected_Checked(object sender, RoutedEventArgs e)
+        private void CheckBoxSelected_Checked(object sender, RoutedEventArgs e)
         {
             Seat seat = (Seat)sender;
             this.seatsSelected.Add(seat);
@@ -386,7 +386,7 @@ namespace SEAT
             }
         }
 
-        private void chkSelected_Unchecked(object sender, RoutedEventArgs e)
+        private void CheckBoxSelected_Unchecked(object sender, RoutedEventArgs e)
         {
             Seat seat = (Seat)sender;
             this.seatsSelected.Remove(seat);
@@ -426,8 +426,8 @@ namespace SEAT
                 {
                     for (int j = 0; j < this.column; j++)
                     {
-                        this.stArray[i, j].Chair.SeatName = this.txtrow[i].Text + this.txtcol[j].Text;
-                        this.stArray[i, j].lblName.Content = this.txtrow[i].Text + this.txtcol[j].Text;
+                        this.seatArray[i, j].Chair.SeatName = this.txtrow[i].Text + this.txtcol[j].Text;
+                        this.seatArray[i, j].lblName.Content = this.txtrow[i].Text + this.txtcol[j].Text;
                     }
                 }
             }
@@ -462,8 +462,8 @@ namespace SEAT
                 {
                     for (int j = 0; j < this.column; j++)
                     {
-                        this.stArray[i, j].Chair.SeatName = this.txtcol[j].Text + this.txtrow[i].Text;
-                        this.stArray[i, j].lblName.Content = this.txtcol[j].Text + this.txtrow[i].Text;
+                        this.seatArray[i, j].Chair.SeatName = this.txtcol[j].Text + this.txtrow[i].Text;
+                        this.seatArray[i, j].lblName.Content = this.txtcol[j].Text + this.txtrow[i].Text;
                     }
                 }
             }
@@ -486,7 +486,7 @@ namespace SEAT
             }
         }
 
-        private void btnhanded_Click(object sender, RoutedEventArgs e)
+        private void ButtonHanded_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
@@ -504,7 +504,7 @@ namespace SEAT
             }
         }
 
-        private void btnhoriz_Click(object sender, RoutedEventArgs e)
+        private void ButtonHorizontal_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
@@ -527,7 +527,7 @@ namespace SEAT
             }
         }
 
-        private void btnvert_Click(object sender, RoutedEventArgs e)
+        private void ButtonVertical_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
@@ -550,7 +550,7 @@ namespace SEAT
             }
         }
 
-        private void btnnumber_Click(object sender, RoutedEventArgs e)
+        private void ButtonNumber_Click(object sender, RoutedEventArgs e)
         {
             if (txtnumber.Text.Length > 0)
             {
@@ -562,7 +562,7 @@ namespace SEAT
             // seatsSelected.ElementAt(0).chkSelected.IsChecked = false;
         }
 
-        private void btndone_Click(object sender, RoutedEventArgs e)
+        private void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

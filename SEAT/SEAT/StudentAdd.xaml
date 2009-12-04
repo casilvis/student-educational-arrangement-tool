@@ -28,6 +28,6 @@
         <StackPanel Orientation="Horizontal">
             <CheckBox Height="16" Margin="0,5,0,10" Name="chkbxvision" FlowDirection="RightToLeft" Width="100">Vision Impared</CheckBox>
         </StackPanel>
-        <Button Height="23" Name="btnAdd" Width="200" Click="btnAdd_Click">Submit</Button>
+        <Button Height="23" Name="btnAdd" Width="200" Click="ButtonAdd_Click">Submit</Button>
     </StackPanel>
 </Window>

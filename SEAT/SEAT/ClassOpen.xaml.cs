@@ -30,7 +30,7 @@ namespace SEAT
             this.Title = "Room creator";
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)rbtncreate.IsChecked)
             {
@@ -42,8 +42,8 @@ namespace SEAT
                 {
                     Room classroom = new Room(Convert.ToInt32(row), Convert.ToInt32(column));
                     Window1.SManager.AddNewRoom(classroom);
-                    frmGrid Grid = new frmGrid(classroom, true);
-                    Grid.Show();
+                    frmGrid grid = new frmGrid(classroom, true);
+                    grid.Show();
                     this.Close();
                 }
             }
@@ -55,8 +55,8 @@ namespace SEAT
                     {
                         Room classroom = new Room(txtPath.Text);
                         Window1.SManager.AddNewRoom(classroom);
-                        frmGrid Grid = new frmGrid(classroom, true);
-                        Grid.Show();
+                        frmGrid grid = new frmGrid(classroom, true);
+                        grid.Show();
                         this.Close();
                     }
                 }
@@ -67,7 +67,7 @@ namespace SEAT
             }
         }
 
-        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        private void ButtonBrowse_Click(object sender, RoutedEventArgs e)
         {
             rbtnLoad.IsChecked = true;
 
