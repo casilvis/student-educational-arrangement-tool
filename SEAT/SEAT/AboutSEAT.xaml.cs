@@ -1,4 +1,7 @@
-﻿namespace SEAT
+﻿// <copyright file="AboutSEAT.xaml.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
+namespace SEAT
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +27,7 @@
         {
             InitializeComponent();
             buttonOk.Focus();
-            this.AddHandler(Hyperlink.RequestNavigateEvent, new RequestNavigateEventHandler(HyperlinkNavigate));
+            this.AddHandler(Hyperlink.RequestNavigateEvent, new RequestNavigateEventHandler(this.HyperlinkNavigate));
         }
 
         private void HyperlinkNavigate(object sender, RequestNavigateEventArgs e)

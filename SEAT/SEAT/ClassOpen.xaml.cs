@@ -1,21 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Text.RegularExpressions;
-using SEATLibrary;
-
-
+﻿// <copyright file="ClassOpen.xaml.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
 namespace SEAT
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    
+    using SEATLibrary;
+
     /// <summary>
     /// Interaction logic for ClassOpen.xaml
     /// </summary>
@@ -26,13 +29,13 @@ namespace SEAT
             InitializeComponent();
             this.Title = "Room creator";
         }
+
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            
             if ((bool)rbtncreate.IsChecked)
             {
-                string row = Regex.Replace(txtRows.Text, @"[\D]", "");
-                string column = Regex.Replace(txtColumns.Text, @"[\D]", "");
+                string row = Regex.Replace(txtRows.Text, @"[\D]", string.Empty);
+                string column = Regex.Replace(txtColumns.Text, @"[\D]", string.Empty);
                 txtRows.Text = row;
                 txtColumns.Text = column;
                 if (column.Length > 0 && row.Length > 0)
@@ -48,7 +51,7 @@ namespace SEAT
             {
                 try
                 {
-                    if (txtPath.Text != "")
+                    if (txtPath.Text != string.Empty)
                     {
                         Room classroom = new Room(txtPath.Text);
                         Window1.SManager.AddNewRoom(classroom);
@@ -67,6 +70,7 @@ namespace SEAT
         private void btnBrowse_Click(object sender, RoutedEventArgs e)
         {
             rbtnLoad.IsChecked = true;
+
             // Configure open file dialog box
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".tplt"; // Default file extension
@@ -78,7 +82,7 @@ namespace SEAT
             // Process open file dialog box results
             if (result == true)
             {
-                txtPath.Text= dlg.FileName;
+                txtPath.Text = dlg.FileName;
             }
         }
     }

@@ -1,4 +1,7 @@
-﻿namespace SEAT
+﻿// <copyright file="Window1.xaml.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
+namespace SEAT
 {
     using System;
     using System.Collections;
@@ -26,25 +29,25 @@
         {
             InitializeComponent();
             this.Title = "SEAT Manager";
-            lbxRooms.ItemsSource = Window1.manager.RoomList;
-            lbxRoster.ItemsSource = Window1.manager.StudentList;
+            listBoxRooms.ItemsSource = Window1.manager.RoomList;
+            listBoxRoster.ItemsSource = Window1.manager.StudentList;
 
             // Creating a KeyBinding between the Open command and Ctrl-O
             KeyBinding openCmdKeyBinding = new KeyBinding(ApplicationCommands.Open, Key.O, ModifierKeys.Control);
             this.InputBindings.Add(openCmdKeyBinding);
-            CommandBinding openCmdBinding = new CommandBinding(ApplicationCommands.Open, OpenCmdExecuted);
+            CommandBinding openCmdBinding = new CommandBinding(ApplicationCommands.Open, this.OpenCmdExecuted);
             this.CommandBindings.Add(openCmdBinding);
 
             // Creating a KeyBinding between the Save command and Ctrl-S
             KeyBinding saveCmdKeyBinding = new KeyBinding(ApplicationCommands.Save, Key.S, ModifierKeys.Control);
             this.InputBindings.Add(saveCmdKeyBinding);
-            CommandBinding saveCmdBinding = new CommandBinding(ApplicationCommands.Save, SaveCmdExecuted);
+            CommandBinding saveCmdBinding = new CommandBinding(ApplicationCommands.Save, this.SaveCmdExecuted);
             this.CommandBindings.Add(saveCmdBinding);
 
             // Creating a KeyBinding between the New command and Ctrl-N
             KeyBinding newCmdKeyBinding = new KeyBinding(ApplicationCommands.New, Key.N, ModifierKeys.Control);
             this.InputBindings.Add(saveCmdKeyBinding);
-            CommandBinding newCmdBinding = new CommandBinding(ApplicationCommands.New, NewCmdExecuted);
+            CommandBinding newCmdBinding = new CommandBinding(ApplicationCommands.New, this.NewCmdExecuted);
             this.CommandBindings.Add(newCmdBinding);
         }
 
@@ -72,9 +75,8 @@
             Window1.manager = new SeatManager();
 
             // Bind all of the GUI elements
-            lbxRooms.ItemsSource = Window1.manager.RoomList;
-            lbxRoster.ItemsSource = Window1.manager.StudentList;
-            
+            listBoxRooms.ItemsSource = Window1.manager.RoomList;
+            listBoxRoster.ItemsSource = Window1.manager.StudentList;
         }
 
         private void OpenCmdExecuted(object target, ExecutedRoutedEventArgs e)
@@ -94,8 +96,8 @@
                 Window1.manager = new SeatManager(dlg.FileName);
                 
                 // Bind all of the GUI elements
-                lbxRooms.ItemsSource = Window1.manager.RoomList;
-                lbxRoster.ItemsSource = Window1.manager.StudentList;
+                listBoxRooms.ItemsSource = Window1.manager.RoomList;
+                listBoxRoster.ItemsSource = Window1.manager.StudentList;
             }
         }
 
@@ -104,7 +106,7 @@
             // If we can save the file where it already was we will, otherwise prompt to save the file
             if (!Window1.manager.SaveXml())
             {
-                FileMenuSaveAs_Click(sender, e);
+                this.FileMenuSaveAs_Click(sender, e);
             }
         }
 
@@ -139,34 +141,35 @@
 
         private void ButtonEditStudent_Click(object sender, RoutedEventArgs e)
         {
-            if (lbxRoster.SelectedValue != null)
+            if (listBoxRoster.SelectedValue != null)
             {
-                StudentAdd student = new StudentAdd(lbxRoster.SelectedValue as Student);
+                StudentAdd student = new StudentAdd(listBoxRoster.SelectedValue as Student);
                 student.ShowDialog();
             }
         }
 
         private void ButtonEditRoom_Click(object sender, RoutedEventArgs e)
         {
-            if (lbxRooms.SelectedValue != null)
+            if (listBoxRooms.SelectedValue != null)
             {
-                frmGrid grid = new frmGrid(lbxRooms.SelectedValue as Room, true);
+                frmGrid grid = new frmGrid(listBoxRooms.SelectedValue as Room, true);
                 grid.ShowDialog();
             }
         }
-        private void btnPlace_Click(object sender, RoutedEventArgs e)
+
+        private void ButtonPlace_Click(object sender, RoutedEventArgs e)
         {
-            if(lbxRooms.SelectedValue!=null)
+            if (listBoxRooms.SelectedValue != null)
             {
-                frmGrid grid = new frmGrid(lbxRooms.SelectedValue as Room, false);
+                frmGrid grid = new frmGrid(listBoxRooms.SelectedValue as Room, false);
                 grid.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Please select a Room");
-                
             }
         }
+
         private void DeleteStudent(object sender, RoutedEventArgs e)
         {
             // NOT IMPLEMENTED YET
@@ -187,42 +190,40 @@
             }
         }
 
-        private void buttonAddStudentsToRoom_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddStudentsToRoom_Click(object sender, RoutedEventArgs e)
         {
-            if ((Room)lbxRooms.SelectedItem == null)
+            if ((Room)listBoxRooms.SelectedItem == null)
             {
                 MessageBox.Show("No room selected");
             }
             else
             {
-                Room room = (Room)lbxRooms.SelectedItem;
-                IList list = lbxRoster.SelectedItems;
+                Room room = (Room)listBoxRooms.SelectedItem;
+                IList list = listBoxRoster.SelectedItems;
                 for (int i = 0; i < list.Count; i++)
                 {
                     Student s = (Student)list[i];
                     room.AddStudent(s);
                 }
             }
-
         }
 
-        private void buttonAddSectionToRoom_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddSectionToRoom_Click(object sender, RoutedEventArgs e)
         {
             // NOT IMPLEMENTED YET
         }
 
-        private void lbxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBoxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Room room = (Room)lbxRooms.SelectedItem;
+            Room room = (Room)listBoxRooms.SelectedItem;
             if (room != null)
             {
-                lbxStudents.ItemsSource = room.RoomStudents;
+                listBoxStudents.ItemsSource = room.RoomStudents;
             }
             else
             {
-                lbxStudents.ItemsSource = null;
+                listBoxStudents.ItemsSource = null;
             }
-
         }
     }
 }
