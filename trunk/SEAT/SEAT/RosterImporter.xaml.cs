@@ -42,6 +42,10 @@ namespace SEAT
             {
                 // Open document
                 this.rosterFile = new RosterFile(dlg.FileName);
+                if (this.rosterFile.Count == 0)
+                {
+                    MessageBox.Show("Unable to import roster.  Check if file is still in use.");
+                }
                 this.isOpened = true;
                 this.FillGrid();
             }
@@ -75,10 +79,11 @@ namespace SEAT
             }
 
             // Add all of the data into the grid
-            for (int i = 0; i < this.rosterFile.Count; i++)
+            for (int i = 1; i < this.rosterFile.Count; i++)
             {
                 string[] cols = this.rosterFile.ParsedData[i];
-
+                Student student = new Student(cols[2], cols[1], cols[0], cols[4], false, false);
+                Window1.SManager.AddStudentToRoster(student);
                 for (int j = 0; j < cols.Length; j++)
                 {
                     TextBlock cell = new TextBlock();
