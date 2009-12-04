@@ -5,6 +5,7 @@ namespace SEAT
 {
     using System;
     using System.Collections;
+    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Windows;
@@ -224,6 +225,11 @@ namespace SEAT
             {
                 listBoxStudents.ItemsSource = null;
             }
+        }
+
+        private void MenuItemHelp_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Help");
         }
     }
 }
