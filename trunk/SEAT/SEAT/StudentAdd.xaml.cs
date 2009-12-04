@@ -57,7 +57,7 @@ namespace SEAT
             txtLName.Focus();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             if (txtSID.Text.Length > 0 && txtLName.Text.Length > 0 && txtFName.Text.Length > 0)
             {
