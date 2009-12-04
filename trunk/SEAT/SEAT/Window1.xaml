@@ -44,12 +44,12 @@
         <Grid DockPanel.Dock="Left" ShowGridLines="True" HorizontalAlignment="Center">
             <DockPanel Margin="10,40,160,11">
                 <Label Height="28" Width="120" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Roster</Label>
-                <Button Name="buttonAddStudentsToRoom" Margin="0,10,0,0" Click="buttonAddStudentsToRoom_Click" DockPanel.Dock="Bottom">Add to Room >></Button>
+                <Button Name="buttonAddStudentsToRoom" Margin="0,10,0,0" Click="ButtonAddStudentsToRoom_Click" DockPanel.Dock="Bottom">Add to Room >></Button>
                 <DockPanel DockPanel.Dock="Bottom">
-                    <Button Height="23" Width="75" Name="btnaddstudent"  Click="ButtonAddStudent_Click">Add</Button>
-                    <Button Height="23" Name="btneditstudent" Click="ButtonEditStudent_Click">Edit</Button>
+                    <Button Height="23" Width="75" Name="buttonAddStudent"  Click="ButtonAddStudent_Click">Add</Button>
+                    <Button Height="23" Name="buttonEditStudent" Click="ButtonEditStudent_Click">Edit</Button>
                 </DockPanel>
-                <ListBox Name="lbxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" KeyDown="DeleteStudent" SelectionMode="Multiple" >
+                <ListBox Name="listBoxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" KeyDown="DeleteStudent" SelectionMode="Multiple" >
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <EventSetter Event="MouseDoubleClick" Handler="ButtonEditStudent_Click" />
@@ -59,19 +59,19 @@
             </DockPanel>
             <DockPanel Width="150" Margin="170,340,0,10" HorizontalAlignment="Left">
                 <Label Height="27" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Section</Label>
-                <Button Name="buttonAddSectionToRoom" Margin="0,10,0,0" Click="buttonAddSectionToRoom_Click"  DockPanel.Dock="Bottom">Add to Room >></Button>
-                <Button Height="23" Name="btnaddsection" DockPanel.Dock="Bottom">Add Section</Button>
-                <ListBox Name="lbxSection" />
+                <Button Name="buttonAddSectionToRoom" Margin="0,10,0,0" Click="ButtonAddSectionToRoom_Click"  DockPanel.Dock="Bottom">Add to Room >></Button>
+                <Button Height="23" Name="buttonAddSection" DockPanel.Dock="Bottom">Add Section</Button>
+                <ListBox Name="listBoxSection" />
             </DockPanel>
         </Grid>
         <Grid DockPanel.Dock="Right" ShowGridLines="False" HorizontalAlignment="Right">
             <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,170,40">
                 <Label Height="28" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Rooms</Label>
                 <DockPanel DockPanel.Dock="Bottom">
-                    <Button Height="23" Width="75" Name="btnaddroom"  Click="ButtonAddRoom_Click">Add</Button>
-                    <Button Height="23" Name="btneditroom" Click="ButtonEditRoom_Click">Edit</Button>
+                    <Button Height="23" Width="75" Name="buttonAddRoom"  Click="ButtonAddRoom_Click">Add</Button>
+                    <Button Height="23" Name="buttonEditRoom" Click="ButtonEditRoom_Click">Edit</Button>
                 </DockPanel>
-                <ListBox  Name="lbxRooms" ItemTemplate="{StaticResource itemTemplateRooms}" SelectionChanged="lbxRooms_SelectionChanged">
+                <ListBox  Name="listBoxRooms" ItemTemplate="{StaticResource itemTemplateRooms}" SelectionChanged="ListBoxRooms_SelectionChanged">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <EventSetter Event="MouseDoubleClick" Handler="ButtonEditRoom_Click" />
@@ -81,8 +81,8 @@
             </DockPanel>
             <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,10,40">
                 <Label Height="28" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Students in Room</Label>
-                <Button Name="btnPlace" Height="23" DockPanel.Dock="bottom" Click="btnPlace_Click">Place Students</Button>
-                <ListBox  Name="lbxStudents" ItemTemplate="{StaticResource itemTemplateRoster}" />
+                <Button Name="buttonPlace" Height="23" DockPanel.Dock="bottom" Click="ButtonPlace_Click">Place Students</Button>
+                <ListBox  Name="listBoxStudents" ItemTemplate="{StaticResource itemTemplateRoster}" />
             </DockPanel>
         </Grid>
         <Rectangle DockPanel.Dock="Bottom" MaxWidth="1" Fill="Black"></Rectangle>

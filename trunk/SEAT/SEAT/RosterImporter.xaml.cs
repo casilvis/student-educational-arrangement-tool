@@ -1,4 +1,7 @@
-﻿namespace SEAT
+﻿// <copyright file="RosterImporter.xaml.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
+namespace SEAT
 {
     using System;
     using System.Collections.Generic;
@@ -40,7 +43,7 @@
                 // Open document
                 this.rosterFile = new RosterFile(dlg.FileName);
                 this.isOpened = true;
-                FillGrid();
+                this.FillGrid();
             }
             else
             {

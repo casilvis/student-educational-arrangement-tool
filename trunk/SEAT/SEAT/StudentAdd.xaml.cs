@@ -1,33 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using SEATLibrary;
-
+﻿// <copyright file="StudentAdd.xaml.cs" company="University of Louisville Speed School of Engineering">
+// GNU General Public License v3
+// </copyright>
 namespace SEAT
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    using SEATLibrary;
+
     ///
     /// <summary>
     /// Interaction logic for StudentAdd.xaml
     /// </summary>
     public partial class StudentAdd : Window
     {
-        Student student;
+        private Student student;
 
         public StudentAdd()
         {
             InitializeComponent();
             this.student = null;
             txtLName.Focus();
-
         }
 
         public StudentAdd(Student student)
@@ -46,10 +48,12 @@ namespace SEAT
             {
                 rbtnRight.IsChecked = true;
             }
+
             if (student.VisionImpairment)
             {
                 chkbxvision.IsChecked = true;
             }
+
             txtLName.Focus();
         }
 
@@ -57,21 +61,27 @@ namespace SEAT
         {
             if (txtSID.Text.Length > 0 && txtLName.Text.Length > 0 && txtFName.Text.Length > 0)
             {
-                if (student == null)
+                if (this.student == null)
                 {
-                    student = new Student(txtFName.Text, txtLName.Text, txtSID.Text,
-                        txtSection.Text, (bool)rbtnLeft.IsChecked, (bool)chkbxvision.IsChecked);
-                    Window1.SManager.AddStudentToRoster(student);
+                    this.student = new Student(
+                        txtFName.Text, 
+                        txtLName.Text, 
+                        txtSID.Text,
+                        txtSection.Text, 
+                        (bool)rbtnLeft.IsChecked, 
+                        (bool)chkbxvision.IsChecked);
+                    Window1.SManager.AddStudentToRoster(this.student);
                 }
                 else
                 {
-                    student.FirstName = txtFName.Text;
-                    student.LastName = txtLName.Text;
-                    student.Sid = txtSID.Text;
-                    student.Section = txtSection.Text;
-                    student.LeftHanded = (bool)rbtnLeft.IsChecked;
-                    student.VisionImpairment = (bool)chkbxvision.IsChecked;
+                    this.student.FirstName = txtFName.Text;
+                    this.student.LastName = txtLName.Text;
+                    this.student.Sid = txtSID.Text;
+                    this.student.Section = txtSection.Text;
+                    this.student.LeftHanded = (bool)rbtnLeft.IsChecked;
+                    this.student.VisionImpairment = (bool)chkbxvision.IsChecked;
                 }
+
                 this.Close();
             }
             else
