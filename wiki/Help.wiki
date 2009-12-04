@@ -1,0 +1,10 @@
+#summary Help Documentation for SEAT
+
+= Introduction =
+
+This is the instruction manual for using SEAT.
+
+
+= Details =
+
+_This content still needs to be filled in._
