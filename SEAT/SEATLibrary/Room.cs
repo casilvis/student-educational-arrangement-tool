@@ -5,6 +5,7 @@ namespace SEATLibrary
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Collections.Specialized;
     using System.ComponentModel;
     using System.Linq;
     using System.Text;
@@ -61,7 +62,6 @@ namespace SEATLibrary
         {
             this.width = 4;
             this.height = 4;
-
             this.roomName = "Unknown";
             this.location = "Unknown";
             this.description = "Unknown";
@@ -91,6 +91,7 @@ namespace SEATLibrary
             this.location = "Unknown";
             this.description = "Unknown";
             this.roomStudents = new ObservableCollection<Student>();
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(RoomStudents_CollectionChanged);
             this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
@@ -114,11 +115,11 @@ namespace SEATLibrary
         {
             this.width = width;
             this.height = height;
-
             this.roomName = roomName;
             this.location = location;
             this.description = description;
             this.roomStudents = new ObservableCollection<Student>();
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(RoomStudents_CollectionChanged);
             this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
@@ -137,6 +138,7 @@ namespace SEATLibrary
         public Room(string file)
         {
             this.roomStudents = new ObservableCollection<Student>();
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(RoomStudents_CollectionChanged);
 
             // Read in the XML document and load all of the data into memory
             XmlReader r = new XmlTextReader(file);
@@ -313,6 +315,51 @@ namespace SEATLibrary
             }
         }
 
+        public void RemoveStudentFromSeat(Student student)
+        {
+            for (int i = 0; i < this.height; i++)
+            {
+                for (int j = 0; j < this.width; j++)
+                {
+                    if (student == this.chairs[i, j].TheStudent)
+                    {
+                        this.chairs[i, j].TheStudent = null;
+                        return;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Determine if a student has been placed in a chair in a room.
+        /// </summary>
+        /// <param name="student">The student to check.</param>
+        /// <returns>True if the student is seated in a chair.</returns>
+        public bool IsStudentSeated(Student student)
+        {
+            for (int i = 0; i < this.height; i++)
+            {
+                for (int j = 0; j < this.width; j++)
+                {
+                    if (student == this.chairs[i, j].TheStudent)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Determine if a student is in the roster for the room.
+        /// </summary>
+        /// <param name="student">The student to check.</param>
+        /// <returns>True if the student is in the room roster.</returns>
+        public bool IsStudentInRoom(Student student)
+        {
+            return this.roomStudents.Contains(student);
+        }
+
         /// <summary>
         /// Run the specified placement algorithm.
         /// Uses visitor design pattern.
@@ -404,6 +451,28 @@ namespace SEATLibrary
             if (this.PropertyChanged != null)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(info));
+                SeatManager.MarkDirty();
+            }
+        }
+
+        void RoomStudents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                // Do something here...
+            }
+            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                // Also remove this student from their seat
+                for (int i = 0; i < e.OldItems.Count; i++)
+                {
+                    // This is a student that was removed
+                    if (!e.NewItems.Contains(e.OldItems[i]))
+                    {
+                        Student student = e.OldItems[i] as Student;
+                        this.RemoveStudentFromSeat(student);
+                    }
+                }
             }
         }
     }

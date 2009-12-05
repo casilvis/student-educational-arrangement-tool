@@ -17,6 +17,11 @@ namespace SEATLibrary
         // Attributes 
 
         /// <summary>
+        /// Indicates that some piece of data has changed and the file now needs to be saved.
+        /// </summary>
+        private static bool dirty;
+
+        /// <summary>
         /// All of the students.
         /// </summary>
         private ObservableCollection<Student> students;
@@ -38,8 +43,11 @@ namespace SEATLibrary
         /// </summary>
         public SeatManager()
         {
+            SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
+            this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Students_CollectionChanged);
             this.rooms = new ObservableCollection<Room>();
+            this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Rooms_CollectionChanged);
             this.file = null;
         }
 
@@ -50,6 +58,7 @@ namespace SEATLibrary
         public SeatManager(string file)
         {
             // Initialize the variables
+            SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
             this.rooms = new ObservableCollection<Room>();
             this.file = file;
@@ -194,6 +203,11 @@ namespace SEATLibrary
 
         // Methods 
 
+        public static void MarkDirty()
+        {
+            SeatManager.dirty = true;
+        }
+
         /// <summary>
         /// Adds a new student to the roster of students.
         /// </summary>
@@ -333,6 +347,9 @@ namespace SEATLibrary
             w.WriteEndElement(); // END SEAT
             w.WriteEndDocument();
             w.Close();
+
+            // Mark the file as no longer dirty
+            SeatManager.dirty = false;
         }
 
         /// <summary>
@@ -361,6 +378,26 @@ namespace SEATLibrary
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Something in the list of rooms changed and the file needs to be saved.
+        /// </summary>
+        /// <param name="sender">The sender who triggered this event.</param>
+        /// <param name="e">The information about this event.</param>
+        void Rooms_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            SeatManager.MarkDirty();
+        }
+
+        /// <summary>
+        /// Something in the list of students changed and the file needs to be saved.
+        /// </summary>
+        /// <param name="sender">The sender who triggered this event.</param>
+        /// <param name="e">The information about this event.</param>
+        void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            SeatManager.MarkDirty();
         }
     }
 }
