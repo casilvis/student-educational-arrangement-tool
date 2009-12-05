@@ -66,6 +66,7 @@ namespace SEATLibrary
             this.location = "Unknown";
             this.description = "Unknown";
             this.roomStudents = new ObservableCollection<Student>();
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(this.RoomStudents_CollectionChanged);
             this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
@@ -91,7 +92,7 @@ namespace SEATLibrary
             this.location = "Unknown";
             this.description = "Unknown";
             this.roomStudents = new ObservableCollection<Student>();
-            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(RoomStudents_CollectionChanged);
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(this.RoomStudents_CollectionChanged);
             this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
@@ -119,7 +120,7 @@ namespace SEATLibrary
             this.location = location;
             this.description = description;
             this.roomStudents = new ObservableCollection<Student>();
-            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(RoomStudents_CollectionChanged);
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(this.RoomStudents_CollectionChanged);
             this.chairs = new Chair[this.height, this.width];
 
             for (int i = 0; i < this.height; i++)
@@ -138,7 +139,7 @@ namespace SEATLibrary
         public Room(string file)
         {
             this.roomStudents = new ObservableCollection<Student>();
-            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(RoomStudents_CollectionChanged);
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(this.RoomStudents_CollectionChanged);
 
             // Read in the XML document and load all of the data into memory
             XmlReader r = new XmlTextReader(file);
@@ -315,6 +316,10 @@ namespace SEATLibrary
             }
         }
 
+        /// <summary>
+        /// Removes the given student from any seat they may currently be seated in.
+        /// </summary>
+        /// <param name="student">The student to remove from the seat.</param>
         public void RemoveStudentFromSeat(Student student)
         {
             for (int i = 0; i < this.height; i++)
@@ -347,6 +352,7 @@ namespace SEATLibrary
                     }
                 }
             }
+
             return false;
         }
 
@@ -455,7 +461,12 @@ namespace SEATLibrary
             }
         }
 
-        void RoomStudents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        /// <summary>
+        /// Run when a student is modified inside of the room students collection.
+        /// </summary>
+        /// <param name="sender">Who triggered this action.</param>
+        /// <param name="e">The details involving this action.</param>
+        private void RoomStudents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {

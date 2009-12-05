@@ -29,7 +29,7 @@ namespace SEAT
         public Seat()
         {
             this.chair = new Chair();
-            this.chair.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Chair_PropertyChanged);
+            this.chair.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.Chair_PropertyChanged);
             InitializeComponent();
         }
 
@@ -38,7 +38,7 @@ namespace SEAT
             this.txtblname.TextWrapping = TextWrapping.Wrap;
             this.txtblname.FontSize = 8;
             this.chair = chair;
-            this.chair.PropertyChanged +=new System.ComponentModel.PropertyChangedEventHandler(Chair_PropertyChanged);
+            this.chair.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.Chair_PropertyChanged);
             InitializeComponent();
             if (editable)
             {
@@ -137,7 +137,6 @@ namespace SEAT
                     case MessageBoxResult.OK:
                         // User pressed Yes button
                         this.chair.TheStudent = null;
-                        // this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
                         break;
                     case MessageBoxResult.Cancel:
                         // User pressed Cancel button
@@ -146,14 +145,13 @@ namespace SEAT
             }
         }
 
-
-        void Chair_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void Chair_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "TheStudent")
             {
                 if (this.chair.TheStudent == null)
                 {
-                    this.txtblname.Text = "";
+                    this.txtblname.Text = string.Empty;
                 }
                 else
                 {

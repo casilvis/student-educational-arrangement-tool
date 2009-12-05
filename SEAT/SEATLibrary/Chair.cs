@@ -107,6 +107,7 @@ namespace SEATLibrary
             {
                 return this.leftHanded;
             }
+
             set
             {
                 if (this.leftHanded != value)
@@ -127,6 +128,7 @@ namespace SEATLibrary
             {
                 return this.frontBackPosition;
             }
+
             set
             {
                 if (this.frontBackPosition != value)
@@ -147,6 +149,7 @@ namespace SEATLibrary
             {
                 return this.leftRightPosition;
             }
+
             set
             {
                 if (this.leftRightPosition != value)
@@ -167,6 +170,7 @@ namespace SEATLibrary
             {
                 return this.nonChair;
             }
+
             set
             {
                 if (this.nonChair != value)
@@ -187,6 +191,7 @@ namespace SEATLibrary
             {
                 return this.mustBeEmpty;
             }
+
             set
             {
                 if (this.mustBeEmpty != value)
@@ -207,6 +212,7 @@ namespace SEATLibrary
             {
                 return this.seatNumber;
             }
+
             set
             {
                 if (this.seatNumber != value)
@@ -227,6 +233,7 @@ namespace SEATLibrary
             {
                 return this.theStudent;
             }
+
             set
             {
                 if (this.theStudent != value)
