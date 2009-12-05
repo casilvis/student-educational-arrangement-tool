@@ -5,13 +5,14 @@ namespace SEATLibrary
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Text;
 
     /// <summary>
     /// A representation of a char that is placed inside of a Room.
     /// </summary>
-    public class Chair
+    public class Chair : INotifyPropertyChanged
     {
         // ATTRIBUTES
 
@@ -87,6 +88,13 @@ namespace SEATLibrary
             this.theStudent = theStudent;
         }
 
+        // Events
+
+        /// <summary>
+        /// Event for updating properties.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         // PROPERTIES
 
         /// <summary>
@@ -95,8 +103,18 @@ namespace SEATLibrary
         /// <value>True if the chair is left handed.</value>
         public bool LeftHanded
         {
-            get { return this.leftHanded; }
-            set { this.leftHanded = value; }
+            get
+            {
+                return this.leftHanded;
+            }
+            set
+            {
+                if (this.leftHanded != value)
+                {
+                    this.leftHanded = value;
+                    this.NotifyPropertyChanged("LeftHanded");
+                }
+            }
         }
 
         /// <summary>
@@ -105,8 +123,18 @@ namespace SEATLibrary
         /// <value>0, 1, or 2 depending on front to back positioning of the chair.</value>
         public int FbPosition
         {
-            get { return this.frontBackPosition; }
-            set { this.frontBackPosition = value; }
+            get
+            {
+                return this.frontBackPosition;
+            }
+            set
+            {
+                if (this.frontBackPosition != value)
+                {
+                    this.frontBackPosition = value;
+                    this.NotifyPropertyChanged("FbPosition");
+                }
+            }
         }
 
         /// <summary>
@@ -115,8 +143,18 @@ namespace SEATLibrary
         /// <value>0, 1, or 2 depending on the left to right positioning of the chair.</value>
         public int LrPosition
         {
-            get { return this.leftRightPosition; }
-            set { this.leftRightPosition = value; }
+            get
+            {
+                return this.leftRightPosition;
+            }
+            set
+            {
+                if (this.leftRightPosition != value)
+                {
+                    this.leftRightPosition = value;
+                    this.NotifyPropertyChanged("LrPosition");
+                }
+            }
         }
 
         /// <summary>
@@ -125,8 +163,18 @@ namespace SEATLibrary
         /// <value>True if the chair is not a chair, could be an aisle or simply not exist.</value>
         public bool NonChair
         {
-            get { return this.nonChair; }
-            set { this.nonChair = value; }
+            get
+            {
+                return this.nonChair;
+            }
+            set
+            {
+                if (this.nonChair != value)
+                {
+                    this.nonChair = value;
+                    this.NotifyPropertyChanged("NonChair");
+                }
+            }
         }
 
         /// <summary>
@@ -135,8 +183,18 @@ namespace SEATLibrary
         /// <value>True if a student is not allowed to be placed in this chair.</value>
         public bool MustBeEmpty
         {
-            get { return this.mustBeEmpty; }
-            set { this.mustBeEmpty = value; }
+            get
+            {
+                return this.mustBeEmpty;
+            }
+            set
+            {
+                if (this.mustBeEmpty != value)
+                {
+                    this.mustBeEmpty = value;
+                    this.NotifyPropertyChanged("MustBeEmpty");
+                }
+            }
         }
 
         /// <summary>
@@ -145,8 +203,18 @@ namespace SEATLibrary
         /// <value>String representation of the chairs position in the room.</value>
         public string SeatName
         {
-            get { return this.seatNumber; }
-            set { this.seatNumber = value; }
+            get
+            {
+                return this.seatNumber;
+            }
+            set
+            {
+                if (this.seatNumber != value)
+                {
+                    this.seatNumber = value;
+                    this.NotifyPropertyChanged("SeatName");
+                }
+            }
         }
 
         /// <summary>
@@ -155,8 +223,18 @@ namespace SEATLibrary
         /// <value>The student who is currently sitting in the chair, null for an empty chair.</value>
         public Student TheStudent
         {
-            get { return this.theStudent; }
-            set { this.theStudent = value; }
+            get
+            {
+                return this.theStudent;
+            }
+            set
+            {
+                if (this.theStudent != value)
+                {
+                    this.theStudent = value;
+                    this.NotifyPropertyChanged("TheStudent");
+                }
+            }
         }
 
         // METHODS
@@ -198,6 +276,19 @@ namespace SEATLibrary
             else
             {
                 return "R";
+            }
+        }
+
+        /// <summary>
+        /// Signals that a property of this object has changed.
+        /// </summary>
+        /// <param name="info">The property that is being affected.</param>
+        private void NotifyPropertyChanged(string info)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(info));
+                SeatManager.MarkDirty();
             }
         }
     }

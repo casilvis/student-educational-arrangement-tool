@@ -571,10 +571,19 @@ namespace SEAT
         {
             if (this.students.SelectedItem != null)
             {
-                Student stud = (Student)this.students.SelectedItem;
+                Student student = (Student)this.students.SelectedItem;
                 Seat seat = (Seat)sender;
-                seat.Chair.TheStudent = stud;
-                seat.Txtblname.Text = seat.Chair.TheStudent.FirstName + " " + seat.Chair.TheStudent.LastName;
+                if (!this.myroom.IsStudentSeated(student))
+                {
+                    seat.Chair.TheStudent = student;
+                }
+                else
+                {
+                    MessageBox.Show(student.FirstName + " " + student.LastName + " is already seated");
+                    
+                }
+
+                this.students.UnselectAll();
             }
         }
     }

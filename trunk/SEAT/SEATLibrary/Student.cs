@@ -301,6 +301,7 @@ namespace SEATLibrary
             if (this.PropertyChanged != null)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(info));
+                SeatManager.MarkDirty();
             }
         }
     }

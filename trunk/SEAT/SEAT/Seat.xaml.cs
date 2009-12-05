@@ -29,6 +29,7 @@ namespace SEAT
         public Seat()
         {
             this.chair = new Chair();
+            this.chair.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Chair_PropertyChanged);
             InitializeComponent();
         }
 
@@ -37,6 +38,7 @@ namespace SEAT
             this.txtblname.TextWrapping = TextWrapping.Wrap;
             this.txtblname.FontSize = 8;
             this.chair = chair;
+            this.chair.PropertyChanged +=new System.ComponentModel.PropertyChangedEventHandler(Chair_PropertyChanged);
             InitializeComponent();
             if (editable)
             {
@@ -52,6 +54,13 @@ namespace SEAT
                     rect01.VerticalAlignment = VerticalAlignment.Top;
                     rect01.Margin = new Thickness(x, y, 0, 0);
                     grdSelect.Children.Add(rect01);
+                }
+            }
+            else
+            {
+                if (this.chair.TheStudent != null)
+                {
+                    this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
                 }
             }
 
@@ -110,7 +119,47 @@ namespace SEAT
 
         private void Seat_click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("hey");
+            if (this.chair.TheStudent != null)
+            {
+                // Set up the message box
+                string messageBoxText = "Do you want to remove " + this.chair.TheStudent.FirstName + " " +
+                    this.chair.TheStudent.LastName + " from this chair?";
+                string caption = "Student Removal";
+                MessageBoxButton button = MessageBoxButton.OKCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+
+                // Display message box
+                MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+                
+                // Process message box results
+                switch (result)
+                {
+                    case MessageBoxResult.OK:
+                        // User pressed Yes button
+                        this.chair.TheStudent = null;
+                        // this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
+                        break;
+                    case MessageBoxResult.Cancel:
+                        // User pressed Cancel button
+                        break;
+                }
+            }
+        }
+
+
+        void Chair_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "TheStudent")
+            {
+                if (this.chair.TheStudent == null)
+                {
+                    this.txtblname.Text = "";
+                }
+                else
+                {
+                    this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
+                }
+            }
         }
     }
 }
