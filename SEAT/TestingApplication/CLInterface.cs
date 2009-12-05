@@ -10,12 +10,12 @@ namespace TestingApplication
     using SEATLibrary;
 
     /// <summary>
-    /// 
+    /// Exposes useful command line tools that are able to perform common tasks.
     /// </summary>
     internal class CLInterface
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the CLInterface class.
         /// </summary>
         public CLInterface()
         {
@@ -24,38 +24,38 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Prompts the user for the necessary information to create a student.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A new instance of a student.</returns>
         public Student GetNewStudent()
         {
             return new Student(
-                this.PromptForstring("First Name"),
-                this.PromptForstring("Last Name"),
-                this.PromptForstring("Student ID"),
-                this.PromptForstring("Section"),
+                this.PromptForString("First Name"),
+                this.PromptForString("Last Name"),
+                this.PromptForString("Student ID"),
+                this.PromptForString("Section"),
                 this.PromptForbool("Left Handed"),
                 this.PromptForbool("Vision Enpairment"));
         }
 
         /// <summary>
-        /// 
+        /// Prompts the user for the necessary information to create a room.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A new instance of a room.</returns>
         public Room GetNewRoom()
         {
             return new Room(
-                this.PromptForstring("Room Name"),
-                this.PromptForstring("Room Location"),
-                this.PromptForstring("Room Description"),
+                this.PromptForString("Room Name"),
+                this.PromptForString("Room Location"),
+                this.PromptForString("Room Description"),
                 this.PromptForInt("Room Height"),
                 this.PromptForInt("Room Width"));
         }
 
         /// <summary>
-        /// 
+        /// Displays all of the students.
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list">The list of students to be displayed.</param>
         public void DisplayStudentRoster(ObservableCollection<Student> list)
         {
             Console.WriteLine("Displaying Student Roster");
@@ -73,9 +73,9 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Displays all of the rooms.
         /// </summary>
-        /// <param name="roomList"></param>
+        /// <param name="roomList">The list of rooms to be displayed.</param>
         public void DisplayRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
@@ -93,10 +93,10 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Prompts the user to select one of the rooms.
         /// </summary>
-        /// <param name="roomList"></param>
-        /// <returns></returns>
+        /// <param name="roomList">The list of rooms to choose from.</param>
+        /// <returns>The index of the selected room.</returns>
         public int SelectRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
@@ -125,9 +125,9 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Provide an interface to modify a room.
         /// </summary>
-        /// <param name="room"></param>
+        /// <param name="room">The room to be modified.</param>
         public void UpdateRoom(Room room)
         {
             string prompt = string.Empty;
@@ -162,9 +162,9 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Provide an interface to modify a seat.
         /// </summary>
-        /// <param name="room"></param>
+        /// <param name="room">The room (which contains seats) to be modified.</param>
         public void UpdateRoomSeat(Room room)
         {
             // Have the user select one of the seats in the room
@@ -242,7 +242,7 @@ namespace TestingApplication
                 }
                 else if (input == 4)
                 {
-                    c.SeatName = this.PromptForstring("New Chair Name: ");
+                    c.SeatName = this.PromptForString("New Chair Name: ");
                 }
             }
 
@@ -250,9 +250,9 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Displays the room.
         /// </summary>
-        /// <param name="r"></param>
+        /// <param name="r">The room to be displayed.</param>
         public void DisplayRoom(Room r)
         {
             Console.Write("\t");
@@ -275,7 +275,7 @@ namespace TestingApplication
         }
         
         /// <summary>
-        /// 
+        /// Waits for the user to press enter before continuing.
         /// </summary>
         public void WaitForUserEnter()
         {
@@ -284,11 +284,11 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Retreives a string from the command line.
         /// </summary>
-        /// <param name="prompt"></param>
-        /// <returns></returns>
-        private string PromptForstring(string prompt)
+        /// <param name="prompt">The prompt to give the user.</param>
+        /// <returns>The retreived string.</returns>
+        private string PromptForString(string prompt)
         {
             Console.Write(prompt + ": ");
             string response = Console.ReadLine();
@@ -296,24 +296,24 @@ namespace TestingApplication
         }
 
         /// <summary>
-        /// 
+        /// Retreives an integer from the command line.
         /// </summary>
-        /// <param name="prompt"></param>
-        /// <returns></returns>
+        /// <param name="prompt">The prompt to give the user.</param>
+        /// <returns>The retreived integer.</returns>
         private int PromptForInt(string prompt)
         {
-            string response = this.PromptForstring(prompt);
+            string response = this.PromptForString(prompt);
             return Int32.Parse(response);
         }
 
         /// <summary>
-        /// 
+        /// Retreives a boolean value from the command line.
         /// </summary>
-        /// <param name="prompt"></param>
-        /// <returns></returns>
+        /// <param name="prompt">The prompt to give the user.</param>
+        /// <returns>The retreived bool.</returns>
         private bool PromptForbool(string prompt)
         {
-            string response = this.PromptForstring(prompt);
+            string response = this.PromptForString(prompt);
             if (response.Equals("Yes") || response.Equals("yes") || response.Equals("YES"))
             {
                 return true;

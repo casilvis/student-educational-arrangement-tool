@@ -9,21 +9,19 @@ namespace TestingApplication
     using SEATLibrary;
 
     /// <summary>
-    /// 
+    /// A command line program that is used in testing of the SEATLibrary.
     /// </summary>
     public class Program
     {
-        // Make an instance of the Command Line interface so we can do some testing on our class
-        
         /// <summary>
-        /// 
+        /// An instance of the Command Line interface so we can do some testing on our class.
         /// </summary>
         private static CLInterface cli = new CLInterface();
 
         /// <summary>
-        /// 
+        /// The main program.
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">Command line arguments.</param>
         public static void Main(string[] args)
         {
             // Make an instance of the seat manager, this is what we are going to use
