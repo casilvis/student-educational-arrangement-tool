@@ -5,6 +5,7 @@ namespace SEATLibrary
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     using System.Linq;
     using System.Text;
     using System.Xml;
@@ -27,6 +28,11 @@ namespace SEATLibrary
         private ObservableCollection<Student> students;
 
         /// <summary>
+        /// A virtual collection of the sections.
+        /// </summary>
+        private ObservableCollection<string> sections;
+
+        /// <summary>
         /// All of the rooms.
         /// </summary>
         private ObservableCollection<Room> rooms;
@@ -46,6 +52,8 @@ namespace SEATLibrary
             SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
             this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
+            this.sections = new ObservableCollection<string>();
+            this.sections.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Sections_CollectionChanged);
             this.rooms = new ObservableCollection<Room>();
             this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Rooms_CollectionChanged);
             this.file = null;
@@ -61,6 +69,8 @@ namespace SEATLibrary
             SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
             this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
+            this.sections = new ObservableCollection<string>();
+            this.sections.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Sections_CollectionChanged);
             this.rooms = new ObservableCollection<Room>();
             this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Rooms_CollectionChanged);
             this.file = file;
@@ -141,7 +151,7 @@ namespace SEATLibrary
                                                 Student s = this.LookupStudent(r.GetAttribute("SUID"));
 
                                                 // Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                                room.Chairs[x, y] = new Chair(
+                                                room.Chairs[y, x] = new Chair(
                                                     bool.Parse(r.GetAttribute("LeftHanded")),
                                                     Int32.Parse(r.GetAttribute("FbPosition")),
                                                     Int32.Parse(r.GetAttribute("LrPosition")),
@@ -217,6 +227,15 @@ namespace SEATLibrary
         public ObservableCollection<Student> StudentList
         {
             get { return this.students; }
+        }
+
+        /// <summary>
+        /// Gets the list of sections.
+        /// </summary>
+        /// <value>Read only collection of sections.</value>
+        public ReadOnlyObservableCollection<string> SectionList
+        {
+            get { return new ReadOnlyObservableCollection<string>(this.sections); }
         }
 
         // Methods 
@@ -316,9 +335,9 @@ namespace SEATLibrary
                 w.WriteAttributeString("Width", this.rooms[i].Width.ToString());
                 w.WriteAttributeString("Height", this.rooms[i].Height.ToString());
                 w.WriteStartElement("Chairs"); // START CHAIRS
-                for (int j = 0; j < this.rooms[i].Width; j++)
+                for (int j = 0; j < this.rooms[i].Height; j++)
                 {
-                    for (int k = 0; k < this.rooms[i].Height; k++)
+                    for (int k = 0; k < this.rooms[i].Width; k++)
                     {
                         Chair c = this.rooms[i].Chairs[j, k];
                         w.WriteStartElement("Chair"); // START CHAIR
@@ -439,6 +458,81 @@ namespace SEATLibrary
         private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SeatManager.MarkDirty();
+            
+            // Keep the section array up to date
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                foreach (Student item in e.NewItems)
+                {
+                    // Add event handlers to all of the new students
+                    item.PropertyChanged += new PropertyChangedEventHandler(this._Student_PropertyChanged);
+                }
+
+                this.RefreshSectionList();
+            }
+            else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            {
+                this.RefreshSectionList();
+            }
+        }
+
+        /// <summary>
+        /// Run when one of the studen't properties changes.  Used to keep the section list up to date.
+        /// </summary>
+        /// <param name="sender">Who triggered this event.</param>
+        /// <param name="e">The parameters for this event.</param>
+        private void _Student_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Section")
+            {
+                this.RefreshSectionList();
+            }
+        }
+
+        /// <summary>
+        /// Bring the list of sections up to date.
+        /// Not a efficient function, but it is efficient enough for this purpose.
+        /// </summary>
+        private void RefreshSectionList()
+        {
+            // Get the new list of sections
+            // The complexity grows linearly as the number of students increases
+            Collection<string> list = new Collection<string>();
+            for (int i = 0; i < this.students.Count; i++)
+            {
+                if (!list.Contains(this.students[i].Section))
+                {
+                    list.Add(this.students[i].Section);
+                }
+            }
+
+            // Add the new section
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (!this.sections.Contains(list[i]))
+                {
+                    this.sections.Add(list[i]);
+                }
+            }
+
+            // Remove the deleted sections
+            for (int i = 0; i < this.sections.Count; i++)
+            {
+                if (!list.Contains(this.sections[i]))
+                {
+                    this.sections.RemoveAt(i--);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Executed when the collection of sections change.
+        /// </summary>
+        /// <param name="sender">Who triggered this action.</param>
+        /// <param name="e">The parameters for this method.</param>
+        private void Sections_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            // throw new NotImplementedException();
         }
     }
 }
