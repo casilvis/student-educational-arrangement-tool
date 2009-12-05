@@ -32,6 +32,8 @@ namespace SEAT
             this.Title = "SEAT Manager";
             listBoxRooms.ItemsSource = Window1.manager.RoomList;
             listBoxRoster.ItemsSource = Window1.manager.StudentList;
+            SeatManager.FileBecameDirty += new EventHandler(this.SeatManager_FileBecameDirty);
+            this.Title = Window1.SManager.ToString();
 
             // Creating a KeyBinding between the Open command and Ctrl-O
             KeyBinding openCmdKeyBinding = new KeyBinding(ApplicationCommands.Open, Key.O, ModifierKeys.Control);
@@ -99,6 +101,7 @@ namespace SEAT
                 // Bind all of the GUI elements
                 listBoxRooms.ItemsSource = Window1.manager.RoomList;
                 listBoxRoster.ItemsSource = Window1.manager.StudentList;
+                this.Title = Window1.SManager.ToString();
             }
         }
 
@@ -174,12 +177,6 @@ namespace SEAT
         private void DeleteStudent(object sender, RoutedEventArgs e)
         {
             // NOT IMPLEMENTED YET
-            /*
-            if (e.Key == System.Windows.Input.Key.Delete)
-            {
-                manager. create a remove student and remove room function
-            }
-             */
         }
 
         private void ImportRoster_Click(object sender, RoutedEventArgs e)
@@ -230,6 +227,11 @@ namespace SEAT
         private void MenuItemHelp_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Help");
+        }
+
+        private void SeatManager_FileBecameDirty(object sender, EventArgs e)
+        {
+            this.Title = Window1.SManager.ToString();
         }
     }
 }

@@ -46,6 +46,7 @@ namespace SEAT
                 {
                     MessageBox.Show("Unable to import roster.  Check if file is still in use.");
                 }
+
                 this.isOpened = true;
                 this.FillGrid();
             }

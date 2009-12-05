@@ -580,7 +580,6 @@ namespace SEAT
                 else
                 {
                     MessageBox.Show(student.FirstName + " " + student.LastName + " is already seated");
-                    
                 }
 
                 this.students.UnselectAll();

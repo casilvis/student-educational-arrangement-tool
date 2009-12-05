@@ -45,9 +45,9 @@ namespace SEATLibrary
         {
             SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
-            this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Students_CollectionChanged);
+            this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
             this.rooms = new ObservableCollection<Room>();
-            this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Rooms_CollectionChanged);
+            this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Rooms_CollectionChanged);
             this.file = null;
         }
 
@@ -60,7 +60,9 @@ namespace SEATLibrary
             // Initialize the variables
             SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
+            this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
             this.rooms = new ObservableCollection<Room>();
+            this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Rooms_CollectionChanged);
             this.file = file;
 
             // Read in the XML document and load all of the data into memory
@@ -181,7 +183,23 @@ namespace SEATLibrary
             }
         }
 
+        // Events
+
+        /// <summary>
+        /// The file has become dirty and those who subscribe to this even need to be notified.
+        /// </summary>
+        public static event EventHandler FileBecameDirty;
+
         // Properties 
+
+        /// <summary>
+        /// Gets a value indicating whether the data is in need of saving.
+        /// </summary>
+        /// <value>Is the data dirty.</value>
+        public static bool Dirty
+        {
+            get { return dirty; }
+        }
 
         /// <summary>
         /// Gets the list of rooms.
@@ -202,11 +220,6 @@ namespace SEATLibrary
         }
 
         // Methods 
-
-        public static void MarkDirty()
-        {
-            SeatManager.dirty = true;
-        }
 
         /// <summary>
         /// Adds a new student to the roster of students.
@@ -350,6 +363,34 @@ namespace SEATLibrary
 
             // Mark the file as no longer dirty
             SeatManager.dirty = false;
+            SeatManager.FileBecameDirty.Invoke(null, null);
+        }
+
+        /// <summary>
+        /// Returns a string representation of the SEATManager used in the title bar of the application.
+        /// </summary>
+        /// <returns>String representation of the current file.</returns>
+        public override string ToString()
+        {
+            string title = "SEAT | " + this.file;
+            if (SeatManager.Dirty)
+            {
+                title += " *";
+            }
+
+            return title;
+        }
+
+        /// <summary>
+        /// Can be used anywhere to indicate the a change has been made to the file.
+        /// </summary>
+        internal static void MarkDirty()
+        {
+            if (SeatManager.dirty == false)
+            {
+                SeatManager.dirty = true;
+                SeatManager.FileBecameDirty.Invoke(null, null);
+            }
         }
 
         /// <summary>
@@ -385,7 +426,7 @@ namespace SEATLibrary
         /// </summary>
         /// <param name="sender">The sender who triggered this event.</param>
         /// <param name="e">The information about this event.</param>
-        void Rooms_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void Rooms_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SeatManager.MarkDirty();
         }
@@ -395,7 +436,7 @@ namespace SEATLibrary
         /// </summary>
         /// <param name="sender">The sender who triggered this event.</param>
         /// <param name="e">The information about this event.</param>
-        void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SeatManager.MarkDirty();
         }
