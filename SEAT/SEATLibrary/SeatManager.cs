@@ -6,6 +6,7 @@ namespace SEATLibrary
     using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
+    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Xml;
@@ -82,7 +83,7 @@ namespace SEATLibrary
                 if (r.NodeType == XmlNodeType.Element)
                 {
                     // Read in all of the students
-                    if (r.Name.ToString() == "Students")
+                    if (r.Name.ToString() == "Students" && !r.IsEmptyElement)
                     {
                         bool test1 = true;
                         while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "Students") && test1)
@@ -120,8 +121,9 @@ namespace SEATLibrary
                                     r.GetAttribute("Name"),
                                     r.GetAttribute("Location"),
                                     r.GetAttribute("Description"),
-                                    Int32.Parse(r.GetAttribute("Width")),
-                                    Int32.Parse(r.GetAttribute("Height")));
+                                    Int32.Parse(r.GetAttribute("Height")),
+                                    Int32.Parse(r.GetAttribute("Width")));
+                                Trace.WriteLine("PARSER: Adding Room - " + room.ToString()); // DEBUG
 
                                 // Add the room to the list of the rooms
                                 this.rooms.Add(room);
@@ -151,7 +153,7 @@ namespace SEATLibrary
                                                 Student s = this.LookupStudent(r.GetAttribute("SUID"));
 
                                                 // Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                                room.Chairs[y, x] = new Chair(
+                                                room.Chairs[x, y] = new Chair(
                                                     bool.Parse(r.GetAttribute("LeftHanded")),
                                                     Int32.Parse(r.GetAttribute("FbPosition")),
                                                     Int32.Parse(r.GetAttribute("LrPosition")),
@@ -161,11 +163,12 @@ namespace SEATLibrary
                                                     s);
                                             }
                                         }
-                                    }
-                                    else if (r.NodeType == XmlNodeType.Element && r.Name == "RoomStudents")
+                                    } 
+                                    else if (r.NodeType == XmlNodeType.Element && r.Name == "RoomStudents" && !r.IsEmptyElement)
                                     {
                                         // Read in all of the RoomStudents
                                         bool test5 = true;
+
                                         while (!(r.NodeType == XmlNodeType.EndElement && r.Name == "RoomStudents") && test5)
                                         {
                                             test5 = r.Read();
@@ -184,7 +187,7 @@ namespace SEATLibrary
                                                 }
                                             }
                                         }
-                                    }
+                                    }  
                                 }
                             }
                         }
