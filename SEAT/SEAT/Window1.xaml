@@ -59,10 +59,9 @@
                     </ListBox.ItemContainerStyle>
                 </ListBox>
             </DockPanel>
-            <DockPanel Width="150" Margin="170,340,0,10" HorizontalAlignment="Left">
+            <DockPanel Width="150" Margin="170,40,0,10" HorizontalAlignment="Left">
                 <Label Height="27" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Section</Label>
-                <Button Name="buttonAddSectionToRoom" Margin="0,10,0,0" Click="ButtonAddSectionToRoom_Click"  DockPanel.Dock="Bottom">Add to Room >></Button>
-                <Button Height="23" Name="buttonAddSection" DockPanel.Dock="Bottom">Add Section</Button>
+                <Button Name="buttonAddSectionToRoom" Margin="0,35,0,0" Click="ButtonAddSectionToRoom_Click"  DockPanel.Dock="Bottom">Add to Room >></Button>
                 <ListBox Name="listBoxSection" />
             </DockPanel>
         </Grid>

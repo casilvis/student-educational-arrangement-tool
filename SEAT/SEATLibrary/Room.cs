@@ -178,7 +178,7 @@ namespace SEATLibrary
                                     Student s = null;
 
                                     // Replace the chair from the default constructor with the information contained in the stored version of the chair
-                                    this.Chairs[y, x] = new Chair(
+                                    this.Chairs[x, y] = new Chair(
                                         Boolean.Parse(r.GetAttribute("LeftHanded")),
                                         Int32.Parse(r.GetAttribute("FbPosition")), 
                                         Int32.Parse(r.GetAttribute("LrPosition")),

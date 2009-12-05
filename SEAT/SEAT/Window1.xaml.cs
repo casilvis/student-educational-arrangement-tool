@@ -32,6 +32,7 @@ namespace SEAT
             this.Title = "SEAT Manager";
             listBoxRooms.ItemsSource = Window1.manager.RoomList;
             listBoxRoster.ItemsSource = Window1.manager.StudentList;
+            listBoxSection.ItemsSource = Window1.manager.SectionList;
             SeatManager.FileBecameDirty += new EventHandler(this.SeatManager_FileBecameDirty);
             this.Title = Window1.SManager.ToString();
 
@@ -80,6 +81,8 @@ namespace SEAT
             // Bind all of the GUI elements
             listBoxRooms.ItemsSource = Window1.manager.RoomList;
             listBoxRoster.ItemsSource = Window1.manager.StudentList;
+            listBoxSection.ItemsSource = Window1.manager.SectionList;
+            this.Title = Window1.SManager.ToString();
         }
 
         private void OpenCmdExecuted(object target, ExecutedRoutedEventArgs e)
@@ -101,6 +104,7 @@ namespace SEAT
                 // Bind all of the GUI elements
                 listBoxRooms.ItemsSource = Window1.manager.RoomList;
                 listBoxRoster.ItemsSource = Window1.manager.StudentList;
+                listBoxSection.ItemsSource = Window1.manager.SectionList;
                 this.Title = Window1.SManager.ToString();
             }
         }
@@ -208,7 +212,36 @@ namespace SEAT
 
         private void ButtonAddSectionToRoom_Click(object sender, RoutedEventArgs e)
         {
-            // NOT IMPLEMENTED YET
+            if ((Room)listBoxRooms.SelectedItem == null)
+            {
+                MessageBox.Show("No room selected");
+            }
+            else if ((string)this.listBoxSection.SelectedItem == null)
+            {
+                MessageBox.Show("No section selected");
+            }
+            else
+            {
+                Room room = (Room)listBoxRooms.SelectedItem;
+                //IList list = listBoxRoster.SelectedItems;
+                string s = this.listBoxSection.SelectedItem as string;
+
+                for (int i = 0; i < Window1.SManager.StudentList.Count; i++)
+                {
+                    Student student = Window1.SManager.StudentList[i];
+                    if (student.Section == s)
+                    {
+                        room.AddStudent(student);
+                    }
+                }
+                /*
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Student s = (Student)list[i];
+                    room.AddStudent(s);
+                }
+                 */
+            }
         }
 
         private void ListBoxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
