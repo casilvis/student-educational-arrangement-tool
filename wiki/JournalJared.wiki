@@ -2,6 +2,10 @@
 
 =Journal=
 
+12/5/09 - Added a dirty flag that is set with events for properties changing.  The title bar of the program is changed accordingly to indicate an unsaved file.  The ObservableCollections are now tied to methods that intercept the changes.  When a student is removed from a RoomRoster he will also be removed from any seat.  A student can now only be manually placed in a single seat and double clicking on a seat will remove a student from it.  The student's name in their seat is now updated via the property notification event. (3 hours)
+
+12/4/09 - Brought the SEAT project up to StyleCop compliance excluding the requirement for documentation headers.  Refactored code that it it will be easier to maintain. (2 hours)
+
 11/30/09 - Added an about box to the main application; Configured the installer; implemented the ctrl+o/s/n shortcut keys; began implementation of the csv parser to import student rosters (3 hours)
 
 11/29/09 - Investigated design options for placement algorithms (1 hour)
