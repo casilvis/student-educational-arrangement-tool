@@ -3,6 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Import Class Roster" Height="300" Width="618">
     <Grid Name="myGrid">
-        <ScrollBar HorizontalAlignment="Right" Name="scrollBar1" Width="17" />
+        
     </Grid>
 </Window>
