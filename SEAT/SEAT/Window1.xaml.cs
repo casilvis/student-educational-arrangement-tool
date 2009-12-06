@@ -4,6 +4,7 @@
 namespace SEAT
 {
     using System;
+    using System.Drawing;
     using System.Collections;
     using System.Diagnostics;
     using System.Linq;
@@ -18,6 +19,7 @@ namespace SEAT
     using System.Windows.Navigation;
     using System.Windows.Shapes;
     using SEATLibrary;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// Interaction logic for Window1.xaml
@@ -229,6 +231,16 @@ namespace SEAT
             }
         }
 
+        private void buttonSelectStudents_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxRoster.SelectAll();
+        }
+
+        private void buttonDeselectStudents_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxRoster.UnselectAll();
+        }
+
         private void ButtonAddSectionToRoom_Click(object sender, RoutedEventArgs e)
         {
             if ((Room)listBoxRooms.SelectedItem == null)
@@ -271,6 +283,45 @@ namespace SEAT
         private void MenuItemHelp_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Help");
+        }
+
+        private void PrintSeatingChart_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)listBoxRooms.SelectedItem;
+            if (room == null)
+            {
+                MessageBox.Show("No room selected!");
+            }
+            else
+            {
+                PCPrint printer = new PCPrint();
+                //Set the font we want to use
+                printer.PrinterFont = new Font("Verdana", 10);
+                //Set the TextToPrint property
+                Chair[,] roomchairs = room.Chairs;
+                ObservableCollection<Student> studentsInRoom = new ObservableCollection<Student>();
+                ObservableCollection<String> chairLocations = new ObservableCollection<String>();
+                foreach(Chair chair in roomchairs)
+                {
+
+                        if (chair.TheStudent != null)
+                        {
+                            studentsInRoom.Add(chair.TheStudent);
+                            chairLocations.Add(chair.SeatName);
+                        }
+                }
+
+                String studentList = "";
+                Console.Write(studentsInRoom.Count);
+                for (int i = 0; i < studentsInRoom.Count; i++)
+                {
+                    Student currentStudent = studentsInRoom.ElementAt(i);
+                    studentList += currentStudent.LastName + ", " + currentStudent.FirstName + ": " + chairLocations.ElementAt(i)+"\n";
+                }
+                printer.TextToPrint = studentList;
+                //Issue print command
+                printer.Print();
+            }
         }
 
         private void SeatManager_FileBecameDirty(object sender, EventArgs e)
