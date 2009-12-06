@@ -54,7 +54,7 @@ http://chart.apis.google.com/chart?chtt=Effort+by+Month&chts=000000,12&chs=300x1
  * Brian = 3hr
  * Nick  = 6hr
 
-http://chart.apis.google.com/chart?chtt=Time+Spent+Since+October+28&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Jared|Brian|Nick|&cht=bvs&chd=t:29.5,14.5,3.0,6.0&chco=ff0000&chbh=50&nonsense=something.png
+http://chart.apis.google.com/chart?chtt=Time+Spent+Since+November+30&chts=000000,12&chs=300x200&chf=bg,s,ffffff|c,s,ffffff&chxt=x,y&chxl=0:|Justin|Jared|Brian|Nick|&cht=bvs&chd=t:29.5,14.5,3.0,6.0&chco=ff0000&chbh=50&nonsense=something.png
 
 
 
