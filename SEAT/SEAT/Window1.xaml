@@ -4,7 +4,8 @@
     Title="Window1" 
     Height="600" Width="700"
     MinWidth="700"
-    Closing="Window_Closing" >
+    Closing="Window_Closing" 
+    Icon="seat.ico">
     <Window.Resources>
         <DataTemplate x:Key="itemTemplateRoster">
             <StackPanel Orientation="Horizontal">
