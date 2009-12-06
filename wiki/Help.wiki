@@ -6,20 +6,22 @@
 = DOCS =
 
 == Analysis ==
-
+For analysis see [Homework3a homework 3a].
 
 == Requirements ==
  * [RequirementsMatrix Requirements Matrix]
 
 == References ==
+There are no references for this project.
 
 == Coding and inspection guidelines ==
 The coding standard used by this project were those outline by Microsoft for the .NET framework and were enforced using the [http://code.msdn.microsoft.com/sourceanalysis StyleCop] tool provided by Microsoft for Visual Studio 2008.
 
 == Metrics and SQA ==
+For metrics see [Homework3b homework 3b].
 
 == Management and Processes (Teams) ==
-
+For information about the development of this software, see the [TeamPlan team plan].
 
 = HOMEWORKS =
 == Homework Assignments ==
