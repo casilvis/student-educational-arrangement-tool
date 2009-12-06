@@ -1,10 +1,34 @@
 #summary Help Documentation for SEAT
 
-= Introduction =
+= SRC =
+[SpecificationRequirements Specification & Requirements]
 
-This is the instruction manual for using SEAT.
+= DOCS =
 
+== Analysis ==
+== Requirements ==
+== References ==
+== Coding and inspection guidelines ==
+== Metrics and SQA ==
+== Management and Processes (Teams) ==
 
-= Details =
+= HOMEWORKS =
+== Homework Assignments ==
+ * [Homework1 Homework 1]
+ * [Homework2 Homework 2]
+ * [Homework3a Homework 3a]
+ * [Homework3b Homework 3b]
 
-_This content still needs to be filled in._
+== Fault Data ==
+== Individual Logs ==
+ * [JournalJared Jared Log]
+ * [JournalJustin Justin Log]
+ * [JournalNick Nick Log]
+ * [JournalBrian Brian Log]
+
+= MANUALS =
+== Install File ==
+== Documentation and Instructions ==
+The [Documentation Documentation] includes instructions on how to use the application 
+
+= PRESENTATION =
