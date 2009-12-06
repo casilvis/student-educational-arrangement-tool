@@ -147,7 +147,6 @@ namespace SEATLibrary
             FileStream filestream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
             GZipStream gzipstream = new GZipStream(filestream, CompressionMode.Decompress, true);
             XmlReader r = new XmlTextReader(gzipstream);
-            //XmlReader r = new XmlTextReader(file);
             while (r.Read())
             {
                 if (r.NodeType == XmlNodeType.Element && r.Name == "Room")
@@ -197,6 +196,7 @@ namespace SEATLibrary
                     }
                 }
             }
+
             r.Close();
             gzipstream.Close();
             filestream.Close();
@@ -410,7 +410,7 @@ namespace SEATLibrary
         /// <param name="file">The location to save the file.</param>
         public void WriteRoomTemplate(string file)
         {
-            FileStream filestream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write,1000,true);
+            FileStream filestream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write, 1000, true);
             GZipStream gzipstream = new GZipStream(filestream, CompressionMode.Compress);
             XmlWriter w = new XmlTextWriter(gzipstream, null);
             w.WriteStartDocument();

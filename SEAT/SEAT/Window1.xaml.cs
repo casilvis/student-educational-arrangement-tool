@@ -223,7 +223,6 @@ namespace SEAT
             else
             {
                 Room room = (Room)listBoxRooms.SelectedItem;
-                //IList list = listBoxRoster.SelectedItems;
                 string s = this.listBoxSection.SelectedItem as string;
 
                 for (int i = 0; i < Window1.SManager.StudentList.Count; i++)
@@ -234,13 +233,6 @@ namespace SEAT
                         room.AddStudent(student);
                     }
                 }
-                /*
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Student s = (Student)list[i];
-                    room.AddStudent(s);
-                }
-                 */
             }
         }
 
