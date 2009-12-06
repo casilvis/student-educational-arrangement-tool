@@ -7,7 +7,8 @@ namespace SEATLibrary
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Diagnostics;
-    using System.Linq;
+    using System.IO;
+    using System.IO.Compression;
     using System.Text;
     using System.Xml;
 
@@ -77,7 +78,9 @@ namespace SEATLibrary
             this.file = file;
 
             // Read in the XML document and load all of the data into memory
-            XmlReader r = new XmlTextReader(file);
+            FileStream filestream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+            GZipStream gzipstream = new GZipStream(filestream, CompressionMode.Decompress, true);
+            XmlReader r = new XmlTextReader(gzipstream);
             while (r.Read())
             {
                 if (r.NodeType == XmlNodeType.Element)
@@ -310,7 +313,9 @@ namespace SEATLibrary
         public void SaveXml(string file)
         {
             this.file = file;
-            XmlWriter w = new XmlTextWriter(file, null);
+            FileStream filestream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write, 1000, true);
+            GZipStream gzipstream = new GZipStream(filestream, CompressionMode.Compress);
+            XmlWriter w = new XmlTextWriter(gzipstream, null);
             w.WriteStartDocument();
             w.WriteStartElement("SEAT"); // START SEAT
             w.WriteStartElement("Students"); // START STUDENTS
@@ -382,6 +387,8 @@ namespace SEATLibrary
             w.WriteEndElement(); // END SEAT
             w.WriteEndDocument();
             w.Close();
+            gzipstream.Close();
+            filestream.Close();
 
             // Mark the file as no longer dirty
             SeatManager.dirty = false;

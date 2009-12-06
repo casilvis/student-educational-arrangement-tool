@@ -481,8 +481,8 @@ namespace SEAT
             // Process open file dialog box results
             if (result == true)
             {
-                // Open document
-                Window1.SManager.SaveXml(dlg.FileName);
+                // Save the template
+                this.myroom.WriteRoomTemplate(dlg.FileName);
             }
         }
 
