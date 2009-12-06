@@ -34,7 +34,7 @@
 
 
 = Total Effort So Far =
-Hours: 13.5
+Hours: 22.5
 
 = Effort Required =
 Hours: 52
