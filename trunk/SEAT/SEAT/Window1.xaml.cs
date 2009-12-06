@@ -75,14 +75,33 @@ namespace SEAT
 
         private void NewCmdExecuted(object sender, RoutedEventArgs e)
         {
-            // ADD SOME CODE HERE TO MAKE SURE YOU DON'T DELETE UNSAVED DATA!
-            Window1.manager = new SeatManager();
+            bool makenew = true;
+            if (SeatManager.Dirty)
+            {
+                string message = "Do you want to save changes?";
+                MessageBoxResult result = MessageBox.Show(message, "SEAT", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Cancel)
+                {
+                    // Don't do anything
+                    makenew = false;
+                }
+                else if (result == MessageBoxResult.Yes)
+                {
+                    // Save changes before the file is replaced with a new one
+                    this.SaveCmdExecuted(this, null);
+                }
+            }
 
-            // Bind all of the GUI elements
-            listBoxRooms.ItemsSource = Window1.manager.RoomList;
-            listBoxRoster.ItemsSource = Window1.manager.StudentList;
-            listBoxSection.ItemsSource = Window1.manager.SectionList;
-            this.Title = Window1.SManager.ToString();
+            if (makenew)
+            {
+                Window1.manager = new SeatManager();
+
+                // Bind all of the GUI elements
+                listBoxRooms.ItemsSource = Window1.manager.RoomList;
+                listBoxRoster.ItemsSource = Window1.manager.StudentList;
+                listBoxSection.ItemsSource = Window1.manager.SectionList;
+                this.Title = Window1.SManager.ToString();
+            }
         }
 
         private void OpenCmdExecuted(object target, ExecutedRoutedEventArgs e)
@@ -138,7 +157,7 @@ namespace SEAT
 
         private void FileMenuExit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Exit not implemented");
+            this.Close();
         }
 
         private void ButtonAddStudent_Click(object sender, RoutedEventArgs e)
@@ -257,6 +276,24 @@ namespace SEAT
         private void SeatManager_FileBecameDirty(object sender, EventArgs e)
         {
             this.Title = Window1.SManager.ToString();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (SeatManager.Dirty)
+            {
+                string message = "Do you want to save changes before exiting?";
+                MessageBoxResult result = MessageBox.Show(message, "SEAT", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Cancel)
+                {
+                    // User does not want to close the window.
+                    e.Cancel = true;
+                }
+                else if (result == MessageBoxResult.Yes)
+                {
+                    this.SaveCmdExecuted(this, null);
+                }
+            }
         }
     }
 }

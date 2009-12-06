@@ -51,7 +51,6 @@ namespace SEATLibrary
         /// </summary>
         public SeatManager()
         {
-            SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
             this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
             this.sections = new ObservableCollection<string>();
@@ -59,6 +58,7 @@ namespace SEATLibrary
             this.rooms = new ObservableCollection<Room>();
             this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Rooms_CollectionChanged);
             this.file = null;
+            SeatManager.dirty = false;
         }
 
         /// <summary>
@@ -68,7 +68,6 @@ namespace SEATLibrary
         public SeatManager(string file)
         {
             // Initialize the variables
-            SeatManager.dirty = false;
             this.students = new ObservableCollection<Student>();
             this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
             this.sections = new ObservableCollection<string>();
@@ -197,6 +196,11 @@ namespace SEATLibrary
                     }
                 }
             }
+
+            r.Close();
+            gzipstream.Close();
+            filestream.Close();
+            SeatManager.dirty = false;
         }
 
         // Events
