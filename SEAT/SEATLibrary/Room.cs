@@ -7,6 +7,8 @@ namespace SEATLibrary
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
+    using System.IO;
+    using System.IO.Compression;
     using System.Linq;
     using System.Text;
     using System.Xml;
@@ -142,7 +144,10 @@ namespace SEATLibrary
             this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(this.RoomStudents_CollectionChanged);
 
             // Read in the XML document and load all of the data into memory
-            XmlReader r = new XmlTextReader(file);
+            FileStream filestream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+            GZipStream gzipstream = new GZipStream(filestream, CompressionMode.Decompress, true);
+            XmlReader r = new XmlTextReader(gzipstream);
+            //XmlReader r = new XmlTextReader(file);
             while (r.Read())
             {
                 if (r.NodeType == XmlNodeType.Element && r.Name == "Room")
@@ -192,6 +197,9 @@ namespace SEATLibrary
                     }
                 }
             }
+            r.Close();
+            gzipstream.Close();
+            filestream.Close();
         }
 
         // Events
@@ -402,7 +410,9 @@ namespace SEATLibrary
         /// <param name="file">The location to save the file.</param>
         public void WriteRoomTemplate(string file)
         {
-            XmlWriter w = new XmlTextWriter(file, null);
+            FileStream filestream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write,1000,true);
+            GZipStream gzipstream = new GZipStream(filestream, CompressionMode.Compress);
+            XmlWriter w = new XmlTextWriter(gzipstream, null);
             w.WriteStartDocument();
             w.WriteStartElement("SEATTEMPLATE"); // START SEATTEMPLATE
 
@@ -437,6 +447,8 @@ namespace SEATLibrary
             w.WriteEndElement(); // END SEATTEMPLATE
             w.WriteEndDocument();
             w.Close();
+            gzipstream.Close();
+            filestream.Close();
         }
 
         /// <summary>
