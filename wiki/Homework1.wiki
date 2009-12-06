@@ -1,0 +1,7 @@
+#summary Assignment for Homework 1
+
+ * [Scope Scope]
+ * [Definitions Definitions]
+ * [SpecificationRequirements Specification Requirements]
+ * [RequirementsMatrix Requirements Matrix]
+ * [TeamPlan Team Plan]
