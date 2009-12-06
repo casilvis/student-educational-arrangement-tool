@@ -6,11 +6,20 @@
 = DOCS =
 
 == Analysis ==
+
+
 == Requirements ==
+ * [RequirementsMatrix Requirements Matrix]
+
 == References ==
+
 == Coding and inspection guidelines ==
+The coding standard used by this project were those outline by Microsoft for the .NET framework and were enforced using the [http://code.msdn.microsoft.com/sourceanalysis StyleCop] tool provided by Microsoft for Visual Studio 2008.
+
 == Metrics and SQA ==
+
 == Management and Processes (Teams) ==
+
 
 = HOMEWORKS =
 == Homework Assignments ==
@@ -20,15 +29,19 @@
  * [Homework3b Homework 3b]
 
 == Fault Data ==
+
 == Individual Logs ==
- * [JournalJared Jared Log]
- * [JournalJustin Justin Log]
- * [JournalNick Nick Log]
- * [JournalBrian Brian Log]
+ * [JournalJared Jared's Log]
+ * [JournalJustin Justin's Log]
+ * [JournalNick Nick's Log]
+ * [JournalBrian Brian's Log]
 
 = MANUALS =
 == Install File ==
+Link to install file will be placed here.
+
 == Documentation and Instructions ==
-The [Documentation Documentation] includes instructions on how to use the application 
+The [Documentation documentation] includes instructions on how to use the application.
 
 = PRESENTATION =
+The [http://docs.google.com/present/view?id=dfq7vs3n_156g5jx3ng6 Presentation] was presented at the end of the semester as part of the project.
