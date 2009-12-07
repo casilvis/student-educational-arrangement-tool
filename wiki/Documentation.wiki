@@ -1,3 +1,85 @@
 #summary documentation used for the User Manual.
 
-*Room Creator*<br>The top row in the grid is to specify the front of the class. The bottom row is to specify the back of the class. The left is for left and right is for right. This allows the teacher to specify seats to help with the seating. The seats can also be marked as left handed, nonseats, and not used. This also allows the seat to be vacant or allows the seating to try and place left handed people in the left handed seats. To mark seats accordingly, use either the select buttons to select rows or columns or individually select the seats to change. Then go to the right and use these options to actually change properties. Left handed seats will have red text, non seats will be dark grey, and not usable seats will be light grayed out. This also helps the seating to avoid the seats that arent used. Make Isles non-seats. After the room is to your liking, either exit out of the window or save the room for later use as a template. If you save it as a template, it will allow you to load this room in later projects. Loaded room templates can be changed for specific classes without modifying the template.<br> 
+Main Menu
+  #	Add student(s):
+    *	To add a student you can
+      #	Click “Add” under student and fill out the student information
+      #	Click on “Students” at the top and click on “Import Roster”
+      #	Click on “File” at the top and “Open” to open an old saved list
+  #	Edit student:
+    *	To edit a student you can
+      #	Select the student and click edit under it
+      # Double click on the student
+  #	Add student(s) to room:
+    *	To add student(s) to a room you can
+      #	Select the room, select the student(s), and click “Add to Room >>” below Roster
+      #	Select the room, select the section(s), and click “Add to Room >>” below Section
+  #	Add room:
+    *	To add a room you simply click add under rooms.
+      #	 At this point you can choose to load a template that you have created
+      #	Or you can create a new one. 
+  #	Edit room:
+    *	To edit a room you can
+      #	Select the room and click edit under it
+      #	Double click on the room
+  #	Place Students in seats:
+    *	To get to the student placement in a room click “Place Students” button with the room selected/highlighted
+  #	Save the project
+    *	You can
+      #	Click “File” at the top then “Save”
+      #	Click “File” at the top then “Save As…” 
+      #	Click Ctrl+S
+Room Creator
+  #	Select a seat/seats
+    *	individually by clicking on the check box to that seat.
+    *	by row by pressing the “Select” button to the left of the row
+    *	by column by pressing the “Select” button on top of the column
+    *	all by pressing the “Select All” button
+  #	Unselect a seat/seats
+    *	individually by clicking on the already checked check box to that seat.
+    *	by row by pressing the “Unselect” button to the left of the row
+    *	by column by pressing the “Unselect” button on top of the column
+    *	all by pressing the “Unselect All” button
+  #	Edit room:
+    *	To name the room(Name-Location shows up on the main window)
+      #	To give the room a name simply type in the text box right after “Name:”
+      #	To give the room a location simply type in the text box right after “Location:”
+      #	To give the room a description simply type in the text box right after “Description:”
+    *	To name the seats 
+      #	in a grid like fashion, simply name each row and each column and then click R by C for naming of row then column or C by R for column by row.
+      #	individually simply select the seat then go to the text box under number on the far right. Then place in the name/number and click “Change Number”. This should name that seat
+    *	To make the seats Right/Left Handed
+      #	Simply select the seats you want one Left Handed. Then go to the right and select Left Handed or and push the button “Change Handed”. Those seat names should turn Red.
+      #	Simply select the seats you want one Right Handed.(Default is Right handed) Then go to the right and select Right Handed or and push the button “Change Handed”. Those seat names should turn Black.
+    *	To change Horizontal Alignment
+      #	Select the seats you want to be classified as Left seats. Then click on “Left” above the “Change Horizontal Alignment” button and then click the “Change Horizontal Alignment” button
+      #	Select the seats you want to be classified as Right seats. Then click on “Right” above the “Change Horizontal Alignment” button and then click the “Change Horizontal Alignment” button
+      #	Select the seats you want to be classified as Middle seats.(Default is middle) Then click on “Middle” above the “Change Horizontal Alignment” button and then click the “Change Horizontal Alignment” button
+    *	To change Vertical Alignment
+      #	Select the seats you want to be classified as Front seats. Then click on “Front” above the “Change Vertical Alignment” button and then click the “Change Vertical Alignment” button
+      #	Select the seats you want to be classified as Back seats. Then click on “Back” above the “Change Vertical Alignment” button and then click the “Change Vertical Alignment” button
+      #	Select the seats you want to be classified as Middle seats.(Default is middle) Then click on “Middle” above the “Change Vertical Alignment” button and then click the “Change Vertical Alignment” button
+    *	To change seats to Not A Seat/Leave Empty
+      #	After selecting the desired seats, to make the seat “Not A Seat” simply check the box “Not A Seat” and click on “Change Seat and Empty”
+      #	After selecting the desires seats, to make the seat “Leave Empty” simply check the box “Leave Empty”, make sure the box “Not A Seat” is not selected, and click on “Change Seat and Empty”
+  #	Interpret room by look
+    *	Text of name 
+      #	is Red means Left handed
+      #	is Black means Right handed(default)
+    *	seat color
+      #	is tan means a useable seat(default)
+      #	is dark grey means it’s Not A Seat
+      #	is light grey means it’s a Leave Empty Seat
+    *	In grid when the check box is at
+      #	top left, it means the seat is a front left seat
+      #	top middle, it means the seat is a front middle seat
+      #	top right, it means the seat is a front right seat
+      #	middle left, it means the seat is a middle left seat
+      #	middle middle, it means the seat is a middle middle seat(default)
+      #	middle right, it means the seat is a middle right seat
+      #	bottom left, it means the seat is a back left seat
+      #	bottom middle, it means the seat is a back middle seat
+      #	bottom right, it means the seat is a back right seat
+  #	Save Room
+    *	To save a room as a template, click “File” then “Save Template” and give the file a name. You can also open a room already created and do this to save it as a template also.
+    *	To save room changes make for this specific project, just click done or exit out of the room.
