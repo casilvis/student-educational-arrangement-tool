@@ -20,7 +20,7 @@ namespace SEAT
     using System.Windows.Shapes;
     using SEATLibrary;
     using System.Collections.ObjectModel;
-
+    
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
@@ -315,8 +315,12 @@ namespace SEAT
                             chairLocations.Add(chair.SeatName);
                         }
                 }
-
-                String studentList = "";
+                if (studentsInRoom.Count == 0)
+                {
+                    MessageBox.Show("There are no students placed in this room, cannot print.");
+                    return;
+                }
+                String studentList = " ";
                 Console.Write(studentsInRoom.Count);
                 for (int i = 0; i < studentsInRoom.Count; i++)
                 {
@@ -324,6 +328,7 @@ namespace SEAT
                     studentList += currentStudent.LastName + ", " + currentStudent.FirstName + ": " + chairLocations.ElementAt(i)+"\n";
                 }
                 printer.TextToPrint = studentList;
+
                 //Issue print command
                 printer.Print();
             }
