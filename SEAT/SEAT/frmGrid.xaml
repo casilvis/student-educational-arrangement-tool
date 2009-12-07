@@ -61,19 +61,30 @@
                 <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left">
                 </Grid>
             </ScrollViewer>
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Bottom" Name="grdopt" Width="0" Height="auto" Orientation="Horizontal">
-                <ComboBox Name="cmbxvert">
-                    <ComboBoxItem>Middle</ComboBoxItem>
-                    <ComboBoxItem>Front</ComboBoxItem>
-                    <ComboBoxItem>Back</ComboBoxItem>
-                </ComboBox>
-                <TextBox Name="txtbxX" Text="0"/>
-                <TextBox Name="txtbxY" Text="0"/>
-                <CheckBox Name="chkLeft" Content="Accomidate Left Handed Students"/>
-                <CheckBox Name="chkImp" Content="Accomidate Visually Impaired Students"/>
-                <CheckBox Name="chkCheck" Content="Checkered Seating"/> 
-                <Button Name="btnSeat" Content="Seat Students" Click="SeatStudents_click"/>
-                          
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Bottom" Name="grdopt" Width="0" Height="auto">
+
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Name="grdopt0" Width="auto" Height="auto" Orientation="Horizontal">
+                    <ComboBox Name="cmbxvert" Width="100" SelectedIndex="1">
+                        <ComboBoxItem>Middle</ComboBoxItem>
+                        <ComboBoxItem>Front</ComboBoxItem>
+                        <ComboBoxItem>Back</ComboBoxItem>
+                    </ComboBox>
+                    <CheckBox Name="chkLeft" Width="250" Content="Accomidate Left Handed Students"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Name="grdopt2" Width="auto" Height="auto" Orientation="Horizontal">
+                    <ComboBox SelectedIndex="0" Name="cmbxhoriz" Width="100">
+                        <ComboBoxItem>Middle</ComboBoxItem>
+                        <ComboBoxItem>Left</ComboBoxItem>
+                        <ComboBoxItem>Right</ComboBoxItem>
+                    </ComboBox>
+                    <CheckBox Name="chkImp" Content="Accomidate Visually Impaired Students" Width="250"/>
+                    <Button Name="btnSeat" Content="Seat Students" Width="100" Click="SeatStudents_click"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Name="grdopt3" Width="auto" Height="auto" Orientation="Horizontal">
+                    <TextBox Name="txtbxX" Text="0" Width="50"/>
+                    <TextBox Name="txtbxY" Text="0" Width="50"/>              
+                    <CheckBox Name="chkCheck" Width="250" Content="Checkered Seating"/>              
+                </StackPanel>
             </StackPanel>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
                 <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">
