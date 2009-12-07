@@ -17,18 +17,16 @@ namespace SEATLibrary
         /// Constructor for PlaceStudents which attempts to place every student in a room in a seat.
         /// </summary>
         /// <param name="room">Room to be modified.</param>
-        public override void PlaceStudents(Room room)
+        public override void PlaceStudents(Room room, int[] spaces, bool[] checks)
         {
             //testing variables
 
-
-
-            int priority = 1; //1 - front, -1 - back
-            bool lHand = true;
-            bool vImpaired = true;
-            int spacesX = 0;
-            int spacesY = 0;
-            bool checkered = true;
+            bool lHand = checks[0];
+            bool vImpaired = checks[1];
+            bool checkered = checks[2];
+            int spacesX = spaces[0];
+            int spacesY = spaces[1];
+            int priority = spaces[2];
 
             //Clears the room of students
             for (int i = 0; i < room.Width; i++)
@@ -44,18 +42,20 @@ namespace SEATLibrary
             foreach (Student s in room.RoomStudents)
                 toBePlacedStudents.Add(s);
 
+            room.Chairs[0, 0].TheStudent = toBePlacedStudents[0];
+
             int l;
             if (priority == -1)
                 l = 0;
             else
                 l = room.RoomStudents.Count;
 
-            for (int i = l; i < room.Height; i += priority * (1 + spacesY))
+            for (int i = 0; i < room.Height; i++)
             {
                 int k = 0;
                 if (checkered)
                     k = i % 2;
-                for (int j = k; j < room.Width; j += priority * (1 + spacesX))
+                for (int j = k; j < room.Width; j++)
                 {
                     if (!room.Chairs[i, j].MustBeEmpty && !room.Chairs[i, j].NonChair && toBePlacedStudents.Count > 0)
                     {
@@ -74,6 +74,7 @@ namespace SEATLibrary
                             room.Chairs[i, j].TheStudent = toBePlacedStudents[0];
                             toBePlacedStudents.RemoveAt(0);
                         }
+                        
                     }
                 }
             }
