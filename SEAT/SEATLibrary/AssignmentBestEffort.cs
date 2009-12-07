@@ -47,7 +47,7 @@ namespace SEATLibrary
             {
                 startI = room.Height / 2;
                 endI = room.Height;
-                incrementI = -1 - spacesX;
+                incrementI = 1;
 
             }
             else
@@ -61,15 +61,20 @@ namespace SEATLibrary
             {
                 if (i < 0 || i > room.RoomStudents.Count)
                     break;
-                if (priority == 0)
-                    incrementI = (incrementI+1)*-1;
-                int k = 0, m = 1;
+                /*if (priority == 0)
+                {
+                    if (i % 2 == 1)
+                        incrementI = (incrementI - 1) * -1;
+                    else
+                        incrementI = (incrementI + 1) * -1;
+                }*/
+                int startJ = 0, incrementJ = 1;
                 if (checkered)
                 {
-                    k = i % 2;
-                    m = 2;
+                    startJ = i % 2;
+                    incrementJ = 2;
                 }
-                for (int j = k; j < room.Width; j+=(m+spacesY))
+                for (int j = startJ; j < room.Width; j+=(incrementJ+spacesY))
                 {
                     if (!room.Chairs[i, j].MustBeEmpty && !room.Chairs[i, j].NonChair && toBePlacedStudents.Count > 0)
                     {
@@ -88,7 +93,6 @@ namespace SEATLibrary
                             room.Chairs[i, j].TheStudent = toBePlacedStudents[0];
                             toBePlacedStudents.RemoveAt(0);
                         }
-                        
                     }
                 }
             }
