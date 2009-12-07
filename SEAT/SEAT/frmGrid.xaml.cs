@@ -7,6 +7,7 @@ namespace SEAT
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Printing;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
@@ -436,7 +437,7 @@ namespace SEAT
             {
                 if (this.txtrow[i].Text == string.Empty)
                 {
-                    MessageBox.Show("Atleast one of your Rows doesn't have a name.");
+                    MessageBox.Show("At least one of your Rows doesn't have a name.");
                     flag = true;
                     break;
                 }
@@ -446,7 +447,7 @@ namespace SEAT
             {
                 if (this.txtcol[j].Text == string.Empty)
                 {
-                    MessageBox.Show("Atleast one of your Columns doesn't have a name.");
+                    MessageBox.Show("At least one of your Columns doesn't have a name.");
                     flag = true;
                     break;
                 }
@@ -588,6 +589,43 @@ namespace SEAT
             bool[] checks = { (bool)chkLeft.IsChecked, (bool)chkImp.IsChecked, (bool)chkCheck.IsChecked };
 
             this.myroom.RunPlacementAlgorithmx(new AssignmentBestEffort(), spaces, checks);
+        }
+
+        protected void PrintClassroom_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                PrintDialog printDlg = new System.Windows.Controls.PrintDialog();
+                if (printDlg.ShowDialog() == true) //id print ok is pressed on print dialog
+                {
+                    //get selected printer capabilities
+                    System.Printing.PrintCapabilities capabilities = printDlg.PrintQueue.GetPrintCapabilities(printDlg.PrintTicket);
+                    
+                    //get scale of the print wrt to screen of WPF visual
+                    double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / this.ActualWidth,
+                    capabilities.PageImageableArea.ExtentHeight /
+                    this.ActualHeight);
+
+                    //Transform the Visual to scale
+                    this.LayoutTransform = new ScaleTransform(scale, scale);
+
+                    //get the size of the printer page
+                    Size sz = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+
+                    //update the layout of the visual to the printer page size.
+                    this.Measure(sz);
+                    this.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), sz));
+
+                    //now print the visual to printer to fit on the one page.
+                    printDlg.PrintVisual(this, "First Fit to Page WPF Print");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

@@ -36,6 +36,10 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -55,6 +59,9 @@
     <Compile Include="AssignmentVisitor.cs" />
     <Compile Include="PCPrint.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Room.cs" />
     <Compile Include="RosterFile.cs" />
