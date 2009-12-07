@@ -66,11 +66,6 @@
                     <ComboBoxItem>Front</ComboBoxItem>
                     <ComboBoxItem>Back</ComboBoxItem>
                 </ComboBox>
-                <ComboBox Name="cmbxhoriz">
-                    <ComboBoxItem>Middle</ComboBoxItem>
-                    <ComboBoxItem>Left</ComboBoxItem>
-                    <ComboBoxItem>Right</ComboBoxItem>
-                </ComboBox>
                 <TextBox Name="txtbxX" Text="0"/>
                 <TextBox Name="txtbxY" Text="0"/>
                 <CheckBox Name="chkLeft" Content="Accomidate Left Handed Students"/>

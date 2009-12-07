@@ -579,6 +579,8 @@ namespace SEAT
             int priority;
             if (cmbxvert.Text == "Back")
                 priority = -1;
+            else if (cmbxvert.Text == "Middle")
+                priority = 0;
             else
                 priority = 1;
             
