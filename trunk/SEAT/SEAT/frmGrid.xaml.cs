@@ -205,29 +205,48 @@ namespace SEAT
                 ComboBox cmbxvert = new ComboBox();
                 cmbxvert.VerticalAlignment = VerticalAlignment.Top;
                 cmbxvert.HorizontalAlignment = HorizontalAlignment.Left;
-                string[] items = { "Front", "Middle", "Back"};
+                string[] items = { "Front", "Middle", "Back" };
                 foreach (string itemText in items)
                 {
                     ComboBoxItem item = new ComboBoxItem();
                     item.Content = itemText;
                     cmbxvert.Items.Add(item);
                 }
+                cmbxvert.Width = width;
+
                 ComboBox cmbxhoriz = new ComboBox();
-                string[] items2 = { "Left", "Middle", "Right"};
+                string[] items2 = { "Left", "Middle", "Right" };
                 foreach (string itemText in items2)
                 {
                     ComboBoxItem item = new ComboBoxItem();
                     item.Content = itemText;
                     cmbxhoriz.Items.Add(item);
                 }
+                cmbxhoriz.Width = width;
+
                 TextBox txtbxX = new TextBox();
+                txtbxX.Width = width;
+
                 TextBox txtbxY = new TextBox();
+                txtbxY.Width = width;
+
                 CheckBox chkLeft = new CheckBox();
                 chkLeft.Content = "Accomidate Left Handed Students";
+                chkLeft.Width = width;
+
                 CheckBox chkImp = new CheckBox();
-                chkLeft.Content = "Accomidate Visually Impaired Students";
+                chkImp.Content = "Accomidate Visually Impaired Students";
+                chkImp.Width = width;
+
                 CheckBox chkCheck = new CheckBox();
-                chkLeft.Content = "Checkered Seating";
+                chkCheck.Content = "Checkered Seating";
+                chkCheck.Width = width;
+
+                Button btnSeat = new Button();
+                btnSeat.Content = "Seat Students";
+                btnSeat.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.SeatStudents_click));
+                btnSeat.Width = width;
+
                 grdopt.Children.Add(cmbxvert);
                 grdopt.Children.Add(cmbxhoriz);
                 grdopt.Children.Add(txtbxX);
@@ -235,6 +254,7 @@ namespace SEAT
                 grdopt.Children.Add(chkLeft);
                 grdopt.Children.Add(chkImp);
                 grdopt.Children.Add(chkCheck);
+                grdopt.Children.Add(btnSeat);
                 this.students.Width = 150;
                 this.students.ItemsSource = this.myroom.RoomStudents;
                 grdleft.Children.Add(this.students);
@@ -619,6 +639,11 @@ namespace SEAT
 
                 this.students.UnselectAll();
             }
+        }
+        
+        private void SeatStudents_click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunPlacementAlgorithmx(new AssignmentBestEffort());
         }
     }
 }

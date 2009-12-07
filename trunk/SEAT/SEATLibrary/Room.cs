@@ -498,6 +498,22 @@ namespace SEATLibrary
                 }
             }
         }
+
+        public int FindLeftHandedStudent()
+        {
+            for (int i = 0; i < this.RoomStudents.Count; i++)
+                if (this.RoomStudents[i].LeftHanded)
+                    return i;
+            return 0;
+        }
+
+        public int FindVisuallyImpairedStudent()
+        {
+            for (int i = 0; i < this.RoomStudents.Count; i++)
+                if (this.RoomStudents[i].VisionImpairment)
+                    return i;
+            return 0;
+        }
     }
 }
 
