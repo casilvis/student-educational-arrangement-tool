@@ -86,6 +86,7 @@
                     <CheckBox Name="chkCheck" Width="250" Content="Checkered Seating"/>              
                 </StackPanel>
             </StackPanel>
+            <ListBox Name="students" Width="auto"></ListBox>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
                 <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">
                 </Grid>
