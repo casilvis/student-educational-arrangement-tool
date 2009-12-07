@@ -19,9 +19,9 @@ namespace SEATLibrary
         /// <param name="room">The room to be modified.</param>
         public override void PlaceStudents(Room room)
         {
-            for (int i = 0; i < room.Width; i++)
+            for (int i = 0; i < room.Height; i++)
             {
-                for (int j = 0; j < room.Height; j++)
+                for (int j = 0; j < room.Width; j++)
                 {
                     room.Chairs[i, j].TheStudent = null;
                 }
