@@ -21,7 +21,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_90D8D3787BB28F2C6566E094A3B39EC6"
+        "OwnerKey" = "8:_B1473162172D4BED8CE40BEFA7E2BA6C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_90D8D3787BB28F2C6566E094A3B39EC6"
+        "OwnerKey" = "8:_CE8D632B8DFC4F739550B1E2F69F68E4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B1473162172D4BED8CE40BEFA7E2BA6C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B431D5A4FBF647E08C9F15CDA45DD4C7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33,32 +51,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EF7F7FEFCF03A556FA4A75AA69C0AABF"
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CE8D632B8DFC4F739550B1E2F69F68E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EF7F7FEFCF03A556FA4A75AA69C0AABF"
-        "OwnerKey" = "8:_B1473162172D4BED8CE40BEFA7E2BA6C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EF7F7FEFCF03A556FA4A75AA69C0AABF"
+        "OwnerKey" = "8:_90D8D3787BB28F2C6566E094A3B39EC6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B1473162172D4BED8CE40BEFA7E2BA6C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CE8D632B8DFC4F739550B1E2F69F68E4"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -73,12 +79,33 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5"
+                    {
+                    "Name" = "8:.NET Framework 3.5"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -89,12 +116,20 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -144,14 +179,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EF7F7FEFCF03A556FA4A75AA69C0AABF"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_90D8D3787BB28F2C6566E094A3B39EC6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:SEATLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EF7F7FEFCF03A556FA4A75AA69C0AABF"
+                    "_90D8D3787BB28F2C6566E094A3B39EC6"
                     {
                     "Name" = "8:SEATLibrary.dll"
                     "Attributes" = "3:512"
@@ -173,6 +208,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B431D5A4FBF647E08C9F15CDA45DD4C7"
+            {
+            "SourcePath" = "8:..\\SEAT\\seat.ico"
+            "TargetName" = "8:seat.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_21191FEC40E14D758B6ED734BEFC260C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -243,7 +298,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Student Educational Arrangement Tool"
         "ProductCode" = "8:{B0B65840-6FC0-4206-88B9-5966F770C447}"
-        "PackageCode" = "8:{DFB26497-19E9-43AA-9C68-DFB2CA8335F1}"
+        "PackageCode" = "8:{284F1E81-6CC0-4F46-B8B8-63970A17E5E2}"
         "UpgradeCode" = "8:{7C9CBD8A-693C-4B69-8F8B-1A6FF630C97D}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -373,7 +428,7 @@
             "Target" = "8:_CE8D632B8DFC4F739550B1E2F69F68E4"
             "Folder" = "8:_A8783662391F47F388B16AE495DB9FA0"
             "WorkingFolder" = "8:_21191FEC40E14D758B6ED734BEFC260C"
-            "Icon" = "8:"
+            "Icon" = "8:_B431D5A4FBF647E08C9F15CDA45DD4C7"
             "Feature" = "8:"
             }
         }
