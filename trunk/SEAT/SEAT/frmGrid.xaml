@@ -60,7 +60,25 @@
                 <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left">
                 </Grid>
             </ScrollViewer>
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Bottom" Name="grdopt" Width="auto" Height="auto" Orientation="Horizontal" />
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Bottom" Name="grdopt" Width="0" Height="auto" Orientation="Horizontal">
+                <ComboBox Name="cmbxvert">
+                    <ComboBoxItem>Middle</ComboBoxItem>
+                    <ComboBoxItem>Front</ComboBoxItem>
+                    <ComboBoxItem>Back</ComboBoxItem>
+                </ComboBox>
+                <ComboBox Name="cmbxhoriz">
+                    <ComboBoxItem>Middle</ComboBoxItem>
+                    <ComboBoxItem>Left</ComboBoxItem>
+                    <ComboBoxItem>Right</ComboBoxItem>
+                </ComboBox>
+                <TextBox Name="txtbxX" />
+                <TextBox Name="txtbxY" />
+                <CheckBox Name="chkLeft" Content="Accomidate Left Handed Students"/>
+                <CheckBox Name="chkImp" Content="Accomidate Visually Impaired Students"/>
+                <CheckBox Name="chkCheck" Content="Checkered Seating"/> 
+                <Button Name="btnSeat" Content="Seat Students"/>
+                          
+            </StackPanel>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
                 <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">
                 </Grid>
