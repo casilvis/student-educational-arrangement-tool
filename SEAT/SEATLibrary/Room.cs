@@ -379,9 +379,9 @@ namespace SEATLibrary
         /// Uses visitor design pattern.
         /// </summary>
         /// <param name="algorithm">The specific algorithm to use for placement.</param>
-        public void RunPlacementAlgorithmx(AssignmentVisitor algorithm)
+        public void RunPlacementAlgorithmx(AssignmentVisitor algorithm, int[] spaces, bool[] checks)
         {
-            algorithm.PlaceStudents(this);
+            algorithm.PlaceStudents(this, spaces, checks);
         }
 
         /// <summary>

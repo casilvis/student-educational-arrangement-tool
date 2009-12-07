@@ -71,12 +71,12 @@
                     <ComboBoxItem>Left</ComboBoxItem>
                     <ComboBoxItem>Right</ComboBoxItem>
                 </ComboBox>
-                <TextBox Name="txtbxX" />
-                <TextBox Name="txtbxY" />
+                <TextBox Name="txtbxX" Text="0"/>
+                <TextBox Name="txtbxY" Text="0"/>
                 <CheckBox Name="chkLeft" Content="Accomidate Left Handed Students"/>
                 <CheckBox Name="chkImp" Content="Accomidate Visually Impaired Students"/>
                 <CheckBox Name="chkCheck" Content="Checkered Seating"/> 
-                <Button Name="btnSeat" Content="Seat Students"/>
+                <Button Name="btnSeat" Content="Seat Students" Click="SeatStudents_click"/>
                           
             </StackPanel>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
