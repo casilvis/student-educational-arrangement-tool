@@ -29,33 +29,47 @@ namespace SEATLibrary
             int priority = spaces[2];
 
             //Clears the room of students
-            for (int i = 0; i < room.Width; i++)
-            {
-                for (int j = 0; j < room.Height; j++)
-                {
-                    room.Chairs[i, j].TheStudent = null;
-                }
-            }
+            room.RunPlacementAlgorithmx(new AssignmentClearRoom(), spaces, checks);
 
             //Creates an easily manipulated copy of the student list
             List<Student> toBePlacedStudents = new List<Student>();
             foreach (Student s in room.RoomStudents)
                 toBePlacedStudents.Add(s);
 
-            room.Chairs[0, 0].TheStudent = toBePlacedStudents[0];
-
-            int l;
-            if (priority == -1)
-                l = 0;
-            else
-                l = room.RoomStudents.Count;
-
-            for (int i = 0; i < room.Height; i++)
+            int startI, endI, incrementI = 0;
+            if (priority == 1)
             {
-                int k = 0;
+                startI = 0;
+                endI = room.Height;
+                incrementI = 1 + spacesX;
+            }
+            else if (priority == 0)
+            {
+                startI = room.Height / 2;
+                endI = room.Height;
+                incrementI = -1 - spacesX;
+
+            }
+            else
+            {
+                startI = room.Height-1;
+                endI = room.Height;
+                incrementI = -1 - spacesX;
+            }
+
+            for (int i = startI; i < endI; i+=incrementI)
+            {
+                if (i < 0 || i > room.RoomStudents.Count)
+                    break;
+                if (priority == 0)
+                    incrementI = (incrementI+1)*-1;
+                int k = 0, m = 1;
                 if (checkered)
+                {
                     k = i % 2;
-                for (int j = k; j < room.Width; j++)
+                    m = 2;
+                }
+                for (int j = k; j < room.Width; j+=(m+spacesY))
                 {
                     if (!room.Chairs[i, j].MustBeEmpty && !room.Chairs[i, j].NonChair && toBePlacedStudents.Count > 0)
                     {
@@ -80,7 +94,7 @@ namespace SEATLibrary
             }
             if (toBePlacedStudents.Count > 0)
             {
-                for (int i = l; i < room.Height; i += priority)
+                for (int i = startI; i < room.Height; i += incrementI)
                 {
                     for (int j = 0; j < room.Width; j += priority)
                     {
