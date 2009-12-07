@@ -200,6 +200,41 @@ namespace SEAT
             }
             else
             {
+
+                //grdopt.Height = 50;
+                ComboBox cmbxvert = new ComboBox();
+                cmbxvert.VerticalAlignment = VerticalAlignment.Top;
+                cmbxvert.HorizontalAlignment = HorizontalAlignment.Left;
+                string[] items = { "Front", "Middle", "Back"};
+                foreach (string itemText in items)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = itemText;
+                    cmbxvert.Items.Add(item);
+                }
+                ComboBox cmbxhoriz = new ComboBox();
+                string[] items2 = { "Left", "Middle", "Right"};
+                foreach (string itemText in items2)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = itemText;
+                    cmbxhoriz.Items.Add(item);
+                }
+                TextBox txtbxX = new TextBox();
+                TextBox txtbxY = new TextBox();
+                CheckBox chkLeft = new CheckBox();
+                chkLeft.Content = "Accomidate Left Handed Students";
+                CheckBox chkImp = new CheckBox();
+                chkLeft.Content = "Accomidate Visually Impaired Students";
+                CheckBox chkCheck = new CheckBox();
+                chkLeft.Content = "Checkered Seating";
+                grdopt.Children.Add(cmbxvert);
+                grdopt.Children.Add(cmbxhoriz);
+                grdopt.Children.Add(txtbxX);
+                grdopt.Children.Add(txtbxY);
+                grdopt.Children.Add(chkLeft);
+                grdopt.Children.Add(chkImp);
+                grdopt.Children.Add(chkCheck);
                 this.students.Width = 150;
                 this.students.ItemsSource = this.myroom.RoomStudents;
                 grdleft.Children.Add(this.students);

@@ -60,6 +60,7 @@
                 <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left">
                 </Grid>
             </ScrollViewer>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Bottom" Name="grdopt" Width="auto" Height="auto" Orientation="Horizontal" />
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
                 <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">
                 </Grid>
