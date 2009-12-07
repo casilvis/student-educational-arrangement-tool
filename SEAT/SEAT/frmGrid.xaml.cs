@@ -32,7 +32,7 @@ namespace SEAT
         private List<Seat> seatsSelected;
 
         public frmGrid()
-        {
+        {   //shouldn't be used but initialized in case
             InitializeComponent();
             int row = 0;
             int column = 0;
@@ -40,13 +40,12 @@ namespace SEAT
         }
 
         public frmGrid(Room inroom, bool editable)
-        {
+        {   //setting up the room to correct size and properties
             InitializeComponent();
             this.myroom = inroom;
             this.row = this.myroom.Height;
             this.column = this.myroom.Width;
             
-            // int seatSize = 45;
             this.seatsSelected = new List<Seat>();
             int width = 45;
             int height = 60;
@@ -59,8 +58,6 @@ namespace SEAT
                 Options.Width = 0;
             }
 
-            // row = rows;
-            // column = columns;
             ContainerVisual newPage = new ContainerVisual();
             this.seatArray = new Seat[this.row, this.column];
             this.txtcol = new TextBox[this.column];
@@ -70,7 +67,7 @@ namespace SEAT
             for (int i = 0; i < this.row; i++)
             {
                 if (editable)
-                {
+                {   //this sets up the row select buttons and row text boxes
                     Button button1 = new Button();
                     button1.FontSize = 10;
                     button1.Content = "Select";
@@ -96,7 +93,7 @@ namespace SEAT
                 for (int j = 0; j < this.column; j++)
                 {
                     if (editable)
-                    {
+                    {   // this sets up the column select buttons and text boxes
                         Button button2 = new Button();
                         button2.FontSize = 10;
                         button2.Content = "Select";
@@ -118,7 +115,7 @@ namespace SEAT
                         this.txtcol[j].Height = height;
                         grdtop2.Children.Add(this.txtcol[j]);
                     }
-
+                    // this sets up the actual seats in the room
                     this.seatArray[i, j] = new Seat(this.myroom.Chairs[i, j], editable);
                     this.seatArray[i, j].AddHandler(UserControl.MouseLeftButtonUpEvent, new RoutedEventHandler(this.Student_Drop));
                     this.seatArray[i, j].AddHandler(CheckBox.CheckedEvent, new RoutedEventHandler(this.CheckBoxSelected_Checked));
@@ -129,7 +126,7 @@ namespace SEAT
             }
 
             if (editable)
-            {
+            {   // this is all the stuff in the top and left of the room when editable
                 Label lblspace = new Label(); // used as a pad for the scroll bar
                 Label lblspace2 = new Label();
                 lblspace.Width = lblspace2.Width = 20;
@@ -202,7 +199,6 @@ namespace SEAT
             else
             {
 
-                //grdopt.Height = 50;
                 grdopt.Width=this.Width;
                 this.students.Width = 150;
                 this.students.ItemsSource = this.myroom.RoomStudents;
@@ -216,23 +212,23 @@ namespace SEAT
         }
 
         private void ScrollGrid_ScrollChanged(object sender, EventArgs e)
-        {
+        {   //makes the select buttons stay with their rows and columns respectively
             svrtop.ScrollToHorizontalOffset(svrgrid.HorizontalOffset);
             svrleft.ScrollToVerticalOffset(svrgrid.VerticalOffset);
         }
 
         private void ScrollTop_ScrollChanged(object sender, EventArgs e)
-        {
+        {   // if the select columns buttons shift shift the grid
             svrgrid.ScrollToHorizontalOffset(svrtop.HorizontalOffset);
         }
 
         private void ScrollLeft_ScrollChanged(object sender, EventArgs e)
-        {
+        {   // if the select rows buttons shift shift the grid
             svrgrid.ScrollToVerticalOffset(svrleft.VerticalOffset);
         }
 
         private void ButtonColumn_Click(object sender, EventArgs e)
-        {
+        {   //if a column select is chosen select/unselect that column
             Button button1 = (Button)sender;
             for (int i = 0; i < this.row; i++)
             {
@@ -263,7 +259,7 @@ namespace SEAT
         }
 
         private void ButtonRow_Click(object sender, EventArgs e)
-        {
+        {   //if a row button is pressed, select/unselect that row
             Button button2 = (Button)sender;
             for (int j = 0; j < this.column; j++)
             {
@@ -294,7 +290,7 @@ namespace SEAT
         }
 
         private void ButtonAll_Click(object sender, EventArgs e)
-        {
+        {   // if the select all/ unselect all button is pressed select/unselct all seats
             Button button = (Button)sender;
             TextBlock block = (TextBlock)button.Content;
             string numbers = (string)button.Tag;
@@ -334,25 +330,25 @@ namespace SEAT
         }
 
         private void TextBoxName_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        {   //the name box has been changed
             this.myroom.RoomName = txtnm.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
         private void TextBoxLocation_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        {   //the location box has been changed
             this.myroom.Location = txtloc.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
         private void TextBoxDescription_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        {   //the description box has been changed
             this.myroom.Description = txtdes.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
         private void ButtonChange_Click(object sender, RoutedEventArgs e)
-        {
+        {   //sets the seat background color according to the properties selected
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 this.seatsSelected.ElementAt(i).Chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
@@ -372,15 +368,11 @@ namespace SEAT
                 {
                     this.seatsSelected.ElementAt(i).Background = Brushes.White;
                 }
-
-                // seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
             }
-
-            // MessageBox.Show(seatsSelected.Count.ToString());
         }
 
         private void CheckBoxSelected_Checked(object sender, RoutedEventArgs e)
-        {
+        {   //makes the textbox for name turn off depending on if only 1 is chosen
             Seat seat = (Seat)sender;
             this.seatsSelected.Add(seat);
             if (this.seatsSelected.Count > 1)
@@ -391,7 +383,7 @@ namespace SEAT
         }
 
         private void CheckBoxSelected_Unchecked(object sender, RoutedEventArgs e)
-        {
+        {   //makes the textbox for name turn on depending on if only 1 is chosen
             Seat seat = (Seat)sender;
             this.seatsSelected.Remove(seat);
             if (this.seatsSelected.Count < 2)
@@ -402,7 +394,7 @@ namespace SEAT
         }
 
         private void RowByColumn_click(object sender, RoutedEventArgs e)
-        {
+        {   // R by C is clicked so name each by row then column
             bool flag = false;
             for (int i = 0; i < this.row; i++)
             {
@@ -438,7 +430,7 @@ namespace SEAT
         }
 
         private void ColumnByRow_click(object sender, RoutedEventArgs e)
-        {
+        {   // C by R is clicked so name each by column then row
             bool flag = false;
             for (int i = 0; i < this.row; i++)
             {
@@ -474,7 +466,7 @@ namespace SEAT
         }
 
         private void FileMenuSave_Click(object sender, RoutedEventArgs e)
-        {
+        {   //save the room file as template
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.DefaultExt = ".tplt"; // Default file extension
             dlg.Filter = "Room File (.tplt)|*.tplt"; // Filter files by extension
@@ -491,7 +483,7 @@ namespace SEAT
         }
 
         private void ButtonHanded_Click(object sender, RoutedEventArgs e)
-        {
+        {   // sets handed depending on what is selected
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 this.seatsSelected.ElementAt(i).Chair.LeftHanded = (bool)rbtnLeftH.IsChecked;
@@ -503,13 +495,11 @@ namespace SEAT
                 {
                     this.seatsSelected.ElementAt(i).lblName.Foreground = Brushes.Black;
                 }
-                
-                // seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
             }
         }
 
         private void ButtonHorizontal_Click(object sender, RoutedEventArgs e)
-        {
+        {   //sets horizontal alignment depending on whats selected
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 if ((bool)rbtnLeft.IsChecked)
@@ -526,13 +516,11 @@ namespace SEAT
                 }
 
                 this.seatsSelected.ElementAt(i).chkSelected.Margin = new Thickness(this.seatsSelected.ElementAt(i).Chair.LrPosition * 15, this.seatsSelected.ElementAt(i).Chair.FbPosition * 15, 0, 0);
-                
-                // seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
             }
         }
 
         private void ButtonVertical_Click(object sender, RoutedEventArgs e)
-        {
+        {   // sets vertical alignment depending on whats selected
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 if ((bool)rbtnBack.IsChecked)
@@ -549,21 +537,17 @@ namespace SEAT
                 }
 
                 this.seatsSelected.ElementAt(i).chkSelected.Margin = new Thickness(this.seatsSelected.ElementAt(i).Chair.LrPosition * 15, this.seatsSelected.ElementAt(i).Chair.FbPosition * 15, 0, 0);
-                
-                // seatsSelected.ElementAt(i).chkSelected.IsChecked = false;
             }
         }
 
         private void ButtonNumber_Click(object sender, RoutedEventArgs e)
-        {
+        {   //allows you to change the seats name/number
             if (txtnumber.Text.Length > 0)
             {
                 this.seatsSelected.ElementAt(0).Chair.SeatName = txtnumber.Text;
                 this.seatsSelected.ElementAt(0).lblName.Content = txtnumber.Text;
                 MessageBox.Show(this.seatsSelected.ElementAt(0).Chair.SeatName);
             }
-
-            // seatsSelected.ElementAt(0).chkSelected.IsChecked = false;
         }
 
         private void ButtonDone_Click(object sender, RoutedEventArgs e)
