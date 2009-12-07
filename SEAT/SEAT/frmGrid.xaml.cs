@@ -29,7 +29,7 @@ namespace SEAT
         private TextBox[] txtrow;
         private int row;
         private int column;
-        private ListBox students = new ListBox();
+    //    private ListBox students = new ListBox();
         private List<Seat> seatsSelected;
 
         public frmGrid()
@@ -200,9 +200,9 @@ namespace SEAT
             else
             {
                 grdopt.Width=this.Width;
-                this.students.Width = 200;
+                this.students.Width = 150;
                 this.students.ItemsSource = this.myroom.RoomStudents;
-                grdleft.Children.Add(this.students);
+               // grdleft.Children.Add(this.students);
                 
                 // students
             }
