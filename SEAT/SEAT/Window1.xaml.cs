@@ -285,6 +285,11 @@ namespace SEAT
             System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Help");
         }
 
+        private void MenuItemDocumentation_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Documentation");
+        }
+
         private void PrintSeatingChart_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)listBoxRooms.SelectedItem;

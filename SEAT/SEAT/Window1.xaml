@@ -41,6 +41,7 @@
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_View Help" Click="MenuItemHelp_Click" />
+                <MenuItem Header="_View Documentation" Click="MenuItemDocumentation_Click" />
                 <Separator></Separator>
                 <MenuItem Header="_About" Click="DisplayAboutWindow"/>
             </MenuItem>
