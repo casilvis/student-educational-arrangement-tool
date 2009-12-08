@@ -705,10 +705,10 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void Student_Drop(object sender, RoutedEventArgs e)
         {
+            Seat seat = (Seat)sender;
             if (this.students.SelectedItem != null)
             {
                 Student student = (Student)this.students.SelectedItem;
-                Seat seat = (Seat)sender;
                 if (seat.Chair.NonChair)
                 {
                     MessageBox.Show("Can not place student in a non-chair.");
