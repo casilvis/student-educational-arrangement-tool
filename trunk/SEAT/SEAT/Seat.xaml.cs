@@ -76,12 +76,24 @@ namespace SEAT
                 if (this.chair.TheStudent != null)
                 {
                     this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
+                    if (this.chair.LeftHanded != this.chair.TheStudent.LeftHanded)
+                    {
+                        this.Txtblname.Foreground = Brushes.Red;
+                    }
+                    else if (this.chair.TheStudent.VisionImpairment && this.chair.FbPosition != 0)
+                    {
+                        this.Txtblname.Foreground = Brushes.Red;
+                    }
+                    else
+                    {
+                        this.Txtblname.Foreground = Brushes.Black;
+                    }
                 }
             }
 
             if (Chair.LeftHanded)
             {
-                lblName.Foreground = Brushes.Red;
+                lblName.Foreground = Brushes.Blue;
             }
 
             if (Chair.NonChair || Chair.MustBeEmpty)
@@ -177,6 +189,18 @@ namespace SEAT
                 else
                 {
                     this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
+                    if (this.chair.LeftHanded != this.chair.TheStudent.LeftHanded)
+                    {
+                        this.Txtblname.Foreground = Brushes.Red;
+                    }
+                    else if (this.chair.TheStudent.VisionImpairment && this.chair.FbPosition != 0)
+                    {
+                        this.Txtblname.Foreground = Brushes.Red;
+                    }
+                    else
+                    {
+                        this.Txtblname.Foreground = Brushes.Black;
+                    }
                 }
             }
         }

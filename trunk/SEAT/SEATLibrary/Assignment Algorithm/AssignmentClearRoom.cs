@@ -1,7 +1,7 @@
 ﻿// <copyright file="AssignmentClearRoom.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-namespace SEATLibrary
+namespace SEATLibrary.Assignment_Algorithm
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace SEATLibrary
     public class AssignmentClearRoom : AssignmentVisitor
     {
         /// <summary>
-        /// Constructor for PlaceStudents that removes all students currently in chairs from their chair.
+        /// Algorithm for PlaceStudents that removes all students currently in chairs from their chair.
         /// </summary>
         /// <param name="room">The room to be modified.</param>
         public override void PlaceStudents(Room room)

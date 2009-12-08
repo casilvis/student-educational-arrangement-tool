@@ -1,7 +1,7 @@
 ﻿// <copyright file="AssignmentVisitor.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-namespace SEATLibrary
+namespace SEATLibrary.Assignment_Algorithm
 {
     using System;
     using System.Collections.Generic;
