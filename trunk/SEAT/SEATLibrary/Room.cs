@@ -13,6 +13,7 @@ namespace SEATLibrary
     using System.Text;
     using System.Xml;
     using SEATLibrary.Assignment_Algorithm;
+    using SEATLibrary.Reservation_Algorithm;
     
     /// <summary>
     /// A model representing a rectangular room consiting of chair and a list of students.
@@ -383,6 +384,15 @@ namespace SEATLibrary
         public void RunPlacementAlgorithm(AssignmentVisitor algorithm)
         {
             algorithm.PlaceStudents(this);
+        }
+
+        /// <summary>
+        /// Run the specified reservation algorithm.
+        /// </summary>
+        /// <param name="algorithm">The specific algorithm to use for reservation.</param>
+        public void RunReservationAlgorithm(ReservationVisitor algorithm)
+        {
+            algorithm.ReserveSeats(this);
         }
 
         /// <summary>
