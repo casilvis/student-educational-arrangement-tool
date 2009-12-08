@@ -56,7 +56,7 @@ namespace TestingApplication
         /// Displays all of the students.
         /// </summary>
         /// <param name="list">The list of students to be displayed.</param>
-        public void DisplayStudentRoster(ObservableCollection<Student> list)
+        public void DisplayStudentRoster(ReadOnlyObservableCollection<Student> list)
         {
             Console.WriteLine("Displaying Student Roster");
             if (list.Count == 0)
@@ -76,7 +76,7 @@ namespace TestingApplication
         /// Displays all of the rooms.
         /// </summary>
         /// <param name="roomList">The list of rooms to be displayed.</param>
-        public void DisplayRoomList(ObservableCollection<Room> roomList)
+        public void DisplayRoomList(ReadOnlyObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)
@@ -97,7 +97,7 @@ namespace TestingApplication
         /// </summary>
         /// <param name="roomList">The list of rooms to choose from.</param>
         /// <returns>The index of the selected room.</returns>
-        public int SelectRoomList(ObservableCollection<Room> roomList)
+        public int SelectRoomList(ReadOnlyObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)

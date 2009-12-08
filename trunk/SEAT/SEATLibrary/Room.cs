@@ -305,9 +305,9 @@ namespace SEATLibrary
         /// Gets the list of room students.
         /// </summary>
         /// <value>Collection of room students.</value>
-        public ObservableCollection<Student> RoomStudents
+        public ReadOnlyObservableCollection<Student> RoomStudents
         {
-            get { return this.roomStudents; }
+            get { return new ReadOnlyObservableCollection<Student>(this.roomStudents); }
         }
 
         // Methods

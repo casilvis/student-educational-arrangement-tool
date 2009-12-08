@@ -185,7 +185,7 @@ namespace SEATLibrary
                                                 if (this.students != null)
                                                 {
                                                     // For the student, we are passing by reference so everything stays in sync
-                                                    room.RoomStudents.Add(s);
+                                                    room.AddStudent(s);
                                                 }
                                             }
                                         }
@@ -225,18 +225,18 @@ namespace SEATLibrary
         /// Gets the list of rooms.
         /// </summary>
         /// <value>Collection of rooms.</value>
-        public ObservableCollection<Room> RoomList
+        public ReadOnlyObservableCollection<Room> RoomList
         {
-            get { return this.rooms; }
+            get { return new ReadOnlyObservableCollection<Room>(this.rooms); }
         }
 
         /// <summary>
         /// Gets the list of students.
         /// </summary>
         /// <value>Collection of students.</value>
-        public ObservableCollection<Student> StudentList
+        public ReadOnlyObservableCollection<Student> StudentList
         {
-            get { return this.students; }
+            get { return new ReadOnlyObservableCollection<Student>(this.students); }
         }
 
         /// <summary>
