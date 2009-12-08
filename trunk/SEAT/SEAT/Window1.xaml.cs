@@ -3,6 +3,7 @@
 // </copyright>
 namespace SEAT
 {
+    using CommonLibrary;
     using System;
     using System.Collections;
     using System.Collections.ObjectModel;
@@ -55,7 +56,7 @@ namespace SEAT
             this.InputBindings.Add(saveCmdKeyBinding);
             CommandBinding saveCmdBinding = new CommandBinding(ApplicationCommands.Save, this.SaveCmdExecuted);
             this.CommandBindings.Add(saveCmdBinding);
-
+            
             // Creating a KeyBinding between the New command and Ctrl-N
             KeyBinding newCmdKeyBinding = new KeyBinding(ApplicationCommands.New, Key.N, ModifierKeys.Control);
             this.InputBindings.Add(saveCmdKeyBinding);
