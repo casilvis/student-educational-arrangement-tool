@@ -1,4 +1,4 @@
-﻿// <copyright file="ReservationRight.cs" company="University of Louisville Speed School of Engineering">
+﻿// <copyright file="ReservationClear.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
 namespace SEATLibrary.Reservation_Algorithm
@@ -9,9 +9,9 @@ namespace SEATLibrary.Reservation_Algorithm
     using System.Text;
 
     /// <summary>
-    /// Reserve the right part of the classroom so students can not sit in those seats.
+    /// Remove all seat reservations from the room.
     /// </summary>
-    public class ReservationRight : ReservationVisitor
+    public class ReservationClear : ReservationVisitor
     {
         /// <summary>
         /// Run the reservation algorithm.
@@ -23,10 +23,7 @@ namespace SEATLibrary.Reservation_Algorithm
             {
                 for (int j = 0; j < room.Width; j++)
                 {
-                    if (room.Chairs[i, j].LrPosition == 2)
-                    {
-                        room.Chairs[i, j].MustBeEmpty = true;
-                    }
+                    room.Chairs[i, j].MustBeEmpty = false;
                 }
             }
         }

@@ -18,6 +18,7 @@ namespace SEAT
     using System.Windows.Shapes;
     using SEATLibrary;
     using SEATLibrary.Assignment_Algorithm;
+    using SEATLibrary.Reservation_Algorithm;
 
     /// <summary>
     /// Interaction logic for frmGrid.xaml
@@ -102,6 +103,10 @@ namespace SEAT
                 this.algorithmClearSeats.IsEnabled = false;
                 this.algorithmLeftHanded.IsEnabled = false;
                 this.algorithmVisuallyImpaired.IsEnabled = false;
+
+                // Hide the Student ListBox UI elements
+                this.dockPanelStudents.Visibility = Visibility.Hidden;
+                this.dockPanelStudents.Width = 0;
             }
 
             ContainerVisual newPage = new ContainerVisual();
@@ -768,6 +773,36 @@ namespace SEAT
         }
 
         /// <summary>
+        /// Filter the list of students based on input filter text.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void TextBoxFilterStudents_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = this.textBoxFilterStudents.Text;
+            this.students.Items.Filter = delegate(object obj)
+            {
+                Student s = obj as Student;
+                if (s == null)
+                {
+                    return false;
+                }
+                else if (s.FirstName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                {
+                    return true;
+                }
+                else if (s.LastName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            };
+        }
+
+        /// <summary>
         /// Clear all of the seats.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
@@ -807,34 +842,77 @@ namespace SEAT
             this.myroom.RunPlacementAlgorithm(new AssignmentLeftHanded());
         }
 
+
         /// <summary>
-        /// Filter the list of students based on input filter text.
+        /// 
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
-        private void TextBoxFilterStudents_TextChanged(object sender, TextChangedEventArgs e)
+        private void ReservationClear_Click(object sender, RoutedEventArgs e)
         {
-            string searchText = this.textBoxFilterStudents.Text;
-            this.students.Items.Filter = delegate(object obj)
-            {
-                Student s = obj as Student;
-                if (s == null)
-                {
-                    return false;
-                }
-                else if (s.FirstName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
-                {
-                    return true;
-                }
-                else if (s.LastName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            };
+            this.myroom.RunReservationAlgorithm(new ReservationClear());
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ReservationCheckerboard_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunReservationAlgorithm(new ReservationCheckerboard());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ReservationEveryOtherColumn_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunReservationAlgorithm(new ReservationEveryOtherColumn());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ReservationEveryOtherRow_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunReservationAlgorithm(new ReservationEveryOtherRow());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ReservationLeft_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunReservationAlgorithm(new ReservationLeft());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ReservationRight_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunReservationAlgorithm(new ReservationRight());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ReservationBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunReservationAlgorithm(new ReservationBack());
+        }
+
+
     }
 }

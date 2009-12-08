@@ -8,6 +8,15 @@
                 <MenuItem Header="_Save Template" Name="FileMenuSave" Click="FileMenuSave_Click" InputGestureText="Ctrl+S" />
                 <MenuItem Header="_Print Classroom" Name="PrintClassroom" Click="PrintClassroom_Click" InputGestureText="Ctrl+P" />
             </MenuItem>
+            <MenuItem Header="_Reserve Seats">
+                <MenuItem Header="_Clear" Click="ReservationClear_Click"/>
+                <MenuItem Header="_Checkerboard" Click="ReservationCheckerboard_Click" />
+                <MenuItem Header="_Every Other Row" Click="ReservationEveryOtherRow_Click" />
+                <MenuItem Header="_Every Other Column" Click="ReservationEveryOtherColumn_Click" />
+                <MenuItem Header="_Left Side of Room" Click="ReservationLeft_Click" />
+                <MenuItem Header="_Right Side of Room" Click="ReservationRight_Click" />
+                <MenuItem Header="_Back of Room" Click="ReservationBack_Click" />
+            </MenuItem>
             <MenuItem Header="_Place Students">
                 <MenuItem Header="_Clear Seats" Name="algorithmClearSeats" Click="AlgorithmClearSeats_Click" />
                 <MenuItem Header="_Best Effort" Name="algorithmBestEffort" Click="AlgorithmBestEffort_Click" />
@@ -89,7 +98,7 @@
                     <CheckBox Name="chkCheck" Width="250" Content="Checkered Seating" />              
                 </StackPanel>
             </StackPanel>
-            <DockPanel Width="200">
+            <DockPanel Width="200" Name="dockPanelStudents">
                 <TextBox Name="textBoxFilterStudents" DockPanel.Dock="Top" TextChanged="TextBoxFilterStudents_TextChanged" />
                 <ListBox Name="students" Width="auto"></ListBox>
             </DockPanel>

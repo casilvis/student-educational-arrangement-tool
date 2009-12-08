@@ -56,6 +56,7 @@
     <Compile Include="Assignment Algorithm\AssignmentVisitor.cs" />
     <Compile Include="Reservation Algorithm\ReservationBack.cs" />
     <Compile Include="Reservation Algorithm\ReservationCheckerboard.cs" />
+    <Compile Include="Reservation Algorithm\ReservationClear.cs" />
     <Compile Include="Reservation Algorithm\ReservationEveryOtherColumn.cs" />
     <Compile Include="Reservation Algorithm\ReservationEveryOtherRow.cs" />
     <Compile Include="Reservation Algorithm\ReservationLeft.cs" />
