@@ -6,8 +6,8 @@ namespace SEAT
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Printing;
+    using System.Text;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
@@ -23,30 +23,66 @@ namespace SEAT
     /// </summary>
     public partial class frmGrid : Window
     {
+        /// <summary>
+        /// The object that represents the underlying room.
+        /// </summary>
         private Room myroom;
+
+        /// <summary>
+        /// The array of Seats that represents the room.
+        /// </summary>
         private Seat[,] seatArray;
+
+        /// <summary>
+        /// The text boxes that represent column names.
+        /// </summary>
         private TextBox[] txtcol;
+
+        /// <summary>
+        /// The text boxes that represent row names.
+        /// </summary>
         private TextBox[] txtrow;
+
+        /// <summary>
+        /// The number of rows in the room.
+        /// </summary>
         private int row;
+
+        /// <summary>
+        /// The number of columns in the room.
+        /// </summary>
         private int column;
-    //    private ListBox students = new ListBox();
+
+        /// <summary>
+        /// A list of all of the selected seats.
+        /// </summary>
         private List<Seat> seatsSelected;
 
+        /// <summary>
+        /// Initializes a new instance of the frmGrid class.
+        /// </summary>
         public frmGrid()
-        {   //shouldn't be used but initialized in case
+        {
+            // Shouldn't be used but initialized in case
             InitializeComponent();
             int row = 0;
             int column = 0;
             this.seatArray = new Seat[row, column];
         }
 
+        /// <summary>
+        /// Initializes a new instance of the frmGrid class.
+        /// </summary>
+        /// <param name="inroom">The room to be rendered.</param>
+        /// <param name="editable">Is the room editible.</param>
         public frmGrid(Room inroom, bool editable)
-        {   //setting up the room to correct size and properties
+        {
+            // Setting up the room to correct size and properties
             InitializeComponent();
             this.myroom = inroom;
             this.row = this.myroom.Height;
             this.column = this.myroom.Width;
-            
+
             this.seatsSelected = new List<Seat>();
             int width = 45;
             int height = 60;
@@ -68,7 +104,8 @@ namespace SEAT
             for (int i = 0; i < this.row; i++)
             {
                 if (editable)
-                {   //this sets up the row select buttons and row text boxes
+                {
+                    // This sets up the row select buttons and row text boxes
                     Button button1 = new Button();
                     button1.FontSize = 10;
                     button1.Content = "Select";
@@ -116,6 +153,7 @@ namespace SEAT
                         this.txtcol[j].Height = height;
                         grdtop2.Children.Add(this.txtcol[j]);
                     }
+
                     // this sets up the actual seats in the room
                     this.seatArray[i, j] = new Seat(this.myroom.Chairs[i, j], editable);
                     this.seatArray[i, j].AddHandler(UserControl.MouseLeftButtonUpEvent, new RoutedEventHandler(this.Student_Drop));
@@ -199,36 +237,53 @@ namespace SEAT
             }
             else
             {
-                grdopt.Width=this.Width;
+                grdopt.Width = this.Width;
                 this.students.Width = 150;
                 this.students.ItemsSource = this.myroom.RoomStudents;
-               // grdleft.Children.Add(this.students);
-                
-                // students
             }
 
             griddy.MaxHeight = (height * this.row) + 20;
             griddy.MaxWidth = (width * this.column) + 20;
         }
 
+        /// <summary>
+        /// Makes the select buttons stay with their rows and columns respectively.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ScrollGrid_ScrollChanged(object sender, EventArgs e)
-        {   //makes the select buttons stay with their rows and columns respectively
+        {
             svrtop.ScrollToHorizontalOffset(svrgrid.HorizontalOffset);
             svrleft.ScrollToVerticalOffset(svrgrid.VerticalOffset);
         }
 
+        /// <summary>
+        /// If the select columns buttons shift shift the grid.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ScrollTop_ScrollChanged(object sender, EventArgs e)
-        {   // if the select columns buttons shift shift the grid
+        {
             svrgrid.ScrollToHorizontalOffset(svrtop.HorizontalOffset);
         }
 
+        /// <summary>
+        /// If the select rows buttons shift shift the grid.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ScrollLeft_ScrollChanged(object sender, EventArgs e)
-        {   // if the select rows buttons shift shift the grid
+        {
             svrgrid.ScrollToVerticalOffset(svrleft.VerticalOffset);
         }
 
+        /// <summary>
+        /// If a column select is chosen select/unselect that column.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonColumn_Click(object sender, EventArgs e)
-        {   //if a column select is chosen select/unselect that column
+        {
             Button button1 = (Button)sender;
             for (int i = 0; i < this.row; i++)
             {
@@ -258,8 +313,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// If a row button is pressed, select/unselect that row.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonRow_Click(object sender, EventArgs e)
-        {   //if a row button is pressed, select/unselect that row
+        {
             Button button2 = (Button)sender;
             for (int j = 0; j < this.column; j++)
             {
@@ -289,8 +349,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// If the select all/ unselect all button is pressed select/unselct all seats.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonAll_Click(object sender, EventArgs e)
-        {   // if the select all/ unselect all button is pressed select/unselct all seats
+        {
             Button button = (Button)sender;
             TextBlock block = (TextBlock)button.Content;
             string numbers = (string)button.Tag;
@@ -329,26 +394,46 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// The name box has been changed.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void TextBoxName_TextChanged(object sender, TextChangedEventArgs e)
-        {   //the name box has been changed
+        {
             this.myroom.RoomName = txtnm.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
+        /// <summary>
+        /// The location box has been changed.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void TextBoxLocation_TextChanged(object sender, TextChangedEventArgs e)
-        {   //the location box has been changed
+        {
             this.myroom.Location = txtloc.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
+        /// <summary>
+        /// The description box has been changed.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void TextBoxDescription_TextChanged(object sender, TextChangedEventArgs e)
-        {   //the description box has been changed
+        {
             this.myroom.Description = txtdes.Text;
             this.Title = this.myroom.RoomName + " - " + this.myroom.Location + ": " + this.myroom.Description;
         }
 
+        /// <summary>
+        /// Sets the seat background color according to the properties selected.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonChange_Click(object sender, RoutedEventArgs e)
-        {   //sets the seat background color according to the properties selected
+        {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 this.seatsSelected.ElementAt(i).Chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
@@ -371,8 +456,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Makes the textbox for name turn off depending on if only 1 is chosen.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void CheckBoxSelected_Checked(object sender, RoutedEventArgs e)
-        {   //makes the textbox for name turn off depending on if only 1 is chosen
+        {
             Seat seat = (Seat)sender;
             this.seatsSelected.Add(seat);
             if (this.seatsSelected.Count > 1)
@@ -382,8 +472,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Makes the textbox for name turn on depending on if only 1 is chosen.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void CheckBoxSelected_Unchecked(object sender, RoutedEventArgs e)
-        {   //makes the textbox for name turn on depending on if only 1 is chosen
+        {
             Seat seat = (Seat)sender;
             this.seatsSelected.Remove(seat);
             if (this.seatsSelected.Count < 2)
@@ -393,8 +488,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// R by C is clicked so name each by row then column.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void RowByColumn_click(object sender, RoutedEventArgs e)
-        {   // R by C is clicked so name each by row then column
+        {
             bool flag = false;
             for (int i = 0; i < this.row; i++)
             {
@@ -429,8 +529,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// C by R is clicked so name each by column then row.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ColumnByRow_click(object sender, RoutedEventArgs e)
-        {   // C by R is clicked so name each by column then row
+        {
             bool flag = false;
             for (int i = 0; i < this.row; i++)
             {
@@ -465,8 +570,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Save the room file as template.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void FileMenuSave_Click(object sender, RoutedEventArgs e)
-        {   //save the room file as template
+        {
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.DefaultExt = ".tplt"; // Default file extension
             dlg.Filter = "Room File (.tplt)|*.tplt"; // Filter files by extension
@@ -482,8 +592,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Sets handed depending on what is selected.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonHanded_Click(object sender, RoutedEventArgs e)
-        {   // sets handed depending on what is selected
+        {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 this.seatsSelected.ElementAt(i).Chair.LeftHanded = (bool)rbtnLeftH.IsChecked;
@@ -498,8 +613,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Sets horizontal alignment depending on whats selected.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonHorizontal_Click(object sender, RoutedEventArgs e)
-        {   //sets horizontal alignment depending on whats selected
+        {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 if ((bool)rbtnLeft.IsChecked)
@@ -519,8 +639,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Sets vertical alignment depending on whats selected.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonVertical_Click(object sender, RoutedEventArgs e)
-        {   // sets vertical alignment depending on whats selected
+        {
             for (int i = 0; i < this.seatsSelected.Count; i++)
             {
                 if ((bool)rbtnBack.IsChecked)
@@ -540,8 +665,13 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Allows you to change the seats name/number.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonNumber_Click(object sender, RoutedEventArgs e)
-        {   //allows you to change the seats name/number
+        {
             if (txtnumber.Text.Length > 0)
             {
                 this.seatsSelected.ElementAt(0).Chair.SeatName = txtnumber.Text;
@@ -550,11 +680,21 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Closes the window.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Place the selected student into a seat.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void Student_Drop(object sender, RoutedEventArgs e)
         {
             if (this.students.SelectedItem != null)
@@ -573,58 +713,74 @@ namespace SEAT
                 this.students.UnselectAll();
             }
         }
-        
+
+        /// <summary>
+        /// Run the automated placement algorithm.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void SeatStudents_click(object sender, RoutedEventArgs e)
         {
             int priority;
             if (cmbxvert.Text == "Back")
+            {
                 priority = -1;
+            }
             else if (cmbxvert.Text == "Middle")
+            {
                 priority = 0;
+            }
             else
+            {
                 priority = 1;
-            
-            int[] spaces = {Convert.ToInt32(txtbxX.Text), Convert.ToInt32(txtbxY.Text), priority};
+            }
+
+            int[] spaces = { Convert.ToInt32(txtbxX.Text), Convert.ToInt32(txtbxY.Text), priority };
             bool[] checks = { (bool)chkLeft.IsChecked, (bool)chkImp.IsChecked, (bool)chkCheck.IsChecked };
 
             this.myroom.RunPlacementAlgorithmx(new AssignmentBestEffort(), spaces, checks);
         }
 
-        protected void PrintClassroom_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Print the room seating chart.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void PrintClassroom_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 PrintDialog printDlg = new System.Windows.Controls.PrintDialog();
-                if (printDlg.ShowDialog() == true) //id print ok is pressed on print dialog
-                {
-                    //get selected printer capabilities
-                    System.Printing.PrintCapabilities capabilities = printDlg.PrintQueue.GetPrintCapabilities(printDlg.PrintTicket);
-                    
-                    //get scale of the print wrt to screen of WPF visual
-                    double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / this.ActualWidth,
-                    capabilities.PageImageableArea.ExtentHeight /
-                    this.ActualHeight);
 
-                    //Transform the Visual to scale
+                // Id print ok is pressed on print dialog
+                if (printDlg.ShowDialog() == true) 
+                {
+                    // get selected printer capabilities
+                    System.Printing.PrintCapabilities capabilities = printDlg.PrintQueue.GetPrintCapabilities(printDlg.PrintTicket);
+
+                    // get scale of the print wrt to screen of WPF visual
+                    double scale = Math.Min(
+                        (capabilities.PageImageableArea.ExtentWidth / this.ActualWidth),
+                        (capabilities.PageImageableArea.ExtentHeight / this.ActualHeight));
+
+                    // Transform the Visual to scale
                     this.LayoutTransform = new ScaleTransform(scale, scale);
 
-                    //get the size of the printer page
+                    // get the size of the printer page
                     Size sz = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
 
-                    //update the layout of the visual to the printer page size.
+                    // update the layout of the visual to the printer page size.
                     this.Measure(sz);
                     this.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), sz));
 
-                    //now print the visual to printer to fit on the one page.
+                    // now print the visual to printer to fit on the one page.
                     printDlg.PrintVisual(this, "First Fit to Page WPF Print");
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
     }
 }

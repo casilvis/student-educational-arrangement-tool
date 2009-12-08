@@ -23,9 +23,19 @@ namespace SEAT
     /// </summary>
     public partial class Seat : UserControl
     {
+        /// <summary>
+        /// The object that represents the attributes of the chair.
+        /// </summary>
         private Chair chair;
+        
+        /// <summary>
+        /// The label that puts text on top of the seat.
+        /// </summary>
         private TextBlock txtblname = new TextBlock();
 
+        /// <summary>
+        /// Initializes a new instance of the Seat class.
+        /// </summary>
         public Seat()
         {
             this.chair = new Chair();
@@ -33,6 +43,11 @@ namespace SEAT
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Seat class.
+        /// </summary>
+        /// <param name="chair">The chair that will be represented.</param>
+        /// <param name="editable">If the chair is in editable mode or in visible mode.</param>
         public Seat(Chair chair, bool editable)
         {
             this.txtblname.TextWrapping = TextWrapping.Wrap;
@@ -96,27 +111,28 @@ namespace SEAT
             lblName.Content = Chair.SeatName;
         }
 
+        /// <summary>
+        /// Gets an instance of the chair that is represented by this seat.
+        /// </summary>
         public Chair Chair
         {
             get { return this.chair; }
         }
 
+        /// <summary>
+        /// Gets or sets the text label in on top of the seat.
+        /// </summary>
         public TextBlock Txtblname
         {
             get { return this.txtblname; }
             set { this.txtblname = value; }
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            // throw new NotImplementedException("UserControl_Loaded");
-        }
-
-        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            // throw new NotImplementedException("UserControl_Loaded");
-        }
-
+        /// <summary>
+        /// When the seat is double clicked prompt to remove the current student from the seat.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void Seat_click(object sender, RoutedEventArgs e)
         {
             if (this.chair.TheStudent != null)
@@ -145,6 +161,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Update the text containing students name in the chair when the student in the chair is modified.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void Chair_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "TheStudent")

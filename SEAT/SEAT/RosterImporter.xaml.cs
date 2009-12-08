@@ -22,9 +22,19 @@ namespace SEAT
     /// </summary>
     public partial class RosterImporter : Window
     {
+        /// <summary>
+        /// The parsing engine that is part of the model.
+        /// </summary>
         private RosterFile rosterFile;
+
+        /// <summary>
+        /// Flag that indicates if the file was successfully opened.
+        /// </summary>
         private bool isOpened;
 
+        /// <summary>
+        /// Initializes a new instance of the RosterImporter class.
+        /// </summary>
         public RosterImporter()
         {
             InitializeComponent();
@@ -57,11 +67,17 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the file was opened.
+        /// </summary>
         public bool IsOpened
         {
             get { return this.isOpened; }
         }
 
+        /// <summary>
+        /// Fills the grid on the screen with the information contained in the CSV file.
+        /// </summary>
         private void FillGrid()
         {
             // Add all of the necessary columns

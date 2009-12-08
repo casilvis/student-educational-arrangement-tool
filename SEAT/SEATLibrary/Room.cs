@@ -476,8 +476,8 @@ namespace SEATLibrary
         /// <summary>
         /// Run when a student is modified inside of the room students collection.
         /// </summary>
-        /// <param name="sender">Who triggered this action.</param>
-        /// <param name="e">The details involving this action.</param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void RoomStudents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)

@@ -457,8 +457,8 @@ namespace SEATLibrary
         /// <summary>
         /// Something in the list of rooms changed and the file needs to be saved.
         /// </summary>
-        /// <param name="sender">The sender who triggered this event.</param>
-        /// <param name="e">The information about this event.</param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void Rooms_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SeatManager.MarkDirty();
@@ -467,8 +467,8 @@ namespace SEATLibrary
         /// <summary>
         /// Something in the list of students changed and the file needs to be saved.
         /// </summary>
-        /// <param name="sender">The sender who triggered this event.</param>
-        /// <param name="e">The information about this event.</param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SeatManager.MarkDirty();
@@ -493,8 +493,8 @@ namespace SEATLibrary
         /// <summary>
         /// Run when one of the studen't properties changes.  Used to keep the section list up to date.
         /// </summary>
-        /// <param name="sender">Who triggered this event.</param>
-        /// <param name="e">The parameters for this event.</param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void _Student_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Section")
@@ -542,8 +542,8 @@ namespace SEATLibrary
         /// <summary>
         /// Executed when the collection of sections change.
         /// </summary>
-        /// <param name="sender">Who triggered this action.</param>
-        /// <param name="e">The parameters for this method.</param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void Sections_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             // throw new NotImplementedException();

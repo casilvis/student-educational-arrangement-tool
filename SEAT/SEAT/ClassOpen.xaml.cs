@@ -24,12 +24,20 @@ namespace SEAT
     /// </summary>
     public partial class ClassOpen : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the ClassOpen class.
+        /// </summary>
         public ClassOpen()
         {
             InitializeComponent();
             this.Title = "Room creator";
         }
 
+        /// <summary>
+        /// Create the new room and launch the room editing window.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)rbtncreate.IsChecked)
@@ -67,6 +75,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Provide the user with a prompt for selecting a template file.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e)
         {
             rbtnLoad.IsChecked = true;
