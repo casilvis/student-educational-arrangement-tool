@@ -14,7 +14,7 @@ namespace SEATLibrary.Assignment_Algorithm
     public abstract class AssignmentVisitor
     {
         /// <summary>
-        /// PlaceStudents constructor that will modify the room by placing students into seats.
+        /// Algorithm that will modify the room by placing students into seats.
         /// </summary>
         /// <param name="room">Room to be modified.</param>
         public abstract void PlaceStudents(Room room);

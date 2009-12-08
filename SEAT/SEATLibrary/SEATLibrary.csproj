@@ -54,6 +54,13 @@
     <Compile Include="Assignment Algorithm\AssignmentVisuallyImpaired.cs" />
     <Compile Include="Chair.cs" />
     <Compile Include="Assignment Algorithm\AssignmentVisitor.cs" />
+    <Compile Include="Reservation Algorithm\ReservationBack.cs" />
+    <Compile Include="Reservation Algorithm\ReservationCheckerboard.cs" />
+    <Compile Include="Reservation Algorithm\ReservationEveryOtherColumn.cs" />
+    <Compile Include="Reservation Algorithm\ReservationEveryOtherRow.cs" />
+    <Compile Include="Reservation Algorithm\ReservationLeft.cs" />
+    <Compile Include="Reservation Algorithm\ReservationRight.cs" />
+    <Compile Include="Reservation Algorithm\ReservationVisitor.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RosterFile.cs" />
     <Compile Include="SeatManager.cs" />
@@ -68,9 +75,6 @@
       <Project>{E73D89C3-568A-4ECE-9461-E6128FC719F9}</Project>
       <Name>CommonLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reservation Algorithm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
