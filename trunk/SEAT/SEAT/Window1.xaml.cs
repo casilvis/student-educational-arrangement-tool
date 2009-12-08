@@ -485,5 +485,43 @@ namespace SEAT
                 }
             }
         }
+
+        /// <summary>
+        /// When the text box filter for the roster is changed, rerun the filter.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void TextBoxFilterRoster_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.FilterRoster(this.textBoxFilterRoster.Text);
+        }
+
+        /// <summary>
+        /// Filter the roster list box.
+        /// </summary>
+        /// <param name="searchText">The string to filter on.</param>
+        private void FilterRoster(string searchText)
+        {
+            this.listBoxRoster.Items.Filter = delegate(object obj)
+            {
+                Student s = obj as Student;
+                if (s == null)
+                {
+                    return false;
+                }
+                else if (s.FirstName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                {
+                    return true;
+                }
+                else if (s.LastName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            };
+        }
     }
 }

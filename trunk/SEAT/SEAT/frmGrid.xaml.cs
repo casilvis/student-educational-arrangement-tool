@@ -95,6 +95,14 @@ namespace SEAT
             {
                 Options.Width = 0;
             }
+            else
+            {
+                // Disable all of the placement algorithms when editing the room.
+                this.algorithmBestEffort.IsEnabled = false;
+                this.algorithmClearSeats.IsEnabled = false;
+                this.algorithmLeftHanded.IsEnabled = false;
+                this.algorithmVisuallyImpaired.IsEnabled = false;
+            }
 
             ContainerVisual newPage = new ContainerVisual();
             this.seatArray = new Seat[this.row, this.column];
@@ -239,7 +247,6 @@ namespace SEAT
             else
             {
                 grdopt.Width = this.Width;
-                this.students.Width = 150;
                 this.students.ItemsSource = this.myroom.RoomStudents;
             }
 
@@ -813,6 +820,36 @@ namespace SEAT
         private void AlgorithmLeftHanded_Click(object sender, RoutedEventArgs e)
         {
             this.myroom.RunPlacementAlgorithm(new AssignmentLeftHanded());
+        }
+
+        /// <summary>
+        /// Filter the list of students based on input filter text.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void TextBoxFilterStudents_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = this.textBoxFilterStudents.Text;
+            this.students.Items.Filter = delegate(object obj)
+            {
+                Student s = obj as Student;
+                if (s == null)
+                {
+                    return false;
+                }
+                else if (s.FirstName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                {
+                    return true;
+                }
+                else if (s.LastName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            };
         }
     }
 }
