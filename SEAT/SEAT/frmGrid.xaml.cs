@@ -446,21 +446,6 @@ namespace SEAT
             {
                 this.seatsSelected.ElementAt(i).Chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
                 this.seatsSelected.ElementAt(i).Chair.NonChair = (bool)chkboxNotSeat.IsChecked;
-                if ((bool)chkboxNotSeat.IsChecked || (bool)chkboxEmpty.IsChecked)
-                {
-                    if ((bool)chkboxNotSeat.IsChecked)
-                    {
-                        this.seatsSelected.ElementAt(i).Background = Brushes.Gray;
-                    }
-                    else
-                    {
-                        this.seatsSelected.ElementAt(i).Background = Brushes.LightGray;
-                    }
-                }
-                else
-                {
-                    this.seatsSelected.ElementAt(i).Background = Brushes.White;
-                }
             }
         }
 

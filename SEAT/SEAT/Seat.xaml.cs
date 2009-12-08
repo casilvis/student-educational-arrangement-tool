@@ -257,7 +257,7 @@ namespace SEAT
                 }
             }
 
-            if (e.PropertyName == "MustBeEmpty")
+            if (e.PropertyName == "MustBeEmpty" || e.PropertyName == "NonChair")
             {
                 this.RefreshSeatColor();
             }
