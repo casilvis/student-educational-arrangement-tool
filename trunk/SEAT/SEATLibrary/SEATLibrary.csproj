@@ -53,10 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignmentBestEffort.cs" />
-    <Compile Include="AssignmentClearRoom.cs" />
+    <Compile Include="Assignment Algorithm\AssignmentBestEffort.cs" />
+    <Compile Include="Assignment Algorithm\AssignmentClearRoom.cs" />
     <Compile Include="Chair.cs" />
-    <Compile Include="AssignmentVisitor.cs" />
+    <Compile Include="Assignment Algorithm\AssignmentVisitor.cs" />
     <Compile Include="PCPrint.cs">
       <SubType>Component</SubType>
     </Compile>
