@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Assignment Algorithm\AssignmentBestEffort.cs" />
     <Compile Include="Assignment Algorithm\AssignmentClearRoom.cs" />
+    <Compile Include="Assignment Algorithm\AssignmentLeftHanded.cs" />
+    <Compile Include="Assignment Algorithm\AssignmentVisuallyImpaired.cs" />
     <Compile Include="Chair.cs" />
     <Compile Include="Assignment Algorithm\AssignmentVisitor.cs" />
     <Compile Include="Room.cs" />

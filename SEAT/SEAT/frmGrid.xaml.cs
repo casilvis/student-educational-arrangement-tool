@@ -17,6 +17,7 @@ namespace SEAT
     using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
     using SEATLibrary;
+    using SEATLibrary.Assignment_Algorithm;
 
     /// <summary>
     /// Interaction logic for frmGrid.xaml
@@ -701,7 +702,15 @@ namespace SEAT
             {
                 Student student = (Student)this.students.SelectedItem;
                 Seat seat = (Seat)sender;
-                if (!this.myroom.IsStudentSeated(student))
+                if (seat.Chair.NonChair)
+                {
+                    MessageBox.Show("Can not place student in a non-chair.");
+                }
+                else if (seat.Chair.MustBeEmpty)
+                {
+                    MessageBox.Show("Students are not allowed to sit in this chair.");
+                }
+                else if (!this.myroom.IsStudentSeated(student))
                 {
                     seat.Chair.TheStudent = student;
                 }
@@ -721,24 +730,7 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void SeatStudents_click(object sender, RoutedEventArgs e)
         {
-            int priority;
-            if (cmbxvert.Text == "Back")
-            {
-                priority = -1;
-            }
-            else if (cmbxvert.Text == "Middle")
-            {
-                priority = 0;
-            }
-            else
-            {
-                priority = 1;
-            }
-
-            //int[] spaces = { Convert.ToInt32(txtbxX.Text), Convert.ToInt32(txtbxY.Text), priority };
-            //bool[] checks = { (bool)chkLeft.IsChecked, (bool)chkImp.IsChecked, (bool)chkCheck.IsChecked };
-
-            this.myroom.RunPlacementAlgorithmx(new AssignmentBestEffort());
+            throw new NotImplementedException("Seat student algorithm not implemented");
         }
 
         /// <summary>
@@ -781,6 +773,46 @@ namespace SEAT
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Clear all of the seats.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void AlgorithmClearSeats_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunPlacementAlgorithm(new AssignmentClearRoom());
+        }
+
+        /// <summary>
+        /// Attempt to place all of the students using a best effort.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void AlgorithmBestEffort_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunPlacementAlgorithm(new AssignmentBestEffort());
+        }
+
+        /// <summary>
+        /// Place only the visually impaired students.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void AlgorithmVisuallyImpaired_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunPlacementAlgorithm(new AssignmentVisuallyImpaired());
+        }
+
+        /// <summary>
+        /// Place only the left handed students.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void AlgorithmLeftHanded_Click(object sender, RoutedEventArgs e)
+        {
+            this.myroom.RunPlacementAlgorithm(new AssignmentLeftHanded());
         }
     }
 }

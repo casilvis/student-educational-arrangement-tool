@@ -8,6 +8,13 @@
                 <MenuItem Header="_Save Template" Name="FileMenuSave" Click="FileMenuSave_Click" InputGestureText="Ctrl+S" />
                 <MenuItem Header="_Print Classroom" Name="PrintClassroom" Click="PrintClassroom_Click" InputGestureText="Ctrl+P" />
             </MenuItem>
+            <MenuItem Header="_Place Students">
+                <MenuItem Header="_Clear Seats" Click="AlgorithmClearSeats_Click" />
+                <MenuItem Header="_Best Effort" Click="AlgorithmBestEffort_Click" />
+                <MenuItem Header="_Visualy Impaired Only" Click="AlgorithmVisuallyImpaired_Click" />
+                <MenuItem Header="_Left Handed Only" Click="AlgorithmLeftHanded_Click" />
+
+            </MenuItem>
         </Menu>
         <Grid Name="Options" Width="200" Height="auto" DockPanel.Dock="Right">
             <DockPanel>

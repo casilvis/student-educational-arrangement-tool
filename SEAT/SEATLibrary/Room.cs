@@ -12,6 +12,7 @@ namespace SEATLibrary
     using System.Linq;
     using System.Text;
     using System.Xml;
+    using SEATLibrary.Assignment_Algorithm;
     
     /// <summary>
     /// A model representing a rectangular room consiting of chair and a list of students.
@@ -379,7 +380,7 @@ namespace SEATLibrary
         /// Uses visitor design pattern.
         /// </summary>
         /// <param name="algorithm">The specific algorithm to use for placement.</param>
-        public void RunPlacementAlgorithmx(AssignmentVisitor algorithm)
+        public void RunPlacementAlgorithm(AssignmentVisitor algorithm)
         {
             algorithm.PlaceStudents(this);
         }
@@ -497,22 +498,6 @@ namespace SEATLibrary
                     }
                 }
             }
-        }
-
-        public int FindLeftHandedStudent()
-        {
-            for (int i = 0; i < this.RoomStudents.Count; i++)
-                if (this.RoomStudents[i].LeftHanded)
-                    return i;
-            return 0;
-        }
-
-        public int FindVisuallyImpairedStudent()
-        {
-            for (int i = 0; i < this.RoomStudents.Count; i++)
-                if (this.RoomStudents[i].VisionImpairment)
-                    return i;
-            return 0;
         }
     }
 }

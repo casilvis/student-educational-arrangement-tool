@@ -3,7 +3,6 @@
 // </copyright>
 namespace SEAT
 {
-    using CommonLibrary;
     using System;
     using System.Collections;
     using System.Collections.ObjectModel;
@@ -20,6 +19,7 @@ namespace SEAT
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using CommonLibrary;
     using SEATLibrary;
     
     /// <summary>

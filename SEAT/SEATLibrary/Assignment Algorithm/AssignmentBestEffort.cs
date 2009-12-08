@@ -1,7 +1,7 @@
 ﻿// <copyright file="AssignmentBestEffort.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-namespace SEATLibrary
+namespace SEATLibrary.Assignment_Algorithm
 {
     using System;
     using System.Collections.Generic;
@@ -14,104 +14,112 @@ namespace SEATLibrary
     public class AssignmentBestEffort : AssignmentVisitor
     {
         /// <summary>
-        /// Constructor for PlaceStudents which attempts to place every student in a room in a seat.
+        /// Algorithm for PlaceStudents which attempts to place every student in a room in a seat.
         /// </summary>
         /// <param name="room">Room to be modified.</param>
         public override void PlaceStudents(Room room)
         {
-            //testing variables
-
-            /*
-            bool lHand = checks[0];
-            bool vImpaired = checks[1];
-            bool checkered = checks[2];
-            int spacesX = spaces[0];
-            int spacesY = spaces[1];
-            int priority = spaces[2];
-
-            //Clears the room of students
-            room.RunPlacementAlgorithmx(new AssignmentClearRoom(), spaces, checks);
-
-            //Creates an easily manipulated copy of the student list
-            List<Student> toBePlacedStudents = new List<Student>();
-            foreach (Student s in room.RoomStudents)
-                toBePlacedStudents.Add(s);
-
-            int startI, endI, incrementI = 0;
-            if (priority == 1)
+            // Place all of the left handed vision impaired students
+            for (int n = 0; n < room.RoomStudents.Count; n++)
             {
-                startI = 0;
-                endI = room.Height;
-                incrementI = 1 + spacesX;
-            }
-            else if (priority == 0)
-            {
-                startI = room.Height / 2;
-                endI = room.Height;
-                incrementI = 1;
+                Student student = room.RoomStudents[n];
+                bool seated = room.IsStudentSeated(student);
 
-            }
-            else
-            {
-                startI = room.Height-1;
-                endI = room.Height;
-                incrementI = -1 - spacesX;
-            }
-
-            for (int i = startI; i < endI; i+=incrementI)
-            {
-                if (i < 0 || i > room.RoomStudents.Count)
-                    break;
-                int startJ = 0, incrementJ = 1;
-                if (checkered)
+                // Ignore right handed and non-vision impaired students
+                if (student.LeftHanded == false || student.VisionImpairment == false)
                 {
-                    startJ = i % 2;
-                    incrementJ = 2;
+                    seated = true;
                 }
-                for (int j = startJ; j < room.Width; j+=(incrementJ+spacesY))
+
+                // Attempt to find a seat
+                for (int i = 0; i < room.Height && !seated; i++)
                 {
-                    if (!room.Chairs[i, j].MustBeEmpty && !room.Chairs[i, j].NonChair && toBePlacedStudents.Count > 0)
+                    for (int j = 0; j < room.Width && !seated; j++)
                     {
-                        if (room.Chairs[i, j].LeftHanded && lHand)
+                        Chair chair = room.Chairs[i, j];
+                        if (chair.IsEmpty() && !chair.MustBeEmpty && !chair.NonChair && chair.LeftHanded && chair.FbPosition == 0)
                         {
-                            room.Chairs[i, j].TheStudent = toBePlacedStudents[room.FindLeftHandedStudent()];
-                            toBePlacedStudents.RemoveAt(room.FindLeftHandedStudent());
-                        }
-                        else if (vImpaired)
-                        {
-                            room.Chairs[i, j].TheStudent = toBePlacedStudents[room.FindVisuallyImpairedStudent()];
-                            toBePlacedStudents.RemoveAt(room.FindVisuallyImpairedStudent());
-                        }
-                        else
-                        {
-                            room.Chairs[i, j].TheStudent = toBePlacedStudents[0];
-                            toBePlacedStudents.RemoveAt(0);
+                            chair.TheStudent = student;
+                            seated = true;
                         }
                     }
                 }
             }
-            if (toBePlacedStudents.Count > 0)
+
+            // Place all of the vision impaired students
+            for (int n = 0; n < room.RoomStudents.Count; n++)
             {
-                for (int i = startI; i < room.Height; i += incrementI)
+                Student student = room.RoomStudents[n];
+                bool seated = room.IsStudentSeated(student);
+
+                // Ignore right handed and non-vision impaired students
+                if (student.VisionImpairment == false)
                 {
-                    for (int j = 0; j < room.Width; j += priority)
+                    seated = true;
+                }
+
+                // Attempt to find a seat
+                for (int i = 0; i < room.Height && !seated; i++)
+                {
+                    for (int j = 0; j < room.Width && !seated; j++)
                     {
-                        if (!room.Chairs[i, j].MustBeEmpty && !room.Chairs[i, j].NonChair && room.Chairs[i, j].TheStudent == null && toBePlacedStudents.Count > 0)
+                        Chair chair = room.Chairs[i, j];
+                        if (chair.IsEmpty() && !chair.MustBeEmpty && !chair.NonChair && chair.FbPosition == 0)
                         {
-                            if (room.Chairs[i, j].LeftHanded && lHand)
-                            {
-                                room.Chairs[i, j].TheStudent = toBePlacedStudents[room.FindLeftHandedStudent()];
-                                toBePlacedStudents.RemoveAt(room.FindLeftHandedStudent());
-                            }
-                            else
-                            {
-                                room.Chairs[i, j].TheStudent = toBePlacedStudents[0];
-                                toBePlacedStudents.RemoveAt(0);
-                            }
+                            chair.TheStudent = student;
+                            seated = true;
                         }
                     }
                 }
-            }*/
+            }
+
+            // Place all of the left handed students
+            for (int n = 0; n < room.RoomStudents.Count; n++)
+            {
+                Student student = room.RoomStudents[n];
+                bool seated = room.IsStudentSeated(student);
+
+                // Ignore right handed and non-vision impaired students
+                if (student.LeftHanded == false)
+                {
+                    seated = true;
+                }
+
+                // Attempt to find a seat
+                for (int i = 0; i < room.Height && !seated; i++)
+                {
+                    for (int j = 0; j < room.Width && !seated; j++)
+                    {
+                        Chair chair = room.Chairs[i, j];
+                        if (chair.IsEmpty() && !chair.MustBeEmpty && !chair.NonChair && chair.LeftHanded)
+                        {
+                            chair.TheStudent = student;
+                            seated = true;
+                        }
+                    }
+                }
+            }
+
+            // Place everyone else
+            for (int n = 0; n < room.RoomStudents.Count; n++)
+            {
+                Student student = room.RoomStudents[n];
+                bool seated = room.IsStudentSeated(student);
+
+                // Attempt to find a seat
+                for (int i = 0; i < room.Height && !seated; i++)
+                {
+                    for (int j = 0; j < room.Width && !seated; j++)
+                    {
+                        Chair chair = room.Chairs[i, j];
+                        if (chair.IsEmpty() && !chair.MustBeEmpty && !chair.NonChair && chair.LeftHanded == student.LeftHanded)
+                        {
+                            chair.TheStudent = student;
+                            seated = true;
+                        }
+                    }
+                }
+            }
         }
     }
 }
