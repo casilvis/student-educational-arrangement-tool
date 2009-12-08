@@ -5,6 +5,7 @@ namespace SEAT
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Windows;
@@ -96,21 +97,7 @@ namespace SEAT
                 lblName.Foreground = Brushes.Blue;
             }
 
-            if (Chair.NonChair || Chair.MustBeEmpty)
-            {
-                if (Chair.NonChair)
-                {
-                    this.Background = Brushes.Gray;
-                }
-                else
-                {
-                    this.Background = Brushes.LightGray;
-                }
-            }
-            else
-            {
-                this.Background = Brushes.White;
-            }
+            this.RefreshSeatColor();
 
             chkSelected.Margin = new Thickness(Chair.LrPosition * 15, Chair.FbPosition * 15, 0, 0);
             if (!editable)
@@ -138,6 +125,25 @@ namespace SEAT
         {
             get { return this.txtblname; }
             set { this.txtblname = value; }
+        }
+
+        /// <summary>
+        /// Sets the seats color based on the state of the chair
+        /// </summary>
+        private void RefreshSeatColor()
+        {
+            if (Chair.NonChair)
+            {
+                this.Background = Brushes.Gray;
+            }
+            else if (Chair.MustBeEmpty)
+            {
+                this.Background = Brushes.LightGray;
+            }
+            else
+            {
+                this.Background = Brushes.White;
+            }
         }
 
         /// <summary>
@@ -171,6 +177,52 @@ namespace SEAT
                         break;
                 }
             }
+            else if (this.chair.MustBeEmpty == true)
+            {
+                // Set up the message box
+                string messageBoxText = "Allow students to sit in this chair?";
+                string caption = "Modify Chair";
+                MessageBoxButton button = MessageBoxButton.OKCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+
+                // Display message box
+                MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+
+                // Process message box results
+                switch (result)
+                {
+                    case MessageBoxResult.OK:
+                        // User pressed Yes button
+                        this.chair.MustBeEmpty = false;
+                        break;
+                    case MessageBoxResult.Cancel:
+                        // User pressed Cancel button
+                        break;
+                }
+            }
+            else if (this.chair.MustBeEmpty == false)
+            {
+                // Set up the message box
+                string messageBoxText = "Do not allow students to sit in this chair?";
+                string caption = "Modify Chair";
+                MessageBoxButton button = MessageBoxButton.OKCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+
+                // Display message box
+                MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+
+                // Process message box results
+                switch (result)
+                {
+                    case MessageBoxResult.OK:
+                        // User pressed Yes button
+                        this.chair.MustBeEmpty = true;
+                        break;
+                    case MessageBoxResult.Cancel:
+                        // User pressed Cancel button
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -180,6 +232,7 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void Chair_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            Trace.WriteLine("Chair (managed by Seat) property changed: " + e.PropertyName);
             if (e.PropertyName == "TheStudent")
             {
                 if (this.chair.TheStudent == null)
@@ -202,6 +255,11 @@ namespace SEAT
                         this.Txtblname.Foreground = Brushes.Black;
                     }
                 }
+            }
+
+            if (e.PropertyName == "MustBeEmpty")
+            {
+                this.RefreshSeatColor();
             }
         }
     }
