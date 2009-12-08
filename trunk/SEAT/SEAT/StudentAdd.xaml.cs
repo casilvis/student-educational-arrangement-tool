@@ -17,14 +17,20 @@ namespace SEAT
     using System.Windows.Shapes;
     using SEATLibrary;
 
-    ///
     /// <summary>
     /// Interaction logic for StudentAdd.xaml
     /// </summary>
     public partial class StudentAdd : Window
     {
+        /// <summary>
+        /// An instance of the student who is being edited.
+        /// </summary>
         private Student student;
 
+        /// <summary>
+        /// Initializes a new instance of the StudentAdd class.
+        /// Used when adding a student.
+        /// </summary>
         public StudentAdd()
         {
             InitializeComponent();
@@ -32,6 +38,11 @@ namespace SEAT
             txtLName.Focus();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the StudentAdd class.
+        /// Used when editing a student.
+        /// </summary>
+        /// <param name="student">The student to be edited.</param>
         public StudentAdd(Student student)
         {
             InitializeComponent();
@@ -57,6 +68,11 @@ namespace SEAT
             txtLName.Focus();
         }
 
+        /// <summary>
+        /// Add the student or update the instance of the student.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             if (txtSID.Text.Length > 0 && txtLName.Text.Length > 0 && txtFName.Text.Length > 0)

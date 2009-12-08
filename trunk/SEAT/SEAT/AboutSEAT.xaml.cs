@@ -23,6 +23,9 @@ namespace SEAT
     /// </summary>
     public partial class AboutSEAT : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the AboutSEAT class.
+        /// </summary>
         public AboutSEAT()
         {
             InitializeComponent();
@@ -30,12 +33,22 @@ namespace SEAT
             this.AddHandler(Hyperlink.RequestNavigateEvent, new RequestNavigateEventHandler(this.HyperlinkNavigate));
         }
 
+        /// <summary>
+        /// Load the clicked hyperlink in a new web broswer window.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void HyperlinkNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Close this window.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonOk(object sender, RoutedEventArgs e)
         {
             this.Close();

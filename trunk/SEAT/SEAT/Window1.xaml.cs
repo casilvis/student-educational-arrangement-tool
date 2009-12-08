@@ -4,9 +4,10 @@
 namespace SEAT
 {
     using System;
-    using System.Drawing;
     using System.Collections;
+    using System.Collections.ObjectModel;
     using System.Diagnostics;
+    using System.Drawing;
     using System.Linq;
     using System.Text;
     using System.Windows;
@@ -19,15 +20,20 @@ namespace SEAT
     using System.Windows.Navigation;
     using System.Windows.Shapes;
     using SEATLibrary;
-    using System.Collections.ObjectModel;
     
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class Window1 : Window
     {
+        /// <summary>
+        /// Main instance of the SeatManager which represents the currently opened file.
+        /// </summary>
         private static SeatManager manager = new SeatManager();
 
+        /// <summary>
+        /// Initializes a new instance of the Window1 class.
+        /// </summary>
         public Window1()
         {
             InitializeComponent();
@@ -57,17 +63,30 @@ namespace SEAT
             this.CommandBindings.Add(newCmdBinding);
         }
 
+        /// <summary>
+        /// Gets an instance of the current SeatManager that can be used anywhere.
+        /// </summary>
         public static SeatManager SManager
         {
             get { return Window1.manager; }
         }
 
+        /// <summary>
+        /// Adds a new room to the list of rooms.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonAddRoom_Click(object sender, RoutedEventArgs e)
         {
             ClassOpen classroom = new ClassOpen();
             classroom.ShowDialog();
         }
 
+        /// <summary>
+        /// Displays the about window for the application.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void DisplayAboutWindow(object sender, RoutedEventArgs e)
         {
             AboutSEAT popupWindow = new AboutSEAT();
@@ -75,6 +94,11 @@ namespace SEAT
             popupWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// Creates a new, empty SeatManager, prompts to save if the current manager has unsaved changes.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void NewCmdExecuted(object sender, RoutedEventArgs e)
         {
             bool makenew = true;
@@ -106,7 +130,12 @@ namespace SEAT
             }
         }
 
-        private void OpenCmdExecuted(object target, ExecutedRoutedEventArgs e)
+        /// <summary>
+        /// Provides a prompt to open a file that loads a saved copy of SeatManager.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OpenCmdExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             // Configure open file dialog box
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -130,6 +159,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Saves the current copy of SeatManager, reverts to save as if file has not been saved yet.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void SaveCmdExecuted(object sender, RoutedEventArgs e)
         {
             // If we can save the file where it already was we will, otherwise prompt to save the file
@@ -139,6 +173,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Save the current SeatManager to a new file.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void FileMenuSaveAs_Click(object sender, RoutedEventArgs e)
         {
             // Configure save file dialog box
@@ -157,17 +196,32 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Closes the application.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void FileMenuExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Provides the prompt to add a new student to the roster of students.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonAddStudent_Click(object sender, RoutedEventArgs e)
         {
             StudentAdd student = new StudentAdd();
             student.ShowDialog();
         }
 
+        /// <summary>
+        /// Provide the prompt to edit the selected student.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonEditStudent_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxRoster.SelectedValue != null)
@@ -177,6 +231,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Loads the window for editing the selected room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonEditRoom_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxRooms.SelectedValue != null)
@@ -186,6 +245,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Loads the window for placing students into seats in a room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonPlace_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxRooms.SelectedValue != null)
@@ -199,11 +263,21 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Delets the selected student (not implemented yet).
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void DeleteStudent(object sender, RoutedEventArgs e)
         {
             // NOT IMPLEMENTED YET
         }
 
+        /// <summary>
+        /// Prompts for a roster to import into the SeatManager.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ImportRoster_Click(object sender, RoutedEventArgs e)
         {
             RosterImporter ri = new RosterImporter();
@@ -213,6 +287,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Adds all of the selected students to the selected room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonAddStudentsToRoom_Click(object sender, RoutedEventArgs e)
         {
             if ((Room)listBoxRooms.SelectedItem == null)
@@ -231,16 +310,31 @@ namespace SEAT
             }
         }
 
-        private void buttonSelectStudents_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Selects all of the students in the roster.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ButtonSelectStudents_Click(object sender, RoutedEventArgs e)
         {
             listBoxRoster.SelectAll();
         }
 
-        private void buttonDeselectStudents_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Deselects all of the students in the roster.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ButtonDeselectStudents_Click(object sender, RoutedEventArgs e)
         {
             listBoxRoster.UnselectAll();
         }
 
+        /// <summary>
+        /// Add all students in the selected section to the selected room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ButtonAddSectionToRoom_Click(object sender, RoutedEventArgs e)
         {
             if ((Room)listBoxRooms.SelectedItem == null)
@@ -267,6 +361,11 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Keep the list of room students updated depending on which room is selected.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void ListBoxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Room room = (Room)listBoxRooms.SelectedItem;
@@ -280,16 +379,31 @@ namespace SEAT
             }
         }
 
+        /// <summary>
+        /// Load the help web page.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void MenuItemHelp_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Help");
         }
 
+        /// <summary>
+        /// Load the documentation web page.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void MenuItemDocumentation_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Documentation");
         }
 
+        /// <summary>
+        /// Print the seating assignments for the selected room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void PrintSeatingChart_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)listBoxRooms.SelectedItem;
@@ -300,45 +414,59 @@ namespace SEAT
             else
             {
                 PCPrint printer = new PCPrint();
-                //Set the font we want to use
+
+                // Set the font we want to use
                 printer.PrinterFont = new Font("Verdana", 10);
-                //Set the TextToPrint property
+
+                // Set the TextToPrint property
                 Chair[,] roomchairs = room.Chairs;
                 ObservableCollection<Student> studentsInRoom = new ObservableCollection<Student>();
-                ObservableCollection<String> chairLocations = new ObservableCollection<String>();
-                foreach(Chair chair in roomchairs)
+                ObservableCollection<string> chairLocations = new ObservableCollection<string>();
+                foreach (Chair chair in roomchairs)
                 {
-
-                        if (chair.TheStudent != null)
-                        {
-                            studentsInRoom.Add(chair.TheStudent);
-                            chairLocations.Add(chair.SeatName);
-                        }
+                    if (chair.TheStudent != null)
+                    {
+                        studentsInRoom.Add(chair.TheStudent);
+                        chairLocations.Add(chair.SeatName);
+                    }
                 }
+
                 if (studentsInRoom.Count == 0)
                 {
                     MessageBox.Show("There are no students placed in this room, cannot print.");
                     return;
                 }
-                String studentList = " ";
+
+                string studentList = " ";
                 Console.Write(studentsInRoom.Count);
                 for (int i = 0; i < studentsInRoom.Count; i++)
                 {
                     Student currentStudent = studentsInRoom.ElementAt(i);
-                    studentList += currentStudent.LastName + ", " + currentStudent.FirstName + ": " + chairLocations.ElementAt(i)+"\n";
+                    studentList += currentStudent.LastName + ", " + currentStudent.FirstName + ": " + chairLocations.ElementAt(i) + "\n";
                 }
+
                 printer.TextToPrint = studentList;
 
-                //Issue print command
+                // Issue print command
                 printer.Print();
             }
         }
 
+        /// <summary>
+        /// Update the title bar when the file becomes dirty.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void SeatManager_FileBecameDirty(object sender, EventArgs e)
         {
             this.Title = Window1.SManager.ToString();
         }
 
+        /// <summary>
+        /// Intercept the file closing and provide a user with a prompt to save their unsaved work.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (SeatManager.Dirty)
