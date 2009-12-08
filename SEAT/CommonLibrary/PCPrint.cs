@@ -28,7 +28,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 
 
-namespace SEATLibrary
+namespace CommonLibrary
 {
     public class PCPrint : System.Drawing.Printing.PrintDocument
     {

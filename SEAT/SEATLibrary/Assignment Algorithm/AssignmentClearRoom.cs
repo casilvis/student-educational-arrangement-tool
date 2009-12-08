@@ -17,7 +17,7 @@ namespace SEATLibrary
         /// Constructor for PlaceStudents that removes all students currently in chairs from their chair.
         /// </summary>
         /// <param name="room">The room to be modified.</param>
-        public override void PlaceStudents(Room room, int[] spaces, bool[] checks)
+        public override void PlaceStudents(Room room)
         {
             for (int i = 0; i < room.Height; i++)
             {

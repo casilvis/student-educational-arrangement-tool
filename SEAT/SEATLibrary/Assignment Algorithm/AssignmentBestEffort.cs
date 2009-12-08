@@ -17,10 +17,11 @@ namespace SEATLibrary
         /// Constructor for PlaceStudents which attempts to place every student in a room in a seat.
         /// </summary>
         /// <param name="room">Room to be modified.</param>
-        public override void PlaceStudents(Room room, int[] spaces, bool[] checks)
+        public override void PlaceStudents(Room room)
         {
             //testing variables
 
+            /*
             bool lHand = checks[0];
             bool vImpaired = checks[1];
             bool checkered = checks[2];
@@ -61,13 +62,6 @@ namespace SEATLibrary
             {
                 if (i < 0 || i > room.RoomStudents.Count)
                     break;
-                /*if (priority == 0)
-                {
-                    if (i % 2 == 1)
-                        incrementI = (incrementI - 1) * -1;
-                    else
-                        incrementI = (incrementI + 1) * -1;
-                }*/
                 int startJ = 0, incrementJ = 1;
                 if (checkered)
                 {
@@ -117,7 +111,7 @@ namespace SEATLibrary
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 }

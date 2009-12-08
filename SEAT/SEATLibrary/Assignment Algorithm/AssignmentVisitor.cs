@@ -17,6 +17,6 @@ namespace SEATLibrary
         /// PlaceStudents constructor that will modify the room by placing students into seats.
         /// </summary>
         /// <param name="room">Room to be modified.</param>
-        public abstract void PlaceStudents(Room room, int[] spaces, bool[] checks);
+        public abstract void PlaceStudents(Room room);
     }
 }

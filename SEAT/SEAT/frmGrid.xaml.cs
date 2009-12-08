@@ -735,10 +735,10 @@ namespace SEAT
                 priority = 1;
             }
 
-            int[] spaces = { Convert.ToInt32(txtbxX.Text), Convert.ToInt32(txtbxY.Text), priority };
-            bool[] checks = { (bool)chkLeft.IsChecked, (bool)chkImp.IsChecked, (bool)chkCheck.IsChecked };
+            //int[] spaces = { Convert.ToInt32(txtbxX.Text), Convert.ToInt32(txtbxY.Text), priority };
+            //bool[] checks = { (bool)chkLeft.IsChecked, (bool)chkImp.IsChecked, (bool)chkCheck.IsChecked };
 
-            this.myroom.RunPlacementAlgorithmx(new AssignmentBestEffort(), spaces, checks);
+            this.myroom.RunPlacementAlgorithmx(new AssignmentBestEffort());
         }
 
         /// <summary>
