@@ -7,6 +7,7 @@ namespace SEATLibrary
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
+    using System.Diagnostics;
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
@@ -346,6 +347,16 @@ namespace SEATLibrary
         }
 
         /// <summary>
+        /// Remove the given student from the room and from any chair they may be seated in.
+        /// </summary>
+        /// <param name="student">The student to remove.</param>
+        public void RemoveStudentFromRoom(Student student)
+        {
+            // NOTE: Student will automatically be removed from any seat they may be seated in.
+            this.roomStudents.Remove(student);
+        }
+
+        /// <summary>
         /// Determine if a student has been placed in a chair in a room.
         /// </summary>
         /// <param name="student">The student to check.</param>
@@ -500,12 +511,8 @@ namespace SEATLibrary
                 // Also remove this student from their seat
                 for (int i = 0; i < e.OldItems.Count; i++)
                 {
-                    // This is a student that was removed
-                    if (!e.NewItems.Contains(e.OldItems[i]))
-                    {
-                        Student student = e.OldItems[i] as Student;
-                        this.RemoveStudentFromSeat(student);
-                    }
+                    // Remove the student from any seat they may be seated in.
+                    this.RemoveStudentFromSeat(e.OldItems[i] as Student);
                 }
             }
         }

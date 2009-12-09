@@ -842,9 +842,8 @@ namespace SEAT
             this.myroom.RunPlacementAlgorithm(new AssignmentLeftHanded());
         }
 
-
         /// <summary>
-        /// 
+        /// Remove all seat reservations.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
@@ -854,7 +853,7 @@ namespace SEAT
         }
 
         /// <summary>
-        /// 
+        /// Reserve a chekerboard pattern of seats.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
@@ -864,7 +863,7 @@ namespace SEAT
         }
 
         /// <summary>
-        /// 
+        /// Reserve every other column of seats.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
@@ -874,7 +873,7 @@ namespace SEAT
         }
 
         /// <summary>
-        /// 
+        /// Reserve every other row of seats.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
@@ -884,7 +883,7 @@ namespace SEAT
         }
 
         /// <summary>
-        /// 
+        /// Reserve the left side of the room.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
@@ -894,7 +893,7 @@ namespace SEAT
         }
 
         /// <summary>
-        /// 
+        /// Reserve the right side of the room.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
@@ -904,7 +903,7 @@ namespace SEAT
         }
 
         /// <summary>
-        /// 
+        /// Reserve the back of the room.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
@@ -912,7 +911,5 @@ namespace SEAT
         {
             this.myroom.RunReservationAlgorithm(new ReservationBack());
         }
-
-
     }
 }

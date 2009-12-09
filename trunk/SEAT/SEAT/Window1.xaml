@@ -59,7 +59,7 @@
                     <Button Height="23" Width="75" Name="buttonAddStudent"  Click="ButtonAddStudent_Click">Add</Button>
                     <Button Height="23" Name="buttonEditStudent" Click="ButtonEditStudent_Click">Edit</Button>
                 </DockPanel>
-                <ListBox Name="listBoxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" KeyDown="DeleteStudent" SelectionMode="Multiple" >
+                <ListBox Name="listBoxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" SelectionMode="Multiple" >
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <EventSetter Event="MouseDoubleClick" Handler="ButtonEditStudent_Click" />
@@ -91,7 +91,13 @@
             <DockPanel Width="150" HorizontalAlignment="Right" Margin="0,40,10,40">
                 <Label Height="28" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Students in Room</Label>
                 <Button Name="buttonPlace" Height="23" DockPanel.Dock="bottom" Click="ButtonPlace_Click">Place Students</Button>
-                <ListBox  Name="listBoxStudents" ItemTemplate="{StaticResource itemTemplateRoster}" />
+                <ListBox  Name="listBoxStudents" ItemTemplate="{StaticResource itemTemplateRoster}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="RemoveRoomStudent_Click" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
             </DockPanel>
         </Grid>
         <Rectangle DockPanel.Dock="Bottom" MaxWidth="1" Fill="Black"></Rectangle>
