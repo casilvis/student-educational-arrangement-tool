@@ -272,6 +272,32 @@ namespace SEAT
         private void DeleteStudent(object sender, RoutedEventArgs e)
         {
             // NOT IMPLEMENTED YET
+            throw new NotImplementedException("DeleteStudent not implemented");
+        }
+
+        /// <summary>
+        /// Remoev the selected student from the room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void RemoveRoomStudent_Click(object sender, RoutedEventArgs e)
+        {
+            Student student = this.listBoxStudents.SelectedItem as Student;
+            Room room = this.listBoxRooms.SelectedItem as Room;
+
+            if (student == null || room == null)
+            {
+                MessageBox.Show("Student could not be removed from room.");
+            }
+            else
+            {
+                string message = "Do you want to remove " + student.FirstName + " " + student.LastName + " from " + room.RoomName + "?";
+                MessageBoxResult result = MessageBox.Show(message, "SEAT", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    room.RemoveStudentFromRoom(student);
+                }
+            }
         }
 
         /// <summary>
