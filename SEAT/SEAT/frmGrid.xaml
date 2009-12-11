@@ -2,6 +2,19 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="frmGrid" Height="500" Width="900">
+    <Window.Resources>
+        <DataTemplate x:Key="itemTemplateStudents">
+            <DockPanel Width="200">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <TextBlock Text="{Binding Path=LastName}"/>
+                    <TextBlock Text=", "/>
+                    <TextBlock Text="{Binding Path=FirstName}"/>
+                </StackPanel>
+                <CheckBox IsChecked="{Binding Path=VisionImpairment}" IsEnabled="False" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                <CheckBox IsChecked="{Binding Path=LeftHanded}" IsEnabled="False" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+            </DockPanel>
+        </DataTemplate>
+    </Window.Resources>
     <DockPanel Name="dkpanel" Height="auto" Width="auto">
         <Menu DockPanel.Dock="Top" Width="auto">
             <MenuItem Header="_File">
@@ -24,7 +37,7 @@
                 <MenuItem Header="_Left Handed Only" Name="algorithmLeftHanded" Click="AlgorithmLeftHanded_Click" />
             </MenuItem>
         </Menu>
-        <Grid Name="Options" Width="200" Height="auto" DockPanel.Dock="Right">
+        <Grid Name="Options" Width="200" Height="Auto" Margin="10,0,10,10" DockPanel.Dock="Right">
             <DockPanel>
                 <Button DockPanel.Dock="Bottom" Height="23" Name="btndone" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="ButtonDone_Click">Done</Button>
                 <StackPanel DockPanel.Dock="Top">
@@ -74,33 +87,15 @@
             <ScrollViewer Name="svrleft" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Left" Width="auto" Height="auto" MaxWidth="90" VerticalScrollBarVisibility="Hidden">
                 <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left"></Grid>
             </ScrollViewer>
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Bottom" Name="grdopt" Width="0" Height="auto">
-                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Name="grdopt0" Width="auto" Height="auto" Orientation="Horizontal">
-                    <ComboBox Name="cmbxvert" Width="100" SelectedIndex="1">
-                        <ComboBoxItem>Middle</ComboBoxItem>
-                        <ComboBoxItem>Front</ComboBoxItem>
-                        <ComboBoxItem>Back</ComboBoxItem>
-                    </ComboBox>
-                    <CheckBox Name="chkLeft" Width="250" Content="Accomidate Left Handed Students"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Name="grdopt2" Width="auto" Height="auto" Orientation="Horizontal">
-                    <ComboBox SelectedIndex="0" Name="cmbxhoriz" Width="100">
-                        <ComboBoxItem>Middle</ComboBoxItem>
-                        <ComboBoxItem>Left</ComboBoxItem>
-                        <ComboBoxItem>Right</ComboBoxItem>
-                    </ComboBox>
-                    <CheckBox Name="chkImp" Content="Accomidate Visually Impaired Students" Width="250"/>
-                    <Button Name="btnSeat" Content="Seat Students" Width="100" Click="SeatStudents_click"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Name="grdopt3" Width="auto" Height="auto" Orientation="Horizontal">
-                    <TextBox Name="txtbxX" Text="0" Width="50"/>
-                    <TextBox Name="txtbxY" Text="0" Width="50"/>              
-                    <CheckBox Name="chkCheck" Width="250" Content="Checkered Seating" />              
-                </StackPanel>
-            </StackPanel>
-            <DockPanel Width="200" Name="dockPanelStudents">
+            
+            <DockPanel Width="250" Name="dockPanelStudents">
                 <TextBox Name="textBoxFilterStudents" DockPanel.Dock="Top" TextChanged="TextBoxFilterStudents_TextChanged" />
-                <ListBox Name="students" Width="auto"></ListBox>
+                <DockPanel DockPanel.Dock="Top" Width="Auto">
+                    <Label Margin="0,0,113,0" FontWeight="Black">Name</Label>
+                    <Label Margin="0,0,7,0" FontWeight="Black">L</Label>
+                    <Label Margin="0,0,10,0" FontWeight="Black">V</Label>
+                </DockPanel>
+                <ListBox Name="students" Width="auto" ItemTemplate="{StaticResource itemTemplateStudents}"></ListBox>
             </DockPanel>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
                 <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">

@@ -247,11 +247,9 @@ namespace SEAT
                 svrgrid.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.ScrollGrid_ScrollChanged));
                 svrtop.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.ScrollTop_ScrollChanged));
                 svrleft.AddHandler(ScrollViewer.ScrollChangedEvent, new RoutedEventHandler(this.ScrollLeft_ScrollChanged));
-                grdopt.Height = 0;
             }
             else
             {
-                grdopt.Width = this.Width;
                 this.students.ItemsSource = this.myroom.RoomStudents;
             }
 
