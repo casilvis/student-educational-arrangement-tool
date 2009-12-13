@@ -18,6 +18,14 @@
                 <CheckBox IsChecked="{Binding Path=LeftHanded}" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
             </DockPanel>
         </DataTemplate>
+
+        <DataTemplate x:Key="itemTemplateRoomStudents">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=LastName}"/>
+                <TextBlock Text=", "/>
+                <TextBlock Text="{Binding Path=FirstName}"/>
+            </StackPanel>
+        </DataTemplate>
         <DataTemplate x:Key="itemTemplateRooms">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Path=RoomName}"/>
@@ -96,7 +104,7 @@
             <DockPanel Margin="10,0,10,10" Width="150">
                 <Label Height="28" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Students in Room</Label>
                 <Button Name="buttonPlace" Height="23" DockPanel.Dock="bottom" Click="ButtonPlace_Click">Place Students</Button>
-                <ListBox  Name="listBoxStudents" ItemTemplate="{StaticResource itemTemplateRoster}">
+                <ListBox  Name="listBoxStudents" ItemTemplate="{StaticResource itemTemplateRoomStudents}">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <EventSetter Event="MouseDoubleClick" Handler="RemoveRoomStudent_Click" />
