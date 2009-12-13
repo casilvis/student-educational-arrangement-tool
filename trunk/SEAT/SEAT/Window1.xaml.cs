@@ -19,7 +19,6 @@ namespace SEAT
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
-    using CommonLibrary;
     using SEATLibrary;
     
     /// <summary>
@@ -424,59 +423,6 @@ namespace SEAT
         private void MenuItemDocumentation_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://code.google.com/p/student-educational-arrangement-tool/wiki/Documentation");
-        }
-
-        /// <summary>
-        /// Print the seating assignments for the selected room.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
-        private void PrintSeatingChart_Click(object sender, RoutedEventArgs e)
-        {
-            Room room = (Room)listBoxRooms.SelectedItem;
-            if (room == null)
-            {
-                MessageBox.Show("No room selected!");
-            }
-            else
-            {
-                PCPrint printer = new PCPrint();
-
-                // Set the font we want to use
-                printer.PrinterFont = new Font("Verdana", 10);
-
-                // Set the TextToPrint property
-                Chair[,] roomchairs = room.Chairs;
-                ObservableCollection<Student> studentsInRoom = new ObservableCollection<Student>();
-                ObservableCollection<string> chairLocations = new ObservableCollection<string>();
-                foreach (Chair chair in roomchairs)
-                {
-                    if (chair.TheStudent != null)
-                    {
-                        studentsInRoom.Add(chair.TheStudent);
-                        chairLocations.Add(chair.SeatName);
-                    }
-                }
-
-                if (studentsInRoom.Count == 0)
-                {
-                    MessageBox.Show("There are no students placed in this room, cannot print.");
-                    return;
-                }
-
-                string studentList = " ";
-                Console.Write(studentsInRoom.Count);
-                for (int i = 0; i < studentsInRoom.Count; i++)
-                {
-                    Student currentStudent = studentsInRoom.ElementAt(i);
-                    studentList += currentStudent.LastName + ", " + currentStudent.FirstName + ": " + chairLocations.ElementAt(i) + "\n";
-                }
-
-                printer.TextToPrint = studentList;
-
-                // Issue print command
-                printer.Print();
-            }
         }
 
         /// <summary>

@@ -40,9 +40,6 @@
                 <MenuItem Header="_Import Roster" Click="ImportRoster_Click"/>
                 <MenuItem Header="_View Roster"/>
             </MenuItem>
-            <MenuItem Header="_Reports">
-                <MenuItem Header="_Print Seating Chart" Click="PrintSeatingChart_Click"/>
-            </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_View Help" Click="MenuItemHelp_Click" />
                 <MenuItem Header="_View Documentation" Click="MenuItemDocumentation_Click" />
