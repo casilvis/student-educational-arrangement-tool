@@ -87,7 +87,6 @@
             <ScrollViewer Name="svrleft" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Left" Width="auto" Height="auto" MaxWidth="90" VerticalScrollBarVisibility="Hidden">
                 <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left"></Grid>
             </ScrollViewer>
-            
             <DockPanel Width="250" Name="dockPanelStudents">
                 <TextBox Name="textBoxFilterStudents" DockPanel.Dock="Top" TextChanged="TextBoxFilterStudents_TextChanged" />
                 <DockPanel DockPanel.Dock="Top" Width="Auto">
@@ -95,6 +94,7 @@
                     <Label Margin="0,0,7,0" FontWeight="Black">L</Label>
                     <Label Margin="0,0,10,0" FontWeight="Black">V</Label>
                 </DockPanel>
+                <CheckBox Name="checkBoxFilterSeatedStudents" Margin="5,5,0,5" DockPanel.Dock="Bottom" Checked="CheckBoxFilterSeatedStudents_Checked" Unchecked="CheckBoxFilterSeatedStudents_Unchecked">Show Only Seated Students</CheckBox>
                 <ListBox Name="students" Width="auto" ItemTemplate="{StaticResource itemTemplateStudents}"></ListBox>
             </DockPanel>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
