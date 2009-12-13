@@ -1,7 +1,7 @@
-﻿<Window x:Class="SEAT.frmGrid"
+﻿<Window x:Class="SEAT.RoomGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="frmGrid" Height="500" Width="900">
+    Title="Room Grid" Height="500" Width="900">
     <Window.Resources>
         <DataTemplate x:Key="itemTemplateStudents">
             <DockPanel Width="200">

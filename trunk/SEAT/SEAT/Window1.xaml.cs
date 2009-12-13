@@ -260,7 +260,7 @@ namespace SEAT
         {
             if (listBoxRooms.SelectedValue != null)
             {
-                frmGrid grid = new frmGrid(listBoxRooms.SelectedValue as Room, true);
+                RoomGrid grid = new RoomGrid(listBoxRooms.SelectedValue as Room, true);
                 grid.ShowDialog();
             }
         }
@@ -274,7 +274,7 @@ namespace SEAT
         {
             if (listBoxRooms.SelectedValue != null)
             {
-                frmGrid grid = new frmGrid(listBoxRooms.SelectedValue as Room, false);
+                RoomGrid grid = new RoomGrid(listBoxRooms.SelectedValue as Room, false);
                 grid.ShowDialog();
             }
             else

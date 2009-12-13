@@ -1,4 +1,4 @@
-﻿// <copyright file="frmGrid.xaml.cs" company="University of Louisville Speed School of Engineering">
+﻿ // <copyright file="RoomGrid.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
 namespace SEAT
@@ -21,9 +21,9 @@ namespace SEAT
     using SEATLibrary.Reservation_Algorithm;
 
     /// <summary>
-    /// Interaction logic for frmGrid.xaml
+    /// Interaction logic for RoomGrid.xaml
     /// </summary>
-    public partial class frmGrid : Window
+    public partial class RoomGrid : Window
     {
         /// <summary>
         /// The object that represents the underlying room.
@@ -61,9 +61,9 @@ namespace SEAT
         private List<Seat> seatsSelected;
 
         /// <summary>
-        /// Initializes a new instance of the frmGrid class.
+        /// Initializes a new instance of the RoomGrid class.
         /// </summary>
-        public frmGrid()
+        public RoomGrid()
         {
             // Shouldn't be used but initialized in case
             InitializeComponent();
@@ -73,11 +73,11 @@ namespace SEAT
         }
 
         /// <summary>
-        /// Initializes a new instance of the frmGrid class.
+        /// Initializes a new instance of the RoomGrid class.
         /// </summary>
         /// <param name="inroom">The room to be rendered.</param>
         /// <param name="editable">Is the room editible.</param>
-        public frmGrid(Room inroom, bool editable)
+        public RoomGrid(Room inroom, bool editable)
         {
             // Setting up the room to correct size and properties
             InitializeComponent();
