@@ -1,6 +1,7 @@
 ﻿// <copyright file="AboutSEAT.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>About window for the SEAT application.</summary>
 namespace SEAT
 {
     using System;
@@ -19,7 +20,7 @@ namespace SEAT
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for AboutSEAT.xaml
+    /// About window for the SEAT application.
     /// </summary>
     public partial class AboutSEAT : Window
     {

@@ -1,6 +1,7 @@
 ﻿// <copyright file="Room.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>A model representing a rectuangular room consisting of chair and a list of students.</summary>
 namespace SEATLibrary 
 {
     using System;

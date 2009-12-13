@@ -1,6 +1,7 @@
 ﻿// <copyright file="ReservationVisitor.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Reservation visitor algorithm for reserving seats that students can not sit in.</summary>
 namespace SEATLibrary.Reservation_Algorithm
 {
     using System;

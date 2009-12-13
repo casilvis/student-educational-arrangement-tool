@@ -1,6 +1,7 @@
 ﻿// <copyright file="ReservationEveryOtherRow.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Reserve every other row to spread out students evenly in the classroom.</summary>
 namespace SEATLibrary.Reservation_Algorithm
 {
     using System;

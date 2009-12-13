@@ -1,6 +1,7 @@
 ﻿// <copyright file="CLInterface.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Exposes useful command line tools that are able to perform common tasks.</summary>
 namespace TestingApplication
 {
     using System;

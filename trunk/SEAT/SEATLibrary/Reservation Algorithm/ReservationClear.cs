@@ -1,6 +1,7 @@
 ﻿// <copyright file="ReservationClear.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Remove all seat reservations from the room.</summary>
 namespace SEATLibrary.Reservation_Algorithm
 {
     using System;

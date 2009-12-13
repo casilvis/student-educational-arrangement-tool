@@ -1,6 +1,7 @@
 ﻿// <copyright file="AssignmentVisuallyImpaired.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Place the visually impaired students at the front of the room.</summary>
 namespace SEATLibrary.Assignment_Algorithm
 {
     using System;

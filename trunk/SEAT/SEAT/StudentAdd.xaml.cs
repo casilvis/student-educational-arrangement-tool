@@ -1,6 +1,7 @@
 ﻿// <copyright file="StudentAdd.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Add or updated a students information.</summary>
 namespace SEAT
 {
     using System;
@@ -18,7 +19,7 @@ namespace SEAT
     using SEATLibrary;
 
     /// <summary>
-    /// Interaction logic for StudentAdd.xaml
+    /// Add or update a students information.
     /// </summary>
     public partial class StudentAdd : Window
     {

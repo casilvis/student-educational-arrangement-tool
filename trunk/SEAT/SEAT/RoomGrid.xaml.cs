@@ -1,6 +1,7 @@
 ﻿ // <copyright file="RoomGrid.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Window for editing a room.</summary>
 namespace SEAT
 {
     using System;
@@ -21,7 +22,7 @@ namespace SEAT
     using SEATLibrary.Reservation_Algorithm;
 
     /// <summary>
-    /// Interaction logic for RoomGrid.xaml
+    /// Window for editing a room.
     /// </summary>
     public partial class RoomGrid : Window
     {

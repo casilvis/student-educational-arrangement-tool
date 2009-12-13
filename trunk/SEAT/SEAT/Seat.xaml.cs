@@ -1,6 +1,7 @@
 ﻿// <copyright file="Seat.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>A user control for a seat that is placed in a room.</summary>
 namespace SEAT
 {
     using System;
@@ -20,7 +21,7 @@ namespace SEAT
     using SEATLibrary;
 
     /// <summary>
-    /// Interaction logic for Seat.xaml
+    /// A user control for a seat that is placed in a room.
     /// </summary>
     public partial class Seat : UserControl
     {
@@ -113,6 +114,7 @@ namespace SEAT
         /// <summary>
         /// Gets an instance of the chair that is represented by this seat.
         /// </summary>
+        /// <value>The chair that the seat represents.</value>
         public Chair Chair
         {
             get { return this.chair; }
@@ -121,6 +123,7 @@ namespace SEAT
         /// <summary>
         /// Gets or sets the text label in on top of the seat.
         /// </summary>
+        /// <value>The text block that is on top of the seat.</value>
         public TextBlock Txtblname
         {
             get { return this.txtblname; }
@@ -128,7 +131,7 @@ namespace SEAT
         }
 
         /// <summary>
-        /// Sets the seats color based on the state of the chair
+        /// Sets the seats color based on the state of the chair.
         /// </summary>
         private void RefreshSeatColor()
         {

@@ -1,6 +1,7 @@
 ﻿// <copyright file="AssemblyInfo.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Assembly Info file for the SEATLibrary.</summary>
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;

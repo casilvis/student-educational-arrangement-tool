@@ -1,6 +1,7 @@
 ﻿// <copyright file="Window1.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Main window of the application.</summary>
 namespace SEAT
 {
     using System;
@@ -22,7 +23,7 @@ namespace SEAT
     using SEATLibrary;
     
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Main window of the application.
     /// </summary>
     public partial class Window1 : Window
     {
@@ -66,6 +67,7 @@ namespace SEAT
         /// <summary>
         /// Gets an instance of the current SeatManager that can be used anywhere.
         /// </summary>
+        /// <value>The main instance of the SeatManager.</value>
         public static SeatManager SManager
         {
             get { return Window1.manager; }
