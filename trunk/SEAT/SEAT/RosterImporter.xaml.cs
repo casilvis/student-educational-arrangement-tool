@@ -242,9 +242,9 @@ namespace SEAT
                     Student student = new Student(firstname, lastname, studentid, section, false, false);
                     Window1.SManager.AddStudentToRoster(student);
                 }
-            }
 
-            this.Close();
+                this.Close();
+            }
         }
 
         /// <summary>
