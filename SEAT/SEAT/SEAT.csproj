@@ -153,10 +153,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
-      <Project>{E73D89C3-568A-4ECE-9461-E6128FC719F9}</Project>
-      <Name>CommonLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SEATLibrary\SEATLibrary.csproj">
       <Project>{A782713D-A65E-4153-BFE3-F763AEB93ADD}</Project>
       <Name>SEATLibrary</Name>

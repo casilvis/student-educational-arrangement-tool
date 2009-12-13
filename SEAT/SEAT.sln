@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingApplication", "Testi
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Student Educational Arrangement Tool", "Student Educational Arrangement Tool\Student Educational Arrangement Tool.vdproj", "{578CDA29-D1F1-4FBC-B3AF-E5A1961C9860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLibrary", "CommonLibrary\CommonLibrary.csproj", "{E73D89C3-568A-4ECE-9461-E6128FC719F9}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -35,10 +33,6 @@ Global
 		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{578CDA29-D1F1-4FBC-B3AF-E5A1961C9860}.Debug|Any CPU.ActiveCfg = Debug
 		{578CDA29-D1F1-4FBC-B3AF-E5A1961C9860}.Release|Any CPU.ActiveCfg = Release
-		{E73D89C3-568A-4ECE-9461-E6128FC719F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E73D89C3-568A-4ECE-9461-E6128FC719F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E73D89C3-568A-4ECE-9461-E6128FC719F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E73D89C3-568A-4ECE-9461-E6128FC719F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
