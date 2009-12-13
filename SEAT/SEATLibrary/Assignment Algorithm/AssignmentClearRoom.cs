@@ -1,6 +1,7 @@
 ﻿// <copyright file="AssignmentClearRoom.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Remove all students from the seats in a room.</summary>
 namespace SEATLibrary.Assignment_Algorithm
 {
     using System;

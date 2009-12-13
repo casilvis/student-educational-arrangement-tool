@@ -1,6 +1,7 @@
 ﻿// <copyright file="ReservationLeft.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Reserve the left part of the classroom so students can not sit in those seats.</summary>
 namespace SEATLibrary.Reservation_Algorithm
 {
     using System;

@@ -1,6 +1,7 @@
 ﻿// <copyright file="Chair.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>A representation of a chair that is placed inside of a Room.</summary>
 namespace SEATLibrary
 {
     using System;

@@ -1,6 +1,7 @@
 ﻿// <copyright file="SeatManager.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Manager for the program that coordinates the roster of students and all of the rooms.</summary>
 namespace SEATLibrary
 {
     using System;

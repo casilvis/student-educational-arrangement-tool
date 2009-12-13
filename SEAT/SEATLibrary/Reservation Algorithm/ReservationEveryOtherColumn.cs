@@ -1,6 +1,7 @@
 ﻿// <copyright file="ReservationEveryOtherColumn.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Reserve every other column to spread out the students in the classroom.</summary>
 namespace SEATLibrary.Reservation_Algorithm
 {
     using System;

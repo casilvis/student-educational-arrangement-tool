@@ -1,6 +1,7 @@
 ﻿// <copyright file="AssignmentLeftHanded.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Place only the left handed students into left handed seats.</summary>
 namespace SEATLibrary.Assignment_Algorithm
 {
     using System;

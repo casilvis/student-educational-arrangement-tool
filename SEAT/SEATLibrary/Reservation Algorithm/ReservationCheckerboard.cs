@@ -1,6 +1,7 @@
 ﻿// <copyright file="ReservationCheckerboard.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Reserve a checkerboard pattern that spread the students out evenly in the room.</summary>
 namespace SEATLibrary.Reservation_Algorithm
 {
     using System;
@@ -9,7 +10,7 @@ namespace SEATLibrary.Reservation_Algorithm
     using System.Text;
 
     /// <summary>
-    /// Reserve a checkboard pattern that spread the students out evenly in the room.
+    /// Reserve a checkerboard pattern that spread the students out evenly in the room.
     /// </summary>
     public class ReservationCheckerboard : ReservationVisitor
     {

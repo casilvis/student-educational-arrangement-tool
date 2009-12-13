@@ -1,6 +1,7 @@
 ﻿// <copyright file="AssignmentVisitor.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Assignment visitor algorithm for placing students in a room.</summary>
 namespace SEATLibrary.Assignment_Algorithm
 {
     using System;

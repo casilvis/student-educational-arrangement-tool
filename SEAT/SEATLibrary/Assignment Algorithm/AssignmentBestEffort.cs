@@ -1,6 +1,7 @@
 ﻿// <copyright file="AssignmentBestEffort.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Places the room students into seats as best as possible.</summary>
 namespace SEATLibrary.Assignment_Algorithm
 {
     using System;

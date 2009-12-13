@@ -1,6 +1,7 @@
 ﻿// <copyright file="ClassOpen.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Intermediate window for creating a new room.</summary>
 namespace SEAT
 {
     using System;
@@ -20,7 +21,7 @@ namespace SEAT
     using SEATLibrary;
 
     /// <summary>
-    /// Interaction logic for ClassOpen.xaml
+    /// Intermediate window for creating a new room.
     /// </summary>
     public partial class ClassOpen : Window
     {

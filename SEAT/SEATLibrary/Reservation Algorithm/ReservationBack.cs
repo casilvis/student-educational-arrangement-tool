@@ -1,6 +1,7 @@
 ﻿// <copyright file="ReservationBack.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Reserve all of the seats in the back of the room.</summary>
 namespace SEATLibrary.Reservation_Algorithm
 {
     using System;

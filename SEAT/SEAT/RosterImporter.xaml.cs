@@ -1,6 +1,7 @@
 ﻿// <copyright file="RosterImporter.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
+// <summary>Window for importing a CVS roster file into the application.</summary>
 namespace SEAT
 {
     using System;
@@ -19,7 +20,7 @@ namespace SEAT
     using SEATLibrary;
 
     /// <summary>
-    /// Interaction logic for RosterImporter.xaml
+    /// IWIndow for importing a CVS roster file into the application.
     /// </summary>
     public partial class RosterImporter : Window
     {
@@ -82,6 +83,7 @@ namespace SEAT
         /// <summary>
         /// Gets a value indicating whether the file was opened.
         /// </summary>
+        /// <value>True if the file was able to be opened.</value>
         public bool IsOpened
         {
             get { return this.isOpened; }
