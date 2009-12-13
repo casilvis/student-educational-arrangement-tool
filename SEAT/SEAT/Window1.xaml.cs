@@ -137,25 +137,45 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void OpenCmdExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            // Configure open file dialog box
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.DefaultExt = ".seat"; // Default file extension
-            dlg.Filter = "SEAT File (.seat)|*.seat"; // Filter files by extension
-
-            // Show open file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
-
-            // Process open file dialog box results
-            if (result == true)
+            bool openfile = true;
+            if (SeatManager.Dirty)
             {
-                // Open document
-                Window1.manager = new SeatManager(dlg.FileName);
-                
-                // Bind all of the GUI elements
-                listBoxRooms.ItemsSource = Window1.manager.RoomList;
-                listBoxRoster.ItemsSource = Window1.manager.StudentList;
-                listBoxSection.ItemsSource = Window1.manager.SectionList;
-                this.Title = Window1.SManager.ToString();
+                string message = "Do you want to save changes?";
+                MessageBoxResult result = MessageBox.Show(message, "SEAT", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Cancel)
+                {
+                    // Don't do anything
+                    openfile = false;
+                }
+                else if (result == MessageBoxResult.Yes)
+                {
+                    // Save changes before the file is replaced with a new one
+                    this.SaveCmdExecuted(this, null);
+                }
+            }
+
+            if (openfile)
+            {
+                // Configure open file dialog box
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+                dlg.DefaultExt = ".seat"; // Default file extension
+                dlg.Filter = "SEAT File (.seat)|*.seat"; // Filter files by extension
+
+                // Show open file dialog box
+                Nullable<bool> result = dlg.ShowDialog();
+
+                // Process open file dialog box results
+                if (result == true)
+                {
+                    // Open document
+                    Window1.manager = new SeatManager(dlg.FileName);
+
+                    // Bind all of the GUI elements
+                    listBoxRooms.ItemsSource = Window1.manager.RoomList;
+                    listBoxRoster.ItemsSource = Window1.manager.StudentList;
+                    listBoxSection.ItemsSource = Window1.manager.SectionList;
+                    this.Title = Window1.SManager.ToString();
+                }
             }
         }
 
