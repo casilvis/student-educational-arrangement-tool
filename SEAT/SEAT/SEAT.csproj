@@ -80,7 +80,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="frmGrid.xaml">
+    <Page Include="RoomGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,9 +116,6 @@
     <Compile Include="ClassOpen.xaml.cs">
       <DependentUpon>ClassOpen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="frmGrid.xaml.cs">
-      <DependentUpon>frmGrid.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -131,6 +128,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RoomGrid.xaml.cs">
+      <DependentUpon>RoomGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="RosterImporter.xaml.cs">
       <DependentUpon>RosterImporter.xaml</DependentUpon>

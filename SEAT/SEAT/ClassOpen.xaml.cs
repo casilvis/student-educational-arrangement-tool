@@ -50,7 +50,7 @@ namespace SEAT
                 {
                     Room classroom = new Room(Convert.ToInt32(row), Convert.ToInt32(column));
                     Window1.SManager.AddNewRoom(classroom);
-                    frmGrid grid = new frmGrid(classroom, true);
+                    RoomGrid grid = new RoomGrid(classroom, true);
                     grid.Show();
                     this.Close();
                 }
@@ -63,7 +63,7 @@ namespace SEAT
                     {
                         Room classroom = new Room(txtPath.Text);
                         Window1.SManager.AddNewRoom(classroom);
-                        frmGrid grid = new frmGrid(classroom, true);
+                        RoomGrid grid = new RoomGrid(classroom, true);
                         grid.Show();
                         this.Close();
                     }
