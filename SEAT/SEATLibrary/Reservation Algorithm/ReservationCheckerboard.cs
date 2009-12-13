@@ -19,7 +19,27 @@ namespace SEATLibrary.Reservation_Algorithm
         /// <param name="room">The room to be modified.</param>
         public override void ReserveSeats(Room room)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < room.Height; i++)
+            {
+                for (int j = 0; j < room.Width; j++)
+                {
+
+                    if (i % 2 == 0)
+                    {
+                        if (j % 2 == 0)
+                        {
+                            room.Chairs[i, j].MustBeEmpty = true;
+                        }
+                    }
+                    else
+                    {
+                        if (j % 2 != 0)
+                        {
+                            room.Chairs[i, j].MustBeEmpty = true;
+                        }
+                    }
+                }
+            }
         }
     }
 }
