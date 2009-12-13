@@ -169,6 +169,7 @@ namespace SEAT
                     }
 
                     // this sets up the actual seats in the room
+                    this.myroom.Chairs[i, j].PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.Chair_PropertyChanged);
                     this.seatArray[i, j] = new Seat(this.myroom.Chairs[i, j], editable);
                     this.seatArray[i, j].AddHandler(UserControl.MouseLeftButtonUpEvent, new RoutedEventHandler(this.Student_Drop));
                     this.seatArray[i, j].AddHandler(CheckBox.CheckedEvent, new RoutedEventHandler(this.CheckBoxSelected_Checked));
@@ -719,16 +720,6 @@ namespace SEAT
         }
 
         /// <summary>
-        /// Run the automated placement algorithm.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
-        private void SeatStudents_click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException("Seat student algorithm not implemented");
-        }
-
-        /// <summary>
         /// Print the room seating chart.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
@@ -771,13 +762,58 @@ namespace SEAT
         }
 
         /// <summary>
+        /// One of the chairs has a property that changed, if the list is filtered, then keep the list of students up to date.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void Chair_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (this.checkBoxFilterSeatedStudents.IsChecked.Value == true && e.PropertyName == "TheStudent")
+            {
+                this.FilterStudentList(this, null);
+            }
+        }
+
+        /// <summary>
         /// Filter the list of students based on input filter text.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
         private void TextBoxFilterStudents_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchText = this.textBoxFilterStudents.Text;
+            this.FilterStudentList(sender, e);
+        }
+
+        /// <summary>
+        /// Change the filter so the list of students only show students who are not seated.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void CheckBoxFilterSeatedStudents_Checked(object sender, RoutedEventArgs e)
+        {
+            this.FilterStudentList(sender, e);
+        }
+
+        /// <summary>
+        /// Change the filter so the list of students shows all of the students.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void CheckBoxFilterSeatedStudents_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.FilterStudentList(sender, e);
+        }
+
+        /// <summary>
+        /// Filter the list of students according to the text filter and seated filter.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void FilterStudentList(object sender, RoutedEventArgs e)
+        {
+            string name = this.textBoxFilterStudents.Text;
+            bool filterSeated = this.checkBoxFilterSeatedStudents.IsChecked.Value;
+
             this.students.Items.Filter = delegate(object obj)
             {
                 Student s = obj as Student;
@@ -785,11 +821,15 @@ namespace SEAT
                 {
                     return false;
                 }
-                else if (s.FirstName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                else if (filterSeated && this.myroom.IsStudentSeated(s))
+                {
+                    return false;
+                }
+                else if (s.FirstName.ToLower().IndexOf(name.ToLower(), 0) > -1)
                 {
                     return true;
                 }
-                else if (s.LastName.ToLower().IndexOf(searchText.ToLower(), 0) > -1)
+                else if (s.LastName.ToLower().IndexOf(name.ToLower(), 0) > -1)
                 {
                     return true;
                 }
