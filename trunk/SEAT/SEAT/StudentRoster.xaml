@@ -1,0 +1,14 @@
+﻿<Window x:Class="SEAT.StudentRoster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="StudentRoster" Height="300" Width="550">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Width="auto">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Save" Name="fileMenuSave" Click="FileMenuSave_Click"  InputGestureText="Ctrl+S" />
+                <MenuItem Header="_Print" Name="printClassroom" Click="FileMenuPrint_Click"  InputGestureText="Ctrl+P" />
+            </MenuItem>
+        </Menu>
+        <RichTextBox Name="richTextBox" Width="Auto" Height="Auto" />
+    </DockPanel>
+</Window>
