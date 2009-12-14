@@ -32,6 +32,7 @@ namespace SEAT
         {
             InitializeComponent();
             this.Title = "Room creator";
+            comboBoxRooms.ItemsSource = Window1.SManager.RoomList;
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)rbtncreate.IsChecked)
+            if (rbtncreate.IsChecked.Value)
             {
                 string row = Regex.Replace(txtRows.Text, @"[\D]", string.Empty);
                 string column = Regex.Replace(txtColumns.Text, @"[\D]", string.Empty);
@@ -55,8 +56,12 @@ namespace SEAT
                     grid.Show();
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Invalid room dimensions.");
+                }
             }
-            else
+            else if (rbtnLoad.IsChecked.Value)
             {
                 try
                 {
@@ -72,6 +77,22 @@ namespace SEAT
                 catch (Exception a)
                 {
                     MessageBox.Show("Invalid path " + a.ToString());
+                }
+            }
+            else if (radioButtonDuplicate.IsChecked.Value)
+            {
+                if (comboBoxRooms.SelectedItem == null)
+                {
+                    MessageBox.Show("No room selected.");
+                }
+                else
+                {
+                    Room classroom = new Room(comboBoxRooms.SelectedItem as Room);
+                    classroom.RoomName += " Copy";
+                    Window1.SManager.AddNewRoom(classroom);
+                    RoomGrid grid = new RoomGrid(classroom, true);
+                    grid.Show();
+                    this.Close();
                 }
             }
         }
@@ -98,6 +119,16 @@ namespace SEAT
             {
                 txtPath.Text = dlg.FileName;
             }
+        }
+
+        /// <summary>
+        /// The combo box for the room selection changed.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ComboBoxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            radioButtonDuplicate.IsChecked = true;
         }
     }
 }

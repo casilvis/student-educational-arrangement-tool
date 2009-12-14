@@ -87,6 +87,34 @@ namespace SEATLibrary
         /// <summary>
         /// Initializes a new instance of the Room class.
         /// </summary>
+        /// <param name="room">The room to duplicate.</param>
+        public Room(Room room)
+        {
+            this.width = room.width;
+            this.height = room.height;
+            this.roomName = room.roomName;
+            this.location = room.location;
+            this.description = room.description;
+            this.roomStudents = new ObservableCollection<Student>();
+            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(this.RoomStudents_CollectionChanged);
+            for (int i = 0; i < room.roomStudents.Count; i++)
+            {
+                this.roomStudents.Add(room.roomStudents[i]);
+            }
+
+            this.chairs = new Chair[this.height, this.width];
+            for (int i = 0; i < this.height; i++)
+            {
+                for (int j = 0; j < this.width; j++)
+                {
+                    this.chairs[i, j] = new Chair(room.chairs[i, j]);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the Room class.
+        /// </summary>
         /// <param name="height">The width of the room.</param>
         /// <param name="width">The height of the room.</param>
         public Room(int height, int width)
