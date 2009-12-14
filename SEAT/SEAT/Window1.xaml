@@ -18,7 +18,6 @@
                 <CheckBox IsChecked="{Binding Path=LeftHanded}" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
             </DockPanel>
         </DataTemplate>
-
         <DataTemplate x:Key="itemTemplateRoomStudents">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Path=LastName}"/>
@@ -46,7 +45,7 @@
             </MenuItem>
             <MenuItem Header="_Students">
                 <MenuItem Header="_Import Roster" Click="ImportRoster_Click"/>
-                <MenuItem Header="_View Roster"/>
+                <MenuItem Header="_View Roster" Click="ViewRoster_Click"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_View Help" Click="MenuItemHelp_Click" />

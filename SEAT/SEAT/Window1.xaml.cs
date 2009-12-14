@@ -517,5 +517,16 @@ namespace SEAT
                 }
             };
         }
+
+        /// <summary>
+        /// Display a rich text box window filled with the roster information for the entire class.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ViewRoster_Click(object sender, RoutedEventArgs e)
+        {
+            StudentRoster sr = new StudentRoster();
+            sr.ShowDialog();
+        }
     }
 }

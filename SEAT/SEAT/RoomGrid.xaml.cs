@@ -104,6 +104,7 @@ namespace SEAT
                 this.algorithmClearSeats.IsEnabled = false;
                 this.algorithmLeftHanded.IsEnabled = false;
                 this.algorithmVisuallyImpaired.IsEnabled = false;
+                this.viewSeatAssignments.IsEnabled = false;
 
                 // Hide the Student ListBox UI elements
                 this.dockPanelStudents.Visibility = Visibility.Hidden;
@@ -1004,6 +1005,17 @@ namespace SEAT
         private void ReservationBack_Click(object sender, RoutedEventArgs e)
         {
             this.myroom.RunReservationAlgorithm(new ReservationBack());
+        }
+
+        /// <summary>
+        /// Display a rich text box window filled with the seat assignments for the room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ViewSeatAssignments_Click(object sender, RoutedEventArgs e)
+        {
+            StudentRoster sr = new StudentRoster();
+            sr.ShowDialog();
         }
     }
 }
