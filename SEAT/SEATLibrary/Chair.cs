@@ -69,6 +69,21 @@ namespace SEATLibrary
         }
 
         /// <summary>
+        /// Initializes a new instance of the Chair class.
+        /// </summary>
+        /// <param name="chair">The chair to duplicate.</param>
+        public Chair(Chair chair)
+        {
+            this.leftHanded = chair.leftHanded;
+            this.frontBackPosition = chair.frontBackPosition;
+            this.leftRightPosition = chair.leftRightPosition;
+            this.nonChair = chair.nonChair;
+            this.mustBeEmpty = chair.mustBeEmpty;
+            this.seatNumber = chair.seatNumber;
+            this.theStudent = chair.theStudent;
+        }
+
+        /// <summary>
         /// Initializes a new instance of the Chair class using given parameters.
         /// </summary>
         /// <param name="leftHanded">True if the chair is left handed.</param>
