@@ -411,6 +411,15 @@ namespace SEATLibrary
         }
 
         /// <summary>
+        /// Provide an interface for removing rooms.
+        /// </summary>
+        /// <param name="room">The room to be removed.</param>
+        public void RemoveRoom(Room room)
+        {
+            this.rooms.Remove(room);
+        }
+
+        /// <summary>
         /// Returns a string representation of the SEATManager used in the title bar of the application.
         /// </summary>
         /// <returns>String representation of the current file.</returns>

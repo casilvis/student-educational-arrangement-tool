@@ -314,6 +314,25 @@ namespace SEAT
         }
 
         /// <summary>
+        /// Prompt the user if they want to delete the selected room.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ButtonDeleteRoom_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxRooms.SelectedValue != null)
+            {
+                Room room = listBoxRooms.SelectedValue as Room;
+                string message = "Do you want to delete " + room.RoomName + "?";
+                MessageBoxResult result = MessageBox.Show(message, "Delete Room", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    SManager.RemoveRoom(room);
+                }
+            }
+        }
+
+        /// <summary>
         /// Remoev the selected student from the room.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
