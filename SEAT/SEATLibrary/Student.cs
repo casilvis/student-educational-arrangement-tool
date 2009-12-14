@@ -13,7 +13,7 @@ namespace SEATLibrary
     /// <summary>
     /// A representation of a student.
     /// </summary>
-    public class Student : INotifyPropertyChanged
+    public class Student : INotifyPropertyChanged, IComparable
     {
         // Attributes
 
@@ -262,6 +262,33 @@ namespace SEATLibrary
         public override string ToString()
         {
             return this.lastName + ", " + this.firstName;
+        }
+
+        /// <summary>
+        /// Compares two students using their last name and then their first name.
+        /// </summary>
+        /// <param name="obj">The student to be compared.</param>
+        /// <returns>The result of the comparison.</returns>
+        public int CompareTo(object obj)
+        {
+            if (obj is Student)
+            {
+                Student s2 = (Student)obj;
+
+                int c = this.lastName.CompareTo(s2.lastName);
+                if (c != 0)
+                {
+                    return c;
+                }
+                else
+                {
+                    return this.firstName.CompareTo(s2.firstName);
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Object is not a Student.");
+            }
         }
 
         /// <summary>

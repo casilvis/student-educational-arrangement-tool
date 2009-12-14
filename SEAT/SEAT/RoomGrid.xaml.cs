@@ -1014,7 +1014,7 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void ViewSeatAssignments_Click(object sender, RoutedEventArgs e)
         {
-            StudentRoster sr = new StudentRoster();
+            StudentRoster sr = new StudentRoster(this.myroom);
             sr.ShowDialog();
         }
     }
