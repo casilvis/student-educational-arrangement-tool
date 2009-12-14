@@ -70,7 +70,7 @@
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Bottom">
                     <Button Height="23" Width="80" Name="buttonAddStudent" DockPanel.Dock="Left" Click="ButtonAddStudent_Click">Add</Button>
-                    <Button Height="23" Width="80" DockPanel.Dock="Right">Delete</Button>
+                    <Button Height="23" Width="80" Name="buttonDeleteStudent" DockPanel.Dock="Right" Click="ButtonDeleteStudent_Click">Delete</Button>
                     <Button Height="23" Width="80" Name="buttonEditStudent" HorizontalAlignment="Center" Click="ButtonEditStudent_Click">Edit</Button>
                 </DockPanel>
                 <ListBox Name="listBoxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" SelectionMode="Multiple" >
