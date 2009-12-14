@@ -524,6 +524,7 @@ namespace SEATLibrary
         /// <param name="e">Event arguments.</param>
         private void RoomStudents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            SeatManager.MarkDirty();
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 // Do something here...
