@@ -525,7 +525,7 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void ViewRoster_Click(object sender, RoutedEventArgs e)
         {
-            StudentRoster sr = new StudentRoster();
+            StudentRoster sr = new StudentRoster(Window1.SManager.StudentList);
             sr.ShowDialog();
         }
     }

@@ -389,6 +389,27 @@ namespace SEATLibrary
         }
 
         /// <summary>
+        /// Get the seat number for the specified student.
+        /// </summary>
+        /// <param name="student">The student to check.</param>
+        /// <returns>The seat name that the student is printed in.</returns>
+        public string GetStudentSeatNumber(Student student)
+        {
+            for (int i = 0; i < this.height; i++)
+            {
+                for (int j = 0; j < this.width; j++)
+                {
+                    if (student == this.chairs[i, j].TheStudent)
+                    {
+                        return this.chairs[i, j].SeatName;
+                    }
+                }
+            }
+
+            return string.Empty;
+        }
+
+        /// <summary>
         /// Run the specified placement algorithm.
         /// Uses visitor design pattern.
         /// </summary>

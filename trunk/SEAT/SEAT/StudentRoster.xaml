@@ -5,10 +5,10 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top" Width="auto">
             <MenuItem Header="_File">
-                <MenuItem Header="_Save" Name="fileMenuSave" Click="FileMenuSave_Click"  InputGestureText="Ctrl+S" />
-                <MenuItem Header="_Print" Name="printClassroom" Click="FileMenuPrint_Click"  InputGestureText="Ctrl+P" />
+                <MenuItem Header="_Save" Name="fileMenuSave" Click="FileMenuSave_Click" />
+                <MenuItem Header="_Print" Name="fileMenuPrint" Click="FileMenuPrint_Click" />
             </MenuItem>
         </Menu>
-        <RichTextBox Name="richTextBox" Width="Auto" Height="Auto" />
+        <RichTextBox Name="richTextBox" Width="Auto" Height="Auto" VerticalScrollBarVisibility="Visible" />
     </DockPanel>
 </Window>
