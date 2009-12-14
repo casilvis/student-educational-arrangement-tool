@@ -89,8 +89,9 @@
             <DockPanel Margin="10,0,10,10" Width="150">
                 <Label Height="28" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Rooms</Label>
                 <DockPanel DockPanel.Dock="Bottom">
-                    <Button Height="23" Width="75" Name="buttonAddRoom"  Click="ButtonAddRoom_Click">Add</Button>
-                    <Button Height="23" Name="buttonEditRoom" Click="ButtonEditRoom_Click">Edit</Button>
+                    <Button Height="23" Width="50" Name="buttonAddRoom" DockPanel.Dock="Left" Click="ButtonAddRoom_Click">Add</Button>
+                    <Button Height="23" Width="50" Name="buttonDeleteRoom" DockPanel.Dock="Right" Click="ButtonDeleteRoom_Click">Delete</Button>
+                    <Button Height="23" Width="50" Name="buttonEditRoom" HorizontalAlignment="Center" Click="ButtonEditRoom_Click">Edit</Button>
                 </DockPanel>
                 <ListBox  Name="listBoxRooms" ItemTemplate="{StaticResource itemTemplateRooms}" SelectionChanged="ListBoxRooms_SelectionChanged">
                     <ListBox.ItemContainerStyle>
