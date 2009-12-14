@@ -290,10 +290,27 @@ namespace SEAT
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
-        private void DeleteStudent(object sender, RoutedEventArgs e)
+        private void ButtonDeleteStudent_Click(object sender, RoutedEventArgs e)
         {
-            // NOT IMPLEMENTED YET
-            throw new NotImplementedException("DeleteStudent not implemented");
+            // As the user if they way to delete each student
+            Collection<Student> deleteStudents = new Collection<Student>();
+            IList list = listBoxRoster.SelectedItems;
+            for (int i = 0; i < list.Count; i++)
+            {
+                Student s = (Student)list[i];
+                string message = "Do you want to delete " + s.FirstName + " " + s.LastName + "?";
+                MessageBoxResult result = MessageBox.Show(message, "Delete Student", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    deleteStudents.Add(s);
+                }
+            }
+
+            // Now delete those students
+            for (int i = 0; i < deleteStudents.Count; i++)
+            {
+                Window1.SManager.RemoveStudent(deleteStudents[i]);
+            }
         }
 
         /// <summary>

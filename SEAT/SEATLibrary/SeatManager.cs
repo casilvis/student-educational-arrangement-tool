@@ -401,6 +401,16 @@ namespace SEATLibrary
         }
 
         /// <summary>
+        /// Privde an interface for removing students.
+        /// </summary>
+        /// <param name="student">The student to be removed.</param>
+        public void RemoveStudent(Student student)
+        {
+            // Removing them from the collection will trigger an event to remove them from each room and their seat.
+            this.students.Remove(student);
+        }
+
+        /// <summary>
         /// Returns a string representation of the SEATManager used in the title bar of the application.
         /// </summary>
         /// <returns>String representation of the current file.</returns>
@@ -487,6 +497,16 @@ namespace SEATLibrary
             }
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
+                // Remove the student from all of the rooms
+                for (int i = 0; i < e.OldItems.Count; i++)
+                {
+                    for (int j = 0; j < this.rooms.Count; j++)
+                    {
+                        this.rooms[j].RemoveStudentFromRoom(e.OldItems[i] as Student);
+                    }
+                }
+
+                // Keep the sections list up to date
                 this.RefreshSectionList();
             }
         }
