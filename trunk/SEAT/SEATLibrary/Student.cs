@@ -52,11 +52,6 @@ namespace SEATLibrary
         /// </summary>
         private bool visionImpairment;
 
-        /// <summary>
-        /// Is the student enrolled in the class still.
-        /// </summary>
-        private bool isEnrolled;
-
         // Constructor
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace SEATLibrary
             this.section = section;
             this.leftHanded = leftHanded;
             this.visionImpairment = visionImpairment;
-            this.isEnrolled = true;
         }
 
         /// <summary>
@@ -92,7 +86,6 @@ namespace SEATLibrary
             this.section = "Default";
             this.leftHanded = false;
             this.visionImpairment = false;
-            this.isEnrolled = false;
         }
 
         /// <summary>
@@ -114,7 +107,6 @@ namespace SEATLibrary
             this.section = section;
             this.leftHanded = leftHanded;
             this.visionImpairment = visionImpairment;
-            this.isEnrolled = true;
         }
 
         // Events
@@ -257,27 +249,6 @@ namespace SEATLibrary
                 {
                     this.visionImpairment = value;
                     this.NotifyPropertyChanged("VisionImpairment");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the student is enrolled.
-        /// </summary>
-        /// <value>Is the student enrolled.</value>
-        public bool IsEnrolled
-        {
-            get
-            {
-                return this.isEnrolled;
-            }
-
-            set
-            {
-                if (value != this.isEnrolled)
-                {
-                    this.isEnrolled = value;
-                    this.NotifyPropertyChanged("IsEnrolled");
                 }
             }
         }
