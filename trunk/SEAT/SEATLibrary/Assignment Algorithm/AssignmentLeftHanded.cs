@@ -20,10 +20,20 @@ namespace SEATLibrary.Assignment_Algorithm
         /// <param name="room">The room to be modified.</param>
         public override void PlaceStudents(Room room)
         {
-            // Place the left handed students into left handed seats.
-            for (int n = 0; n < room.RoomStudents.Count; n++)
+            // Create a shuffeled array of the students for placement
+            Student[] students = room.RoomStudents.ToArray<Student>();
+            for (int i = 0; i < students.Length; i++)
             {
-                Student student = room.RoomStudents[n];
+                int index = AssignmentVisitor.R.Next(0, students.Length);
+                Student tmp = students[i];
+                students[i] = students[index];
+                students[index] = tmp;
+            }
+
+            // Place the left handed students into left handed seats.
+            for (int n = 0; n < students.Length; n++)
+            {
+                Student student = students[n];
                 bool seated = room.IsStudentSeated(student);
 
                 // Ignore right handed and non-vision impaired students
