@@ -105,6 +105,7 @@ namespace SEAT
                 this.algorithmLeftHanded.IsEnabled = false;
                 this.algorithmVisuallyImpaired.IsEnabled = false;
                 this.viewSeatAssignments.IsEnabled = false;
+                this.printSeatingChart.IsEnabled = false;
 
                 // Hide the Student ListBox UI elements
                 this.dockPanelStudents.Visibility = Visibility.Hidden;
@@ -718,6 +719,110 @@ namespace SEAT
                 }
 
                 this.students.UnselectAll();
+            }
+        }
+
+        /// <summary>
+        /// Print the room seating chart with student names.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void PrintSeatingChart_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                PrintDialog printDlg = new System.Windows.Controls.PrintDialog();
+
+                // Id print ok is pressed on print dialog
+                if (printDlg.ShowDialog() == true)
+                {
+                    // get selected printer capabilities
+                    System.Printing.PrintCapabilities capabilities = printDlg.PrintQueue.GetPrintCapabilities(printDlg.PrintTicket);
+
+                    // Box length
+                    int length = 75;
+
+                    // Create a grid to print...
+                    Grid printGrid = new Grid();
+                    printGrid.Margin = new Thickness(75);
+
+                    for (int i = 0; i < this.myroom.Width; i++)
+                    {
+                        ColumnDefinition cd = new ColumnDefinition();
+                        cd.Width = new GridLength(length);
+                        printGrid.ColumnDefinitions.Add(cd);
+                    }
+
+                    for (int i = 0; i < this.myroom.Height; i++)
+                    {
+                        RowDefinition rd = new RowDefinition();
+                        rd.Height = new GridLength(length);
+                        printGrid.RowDefinitions.Add(rd);
+                    }
+
+                    for (int i = 0; i < this.myroom.Height; i++)
+                    {
+                        for (int j = 0; j < this.myroom.Width; j++)
+                        {
+                            Chair c = this.myroom.Chairs[i, j];
+
+                            if (c.NonChair)
+                            {
+                                TextBlock t = new TextBlock();
+                                t.Background = Brushes.Black;
+                                Grid.SetRow(t, i);
+                                Grid.SetColumn(t, j);
+                                printGrid.Children.Add(t);
+                            }
+                            else if (c.MustBeEmpty)
+                            {
+                                TextBlock t = new TextBlock();
+                                t.Background = Brushes.LightGray;
+                                Grid.SetRow(t, i);
+                                Grid.SetColumn(t, j);
+                                printGrid.Children.Add(t);
+                            }
+                            else
+                            {
+                                Label l = new Label();
+                                if (c.TheStudent != null)
+                                {
+                                    l.Content = c.TheStudent.LastName + ", \n" + c.TheStudent.FirstName;
+                                }
+
+                                l.HorizontalContentAlignment = HorizontalAlignment.Center;
+                                l.VerticalContentAlignment = VerticalAlignment.Center;
+                                l.BorderThickness = new Thickness(2);
+                                l.BorderBrush = Brushes.Black;
+                                Grid.SetRow(l, i);
+                                Grid.SetColumn(l, j);
+                                printGrid.Children.Add(l);
+                            }
+                        }
+                    }
+
+                    // get scale of the print wrt to screen of WPF visual
+                    double scale = Math.Min(
+                        ((capabilities.PageImageableArea.ExtentWidth - 150) / (length * this.myroom.Width)),
+                        ((capabilities.PageImageableArea.ExtentHeight - 150) / (length * this.myroom.Height)));
+
+                    // Transform the Visual to scale
+                    printGrid.LayoutTransform = new ScaleTransform(scale, scale);
+
+                    // get the size of the printer page
+                    Size sz = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+
+                    // update the layout of the visual to the printer page size.
+                    printGrid.Measure(sz);
+                    printGrid.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), sz));
+
+                    // now print the visual to printer to fit on the one page.
+                    printDlg.PrintVisual(printGrid, "First Fit to Page WPF Print");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
