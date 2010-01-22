@@ -24,6 +24,7 @@
             </MenuItem>
             <MenuItem Header="_Students">
                 <MenuItem Header="_View Seat Assignments" Name="viewSeatAssignments" Click="ViewSeatAssignments_Click" />
+                <MenuItem Header="_Print Seating Chart" Name="printSeatingChart" Click="PrintSeatingChart_Click" />
             </MenuItem>
             <MenuItem Header="_Reserve Seats">
                 <MenuItem Header="_Clear" Click="ReservationClear_Click"/>
