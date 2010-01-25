@@ -743,8 +743,26 @@ namespace SEAT
                     int length = 75;
 
                     // Create a grid to print...
+                    StackPanel printStackPanel = new StackPanel();
+
+                    Label printRoomName = new Label();
+                    printRoomName.Content = this.myroom.RoomName;
+                    printRoomName.FontSize = 18;
+                    printStackPanel.Children.Add(printRoomName);
+
+                    Label printRoomDescription = new Label();
+                    printRoomDescription.Content = this.myroom.Description;
+                    printRoomDescription.FontSize = 18;
+                    printStackPanel.Children.Add(printRoomDescription);
+
+                    Label printRoomLocation = new Label();
+                    printRoomLocation.Content = this.myroom.Location;
+                    printRoomLocation.FontSize = 18;
+                    printStackPanel.Children.Add(printRoomLocation);
+
                     Grid printGrid = new Grid();
-                    printGrid.Margin = new Thickness(75);
+                    printStackPanel.Margin = new Thickness(75);
+                    printStackPanel.Children.Add(printGrid);
 
                     for (int i = 0; i < this.myroom.Width; i++)
                     {
@@ -764,20 +782,12 @@ namespace SEAT
                     {
                         for (int j = 0; j < this.myroom.Width; j++)
                         {
-                            Chair c = this.myroom.Chairs[i, j];
+                            Chair c = this.myroom.Chairs[(this.myroom.Height - i - 1), (this.myroom.Width - j - 1)];
 
                             if (c.NonChair)
                             {
                                 TextBlock t = new TextBlock();
                                 t.Background = Brushes.Black;
-                                Grid.SetRow(t, i);
-                                Grid.SetColumn(t, j);
-                                printGrid.Children.Add(t);
-                            }
-                            else if (c.MustBeEmpty)
-                            {
-                                TextBlock t = new TextBlock();
-                                t.Background = Brushes.LightGray;
                                 Grid.SetRow(t, i);
                                 Grid.SetColumn(t, j);
                                 printGrid.Children.Add(t);
@@ -806,6 +816,7 @@ namespace SEAT
                         ((capabilities.PageImageableArea.ExtentWidth - 150) / (length * this.myroom.Width)),
                         ((capabilities.PageImageableArea.ExtentHeight - 150) / (length * this.myroom.Height)));
 
+                    /*
                     // Transform the Visual to scale
                     printGrid.LayoutTransform = new ScaleTransform(scale, scale);
 
@@ -818,6 +829,20 @@ namespace SEAT
 
                     // now print the visual to printer to fit on the one page.
                     printDlg.PrintVisual(printGrid, "First Fit to Page WPF Print");
+                     */
+
+                    // Transform the Visual to scale
+                    printStackPanel.LayoutTransform = new ScaleTransform(scale, scale);
+
+                    // get the size of the printer page
+                    Size sz = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+
+                    // update the layout of the visual to the printer page size.
+                    printStackPanel.Measure(sz);
+                    printStackPanel.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), sz));
+
+                    // now print the visual to printer to fit on the one page.
+                    printDlg.PrintVisual(printStackPanel, "First Fit to Page WPF Print");
                 }
             }
             catch (Exception ex)
