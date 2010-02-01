@@ -787,7 +787,7 @@ namespace SEAT
                             if (c.NonChair)
                             {
                                 TextBlock t = new TextBlock();
-                                t.Background = Brushes.Black;
+                                t.Background = Brushes.White;
                                 Grid.SetRow(t, i);
                                 Grid.SetColumn(t, j);
                                 printGrid.Children.Add(t);
@@ -890,20 +890,12 @@ namespace SEAT
                     {
                         for (int j = 0; j < this.myroom.Width; j++)
                         {
-                            Chair c = this.myroom.Chairs[i, j];
+                            Chair c = this.myroom.Chairs[(this.myroom.Height - i - 1), (this.myroom.Width - j - 1)];
 
                             if (c.NonChair)
                             {
                                 TextBlock t = new TextBlock();
-                                t.Background = Brushes.Black;
-                                Grid.SetRow(t, i);
-                                Grid.SetColumn(t, j);
-                                printGrid.Children.Add(t);
-                            }
-                            else if (c.MustBeEmpty)
-                            {
-                                TextBlock t = new TextBlock();
-                                t.Background = Brushes.LightGray;
+                                t.Background = Brushes.White;
                                 Grid.SetRow(t, i);
                                 Grid.SetColumn(t, j);
                                 printGrid.Children.Add(t);
