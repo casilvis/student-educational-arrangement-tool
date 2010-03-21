@@ -1,21 +1,17 @@
 ﻿// <copyright file="Room.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>A model representing a rectuangular room consisting of chair and a list of students.</summary>
 namespace SEATLibrary 
 {
     using System;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
-    using System.Diagnostics;
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
     using System.Text;
     using System.Xml;
-    using SEATLibrary.Assignment_Algorithm;
-    using SEATLibrary.Reservation_Algorithm;
     
     /// <summary>
     /// A model representing a rectangular room consiting of chair and a list of students.
@@ -80,34 +76,6 @@ namespace SEATLibrary
                 for (int j = 0; j < this.width; j++)
                 {
                     this.chairs[i, j] = new Chair();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Room class.
-        /// </summary>
-        /// <param name="room">The room to duplicate.</param>
-        public Room(Room room)
-        {
-            this.width = room.width;
-            this.height = room.height;
-            this.roomName = room.roomName;
-            this.location = room.location;
-            this.description = room.description;
-            this.roomStudents = new ObservableCollection<Student>();
-            this.roomStudents.CollectionChanged += new NotifyCollectionChangedEventHandler(this.RoomStudents_CollectionChanged);
-            for (int i = 0; i < room.roomStudents.Count; i++)
-            {
-                this.roomStudents.Add(room.roomStudents[i]);
-            }
-
-            this.chairs = new Chair[this.height, this.width];
-            for (int i = 0; i < this.height; i++)
-            {
-                for (int j = 0; j < this.width; j++)
-                {
-                    this.chairs[i, j] = new Chair(room.chairs[i, j]);
                 }
             }
         }
@@ -337,9 +305,9 @@ namespace SEATLibrary
         /// Gets the list of room students.
         /// </summary>
         /// <value>Collection of room students.</value>
-        public ReadOnlyObservableCollection<Student> RoomStudents
+        public ObservableCollection<Student> RoomStudents
         {
-            get { return new ReadOnlyObservableCollection<Student>(this.roomStudents); }
+            get { return this.roomStudents; }
         }
 
         // Methods
@@ -376,16 +344,6 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// Remove the given student from the room and from any chair they may be seated in.
-        /// </summary>
-        /// <param name="student">The student to remove.</param>
-        public void RemoveStudentFromRoom(Student student)
-        {
-            // NOTE: Student will automatically be removed from any seat they may be seated in.
-            this.roomStudents.Remove(student);
-        }
-
-        /// <summary>
         /// Determine if a student has been placed in a chair in a room.
         /// </summary>
         /// <param name="student">The student to check.</param>
@@ -417,43 +375,13 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// Get the seat number for the specified student.
-        /// </summary>
-        /// <param name="student">The student to check.</param>
-        /// <returns>The seat name that the student is printed in.</returns>
-        public string GetStudentSeatNumber(Student student)
-        {
-            for (int i = 0; i < this.height; i++)
-            {
-                for (int j = 0; j < this.width; j++)
-                {
-                    if (student == this.chairs[i, j].TheStudent)
-                    {
-                        return this.chairs[i, j].SeatName;
-                    }
-                }
-            }
-
-            return string.Empty;
-        }
-
-        /// <summary>
         /// Run the specified placement algorithm.
         /// Uses visitor design pattern.
         /// </summary>
         /// <param name="algorithm">The specific algorithm to use for placement.</param>
-        public void RunPlacementAlgorithm(AssignmentVisitor algorithm)
+        public void RunPlacementAlgorithmx(AssignmentVisitor algorithm, int[] spaces, bool[] checks)
         {
-            algorithm.PlaceStudents(this);
-        }
-
-        /// <summary>
-        /// Run the specified reservation algorithm.
-        /// </summary>
-        /// <param name="algorithm">The specific algorithm to use for reservation.</param>
-        public void RunReservationAlgorithm(ReservationVisitor algorithm)
-        {
-            algorithm.ReserveSeats(this);
+            algorithm.PlaceStudents(this, spaces, checks);
         }
 
         /// <summary>
@@ -548,11 +476,10 @@ namespace SEATLibrary
         /// <summary>
         /// Run when a student is modified inside of the room students collection.
         /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
+        /// <param name="sender">Who triggered this action.</param>
+        /// <param name="e">The details involving this action.</param>
         private void RoomStudents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            SeatManager.MarkDirty();
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 // Do something here...
@@ -562,10 +489,30 @@ namespace SEATLibrary
                 // Also remove this student from their seat
                 for (int i = 0; i < e.OldItems.Count; i++)
                 {
-                    // Remove the student from any seat they may be seated in.
-                    this.RemoveStudentFromSeat(e.OldItems[i] as Student);
+                    // This is a student that was removed
+                    if (!e.NewItems.Contains(e.OldItems[i]))
+                    {
+                        Student student = e.OldItems[i] as Student;
+                        this.RemoveStudentFromSeat(student);
+                    }
                 }
             }
+        }
+
+        public int FindLeftHandedStudent()
+        {
+            for (int i = 0; i < this.RoomStudents.Count; i++)
+                if (this.RoomStudents[i].LeftHanded)
+                    return i;
+            return 0;
+        }
+
+        public int FindVisuallyImpairedStudent()
+        {
+            for (int i = 0; i < this.RoomStudents.Count; i++)
+                if (this.RoomStudents[i].VisionImpairment)
+                    return i;
+            return 0;
         }
     }
 }

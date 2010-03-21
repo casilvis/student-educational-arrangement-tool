@@ -1,7 +1,6 @@
 ﻿// <copyright file="RosterFile.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>Reads in a class roster file to be parsed and added to the list of students.</summary>
 namespace SEATLibrary
 {
     using System;

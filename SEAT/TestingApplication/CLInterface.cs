@@ -1,7 +1,6 @@
 ﻿// <copyright file="CLInterface.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>Exposes useful command line tools that are able to perform common tasks.</summary>
 namespace TestingApplication
 {
     using System;
@@ -57,7 +56,7 @@ namespace TestingApplication
         /// Displays all of the students.
         /// </summary>
         /// <param name="list">The list of students to be displayed.</param>
-        public void DisplayStudentRoster(ReadOnlyObservableCollection<Student> list)
+        public void DisplayStudentRoster(ObservableCollection<Student> list)
         {
             Console.WriteLine("Displaying Student Roster");
             if (list.Count == 0)
@@ -77,7 +76,7 @@ namespace TestingApplication
         /// Displays all of the rooms.
         /// </summary>
         /// <param name="roomList">The list of rooms to be displayed.</param>
-        public void DisplayRoomList(ReadOnlyObservableCollection<Room> roomList)
+        public void DisplayRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)
@@ -98,7 +97,7 @@ namespace TestingApplication
         /// </summary>
         /// <param name="roomList">The list of rooms to choose from.</param>
         /// <returns>The index of the selected room.</returns>
-        public int SelectRoomList(ReadOnlyObservableCollection<Room> roomList)
+        public int SelectRoomList(ObservableCollection<Room> roomList)
         {
             Console.WriteLine("List of all room names");
             if (roomList.Count == 0)

@@ -1,7 +1,6 @@
 ﻿// <copyright file="Student.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>A preresentation of a student.</summary>
 namespace SEATLibrary
 {
     using System;
@@ -13,7 +12,7 @@ namespace SEATLibrary
     /// <summary>
     /// A representation of a student.
     /// </summary>
-    public class Student : INotifyPropertyChanged, IComparable
+    public class Student : INotifyPropertyChanged
     {
         // Attributes
 
@@ -52,6 +51,11 @@ namespace SEATLibrary
         /// </summary>
         private bool visionImpairment;
 
+        /// <summary>
+        /// Is the student enrolled in the class still.
+        /// </summary>
+        private bool isEnrolled;
+
         // Constructor
 
         /// <summary>
@@ -72,6 +76,7 @@ namespace SEATLibrary
             this.section = section;
             this.leftHanded = leftHanded;
             this.visionImpairment = visionImpairment;
+            this.isEnrolled = true;
         }
 
         /// <summary>
@@ -86,6 +91,7 @@ namespace SEATLibrary
             this.section = "Default";
             this.leftHanded = false;
             this.visionImpairment = false;
+            this.isEnrolled = false;
         }
 
         /// <summary>
@@ -107,6 +113,7 @@ namespace SEATLibrary
             this.section = section;
             this.leftHanded = leftHanded;
             this.visionImpairment = visionImpairment;
+            this.isEnrolled = true;
         }
 
         // Events
@@ -253,6 +260,27 @@ namespace SEATLibrary
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the student is enrolled.
+        /// </summary>
+        /// <value>Is the student enrolled.</value>
+        public bool IsEnrolled
+        {
+            get
+            {
+                return this.isEnrolled;
+            }
+
+            set
+            {
+                if (value != this.isEnrolled)
+                {
+                    this.isEnrolled = value;
+                    this.NotifyPropertyChanged("IsEnrolled");
+                }
+            }
+        }
+
         // Methods
 
         /// <summary>
@@ -262,33 +290,6 @@ namespace SEATLibrary
         public override string ToString()
         {
             return this.lastName + ", " + this.firstName;
-        }
-
-        /// <summary>
-        /// Compares two students using their last name and then their first name.
-        /// </summary>
-        /// <param name="obj">The student to be compared.</param>
-        /// <returns>The result of the comparison.</returns>
-        public int CompareTo(object obj)
-        {
-            if (obj is Student)
-            {
-                Student s2 = (Student)obj;
-
-                int c = this.lastName.CompareTo(s2.lastName);
-                if (c != 0)
-                {
-                    return c;
-                }
-                else
-                {
-                    return this.firstName.CompareTo(s2.firstName);
-                }
-            }
-            else
-            {
-                throw new ArgumentException("Object is not a Student.");
-            }
         }
 
         /// <summary>

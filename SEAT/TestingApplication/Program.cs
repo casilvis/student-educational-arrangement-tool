@@ -1,7 +1,6 @@
 ﻿// <copyright file="Program.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>A command line program that is used in testing of the SEATLibrary.</summary>
 namespace TestingApplication
 {
     using System;

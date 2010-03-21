@@ -1,7 +1,6 @@
 ﻿// <copyright file="Chair.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>A representation of a chair that is placed inside of a Room.</summary>
 namespace SEATLibrary
 {
     using System;
@@ -66,21 +65,6 @@ namespace SEATLibrary
             this.mustBeEmpty = false;
             this.seatNumber = "Unknown";
             this.theStudent = null;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Chair class.
-        /// </summary>
-        /// <param name="chair">The chair to duplicate.</param>
-        public Chair(Chair chair)
-        {
-            this.leftHanded = chair.leftHanded;
-            this.frontBackPosition = chair.frontBackPosition;
-            this.leftRightPosition = chair.leftRightPosition;
-            this.nonChair = chair.nonChair;
-            this.mustBeEmpty = chair.mustBeEmpty;
-            this.seatNumber = chair.seatNumber;
-            this.theStudent = chair.theStudent;
         }
 
         /// <summary>

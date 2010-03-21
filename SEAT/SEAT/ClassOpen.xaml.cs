@@ -1,7 +1,6 @@
 ﻿// <copyright file="ClassOpen.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>Intermediate window for creating a new room.</summary>
 namespace SEAT
 {
     using System;
@@ -21,28 +20,19 @@ namespace SEAT
     using SEATLibrary;
 
     /// <summary>
-    /// Intermediate window for creating a new room.
+    /// Interaction logic for ClassOpen.xaml
     /// </summary>
     public partial class ClassOpen : Window
     {
-        /// <summary>
-        /// Initializes a new instance of the ClassOpen class.
-        /// </summary>
         public ClassOpen()
         {
             InitializeComponent();
             this.Title = "Room creator";
-            comboBoxRooms.ItemsSource = Window1.SManager.RoomList;
         }
 
-        /// <summary>
-        /// Create the new room and launch the room editing window.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
-            if (rbtncreate.IsChecked.Value)
+            if ((bool)rbtncreate.IsChecked)
             {
                 string row = Regex.Replace(txtRows.Text, @"[\D]", string.Empty);
                 string column = Regex.Replace(txtColumns.Text, @"[\D]", string.Empty);
@@ -52,16 +42,12 @@ namespace SEAT
                 {
                     Room classroom = new Room(Convert.ToInt32(row), Convert.ToInt32(column));
                     Window1.SManager.AddNewRoom(classroom);
-                    RoomGrid grid = new RoomGrid(classroom, true);
+                    frmGrid grid = new frmGrid(classroom, true);
                     grid.Show();
                     this.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Invalid room dimensions.");
-                }
             }
-            else if (rbtnLoad.IsChecked.Value)
+            else
             {
                 try
                 {
@@ -69,7 +55,7 @@ namespace SEAT
                     {
                         Room classroom = new Room(txtPath.Text);
                         Window1.SManager.AddNewRoom(classroom);
-                        RoomGrid grid = new RoomGrid(classroom, true);
+                        frmGrid grid = new frmGrid(classroom, true);
                         grid.Show();
                         this.Close();
                     }
@@ -79,29 +65,8 @@ namespace SEAT
                     MessageBox.Show("Invalid path " + a.ToString());
                 }
             }
-            else if (radioButtonDuplicate.IsChecked.Value)
-            {
-                if (comboBoxRooms.SelectedItem == null)
-                {
-                    MessageBox.Show("No room selected.");
-                }
-                else
-                {
-                    Room classroom = new Room(comboBoxRooms.SelectedItem as Room);
-                    classroom.RoomName += " Copy";
-                    Window1.SManager.AddNewRoom(classroom);
-                    RoomGrid grid = new RoomGrid(classroom, true);
-                    grid.Show();
-                    this.Close();
-                }
-            }
         }
 
-        /// <summary>
-        /// Provide the user with a prompt for selecting a template file.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e)
         {
             rbtnLoad.IsChecked = true;
@@ -119,16 +84,6 @@ namespace SEAT
             {
                 txtPath.Text = dlg.FileName;
             }
-        }
-
-        /// <summary>
-        /// The combo box for the room selection changed.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
-        private void ComboBoxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            radioButtonDuplicate.IsChecked = true;
         }
     }
 }

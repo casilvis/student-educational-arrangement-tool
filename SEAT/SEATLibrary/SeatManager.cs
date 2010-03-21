@@ -1,7 +1,6 @@
 ﻿// <copyright file="SeatManager.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>Manager for the program that coordinates the roster of students and all of the rooms.</summary>
 namespace SEATLibrary
 {
     using System;
@@ -186,7 +185,7 @@ namespace SEATLibrary
                                                 if (this.students != null)
                                                 {
                                                     // For the student, we are passing by reference so everything stays in sync
-                                                    room.AddStudent(s);
+                                                    room.RoomStudents.Add(s);
                                                 }
                                             }
                                         }
@@ -226,18 +225,18 @@ namespace SEATLibrary
         /// Gets the list of rooms.
         /// </summary>
         /// <value>Collection of rooms.</value>
-        public ReadOnlyObservableCollection<Room> RoomList
+        public ObservableCollection<Room> RoomList
         {
-            get { return new ReadOnlyObservableCollection<Room>(this.rooms); }
+            get { return this.rooms; }
         }
 
         /// <summary>
         /// Gets the list of students.
         /// </summary>
         /// <value>Collection of students.</value>
-        public ReadOnlyObservableCollection<Student> StudentList
+        public ObservableCollection<Student> StudentList
         {
-            get { return new ReadOnlyObservableCollection<Student>(this.students); }
+            get { return this.students; }
         }
 
         /// <summary>
@@ -401,25 +400,6 @@ namespace SEATLibrary
         }
 
         /// <summary>
-        /// Privde an interface for removing students.
-        /// </summary>
-        /// <param name="student">The student to be removed.</param>
-        public void RemoveStudent(Student student)
-        {
-            // Removing them from the collection will trigger an event to remove them from each room and their seat.
-            this.students.Remove(student);
-        }
-
-        /// <summary>
-        /// Provide an interface for removing rooms.
-        /// </summary>
-        /// <param name="room">The room to be removed.</param>
-        public void RemoveRoom(Room room)
-        {
-            this.rooms.Remove(room);
-        }
-
-        /// <summary>
         /// Returns a string representation of the SEATManager used in the title bar of the application.
         /// </summary>
         /// <returns>String representation of the current file.</returns>
@@ -477,8 +457,8 @@ namespace SEATLibrary
         /// <summary>
         /// Something in the list of rooms changed and the file needs to be saved.
         /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
+        /// <param name="sender">The sender who triggered this event.</param>
+        /// <param name="e">The information about this event.</param>
         private void Rooms_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SeatManager.MarkDirty();
@@ -487,8 +467,8 @@ namespace SEATLibrary
         /// <summary>
         /// Something in the list of students changed and the file needs to be saved.
         /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
+        /// <param name="sender">The sender who triggered this event.</param>
+        /// <param name="e">The information about this event.</param>
         private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SeatManager.MarkDirty();
@@ -506,16 +486,6 @@ namespace SEATLibrary
             }
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
-                // Remove the student from all of the rooms
-                for (int i = 0; i < e.OldItems.Count; i++)
-                {
-                    for (int j = 0; j < this.rooms.Count; j++)
-                    {
-                        this.rooms[j].RemoveStudentFromRoom(e.OldItems[i] as Student);
-                    }
-                }
-
-                // Keep the sections list up to date
                 this.RefreshSectionList();
             }
         }
@@ -523,8 +493,8 @@ namespace SEATLibrary
         /// <summary>
         /// Run when one of the studen't properties changes.  Used to keep the section list up to date.
         /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
+        /// <param name="sender">Who triggered this event.</param>
+        /// <param name="e">The parameters for this event.</param>
         private void _Student_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Section")
@@ -572,8 +542,8 @@ namespace SEATLibrary
         /// <summary>
         /// Executed when the collection of sections change.
         /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
+        /// <param name="sender">Who triggered this action.</param>
+        /// <param name="e">The parameters for this method.</param>
         private void Sections_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             // throw new NotImplementedException();

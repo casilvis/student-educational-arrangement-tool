@@ -35,6 +35,11 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -48,25 +53,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assignment Algorithm\AssignmentBestEffort.cs" />
-    <Compile Include="Assignment Algorithm\AssignmentClearRoom.cs" />
-    <Compile Include="Assignment Algorithm\AssignmentLeftHanded.cs" />
-    <Compile Include="Assignment Algorithm\AssignmentVisuallyImpaired.cs" />
+    <Compile Include="AssignmentBestEffort.cs" />
+    <Compile Include="AssignmentClearRoom.cs" />
     <Compile Include="Chair.cs" />
-    <Compile Include="Assignment Algorithm\AssignmentVisitor.cs" />
-    <Compile Include="Reservation Algorithm\ReservationBack.cs" />
-    <Compile Include="Reservation Algorithm\ReservationCheckerboard.cs" />
-    <Compile Include="Reservation Algorithm\ReservationClear.cs" />
-    <Compile Include="Reservation Algorithm\ReservationEveryOtherColumn.cs" />
-    <Compile Include="Reservation Algorithm\ReservationEveryOtherRow.cs" />
-    <Compile Include="Reservation Algorithm\ReservationLeft.cs" />
-    <Compile Include="Reservation Algorithm\ReservationRight.cs" />
-    <Compile Include="Reservation Algorithm\ReservationVisitor.cs" />
+    <Compile Include="AssignmentVisitor.cs" />
+    <Compile Include="PCPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Room.cs" />
     <Compile Include="RosterFile.cs" />
     <Compile Include="SeatManager.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

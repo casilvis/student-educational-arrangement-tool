@@ -1,12 +1,10 @@
 ﻿// <copyright file="Seat.xaml.cs" company="University of Louisville Speed School of Engineering">
 // GNU General Public License v3
 // </copyright>
-// <summary>A user control for a seat that is placed in a room.</summary>
 namespace SEAT
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Windows;
@@ -21,23 +19,13 @@ namespace SEAT
     using SEATLibrary;
 
     /// <summary>
-    /// A user control for a seat that is placed in a room.
+    /// Interaction logic for Seat.xaml
     /// </summary>
     public partial class Seat : UserControl
     {
-        /// <summary>
-        /// The object that represents the attributes of the chair.
-        /// </summary>
         private Chair chair;
-        
-        /// <summary>
-        /// The label that puts text on top of the seat.
-        /// </summary>
         private TextBlock txtblname = new TextBlock();
 
-        /// <summary>
-        /// Initializes a new instance of the Seat class.
-        /// </summary>
         public Seat()
         {
             this.chair = new Chair();
@@ -45,11 +33,6 @@ namespace SEAT
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the Seat class.
-        /// </summary>
-        /// <param name="chair">The chair that will be represented.</param>
-        /// <param name="editable">If the chair is in editable mode or in visible mode.</param>
         public Seat(Chair chair, bool editable)
         {
             this.txtblname.TextWrapping = TextWrapping.Wrap;
@@ -78,27 +61,29 @@ namespace SEAT
                 if (this.chair.TheStudent != null)
                 {
                     this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
-                    if (this.chair.LeftHanded != this.chair.TheStudent.LeftHanded)
-                    {
-                        this.Txtblname.Foreground = Brushes.Red;
-                    }
-                    else if (this.chair.TheStudent.VisionImpairment && this.chair.FbPosition != 0)
-                    {
-                        this.Txtblname.Foreground = Brushes.Red;
-                    }
-                    else
-                    {
-                        this.Txtblname.Foreground = Brushes.Black;
-                    }
                 }
             }
 
             if (Chair.LeftHanded)
             {
-                lblName.Foreground = Brushes.Blue;
+                lblName.Foreground = Brushes.Red;
             }
 
-            this.RefreshSeatColor();
+            if (Chair.NonChair || Chair.MustBeEmpty)
+            {
+                if (Chair.NonChair)
+                {
+                    this.Background = Brushes.Gray;
+                }
+                else
+                {
+                    this.Background = Brushes.LightGray;
+                }
+            }
+            else
+            {
+                this.Background = Brushes.White;
+            }
 
             chkSelected.Margin = new Thickness(Chair.LrPosition * 15, Chair.FbPosition * 15, 0, 0);
             if (!editable)
@@ -111,49 +96,27 @@ namespace SEAT
             lblName.Content = Chair.SeatName;
         }
 
-        /// <summary>
-        /// Gets an instance of the chair that is represented by this seat.
-        /// </summary>
-        /// <value>The chair that the seat represents.</value>
         public Chair Chair
         {
             get { return this.chair; }
         }
 
-        /// <summary>
-        /// Gets or sets the text label in on top of the seat.
-        /// </summary>
-        /// <value>The text block that is on top of the seat.</value>
         public TextBlock Txtblname
         {
             get { return this.txtblname; }
             set { this.txtblname = value; }
         }
 
-        /// <summary>
-        /// Sets the seats color based on the state of the chair.
-        /// </summary>
-        private void RefreshSeatColor()
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Chair.NonChair)
-            {
-                this.Background = Brushes.Gray;
-            }
-            else if (Chair.MustBeEmpty)
-            {
-                this.Background = Brushes.LightGray;
-            }
-            else
-            {
-                this.Background = Brushes.White;
-            }
+            // throw new NotImplementedException("UserControl_Loaded");
         }
 
-        /// <summary>
-        /// When the seat is double clicked prompt to remove the current student from the seat.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
+        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            // throw new NotImplementedException("UserControl_Loaded");
+        }
+
         private void Seat_click(object sender, RoutedEventArgs e)
         {
             if (this.chair.TheStudent != null)
@@ -180,62 +143,10 @@ namespace SEAT
                         break;
                 }
             }
-            else if (this.chair.MustBeEmpty == true)
-            {
-                // Set up the message box
-                string messageBoxText = "Allow students to sit in this chair?";
-                string caption = "Modify Chair";
-                MessageBoxButton button = MessageBoxButton.OKCancel;
-                MessageBoxImage icon = MessageBoxImage.Warning;
-
-                // Display message box
-                MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
-
-                // Process message box results
-                switch (result)
-                {
-                    case MessageBoxResult.OK:
-                        // User pressed Yes button
-                        this.chair.MustBeEmpty = false;
-                        break;
-                    case MessageBoxResult.Cancel:
-                        // User pressed Cancel button
-                        break;
-                }
-            }
-            else if (this.chair.MustBeEmpty == false)
-            {
-                // Set up the message box
-                string messageBoxText = "Do not allow students to sit in this chair?";
-                string caption = "Modify Chair";
-                MessageBoxButton button = MessageBoxButton.OKCancel;
-                MessageBoxImage icon = MessageBoxImage.Warning;
-
-                // Display message box
-                MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
-
-                // Process message box results
-                switch (result)
-                {
-                    case MessageBoxResult.OK:
-                        // User pressed Yes button
-                        this.chair.MustBeEmpty = true;
-                        break;
-                    case MessageBoxResult.Cancel:
-                        // User pressed Cancel button
-                        break;
-                }
-            }
         }
 
-        /// <summary>
-        /// Update the text containing students name in the chair when the student in the chair is modified.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
         private void Chair_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            Trace.WriteLine("Chair (managed by Seat) property changed: " + e.PropertyName);
             if (e.PropertyName == "TheStudent")
             {
                 if (this.chair.TheStudent == null)
@@ -245,24 +156,7 @@ namespace SEAT
                 else
                 {
                     this.Txtblname.Text = this.chair.TheStudent.FirstName + " " + this.Chair.TheStudent.LastName;
-                    if (this.chair.LeftHanded != this.chair.TheStudent.LeftHanded)
-                    {
-                        this.Txtblname.Foreground = Brushes.Red;
-                    }
-                    else if (this.chair.TheStudent.VisionImpairment && this.chair.FbPosition != 0)
-                    {
-                        this.Txtblname.Foreground = Brushes.Red;
-                    }
-                    else
-                    {
-                        this.Txtblname.Foreground = Brushes.Black;
-                    }
                 }
-            }
-
-            if (e.PropertyName == "MustBeEmpty" || e.PropertyName == "NonChair")
-            {
-                this.RefreshSeatColor();
             }
         }
     }
