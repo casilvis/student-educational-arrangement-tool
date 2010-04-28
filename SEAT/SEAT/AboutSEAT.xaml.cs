@@ -32,6 +32,7 @@ namespace SEAT
             InitializeComponent();
             buttonOk.Focus();
             this.AddHandler(Hyperlink.RequestNavigateEvent, new RequestNavigateEventHandler(this.HyperlinkNavigate));
+            this.VersionNumber.Text = "Version " + System.Reflection.Assembly.GetCallingAssembly().GetName().Version.ToString();
         }
 
         /// <summary>
