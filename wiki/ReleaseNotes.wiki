@@ -1,0 +1,7 @@
+#summary The release history for SEAT
+#labels Featured
+
+= Version 1.0.0.0 =
+*Released on 4/28/2010*
+
+Initial release of SEAT.  All core functionality present.  SEAT is capable of importing a student roster.  The classroom editor is capable of modeling square classrooms and specifying seat position and handedness.  The placement of students can be performed manually or automatically.  Classroom templates can be saved for reuse.  Completed classroom seating charts can be printed and a class roster grouped by section and sorted by name can be printed listing the assigned seats.
