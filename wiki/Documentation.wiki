@@ -1,4 +1,5 @@
 #summary documentation used for the User Manual.
+#labels Featured
 
 Main Menu
   #	Add student(s):
