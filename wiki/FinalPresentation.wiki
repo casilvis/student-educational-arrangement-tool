@@ -1,0 +1,4 @@
+#summary The final presentation that was part of the 550 project for fall 2009.
+#labels Featured
+
+<wiki:gadget url="http://student-educational-arrangement-tool.googlecode.com/svn/trunk/final_presentation_gadget.xml" height="342" width="410" border="1"/>
