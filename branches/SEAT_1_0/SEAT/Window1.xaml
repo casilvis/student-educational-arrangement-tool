@@ -1,0 +1,117 @@
+﻿<Window x:Class="SEAT.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window1" 
+    Height="600" Width="800"
+    MinWidth="700"
+    Closing="Window_Closing" 
+    Icon="seat.ico">
+    <Window.Resources>
+        <DataTemplate x:Key="itemTemplateRoster">
+            <DockPanel Width="200">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <TextBlock Text="{Binding Path=LastName}"/>
+                    <TextBlock Text=", "/>
+                    <TextBlock Text="{Binding Path=FirstName}"/>
+                </StackPanel>
+                <CheckBox IsChecked="{Binding Path=VisionImpairment}" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                <CheckBox IsChecked="{Binding Path=LeftHanded}" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+            </DockPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="itemTemplateRoomStudents">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=LastName}"/>
+                <TextBlock Text=", "/>
+                <TextBlock Text="{Binding Path=FirstName}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="itemTemplateRooms">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=RoomName}"/>
+                <TextBlock Text=" - "/>
+                <TextBlock Text="{Binding Path=Location}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <DockPanel>
+        <Menu Height="22" Name="menu1" VerticalAlignment="Top" DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Name="FileMenuNew" Command="ApplicationCommands.New" InputGestureText="Ctrl+N" />
+                <MenuItem Header="_Open..." Name="FileMenuOpen" Command="ApplicationCommands.Open" InputGestureText="Ctrl+O" />
+                <MenuItem Header="_Save" Name="FileMenuSave" Command="ApplicationCommands.Save" InputGestureText="Ctrl+S" />
+                <MenuItem Header="_Save As..." Name="FileMenuSaveAs" Click="FileMenuSaveAs_Click" />
+                <Separator></Separator>
+                <MenuItem Header="_Exit" Name="FileMenuExit" Click="FileMenuExit_Click" />
+            </MenuItem>
+            <MenuItem Header="_Students">
+                <MenuItem Header="_Import Roster" Click="ImportRoster_Click"/>
+                <MenuItem Header="_View Roster" Click="ViewRoster_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_View Help" Click="MenuItemHelp_Click" />
+                <MenuItem Header="_View Documentation" Click="MenuItemDocumentation_Click" />
+                <Separator></Separator>
+                <MenuItem Header="_About" Click="DisplayAboutWindow"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" >
+            <DockPanel Margin="10,0,10,10" Width="250">
+                <Label Height="28" Width="120" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Roster</Label>
+                <TextBox Name="textBoxFilterRoster" DockPanel.Dock="Top" TextChanged="TextBoxFilterRoster_TextChanged" />
+                <DockPanel DockPanel.Dock="Top" Width="Auto">
+                    <Label Margin="0,0,113,0" FontWeight="Black">Name</Label>
+                    <Label Margin="0,0,7,0" FontWeight="Black">L</Label>
+                    <Label Margin="0,0,10,0" FontWeight="Black">V</Label>
+                </DockPanel>
+                <Button Name="buttonAddStudentsToRoom" Margin="0,10,0,0" Click="ButtonAddStudentsToRoom_Click" DockPanel.Dock="Bottom">Add to Room >></Button>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <Button Height="23" Width="123" Name="buttonSelectStudents" DockPanel.Dock="Left" Click="ButtonSelectStudents_Click">Select All</Button>
+                    <Button Height="23" Width="123" Name="buttonDeselectStudents" DockPanel.Dock="Right" Click="ButtonDeselectStudents_Click">Select None</Button>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <Button Height="23" Width="80" Name="buttonAddStudent" DockPanel.Dock="Left" Click="ButtonAddStudent_Click">Add</Button>
+                    <Button Height="23" Width="80" Name="buttonDeleteStudent" DockPanel.Dock="Right" Click="ButtonDeleteStudent_Click">Delete</Button>
+                    <Button Height="23" Width="80" Name="buttonEditStudent" HorizontalAlignment="Center" Click="ButtonEditStudent_Click">Edit</Button>
+                </DockPanel>
+                <ListBox Name="listBoxRoster" ItemTemplate="{StaticResource itemTemplateRoster}" SelectionMode="Multiple" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="ButtonEditStudent_Click" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </DockPanel>
+            <DockPanel Margin="10,0,10,10" Width="150">
+                <Label Height="27" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Section</Label>
+                <Button Name="buttonAddSectionToRoom" Margin="0,35,0,0" Click="ButtonAddSectionToRoom_Click"  DockPanel.Dock="Bottom">Add to Room >></Button>
+                <ListBox Name="listBoxSection" />
+            </DockPanel>
+            <DockPanel Margin="10,0,10,10" Width="150">
+                <Label Height="28" HorizontalContentAlignment="Center" FontWeight="Black" DockPanel.Dock="Top">Rooms</Label>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <Button Height="23" Width="50" Name="buttonAddRoom" DockPanel.Dock="Left" Click="ButtonAddRoom_Click">Add</Button>
+                    <Button Height="23" Width="50" Name="buttonDeleteRoom" DockPanel.Dock="Right" Click="ButtonDeleteRoom_Click">Delete</Button>
+                    <Button Height="23" Width="50" Name="buttonEditRoom" HorizontalAlignment="Center" Click="ButtonEditRoom_Click">Edit</Button>
+                </DockPanel>
+                <ListBox  Name="listBoxRooms" ItemTemplate="{StaticResource itemTemplateRooms}" SelectionChanged="ListBoxRooms_SelectionChanged">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="ButtonEditRoom_Click" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </DockPanel>
+            <DockPanel Margin="10,0,10,10" Width="150">
+                <Label Height="28" FontWeight="Black" HorizontalContentAlignment="Center" DockPanel.Dock="Top">Students in Room</Label>
+                <Button Name="buttonPlace" Height="23" DockPanel.Dock="bottom" Click="ButtonPlace_Click">Place Students</Button>
+                <ListBox  Name="listBoxStudents" ItemTemplate="{StaticResource itemTemplateRoomStudents}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="RemoveRoomStudent_Click" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </DockPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>
