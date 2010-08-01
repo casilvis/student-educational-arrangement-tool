@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEAT", "SEAT\SEAT.csproj", "{722A4B2E-AC90-4CE1-8C14-90B2F12BE8EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEATLibrary", "SEATLibrary\SEATLibrary.csproj", "{A782713D-A65E-4153-BFE3-F763AEB93ADD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingApplication", "TestingApplication\TestingApplication.csproj", "{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Student Educational Arrangement Tool", "Student Educational Arrangement Tool\Student Educational Arrangement Tool.vdproj", "{578CDA29-D1F1-4FBC-B3AF-E5A1961C9860}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{722A4B2E-AC90-4CE1-8C14-90B2F12BE8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{722A4B2E-AC90-4CE1-8C14-90B2F12BE8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{722A4B2E-AC90-4CE1-8C14-90B2F12BE8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{722A4B2E-AC90-4CE1-8C14-90B2F12BE8EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A782713D-A65E-4153-BFE3-F763AEB93ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A782713D-A65E-4153-BFE3-F763AEB93ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A782713D-A65E-4153-BFE3-F763AEB93ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A782713D-A65E-4153-BFE3-F763AEB93ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ADF28F4-BBF4-45C7-AA41-C1FC03648B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{578CDA29-D1F1-4FBC-B3AF-E5A1961C9860}.Debug|Any CPU.ActiveCfg = Debug
+		{578CDA29-D1F1-4FBC-B3AF-E5A1961C9860}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
