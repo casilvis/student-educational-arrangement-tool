@@ -443,20 +443,6 @@ namespace SEAT
         }
 
         /// <summary>
-        /// Sets the seat background color according to the properties selected.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">Event arguments.</param>
-        private void ButtonChange_Click(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < this.seatsSelected.Count; i++)
-            {
-                this.seatsSelected.ElementAt(i).Chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
-                this.seatsSelected.ElementAt(i).Chair.NonChair = (bool)chkboxNotSeat.IsChecked;
-            }
-        }
-
-        /// <summary>
         /// Makes the textbox for name turn off depending on if only 1 is chosen.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
@@ -676,7 +662,6 @@ namespace SEAT
             {
                 this.seatsSelected.ElementAt(0).Chair.SeatName = txtnumber.Text;
                 this.seatsSelected.ElementAt(0).lblName.Content = txtnumber.Text;
-                MessageBox.Show(this.seatsSelected.ElementAt(0).Chair.SeatName);
             }
         }
 
@@ -1156,6 +1141,32 @@ namespace SEAT
                         seat.Background = Brushes.LightYellow;
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the ButtonSetNotSeat control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void ButtonSetNotSeat_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < this.seatsSelected.Count; i++)
+            {
+                this.seatsSelected.ElementAt(i).Chair.NonChair = (bool)chkboxNotSeat.IsChecked;
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the ButtonSetLeaveEmpty control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void ButtonSetLeaveEmpty_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < this.seatsSelected.Count; i++)
+            {
+                this.seatsSelected.ElementAt(i).Chair.MustBeEmpty = (bool)chkboxEmpty.IsChecked;
             }
         }
     }
