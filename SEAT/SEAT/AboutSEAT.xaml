@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="About" Height="270" Width="625"
-    WindowStartupLocation="CenterOwner">
+    WindowStartupLocation="CenterOwner"
+    Icon="seat.ico">
     <Grid>
         <StackPanel>
             <TextBlock Margin="0,0,0,5" FontSize="28" FontWeight="Bold" TextAlignment="Center">

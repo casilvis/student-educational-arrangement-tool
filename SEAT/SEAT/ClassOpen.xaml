@@ -1,7 +1,8 @@
 ﻿<Window x:Class="SEAT.ClassOpen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="ClassOpen" Height="333" Width="550">
+    Title="ClassOpen" Height="333" Width="550"
+    Icon="seat.ico">
     <Grid>
         <TextBlock Height="28" FontWeight="heavy" HorizontalAlignment="Right" Margin="0,38,14,0" Name="textBlock1" VerticalAlignment="Top" Width="221">*Add an extra column or two for aisles.</TextBlock>
         <TextBox Margin="0,78,14,0" Name="txtWarning" IsEnabled="False" TextWrapping="Wrap" Background="Transparent" BorderBrush="Transparent" Foreground="Black" BorderThickness="0" Opacity="1" HorizontalAlignment="Right" Width="221" Height="61" VerticalAlignment="Top">Any Values entered need to be whole numbers. All letters, decimal places, and random characters will be removed.</TextBox>
