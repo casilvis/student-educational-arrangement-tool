@@ -816,21 +816,6 @@ namespace SEAT
                         ((capabilities.PageImageableArea.ExtentWidth - 150) / (length * this.myroom.Width)),
                         ((capabilities.PageImageableArea.ExtentHeight - 150) / (length * this.myroom.Height)));
 
-                    /*
-                    // Transform the Visual to scale
-                    printGrid.LayoutTransform = new ScaleTransform(scale, scale);
-
-                    // get the size of the printer page
-                    Size sz = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
-
-                    // update the layout of the visual to the printer page size.
-                    printGrid.Measure(sz);
-                    printGrid.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), sz));
-
-                    // now print the visual to printer to fit on the one page.
-                    printDlg.PrintVisual(printGrid, "First Fit to Page WPF Print");
-                     */
-
                     // Transform the Visual to scale
                     printStackPanel.LayoutTransform = new ScaleTransform(scale, scale);
 

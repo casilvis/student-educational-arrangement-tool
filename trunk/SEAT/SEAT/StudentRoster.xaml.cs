@@ -128,7 +128,8 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void FileMenuSave_Click(object sender, RoutedEventArgs e)
         {
-            // Implement me!
+            // TODO: Implement a save feature (Issue 18)
+            MessageBox.Show("Sorry, this feature is not yet implemented.");
         }
 
         /// <summary>
@@ -138,7 +139,8 @@ namespace SEAT
         /// <param name="e">Event arguments.</param>
         private void FileMenuPrint_Click(object sender, RoutedEventArgs e)
         {
-            // Implement me!
+            // TODO: Implement a print feature (Issue 19)
+            MessageBox.Show("Sorry, this feature is not yet implemented.");
         }
 
         /// <summary>
