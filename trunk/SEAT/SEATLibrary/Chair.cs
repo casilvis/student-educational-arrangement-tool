@@ -191,6 +191,13 @@ namespace SEATLibrary
             {
                 if (this.nonChair != value)
                 {
+                    // Remove the student who may be seated in this chair
+                    if (value && !this.IsEmpty())
+                    {
+                        this.TheStudent = null;
+                    }
+
+                    // Set this value
                     this.nonChair = value;
                     this.NotifyPropertyChanged("NonChair");
                 }
@@ -212,6 +219,13 @@ namespace SEATLibrary
             {
                 if (this.mustBeEmpty != value)
                 {
+                    // Remove the student who may be seated in this chair
+                    if (value && !this.IsEmpty())
+                    {
+                        this.TheStudent = null;
+                    }
+
+                    // Set this value
                     this.mustBeEmpty = value;
                     this.NotifyPropertyChanged("MustBeEmpty");
                 }
