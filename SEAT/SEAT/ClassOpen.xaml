@@ -1,21 +1,39 @@
 ﻿<Window x:Class="SEAT.ClassOpen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="ClassOpen" Height="333" Width="550"
+    Title="Add New Room" Height="333" Width="550"
+    ResizeMode="NoResize"
     Icon="seat.ico">
-    <Grid>
-        <TextBlock Height="28" FontWeight="heavy" HorizontalAlignment="Right" Margin="0,38,14,0" Name="textBlock1" VerticalAlignment="Top" Width="221">*Add an extra column or two for aisles.</TextBlock>
-        <TextBox Margin="0,78,14,0" Name="txtWarning" IsEnabled="False" TextWrapping="Wrap" Background="Transparent" BorderBrush="Transparent" Foreground="Black" BorderThickness="0" Opacity="1" HorizontalAlignment="Right" Width="221" Height="61" VerticalAlignment="Top">Any Values entered need to be whole numbers. All letters, decimal places, and random characters will be removed.</TextBox>
-        <RadioButton Height="16" HorizontalAlignment="Left" Margin="0,13,0,0" Name="rbtncreate" VerticalAlignment="Top" Width="120" IsChecked="True" GroupName="grproom">Create New Room</RadioButton>
-        <Label Height="28" Margin="17,33,0,0" Name="lblRows" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"># of Rows</Label>
-        <Label Margin="158,33,250,0" Name="lblColumns" Height="28" VerticalAlignment="Top"># of Columns</Label>
-        <TextBox Height="23" Margin="17,62,0,0" Name="txtRows" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" />
-        <TextBox Height="23" Margin="158,62,250,0" Name="txtColumns" VerticalAlignment="Top" />
-        <RadioButton HorizontalAlignment="Left" Margin="0,120,0,0" Name="rbtnLoad" Width="120" GroupName="grproom" Height="19" VerticalAlignment="Top">Load Room</RadioButton>
-        <TextBox Height="23" Margin="17,0,0,122" Name="txtPath" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="261" />
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,160,122" Name="btnBrowse" VerticalAlignment="Bottom" Width="75" Click="ButtonBrowse_Click">Browse</Button>
-        <RadioButton GroupName="grproom" Height="19" HorizontalAlignment="Left" Margin="0,0,0,89" Name="radioButtonDuplicate" VerticalAlignment="Bottom" Width="120">Duplicate Room</RadioButton>
-        <Button Height="23" Margin="120,0,147,16" Name="btnCreate" VerticalAlignment="Bottom" Click="ButtonCreate_Click">Create Room</Button>
-        <ComboBox Height="23" Margin="37,0,0,61" Name="comboBoxRooms" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="179" SelectionChanged="ComboBoxRooms_SelectionChanged" />
-    </Grid>
+    <StackPanel>
+        <!-- Create New Room -->
+        <RadioButton Name="rbtncreate" GroupName="grproom" Margin="10,10,0,0" IsChecked="True">Create New Room</RadioButton>
+        <StackPanel Orientation="Horizontal" Margin="40,5,0,0">
+            <StackPanel Margin="5" VerticalAlignment="Top">
+                <Label Name="lblRows" Width="120"># of Rows</Label>
+                <TextBox Name="txtRows" Width="120" />
+            </StackPanel>
+            <StackPanel Margin="5" VerticalAlignment="Top">
+                <Label Name="lblColumns" Width="120"># of Columns</Label>
+                <TextBox Name="txtColumns" Width="120" />
+            </StackPanel>
+            <StackPanel Margin="5" Width="225" VerticalAlignment="Top">
+                <TextBlock Name="textBlock1" Margin="0,5,0,0" FontWeight="bold">*Add an extra column or two for aisles.</TextBlock>
+                <TextBox Name="txtWarning" Margin="5" IsEnabled="False" TextWrapping="Wrap" Background="Transparent" BorderBrush="Transparent" FontSize="9" Foreground="Black" BorderThickness="0" Opacity="1">
+                    Any Values entered need to be whole numbers. All letters, decimal places, and random characters will be removed.
+                </TextBox>
+            </StackPanel>
+        </StackPanel>
+        <!-- Load Room Template from File -->
+        <RadioButton Name="rbtnLoad" GroupName="grproom" Margin="10,10,0,0">Load Room Template from File</RadioButton>
+        <StackPanel Orientation="Horizontal" Margin="40,5,0,0">
+            <TextBox Name="txtPath" Width="261" />
+            <Button Name="btnBrowse" Width="75" Click="ButtonBrowse_Click">Browse</Button>
+        </StackPanel>
+        <!-- Duplicate Existing Room -->
+        <RadioButton Name="radioButtonDuplicate" Margin="10,15,0,0" GroupName="grproom" HorizontalAlignment="Left">Duplicate Existing Room</RadioButton>
+        <ComboBox Name="comboBoxRooms" Margin="40,5,0,0" Width="179" HorizontalAlignment="Left" SelectionChanged="ComboBoxRooms_SelectionChanged" />
+        <!-- The Create Room Button -->
+        <Separator Margin="10" />
+        <Button Name="btnCreate" Margin="150,5,150,0" Height="30" Click="ButtonCreate_Click">Create Room</Button>
+    </StackPanel>
 </Window>
