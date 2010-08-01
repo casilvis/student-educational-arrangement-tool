@@ -1124,5 +1124,39 @@ namespace SEAT
             StudentRoster sr = new StudentRoster(this.myroom);
             sr.ShowDialog();
         }
+
+        /// <summary>
+        /// Handles the SelectionChanged event of the students control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
+        private void Students_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Remove the old highlight
+            for (int i = 0; i < e.RemovedItems.Count; i++)
+            {
+                Student student = e.RemovedItems[i] as Student;
+                foreach (Seat seat in this.seatArray)
+                {
+                    if (!seat.Chair.IsEmpty() && seat.Chair.TheStudent.Equals(student))
+                    {
+                        seat.Background = Brushes.White;
+                    }
+                }
+            }
+
+            // Add the new highlight
+            for (int i = 0; i < e.AddedItems.Count; i++)
+            {
+                Student student = e.AddedItems[i] as Student;
+                foreach (Seat seat in this.seatArray)
+                {
+                    if (!seat.Chair.IsEmpty() && seat.Chair.TheStudent.Equals(student))
+                    {
+                        seat.Background = Brushes.LightYellow;
+                    }
+                }
+            }
+        }
     }
 }
