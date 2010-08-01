@@ -1,7 +1,9 @@
 ﻿<Window x:Class="SEAT.RoomGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Room Grid" Height="500" Width="900"
+    Title="Room Grid" 
+    Height="500" Width="900"
+    MinHeight="300" MinWidth="900"
     Icon="seat.ico">
     <Window.Resources>
         <DataTemplate x:Key="itemTemplateStudents">
@@ -100,7 +102,7 @@
                     <Label Margin="0,0,7,0" FontWeight="Black">L</Label>
                     <Label Margin="0,0,10,0" FontWeight="Black">V</Label>
                 </DockPanel>
-                <CheckBox Name="checkBoxFilterSeatedStudents" Margin="5,5,0,5" DockPanel.Dock="Bottom" Checked="CheckBoxFilterSeatedStudents_Checked" Unchecked="CheckBoxFilterSeatedStudents_Unchecked">Show Only Seated Students</CheckBox>
+                <CheckBox Name="checkBoxFilterSeatedStudents" Margin="5,5,0,5" DockPanel.Dock="Bottom" Checked="CheckBoxFilterSeatedStudents_Checked" Unchecked="CheckBoxFilterSeatedStudents_Unchecked">Show Only Students Not in a Seat</CheckBox>
                 <ListBox Name="students" Width="auto" ItemTemplate="{StaticResource itemTemplateStudents}"></ListBox>
             </DockPanel>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
