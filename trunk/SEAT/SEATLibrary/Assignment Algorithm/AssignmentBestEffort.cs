@@ -131,6 +131,29 @@ namespace SEATLibrary.Assignment_Algorithm
                     }
                 }
             }
+
+            // Place the remaining students regardless of handedness
+            for (int n = 0; n < students.Length; n++)
+            {
+                Student student = students[n];
+                bool seated = room.IsStudentSeated(student);
+
+                // Attempt to find a seat
+                for (int i = 0; i < room.Height && !seated; i++)
+                {
+                    for (int j = 0; j < room.Width && !seated; j++)
+                    {
+                        Chair chair = room.Chairs[i, j];
+
+                        // NOTES: this is the same as the above placement algorithm, but we don't enforce handedness
+                        if (chair.IsEmpty() && !chair.MustBeEmpty && !chair.NonChair)
+                        {
+                            chair.TheStudent = student;
+                            seated = true;
+                        }
+                    }
+                }
+            }
         }
     }
 }
