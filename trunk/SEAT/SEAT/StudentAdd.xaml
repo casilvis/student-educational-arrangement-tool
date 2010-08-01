@@ -1,7 +1,8 @@
 ﻿<Window x:Class="SEAT.StudentAdd"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Student" Height="300" Width="300">
+    Title="Student" Height="300" Width="300"
+    Icon="seat.ico">
     <StackPanel>
         <Label Height="28" Name="label4" FontWeight="Black" HorizontalAlignment="Center">Student Information</Label>
         <StackPanel Orientation="Horizontal">
