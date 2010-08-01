@@ -103,7 +103,7 @@
                     <Label Margin="0,0,10,0" FontWeight="Black">V</Label>
                 </DockPanel>
                 <CheckBox Name="checkBoxFilterSeatedStudents" Margin="5,5,0,5" DockPanel.Dock="Bottom" Checked="CheckBoxFilterSeatedStudents_Checked" Unchecked="CheckBoxFilterSeatedStudents_Unchecked">Show Only Students Not in a Seat</CheckBox>
-                <ListBox Name="students" Width="auto" ItemTemplate="{StaticResource itemTemplateStudents}"></ListBox>
+                <ListBox Name="students" Width="auto" ItemTemplate="{StaticResource itemTemplateStudents}" SelectionChanged="Students_SelectionChanged"></ListBox>
             </DockPanel>
             <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
                 <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">
