@@ -1,6 +1,15 @@
 #summary The release history for SEAT
 #labels Featured
 
+= Version 1.1.0.0 =
+*Released on 8/1/2010*
+
+  * Cleaned up GUI elements and general visual usability.  This includes fixing misspelled words in the GUI, window resizing rules, and GUI layout and colors.
+  * Seating algorithm now places all students even if handedness preferences are not able to be accommodated.
+  * When a student is selected in the placement view, if they are already seated they are highlighted.
+  * If a seat is changed to "Not a Seat" or "Leave Empty" and is not empty, the student is removed from the seat.
+  * It is now possible to independently set "Not a Seat" and "Leave Empty" so creating new rooms is easier.
+
 = Version 1.0.0.0 =
 *Released on 4/28/2010*
 
