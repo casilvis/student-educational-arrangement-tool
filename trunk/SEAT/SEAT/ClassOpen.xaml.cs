@@ -31,7 +31,6 @@ namespace SEAT
         public ClassOpen()
         {
             InitializeComponent();
-            this.Title = "Room creator";
             comboBoxRooms.ItemsSource = Window1.SManager.RoomList;
         }
 
