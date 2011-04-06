@@ -1,0 +1,136 @@
+﻿<Window x:Class="SEAT.RoomGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Room Grid" 
+    Height="500" Width="900"
+    MinHeight="500" MinWidth="900"
+    Icon="seat.ico">
+    <Window.Resources>
+        <DataTemplate x:Key="itemTemplateStudents">
+            <DockPanel Width="200">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <TextBlock Text="{Binding Path=LastName}"/>
+                    <TextBlock Text=", "/>
+                    <TextBlock Text="{Binding Path=FirstName}"/>
+                </StackPanel>
+                <CheckBox IsChecked="{Binding Path=VisionImpairment}" IsEnabled="False" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                <CheckBox IsChecked="{Binding Path=LeftHanded}" IsEnabled="False" Margin="0,0,10,0" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+            </DockPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <DockPanel Name="dkpanel" Height="auto" Width="auto">
+        <Menu DockPanel.Dock="Top" Width="auto">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Print Classroom" Name="printClassroom" Click="PrintClassroom_Click" />
+                <Separator></Separator>
+                <MenuItem Header="_Save Template" Name="fileMenuSave" Click="FileMenuSave_Click" />
+            </MenuItem>
+            <MenuItem Header="_Students">
+                <MenuItem Header="_View Seat Assignments" Name="viewSeatAssignments" Click="ViewSeatAssignments_Click" />
+                <MenuItem Header="_Print Seating Chart" Name="printSeatingChart" Click="PrintSeatingChart_Click" />
+            </MenuItem>
+            <MenuItem Header="_Reserve Seats">
+                <MenuItem Header="_Clear" Click="ReservationClear_Click"/>
+                <MenuItem Header="_Checkerboard" Click="ReservationCheckerboard_Click" />
+                <MenuItem Header="_Every Other Row" Click="ReservationEveryOtherRow_Click" />
+                <MenuItem Header="_Every Other Column" Click="ReservationEveryOtherColumn_Click" />
+                <MenuItem Header="_Left Side of Room" Click="ReservationLeft_Click" />
+                <MenuItem Header="_Right Side of Room" Click="ReservationRight_Click" />
+                <MenuItem Header="_Back of Room" Click="ReservationBack_Click" />
+            </MenuItem>
+            <MenuItem Header="_Place Students">
+                <MenuItem Header="_Clear Seats" Name="algorithmClearSeats" Click="AlgorithmClearSeats_Click" />
+                <MenuItem Header="_Best Effort" Name="algorithmBestEffort" Click="AlgorithmBestEffort_Click" />
+                <MenuItem Header="_Visualy Impaired Only" Name="algorithmVisuallyImpaired" Click="AlgorithmVisuallyImpaired_Click" />
+                <MenuItem Header="_Left Handed Only" Name="algorithmLeftHanded" Click="AlgorithmLeftHanded_Click" />
+            </MenuItem>
+        </Menu>
+        <DockPanel Name="Options" Width="200" Background="LightGray" DockPanel.Dock="Right" >
+            <Button Name="btndone" Margin="10" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="ButtonDone_Click">Done</Button>
+            <StackPanel DockPanel.Dock="Top">
+                <Label Name="lblTitle" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" FontWeight="Bold">Seat Properties</Label>
+                <Separator Margin="10"/>
+
+                <!-- Seat Number -->
+                <DockPanel Height="30" Margin="0,0,10,0">
+                    <Label Name="lblNumber" Margin="10,0,0,0" DockPanel.Dock="Left" VerticalAlignment="Top" FontSize="10">Number:</Label>
+                    <TextBox Name="txtnumber" DockPanel.Dock="Right" VerticalAlignment="Top" FontSize="10" />
+                </DockPanel>
+                <Button Name="btnnumber" Margin="10,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="ButtonNumber_Click">Change Number</Button>
+                <Separator Margin="10"/>
+
+                <!-- Handedness -->
+                <DockPanel Height="20">
+                    <RadioButton Name="rbtnLeftH" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="10" GroupName="grpHand">Left Handed</RadioButton>
+                    <RadioButton Name="rbtnRightH" Margin="10,0,0,0"  VerticalAlignment="Center" FontSize="10" GroupName="grpHand" IsChecked="True">Right Handed</RadioButton>
+                </DockPanel>
+                <Button Name="btnhanded" Margin="10,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="ButtonHanded_Click">Change Handed</Button>
+                <Separator Margin="10"/>
+
+                <!-- Horizontal Alignment -->
+                <DockPanel Height="20">
+                    <RadioButton Name="rbtnLeft" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="10" GroupName="grpLMR">Left</RadioButton>
+                    <RadioButton Name="rbtnMiddleLR" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="10" GroupName="grpLMR" IsChecked="True">Middle</RadioButton>
+                    <RadioButton Name="rbtnRight" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="10" GroupName="grpLMR">Right</RadioButton>
+                </DockPanel>
+                <Button Name="btnhoriz" Margin="10,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="ButtonHorizontal_Click">Change Horizontal Alignment</Button>
+                <Separator Margin="10" />
+
+                <!-- Vertical Alignment -->
+                <DockPanel Height="20">
+                    <RadioButton Name="rbtnFront" Margin="10,0,0,0" FontSize="10" VerticalAlignment="Center" GroupName="grpFMB">Front</RadioButton>
+                    <RadioButton Name="rbtnMiddleFB" Margin="10,0,0,0" FontSize="10" VerticalAlignment="Center" GroupName="grpFMB" IsChecked="True">Middle</RadioButton>
+                    <RadioButton Name="rbtnBack" Margin="10,0,0,0" FontSize="10" VerticalAlignment="Center" GroupName="grpFMB">Back</RadioButton>
+                </DockPanel>
+                <Button Name="btnvert" Margin="10,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="ButtonVertical_Click">Change Vertical Alignment</Button>
+                <Separator Margin="10" />
+
+                <!-- Not A Seat-->
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Name="chkboxNotSeat" Margin="10,0,0,0" Width="110" VerticalAlignment="Center">Not A Seat</CheckBox>
+                    <Button Name="ButtonSetNotSeat" Width="70" Click="ButtonSetNotSeat_Click">Set</Button>
+                </StackPanel>
+                <Separator Margin="10" />
+
+                <!-- Leave Empty -->
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox  Name="chkboxEmpty" Margin="10,0,0,0" Width="110" VerticalAlignment="Center">Leave Empty</CheckBox>
+                    <Button Name="ButtonSetLeaveEmpty" Width="70" Click="ButtonSetLeaveEmpty_Click">Set</Button>
+                </StackPanel>
+                <Separator Margin="10" />
+            </StackPanel>
+        </DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="top">
+            <Label Name="lblnm">Name:</Label>
+            <TextBox Width="125"  Name="txtnm" TextChanged="TextBoxName_TextChanged"></TextBox>
+            <Label Name="lblloc">Location:</Label>
+            <TextBox Width="125" Name="txtloc" TextChanged="TextBoxLocation_TextChanged"></TextBox>           
+            <Label Name="lbldes">Description:</Label>
+            <TextBox Width="250" Name="txtdes" TextChanged="TextBoxDescription_TextChanged"></TextBox>
+        </StackPanel>
+        <DockPanel DockPanel.Dock="Top" Name="dpnlgrid" Width="auto">
+            <Grid Name="grdtop" Width="auto" Height="auto" DockPanel.Dock="Top">
+                <ScrollViewer Margin="90,0,0,0" Name="svrtop" Width="auto" Height="auto" VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden">
+                    <Grid Name="grdtop2" Width="auto" Height="auto" HorizontalAlignment="Left"></Grid>
+                </ScrollViewer>
+            </Grid>
+            <ScrollViewer Name="svrleft" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Left" Width="auto" Height="auto" MaxWidth="90" VerticalScrollBarVisibility="Hidden">
+                <Grid Name="grdleft" Width="auto" Height="auto" HorizontalAlignment="Left"></Grid>
+            </ScrollViewer>
+            <DockPanel Width="250" Name="dockPanelStudents">
+                <TextBox Name="textBoxFilterStudents" DockPanel.Dock="Top" TextChanged="TextBoxFilterStudents_TextChanged" />
+                <DockPanel DockPanel.Dock="Top" Width="Auto">
+                    <Label Margin="0,0,113,0" FontWeight="Black">Name</Label>
+                    <Label Margin="0,0,7,0" FontWeight="Black">L</Label>
+                    <Label Margin="0,0,10,0" FontWeight="Black">V</Label>
+                </DockPanel>
+                <CheckBox Name="checkBoxFilterSeatedStudents" Margin="5,5,0,5" DockPanel.Dock="Bottom" Checked="CheckBoxFilterSeatedStudents_Checked" Unchecked="CheckBoxFilterSeatedStudents_Unchecked">Show Only Students Not in a Seat</CheckBox>
+                <ListBox Name="students" Width="auto" ItemTemplate="{StaticResource itemTemplateStudents}" SelectionChanged="Students_SelectionChanged"></ListBox>
+            </DockPanel>
+            <ScrollViewer Name="svrgrid" HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Right" Width="auto" Height="auto" VerticalScrollBarVisibility="Auto">
+                <Grid Name="griddy" Width="auto" Height="auto" HorizontalAlignment="Left">
+                </Grid>
+            </ScrollViewer>            
+        </DockPanel>
+    </DockPanel>
+</Window>
