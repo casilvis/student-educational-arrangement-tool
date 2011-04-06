@@ -433,7 +433,7 @@ namespace SEAT
             {
                 MessageBox.Show("No room selected");
             }
-            else if ((string)this.listBoxSection.SelectedItem == null)
+            else if (this.listBoxSection.SelectedItem == null)
             {
                 MessageBox.Show("No section selected");
             }
