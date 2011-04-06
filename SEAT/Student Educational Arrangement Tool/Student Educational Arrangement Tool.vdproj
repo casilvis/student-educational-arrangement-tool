@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3E5F763D863540B8AF2A39FC8776D8E8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_90D8D3787BB28F2C6566E094A3B39EC6"
+        "MsmKey" = "8:_0860D72518C57F7B61CE93FB6EA44521"
         "OwnerKey" = "8:_B1473162172D4BED8CE40BEFA7E2BA6C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_90D8D3787BB28F2C6566E094A3B39EC6"
+        "MsmKey" = "8:_0860D72518C57F7B61CE93FB6EA44521"
         "OwnerKey" = "8:_CE8D632B8DFC4F739550B1E2F69F68E4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3E5F763D863540B8AF2A39FC8776D8E8"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_90D8D3787BB28F2C6566E094A3B39EC6"
+        "OwnerKey" = "8:_0860D72518C57F7B61CE93FB6EA44521"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -129,6 +129,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -151,7 +164,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:3.5.21022"
+                "FrameworkVersion" = "8:3.5.21022"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -159,34 +172,14 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E5F763D863540B8AF2A39FC8776D8E8"
-            {
-            "SourcePath" = "8:gpl.txt"
-            "TargetName" = "8:gpl.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_21191FEC40E14D758B6ED734BEFC260C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_90D8D3787BB28F2C6566E094A3B39EC6"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0860D72518C57F7B61CE93FB6EA44521"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SEATLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:SEATLibrary, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_90D8D3787BB28F2C6566E094A3B39EC6"
+                    "_0860D72518C57F7B61CE93FB6EA44521"
                     {
                     "Name" = "8:SEATLibrary.dll"
                     "Attributes" = "3:512"
@@ -208,6 +201,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E5F763D863540B8AF2A39FC8776D8E8"
+            {
+            "SourcePath" = "8:gpl.txt"
+            "TargetName" = "8:gpl.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_21191FEC40E14D758B6ED734BEFC260C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B431D5A4FBF647E08C9F15CDA45DD4C7"
@@ -297,23 +310,24 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Student Educational Arrangement Tool"
-        "ProductCode" = "8:{B0B65840-6FC0-4206-88B9-5966F770C447}"
-        "PackageCode" = "8:{284F1E81-6CC0-4F46-B8B8-63970A17E5E2}"
+        "ProductCode" = "8:{7170642C-C352-4C23-840D-428FE48FB603}"
+        "PackageCode" = "8:{BD41288C-6B38-419E-9D40-20A122BE96EB}"
         "UpgradeCode" = "8:{7C9CBD8A-693C-4B69-8F8B-1A6FF630C97D}"
+        "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:1.2.0"
+        "Manufacturer" = "8:SEAT"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:http://code.google.com/p/student-educational-arrangement-tool/issues/list"
         "Title" = "8:Student Educational Arrangement Tool"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:SEAT"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:"
+        "ARPURLINFOABOUT" = "8:http://code.google.com/p/student-educational-arrangement-tool/"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -860,7 +874,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B1473162172D4BED8CE40BEFA7E2BA6C"
             {
-            "SourcePath" = "8:..\\TestingApplication\\obj\\Debug\\TestingApplication.exe"
+            "SourcePath" = "8:..\\TestingApplication\\obj\\Release\\TestingApplication.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_21191FEC40E14D758B6ED734BEFC260C"
@@ -888,7 +902,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CE8D632B8DFC4F739550B1E2F69F68E4"
             {
-            "SourcePath" = "8:..\\SEAT\\obj\\Debug\\SEAT.exe"
+            "SourcePath" = "8:..\\SEAT\\obj\\Release\\SEAT.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_21191FEC40E14D758B6ED734BEFC260C"
