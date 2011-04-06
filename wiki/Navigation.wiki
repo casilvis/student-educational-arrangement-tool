@@ -3,5 +3,6 @@
   * [Home]
   * [Help]
   * [Documentation]
+  * [TemplateExamples Template Examples]
   * [FinalPresentation Final Presentation]
   * [ReleaseNotes Release Notes]
