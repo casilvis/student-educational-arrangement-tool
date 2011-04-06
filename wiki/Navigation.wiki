@@ -1,6 +1,7 @@
 #summary Navigation
 
-  * [Help Help]
-  * [Documentation Documentation]
+  * [Home]
+  * [Help]
+  * [Documentation]
   * [FinalPresentation Final Presentation]
   * [ReleaseNotes Release Notes]
