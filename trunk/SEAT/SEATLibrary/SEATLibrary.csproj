@@ -86,6 +86,7 @@
     <Compile Include="Room.cs" />
     <Compile Include="RosterFile.cs" />
     <Compile Include="SeatManager.cs" />
+    <Compile Include="Section.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

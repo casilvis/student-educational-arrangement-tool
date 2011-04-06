@@ -6,6 +6,7 @@ namespace SEAT
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Printing;
     using System.Text;
@@ -68,6 +69,8 @@ namespace SEAT
         {
             // Shouldn't be used but initialized in case
             InitializeComponent();
+            this.students.Items.SortDescriptions.Add(new SortDescription("LastName", ListSortDirection.Ascending));
+            this.students.Items.SortDescriptions.Add(new SortDescription("FirstName", ListSortDirection.Ascending));
             int row = 0;
             int column = 0;
             this.seatArray = new Seat[row, column];
@@ -82,6 +85,8 @@ namespace SEAT
         {
             // Setting up the room to correct size and properties
             InitializeComponent();
+            this.students.Items.SortDescriptions.Add(new SortDescription("LastName", ListSortDirection.Ascending));
+            this.students.Items.SortDescriptions.Add(new SortDescription("FirstName", ListSortDirection.Ascending));
             this.myroom = inroom;
             this.row = this.myroom.Height;
             this.column = this.myroom.Width;

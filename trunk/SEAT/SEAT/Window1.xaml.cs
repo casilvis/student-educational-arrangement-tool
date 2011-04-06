@@ -7,6 +7,7 @@ namespace SEAT
     using System;
     using System.Collections;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     using System.Diagnostics;
     using System.Drawing;
     using System.Linq;
@@ -39,9 +40,16 @@ namespace SEAT
         {
             InitializeComponent();
             this.Title = "SEAT Manager";
-            listBoxRooms.ItemsSource = Window1.manager.RoomList;
-            listBoxRoster.ItemsSource = Window1.manager.StudentList;
-            listBoxSection.ItemsSource = Window1.manager.SectionList;
+            this.listBoxRooms.ItemsSource = Window1.manager.RoomList;
+            this.listBoxRoster.ItemsSource = Window1.manager.StudentList;
+            this.listBoxRoster.Items.SortDescriptions.Add(new SortDescription("LastName", ListSortDirection.Ascending));
+            this.listBoxRoster.Items.SortDescriptions.Add(new SortDescription("FirstName", ListSortDirection.Ascending));
+            this.listBoxSection.ItemsSource = Window1.manager.SectionList;
+            this.listBoxSection.Items.SortDescriptions.Add(new SortDescription("Number", ListSortDirection.Ascending));
+            this.listBoxRooms.Items.SortDescriptions.Add(new SortDescription("RoomName", ListSortDirection.Ascending));
+            this.listBoxRooms.Items.SortDescriptions.Add(new SortDescription("Location", ListSortDirection.Ascending));
+            this.listBoxStudents.Items.SortDescriptions.Add(new SortDescription("LastName", ListSortDirection.Ascending));
+            this.listBoxStudents.Items.SortDescriptions.Add(new SortDescription("FirstName", ListSortDirection.Ascending));
             SeatManager.FileBecameDirty += new EventHandler(this.SeatManager_FileBecameDirty);
             this.Title = Window1.SManager.ToString();
 
@@ -432,12 +440,12 @@ namespace SEAT
             else
             {
                 Room room = (Room)listBoxRooms.SelectedItem;
-                string s = this.listBoxSection.SelectedItem as string;
+                SEATLibrary.Section s = this.listBoxSection.SelectedItem as SEATLibrary.Section;
 
                 for (int i = 0; i < Window1.SManager.StudentList.Count; i++)
                 {
                     Student student = Window1.SManager.StudentList[i];
-                    if (student.Section == s)
+                    if (student.Section == s.Number)
                     {
                         room.AddStudent(student);
                     }
