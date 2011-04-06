@@ -33,7 +33,7 @@ namespace SEATLibrary
         /// <summary>
         /// A virtual collection of the sections.
         /// </summary>
-        private ObservableCollection<string> sections;
+        private ObservableCollection<Section> sections;
 
         /// <summary>
         /// All of the rooms.
@@ -54,7 +54,7 @@ namespace SEATLibrary
         {
             this.students = new ObservableCollection<Student>();
             this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
-            this.sections = new ObservableCollection<string>();
+            this.sections = new ObservableCollection<Section>();
             this.sections.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Sections_CollectionChanged);
             this.rooms = new ObservableCollection<Room>();
             this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Rooms_CollectionChanged);
@@ -71,7 +71,7 @@ namespace SEATLibrary
             // Initialize the variables
             this.students = new ObservableCollection<Student>();
             this.students.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Students_CollectionChanged);
-            this.sections = new ObservableCollection<string>();
+            this.sections = new ObservableCollection<Section>();
             this.sections.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Sections_CollectionChanged);
             this.rooms = new ObservableCollection<Room>();
             this.rooms.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Rooms_CollectionChanged);
@@ -244,9 +244,9 @@ namespace SEATLibrary
         /// Gets the list of sections.
         /// </summary>
         /// <value>Read only collection of sections.</value>
-        public ReadOnlyObservableCollection<string> SectionList
+        public ReadOnlyObservableCollection<Section> SectionList
         {
-            get { return new ReadOnlyObservableCollection<string>(this.sections); }
+            get { return new ReadOnlyObservableCollection<Section>(this.sections); }
         }
 
         // Methods 
@@ -542,6 +542,7 @@ namespace SEATLibrary
             // Get the new list of sections
             // The complexity grows linearly as the number of students increases
             Collection<string> list = new Collection<string>();
+            
             for (int i = 0; i < this.students.Count; i++)
             {
                 if (!list.Contains(this.students[i].Section))
@@ -553,18 +554,19 @@ namespace SEATLibrary
             // Add the new section
             for (int i = 0; i < list.Count; i++)
             {
-                if (!this.sections.Contains(list[i]))
+                Section s = new Section(list[i]);
+                if (!this.sections.Contains(s))
                 {
-                    this.sections.Add(list[i]);
+                    this.sections.Add(s);
                 }
             }
 
             // Remove the deleted sections
             for (int i = 0; i < this.sections.Count; i++)
             {
-                if (!list.Contains(this.sections[i]))
+                if (!list.Contains(this.sections[i].Number))
                 {
-                    this.sections.RemoveAt(i--);
+                    this.sections.Remove(this.sections[i]);
                 }
             }
         }
