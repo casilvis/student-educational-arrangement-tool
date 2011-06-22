@@ -2,7 +2,7 @@
 #labels Featured
 
 == [http://student-educational-arrangement-tool.googlecode.com/files/SEAT%201.2.0.0.msi Version 1.2.0.0] ==
-*Released on 4/6/2010*
+*Released on 4/6/2011*
 
   * The list of students, section numbers, and rooms are now sorted alphabetically and remain sorted as the application is used.
 
