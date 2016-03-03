@@ -1,0 +1,1 @@
+&lt;wiki:gadget url="http://student-educational-arrangement-tool.googlecode.com/svn/trunk/final\_presentation\_gadget.xml" height="342" width="410" border="1"/&gt;
